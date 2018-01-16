@@ -1,0 +1,16 @@
+* Todo List
+** DONE Scrape HTML from poe.trade
+   CLOSED: [2017-12-29 Fri 02:43]
+*** conversion rate
+*** seller IGN
+*** maximum stock
+** DONE Build a graph for given set of currencies and conversion rates
+   CLOSED: [2018-01-14 Sun 18:34]
+*** What to do with offers with same conversion rates?
+** DONE Implement graph traversal
+   CLOSED: [2018-01-14 Sun 18:34]
+** TODO Refactor `graph.find_paths`
+** TODO Find top X paths by comparing resulting target currency
+*** Calculate maximum convertable currencies along each whole path
+*** Try to use the maximum available contingent per conversion
+*** How to handle offers with identical conversion rates?
