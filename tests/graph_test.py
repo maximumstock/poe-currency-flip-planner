@@ -83,6 +83,7 @@ expected_graph = {
   }
 }
 
+# Exptected graph when trading from Chaos to Chaos over one other currency
 expected_graph_small = {
   'Chaos': {
     'Alteration': [
@@ -103,6 +104,7 @@ expected_graph_small = {
   }
 }
 
+# Expected paths from Chaos to Chaos
 expected_paths_small_same_currency = [
   [
     {'contact_ign': 'wreddnuy', 'conversion_rate': 12.0, 'stock': 24, 'have': 'Chaos', 'want': 'Alteration'},
@@ -123,6 +125,7 @@ expected_paths_small_same_currency = [
   ]
 ]
 
+# Exptected paths from Chaos to Chromatics
 expected_paths_small_different_currency = [
   [
     {'contact_ign': 'wreddnuy', 'conversion_rate': 12.0, 'stock': 24, 'have': 'Chaos', 'want': 'Alteration'},
