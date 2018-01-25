@@ -19,7 +19,6 @@ def find_paths(graph, have, want, max_length = 5):
   paths = deque()
   correct_paths = []
 
-  # Refactor the double loop
   for currency in graph[have]:
     for offer in graph[have][currency]:
       o = decorate_offer(offer, have, currency)
