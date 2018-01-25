@@ -83,11 +83,16 @@ expected_graph = {
   }
 }
 
+
+
+### Below structures are modified for simpler testing => number reduced, offers slightly changed
+
+
 # Exptected graph when trading from Chaos to Chaos over one other currency
 expected_graph_small = {
   'Chaos': {
     'Alteration': [
-      {'contact_ign': 'wreddnuy', 'conversion_rate': 12.0, 'stock': 24}
+      {'contact_ign': 'wreddnuy', 'conversion_rate': 12.0, 'stock': 100}
     ]
   },
   'Alteration': {
@@ -98,8 +103,8 @@ expected_graph_small = {
   },
   'Chromatic': {
     'Chaos': [
-      {'contact_ign': '_ZEUS___', 'conversion_rate': 0.0909, 'stock': 10},
-      {'contact_ign': 'MVP_Kefir', 'conversion_rate': 0.087, 'stock': 20}
+      {'contact_ign': '_ZEUS___', 'conversion_rate': 0.0909, 'stock': 100},
+      {'contact_ign': 'MVP_Kefir', 'conversion_rate': 0.087, 'stock': 200}
     ]
   }
 }
@@ -107,31 +112,34 @@ expected_graph_small = {
 # Expected paths from Chaos to Chaos
 expected_paths_small_same_currency = [
   [
-    {'contact_ign': 'wreddnuy', 'conversion_rate': 12.0, 'stock': 24, 'have': 'Chaos', 'want': 'Alteration'},
+    {'contact_ign': 'wreddnuy', 'conversion_rate': 12.0, 'stock': 100, 'have': 'Chaos', 'want': 'Alteration'},
     {'contact_ign': 'Shioua_ouah', 'conversion_rate': 0.6897, 'stock': 1576, 'have': 'Alteration', 'want': 'Chromatic'},
-    {'contact_ign': 'MVP_Kefir', 'conversion_rate': 0.087, 'stock': 20, 'have': 'Chromatic', 'want': 'Chaos'}
+    {'contact_ign': 'MVP_Kefir', 'conversion_rate': 0.087, 'stock': 200, 'have': 'Chromatic', 'want': 'Chaos'}
   ], [
-    {'contact_ign': 'wreddnuy', 'conversion_rate': 12.0, 'stock': 24, 'have': 'Chaos', 'want': 'Alteration'},
+    {'contact_ign': 'wreddnuy', 'conversion_rate': 12.0, 'stock': 100, 'have': 'Chaos', 'want': 'Alteration'},
     {'contact_ign': 'Shioua_ouah', 'conversion_rate': 0.6897, 'stock': 1576, 'have': 'Alteration', 'want': 'Chromatic'},
-    {'contact_ign': '_ZEUS___', 'conversion_rate': 0.0909, 'stock': 10, 'have': 'Chromatic', 'want': 'Chaos'}
+    {'contact_ign': '_ZEUS___', 'conversion_rate': 0.0909, 'stock': 100, 'have': 'Chromatic', 'want': 'Chaos'}
   ], [
-    {'contact_ign': 'wreddnuy', 'conversion_rate': 12.0, 'stock': 24, 'have': 'Chaos', 'want': 'Alteration'},
+    {'contact_ign': 'wreddnuy', 'conversion_rate': 12.0, 'stock': 100, 'have': 'Chaos', 'want': 'Alteration'},
     {'contact_ign': 'Ashkeri', 'conversion_rate': 0.7143, 'stock': 449, 'have': 'Alteration', 'want': 'Chromatic'},
-    {'contact_ign': 'MVP_Kefir', 'conversion_rate': 0.087, 'stock': 20, 'have': 'Chromatic', 'want': 'Chaos'}
+    {'contact_ign': 'MVP_Kefir', 'conversion_rate': 0.087, 'stock': 200, 'have': 'Chromatic', 'want': 'Chaos'}
   ], [
-    {'contact_ign': 'wreddnuy', 'conversion_rate': 12.0, 'stock': 24, 'have': 'Chaos', 'want': 'Alteration'},
+    {'contact_ign': 'wreddnuy', 'conversion_rate': 12.0, 'stock': 100, 'have': 'Chaos', 'want': 'Alteration'},
     {'contact_ign': 'Ashkeri', 'conversion_rate': 0.7143, 'stock': 449, 'have': 'Alteration', 'want': 'Chromatic'},
-    {'contact_ign': '_ZEUS___', 'conversion_rate': 0.0909, 'stock': 10, 'have': 'Chromatic', 'want': 'Chaos'}
+    {'contact_ign': '_ZEUS___', 'conversion_rate': 0.0909, 'stock': 100, 'have': 'Chromatic', 'want': 'Chaos'}
   ]
 ]
 
 # Exptected paths from Chaos to Chromatics
+# This is not really relevant to us, since we only care about trade paths between the same currency in order to
+# guarantee easily comparable results. However, it's good to make sure that the path exploration also works for this
+# edge case
 expected_paths_small_different_currency = [
   [
-    {'contact_ign': 'wreddnuy', 'conversion_rate': 12.0, 'stock': 24, 'have': 'Chaos', 'want': 'Alteration'},
+    {'contact_ign': 'wreddnuy', 'conversion_rate': 12.0, 'stock': 100, 'have': 'Chaos', 'want': 'Alteration'},
     {'contact_ign': 'Shioua_ouah', 'conversion_rate': 0.6897, 'stock': 1576, 'have': 'Alteration', 'want': 'Chromatic'}
   ], [
-    {'contact_ign': 'wreddnuy', 'conversion_rate': 12.0, 'stock': 24, 'have': 'Chaos', 'want': 'Alteration'},
+    {'contact_ign': 'wreddnuy', 'conversion_rate': 12.0, 'stock': 100, 'have': 'Chaos', 'want': 'Alteration'},
     {'contact_ign': 'Ashkeri', 'conversion_rate': 0.7143, 'stock': 449, 'have': 'Alteration', 'want': 'Chromatic'}
   ]
 ]
