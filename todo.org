@@ -10,6 +10,8 @@
 ** DONE Implement graph traversal => paths
    CLOSED: [2018-01-14 Sun 18:34]
 ** TODO Transform paths in actual feasible transactions 
-*** Build list of transactions "n of currency x for m of currency y" 
-*** Step 1: Calculate maximum gainable amount of only the target currency 
+*** DONE Build list of transactions "n of currency x for m of currency y" 
+    CLOSED: [2018-01-27 Sat 00:45]
+*** DONE Step 1: Calculate maximum gainable amount of only the target currency 
+    CLOSED: [2018-01-27 Sat 00:45]
 *** Step 2: Try to incorporate remainders of other currencies (due to the different contingents) in the efficiency comparison

@@ -130,7 +130,7 @@ expected_paths_small_same_currency = [
   ]
 ]
 
-# Exptected paths from Chaos to Chromatics
+# Expected paths from Chaos to Chromatics
 # This is not really relevant to us, since we only care about trade paths between the same currency in order to
 # guarantee easily comparable results. However, it's good to make sure that the path exploration also works for this
 # edge case
@@ -144,6 +144,32 @@ expected_paths_small_different_currency = [
   ]
 ]
 
+
+expected_conversion = {
+  "from": "Chaos",
+  "to": "Chaos",
+  "starting": 8,
+  "ending": 5,
+  "winnings": -3,
+  "transactions": [{
+    "from": "Chaos",
+    "to": "Alteration",
+    "paid": 8,
+    "received": 96
+  }, {
+    "from": "Alteration",
+    "to": "Chromatic",
+    "paid": 96,
+    "received": 66
+  }, {
+    "from": "Chromatic",
+    "to": "Chaos",
+    "paid": 66,
+    "received": 5
+  }]
+}
+
+
 class GraphTest(unittest.TestCase):
   def test_build_graph(self):
     graph = build_graph(test_offers)
@@ -155,3 +181,12 @@ class GraphTest(unittest.TestCase):
     self.assertListEqual(expected_paths_small_same_currency, paths_small_same_currency)
     paths_small_different_currency = find_paths(expected_graph_small, 'Chaos', 'Chromatic')
     self.assertListEqual(expected_paths_small_different_currency, paths_small_different_currency)
+
+  def test_is_profitable(self):
+    path = expected_paths_small_same_currency[0]
+    self.assertEqual(False, is_profitable(path))
+
+  def test_calculate_paths(self):
+    path = expected_paths_small_same_currency[0]
+    conversion = calculate_path(path)
+    self.assertDictEqual(expected_conversion, conversion)

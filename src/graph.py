@@ -49,3 +49,42 @@ def decorate_offer(offer, have, want):
   offer['have'] = have
   offer['want'] = want
   return offer
+
+def maximum_conversion_rate(path):
+  v = 1.0
+  for e in path:
+    v = v*e['conversion_rate']
+  return v
+
+def is_profitable(path):
+  return maximum_conversion_rate(path) > 1.0
+
+def calculate_path(path):
+  transactions = []
+
+  starting_amount = int(path[0]['stock'] / path[0]['conversion_rate'])
+  transactions.append({
+    "from": path[0]['have'],
+    "to": path[0]['want'],
+    "paid": starting_amount,
+    "received": int(starting_amount * path[0]['conversion_rate'])
+  })
+
+  for i in range(1,len(path)):
+    last = path[i-1]
+    v = int(transactions[i-1]['received'] / path[i]['conversion_rate'])
+    transactions.append({
+      "from": path[i]['have'],
+      "to": path[i]['want'],
+      "paid": transactions[i-1]['received'],
+      "received": int(transactions[i-1]['received'] * path[i]['conversion_rate'])
+    })
+
+  return {
+    "from": path[0]['have'],
+    "to": path[-1]['want'],
+    "starting": transactions[0]['paid'],
+    "ending": transactions[-1]['received'],
+    "winnings": transactions[-1]['received'] - transactions[0]['paid'],
+    "transactions": transactions
+  }

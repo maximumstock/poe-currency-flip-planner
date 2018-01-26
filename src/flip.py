@@ -36,7 +36,7 @@ def fetch_conversion_offers(league, want, have):
 
 def parse_conversion_offers(html):
   soup = BeautifulSoup(html, "html.parser")
-  rows = soup.find_all(class_="displayoffer", limit=5)
+  rows = soup.find_all(class_="displayoffer", limit=2)
   parsed_rows = [parse_conversion_offer(x) for x in rows]
   return [x for x in parsed_rows if x != None]
 
@@ -56,11 +56,3 @@ def parse_conversion_offer(offer_html):
     "stock": stock
   }
 
-# Test case below
-LEAGUE = "Abyss"
-STARTING_CURRENCY = "Chaos"
-TRADING_CURRENCIES = [STARTING_CURRENCY] + ["Alteration", "Chromatic"]
-CURRENCY_COMBINATIONS = list(itertools.permutations(TRADING_CURRENCIES, 2))
-
-offers = [fetch_conversion_offers(LEAGUE, c1, c2) for (c1, c2) in CURRENCY_COMBINATIONS]
-print(offers)
