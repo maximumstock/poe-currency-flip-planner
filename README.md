@@ -34,3 +34,12 @@ in which succession currencies have to be traded to yield different profits/loss
 
   The simplest model assumes that at each step in the conversion chain the user is able
   to convert all currency that was acquired in the previous step
+
+## Installation
+
+`pip install -r requirements.txt`
+
+
+## Tests
+
+`PYTHONPATH=$(pwd) py.test tests/**`
