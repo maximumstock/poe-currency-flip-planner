@@ -14,5 +14,6 @@
     CLOSED: [2018-01-27 Sat 00:45]
 *** DONE Step 1a: Calculate maximum gainable amount of only the target currency 
     CLOSED: [2018-01-27 Sat 00:45]
-*** Step 1b: Add end-user functionality to easily scan conversion rates for a given currency and league, sorted by descending profitability 
+*** Step 1b: Handle different contingents correctly 
+*** Step 1c: Add end-user functionality to easily scan conversion rates for a given currency and league, sorted by descending profitability 
 *** Step 2: Try to incorporate remainders of other currencies (due to the different contingents) in the efficiency comparison
