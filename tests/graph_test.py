@@ -110,25 +110,27 @@ expected_graph_small = {
 }
 
 # Expected paths from Chaos to Chaos
-expected_paths_small_same_currency = [
-  [
-    {'contact_ign': 'wreddnuy', 'conversion_rate': 12.0, 'stock': 100, 'have': 'Chaos', 'want': 'Alteration'},
-    {'contact_ign': 'Shioua_ouah', 'conversion_rate': 0.6897, 'stock': 1576, 'have': 'Alteration', 'want': 'Chromatic'},
-    {'contact_ign': 'MVP_Kefir', 'conversion_rate': 0.087, 'stock': 200, 'have': 'Chromatic', 'want': 'Chaos'}
-  ], [
-    {'contact_ign': 'wreddnuy', 'conversion_rate': 12.0, 'stock': 100, 'have': 'Chaos', 'want': 'Alteration'},
-    {'contact_ign': 'Shioua_ouah', 'conversion_rate': 0.6897, 'stock': 1576, 'have': 'Alteration', 'want': 'Chromatic'},
-    {'contact_ign': '_ZEUS___', 'conversion_rate': 0.0909, 'stock': 100, 'have': 'Chromatic', 'want': 'Chaos'}
-  ], [
-    {'contact_ign': 'wreddnuy', 'conversion_rate': 12.0, 'stock': 100, 'have': 'Chaos', 'want': 'Alteration'},
-    {'contact_ign': 'Ashkeri', 'conversion_rate': 0.7143, 'stock': 449, 'have': 'Alteration', 'want': 'Chromatic'},
-    {'contact_ign': 'MVP_Kefir', 'conversion_rate': 0.087, 'stock': 200, 'have': 'Chromatic', 'want': 'Chaos'}
-  ], [
-    {'contact_ign': 'wreddnuy', 'conversion_rate': 12.0, 'stock': 100, 'have': 'Chaos', 'want': 'Alteration'},
-    {'contact_ign': 'Ashkeri', 'conversion_rate': 0.7143, 'stock': 449, 'have': 'Alteration', 'want': 'Chromatic'},
-    {'contact_ign': '_ZEUS___', 'conversion_rate': 0.0909, 'stock': 100, 'have': 'Chromatic', 'want': 'Chaos'}
+def expected_paths_small_same_currency():
+  return [
+    [
+      {'contact_ign': 'wreddnuy', 'conversion_rate': 12.0, 'stock': 100, 'have': 'Chaos', 'want': 'Alteration'},
+      {'contact_ign': 'Shioua_ouah', 'conversion_rate': 0.6897, 'stock': 1576, 'have': 'Alteration', 'want': 'Chromatic'},
+      {'contact_ign': 'MVP_Kefir', 'conversion_rate': 0.087, 'stock': 200, 'have': 'Chromatic', 'want': 'Chaos'}
+    ], [
+      {'contact_ign': 'wreddnuy', 'conversion_rate': 12.0, 'stock': 100, 'have': 'Chaos', 'want': 'Alteration'},
+      {'contact_ign': 'Shioua_ouah', 'conversion_rate': 0.6897, 'stock': 1576, 'have': 'Alteration', 'want': 'Chromatic'},
+      {'contact_ign': '_ZEUS___', 'conversion_rate': 0.0909, 'stock': 100, 'have': 'Chromatic', 'want': 'Chaos'}
+    ], [
+      {'contact_ign': 'wreddnuy', 'conversion_rate': 12.0, 'stock': 100, 'have': 'Chaos', 'want': 'Alteration'},
+      {'contact_ign': 'Ashkeri', 'conversion_rate': 0.7143, 'stock': 449, 'have': 'Alteration', 'want': 'Chromatic'},
+      {'contact_ign': 'MVP_Kefir', 'conversion_rate': 0.087, 'stock': 200, 'have': 'Chromatic', 'want': 'Chaos'}
+    ], [
+      {'contact_ign': 'wreddnuy', 'conversion_rate': 12.0, 'stock': 100, 'have': 'Chaos', 'want': 'Alteration'},
+      {'contact_ign': 'Ashkeri', 'conversion_rate': 0.7143, 'stock': 449, 'have': 'Alteration', 'want': 'Chromatic'},
+      {'contact_ign': '_ZEUS___', 'conversion_rate': 0.0909, 'stock': 100, 'have': 'Chromatic', 'want': 'Chaos'}
+    ]
   ]
-]
+
 
 # Expected paths from Chaos to Chromatics
 # This is not really relevant to us, since we only care about trade paths between the same currency in order to
@@ -152,16 +154,19 @@ expected_conversion = {
   "ending": 5,
   "winnings": -3,
   "transactions": [{
+    "contact_ign": "wreddnuy",
     "from": "Chaos",
     "to": "Alteration",
     "paid": 8,
     "received": 96
   }, {
+    "contact_ign": "Shioua_ouah",
     "from": "Alteration",
     "to": "Chromatic",
     "paid": 96,
     "received": 66
   }, {
+    "contact_ign": "MVP_Kefir",
     "from": "Chromatic",
     "to": "Chaos",
     "paid": 66,
@@ -176,17 +181,16 @@ class GraphTest(unittest.TestCase):
     self.assertDictEqual(graph, expected_graph)
 
   def test_find_paths(self):
-    graph = build_graph(test_offers)
     paths_small_same_currency = find_paths(expected_graph_small, 'Chaos', 'Chaos')
-    self.assertListEqual(expected_paths_small_same_currency, paths_small_same_currency)
-    paths_small_different_currency = find_paths(expected_graph_small, 'Chaos', 'Chromatic')
+    self.assertListEqual(expected_paths_small_same_currency(), paths_small_same_currency)
+    paths_small_different_currency = find_paths(expected_graph_small.copy(), 'Chaos', 'Chromatic')
     self.assertListEqual(expected_paths_small_different_currency, paths_small_different_currency)
 
   def test_is_profitable(self):
-    path = expected_paths_small_same_currency[0]
+    path = expected_paths_small_same_currency()[0]
     self.assertEqual(False, is_profitable(path))
 
   def test_calculate_paths(self):
-    path = expected_paths_small_same_currency[0]
+    path = expected_paths_small_same_currency()[0]
     conversion = calculate_path(path)
     self.assertDictEqual(expected_conversion, conversion)

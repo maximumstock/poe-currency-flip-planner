@@ -13,7 +13,7 @@ def build_graph(offers):
   return graph
 
 """
-Returns a list of all possible paths from `want` to `have` for a given graph. 
+Returns a list of all possible paths from `want` to `have` for a given graph.
 """
 def find_paths(graph, have, want, max_length = 5):
   paths = deque()
@@ -59,32 +59,46 @@ def maximum_conversion_rate(path):
 def is_profitable(path):
   return maximum_conversion_rate(path) > 1.0
 
+def equalize_stock_differences(path):
+  # add some precalculated values
+  for edge in path:
+    edge['paid'] = int(edge['stock'] / edge['conversion_rate'])
+    edge['received'] = int(edge['paid'] * edge['conversion_rate'])
+
+  for i in range(1, len(path)):
+    left = path[i-1]
+    right = path[i]
+
+    if left['received'] > right['paid']:
+      factor = left['received'] / right['paid']
+      left['paid'] = int(left['paid'] / factor)
+      left['received'] = right['paid']
+
+    if left['received'] < right['paid']:
+      factor = right['paid'] / left['received']
+      right['received'] = int(right['received'] / factor)
+      right['paid'] = left['received']
+
+  return path
+
+
 def calculate_path(path):
   transactions = []
-
-  starting_amount = int(path[0]['stock'] / path[0]['conversion_rate'])
-  transactions.append({
-    "from": path[0]['have'],
-    "to": path[0]['want'],
-    "paid": starting_amount,
-    "received": int(starting_amount * path[0]['conversion_rate'])
-  })
-
-  for i in range(1,len(path)):
-    last = path[i-1]
-    v = int(transactions[i-1]['received'] / path[i]['conversion_rate'])
+  equalize_stock_differences(path)
+  for e in path:
     transactions.append({
-      "from": path[i]['have'],
-      "to": path[i]['want'],
-      "paid": transactions[i-1]['received'],
-      "received": int(transactions[i-1]['received'] * path[i]['conversion_rate'])
+      "from": e['have'],
+      "to": e['want'],
+      "paid": e['paid'],
+      "received": e['received'],
+      "contact_ign": e['contact_ign']
     })
 
   return {
     "from": path[0]['have'],
     "to": path[-1]['want'],
-    "starting": transactions[0]['paid'],
-    "ending": transactions[-1]['received'],
-    "winnings": transactions[-1]['received'] - transactions[0]['paid'],
+    "starting": path[0]['paid'],
+    "ending": path[-1]['received'],
+    "winnings": path[-1]['received'] - path[0]['paid'],
     "transactions": transactions
   }
