@@ -62,12 +62,15 @@ def is_profitable(path):
 def equalize_stock_differences(path):
   # add some precalculated values
   for edge in path:
-    edge['paid'] = int(edge['stock'] / edge['conversion_rate'])
-    edge['received'] = int(edge['paid'] * edge['conversion_rate'])
+    edge['paid'] = float(int(edge['stock'] / edge['conversion_rate']))
+    edge['received'] = edge['stock']
 
   for i in range(1, len(path)):
     left = path[i-1]
     right = path[i]
+
+    if left['received'] == 0 or right['paid'] == 0:
+      return None
 
     if left['received'] > right['paid']:
       factor = left['received'] / right['paid']
@@ -84,7 +87,11 @@ def equalize_stock_differences(path):
 
 def calculate_path(path):
   transactions = []
-  equalize_stock_differences(path)
+  path = equalize_stock_differences(path)
+
+  if path == None:
+    return None
+
   for e in path:
     transactions.append({
       "from": e['have'],
