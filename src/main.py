@@ -11,7 +11,7 @@ offers = [fetch_conversion_offers(leagues[0], c1, c2) for (c1, c2) in currency_c
 graph = build_graph(offers)
 for c in trading_currencies:
   print("Checking {}".format(c))
-  paths = find_paths(graph, c, c)
+  paths = find_paths(graph, c, c, 3)
   for p in paths:
     cp = calculate_path(p)
     if cp is not None and cp['winnings'] > 0:
