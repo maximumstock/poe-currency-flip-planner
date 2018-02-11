@@ -1,7 +1,5 @@
 # poe-currency-flip-planner
 
-**WIP**
-
 This tool is an attempt at planning short-term arbitrage deals of currency in Path of Exile.
 
 Via [poe.trade](http://currency.poe.trade) one can look for currently offered currency
@@ -38,6 +36,13 @@ in which succession currencies have to be traded to yield different profits/loss
 ## Installation
 
 `pip install -r requirements.txt`
+
+
+## Running
+
+`PYTHONPATH=$(pwd) python src/main.py` starts an example script that prints out all
+profitable trade sequences from currency `x` back to currency `x`, given a list of
+tradeable currencies.
 
 
 ## Tests
