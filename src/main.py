@@ -2,7 +2,7 @@ from src.graph import *
 from src.flip import *
 
 
-leagues = ["Abyss"]
+leagues = ["Bestiary"]
 trading_currencies = list(currencies.keys())[:8]
 currency_combinations = list(itertools.permutations(trading_currencies, 2))
 print("Fetching offers for", trading_currencies)
@@ -15,4 +15,4 @@ for c in trading_currencies:
   for p in paths:
     cp = calculate_path(p)
     if cp is not None and cp['winnings'] > 0:
-      print(cp['transactions'])
+      print(cp['winnings'], cp['transactions'])
