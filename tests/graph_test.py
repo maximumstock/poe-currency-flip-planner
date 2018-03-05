@@ -150,9 +150,9 @@ expected_paths_small_different_currency = [
 expected_conversion = {
   "from": "Chaos",
   "to": "Chaos",
-  "starting": 8,
+  "starting": 8.0,
   "ending": 5,
-  "winnings": -3,
+  "winnings": -3.0,
   "transactions": [{
     "contact_ign": "wreddnuy",
     "from": "Chaos",

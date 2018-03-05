@@ -1,4 +1,5 @@
 from collections import deque
+import math
 
 def build_graph(offers):
   graph = {}
@@ -62,8 +63,8 @@ def is_profitable(path):
 def equalize_stock_differences(path):
   # add some precalculated values
   for edge in path:
-    edge['paid'] = float(int(edge['stock'] / edge['conversion_rate']))
-    edge['received'] = edge['stock']
+    edge['paid'] = math.floor(edge['stock'] / edge['conversion_rate'])
+    edge['received'] = edge['paid'] * edge['conversion_rate']
 
   for i in range(1, len(path)):
     left = path[i-1]
@@ -74,12 +75,12 @@ def equalize_stock_differences(path):
 
     if left['received'] > right['paid']:
       factor = left['received'] / right['paid']
-      left['paid'] = int(left['paid'] / factor)
+      left['paid'] = float(math.ceil(left['paid'] / factor))
       left['received'] = right['paid']
 
     if left['received'] < right['paid']:
       factor = right['paid'] / left['received']
-      right['received'] = int(right['received'] / factor)
+      right['received'] = float(math.floor(right['received'] / factor))
       right['paid'] = left['received']
 
   return path
@@ -94,11 +95,11 @@ def calculate_path(path):
 
   for e in path:
     transactions.append({
+      "contact_ign": e['contact_ign'],
       "from": e['have'],
       "to": e['want'],
       "paid": e['paid'],
-      "received": e['received'],
-      "contact_ign": e['contact_ign']
+      "received": e['received']
     })
 
   return {
