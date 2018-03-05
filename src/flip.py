@@ -36,7 +36,7 @@ def fetch_conversion_offers(league, want, have):
 
 def parse_conversion_offers(html):
   soup = BeautifulSoup(html, "html.parser")
-  rows = soup.find_all(class_="displayoffer", limit=2)
+  rows = soup.find_all(class_="displayoffer", limit=10)
   parsed_rows = [parse_conversion_offer(x) for x in rows]
   return [x for x in parsed_rows if x != None]
 
