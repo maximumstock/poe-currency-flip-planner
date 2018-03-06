@@ -38,7 +38,7 @@ def find_paths(graph, have, want, max_length = 5):
     next_currency = next[-1]['want']
     seen_currencies = [edge['have'] for edge in next]
     for currency in graph[next_currency]:
-      if currency not in seen_currencies[1:]: 
+      if currency not in seen_currencies[1:]:
         for offer in graph[next_currency][currency]:
           o = decorate_offer(offer, next_currency, currency)
           paths.append(next + [o])
@@ -66,22 +66,28 @@ def equalize_stock_differences(path):
     edge['paid'] = math.floor(edge['stock'] / edge['conversion_rate'])
     edge['received'] = edge['paid'] * edge['conversion_rate']
 
-  for i in range(1, len(path)):
-    left = path[i-1]
-    right = path[i]
+  # need this double loop to make sure that all stock quantity differences
+  # per transaction pair are equalized. The worst case for this (starting
+  # at the front of the path) is that the limiting transaction is the last one.
+  # Therefore, we have to run the inner loop n times to propagate the stock
+  # quantity fix towards the front of the path
+  for k in range(1, len(path)):
+    for i in range(1, len(path)):
+      left = path[i-1]
+      right = path[i]
 
-    if left['received'] == 0 or right['paid'] == 0:
-      return None
+      if left['received'] == 0 or right['paid'] == 0:
+        return None
 
-    if left['received'] > right['paid']:
-      factor = left['received'] / right['paid']
-      left['paid'] = float(math.ceil(left['paid'] / factor))
-      left['received'] = right['paid']
+      if left['received'] > right['paid']:
+        factor = left['received'] / right['paid']
+        left['paid'] = float(math.ceil(left['paid'] / factor))
+        left['received'] = right['paid']
 
-    if left['received'] < right['paid']:
-      factor = right['paid'] / left['received']
-      right['received'] = float(math.floor(right['received'] / factor))
-      right['paid'] = left['received']
+      if left['received'] < right['paid']:
+        factor = right['paid'] / left['received']
+        right['received'] = float(math.floor(right['received'] / factor))
+        right['paid'] = left['received']
 
   return path
 

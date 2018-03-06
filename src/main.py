@@ -2,7 +2,7 @@ from src.graph import *
 from src.flip import *
 
 
-leagues = ["Bestiary"]
+leagues = ["Hardcore Bestiary"]
 trading_currencies = list(currencies.keys())[:8]
 currency_combinations = list(itertools.permutations(trading_currencies, 2))
 print("Fetching offers for", trading_currencies)
@@ -10,9 +10,12 @@ offers = [fetch_conversion_offers(leagues[0], c1, c2) for (c1, c2) in currency_c
 
 graph = build_graph(offers)
 for c in trading_currencies:
-  print("Checking {}".format(c))
   paths = find_paths(graph, c, c, 3)
+  profitable_paths = []
   for p in paths:
     cp = calculate_path(p)
     if cp is not None and cp['winnings'] > 0:
-      print(cp['winnings'], cp['transactions'])
+      profitable_paths.append(cp)
+  print("Checking {} - {}".format(c, len(profitable_paths)))
+  for p in profitable_paths:
+    print(p['winnings'], p['transactions'])
