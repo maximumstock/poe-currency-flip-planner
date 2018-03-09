@@ -11,8 +11,12 @@ currencies = {
   "Exalted": 6,
   "Chromatic": 7,
   "Jewellers": 8,
+  "Cartographer's Chisel": 10,
+  "Scouring": 11,
   "Regret": 13,
-  "Regal": 14
+  "Regal": 14,
+  "Transmutation": 22,
+  "Augmentation": 23
 }
 
 def fetch_conversion_offers(league, want, have):
