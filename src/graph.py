@@ -63,15 +63,15 @@ def is_profitable(path):
 def equalize_stock_differences(path):
   # add some precalculated values
   for edge in path:
-    edge['paid'] = math.floor(edge['stock'] / edge['conversion_rate'])
-    edge['received'] = edge['paid'] * edge['conversion_rate']
+    edge['paid'] = math.ceil(edge['stock'] / edge['conversion_rate'])
+    edge['received'] = math.floor(edge['paid'] * edge['conversion_rate'])
 
   # need this double loop to make sure that all stock quantity differences
   # per transaction pair are equalized. The worst case for this (starting
   # at the front of the path) is that the limiting transaction is the last one.
   # Therefore, we have to run the inner loop n times to propagate the stock
   # quantity fix towards the front of the path
-  for k in range(1, len(path)):
+  for k in range(0, len(path)):
     for i in range(1, len(path)):
       left = path[i-1]
       right = path[i]
@@ -81,12 +81,12 @@ def equalize_stock_differences(path):
 
       if left['received'] > right['paid']:
         factor = left['received'] / right['paid']
-        left['paid'] = float(math.ceil(left['paid'] / factor))
+        left['paid'] = math.ceil(left['paid'] / factor)
         left['received'] = right['paid']
 
       if left['received'] < right['paid']:
         factor = right['paid'] / left['received']
-        right['received'] = float(math.floor(right['received'] / factor))
+        right['received'] = math.floor(right['received'] / factor)
         right['paid'] = left['received']
 
   return path
