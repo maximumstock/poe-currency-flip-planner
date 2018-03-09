@@ -17,6 +17,7 @@
     CLOSED: [2018-01-27 Sat 00:45]
 ** DONE Handle different contingents correctly 
    CLOSED: [2018-02-01 Thu 23:05]
+** TODO Incorporate NPC trading ratios (unlimited stock)
 ** TODO Try to filter out impossible trades by (eg. 1 Chromatics -> 2 Chaos)
 *** Maybe introduce some tier hierarchy for currencies
 *** Currencies of Tier 1 should always cost more than Tier 2 currencies
