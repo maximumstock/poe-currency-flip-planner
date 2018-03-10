@@ -150,9 +150,9 @@ expected_paths_small_different_currency = [
 expected_conversion = {
   "from": "Chaos",
   "to": "Chaos",
-  "starting": 8.0,
+  "starting": 8,
   "ending": 5,
-  "winnings": -3.0,
+  "winnings": -3,
   "transactions": [{
     "contact_ign": "wreddnuy",
     "from": "Chaos",
@@ -193,4 +193,5 @@ class GraphTest(unittest.TestCase):
   def test_calculate_paths(self):
     path = expected_paths_small_same_currency()[0]
     conversion = calculate_path(path)
+    print(conversion)
     self.assertDictEqual(expected_conversion, conversion)
