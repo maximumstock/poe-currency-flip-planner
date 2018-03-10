@@ -33,7 +33,7 @@
 **** detect maximum flow for each path -> alter paths to make sense
 *** DONE filter sort result winning paths by length and winnings
     CLOSED: [2018-03-10 Sat 15:58]
-** TODO [#A] Incorporate NPC trading ratios (unlimited stock)
+** TODO [#B] Incorporate NPC trading ratios (unlimited stock)
 *** https://pathofexile.gamepedia.com/Currency#Vendor_prices_chart
 *** Master Progression: limited stock
 *** Main + Scraps Progression: unlimited stock
