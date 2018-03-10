@@ -17,6 +17,14 @@
     CLOSED: [2018-01-27 Sat 00:45]
 ** DONE Handle different contingents correctly 
    CLOSED: [2018-02-01 Thu 23:05]
+** TODO Review current functionality
+*** fetch offers
+*** parse offers
+*** build graph from parsed offers
+*** build paths
+*** evaluate paths
+**** profitability check for each path -> prune paths
+**** detect maximum flow for each path -> alter paths to make sense
 ** TODO Incorporate NPC trading ratios (unlimited stock)
 ** TODO Try to filter out impossible trades by (eg. 1 Chromatics -> 2 Chaos)
 *** Maybe introduce some tier hierarchy for currencies
