@@ -17,25 +17,35 @@
     CLOSED: [2018-01-27 Sat 00:45]
 ** DONE Handle different contingents correctly 
    CLOSED: [2018-02-01 Thu 23:05]
-** TODO Review current functionality
-*** fetch offers
-*** parse offers
-*** build graph from parsed offers
-*** build paths
-*** evaluate paths
+** DONE Review current functionality
+   CLOSED: [2018-03-10 Sat 15:58]
+*** DONE fetch offers
+    CLOSED: [2018-03-10 Sat 15:18]
+*** DONE parse offers
+    CLOSED: [2018-03-10 Sat 15:18]
+*** DONE build graph from parsed offers
+    CLOSED: [2018-03-10 Sat 15:18]
+*** DONE build paths
+    CLOSED: [2018-03-10 Sat 15:41]
+*** DONE evaluate paths
+    CLOSED: [2018-03-10 Sat 15:58]
 **** profitability check for each path -> prune paths
 **** detect maximum flow for each path -> alter paths to make sense
-** TODO Incorporate NPC trading ratios (unlimited stock)
-** TODO Try to filter out impossible trades by (eg. 1 Chromatics -> 2 Chaos)
+*** DONE filter sort result winning paths by length and winnings
+    CLOSED: [2018-03-10 Sat 15:58]
+** TODO [#A] Incorporate NPC trading ratios (unlimited stock)
+*** https://pathofexile.gamepedia.com/Currency#Vendor_prices_chart
+*** Master Progression: limited stock
+*** Main + Scraps Progression: unlimited stock
+** TODO [#A] Try to filter out impossibly good trades by (eg. 1 Chromatics -> 2 Chaos)
 *** Maybe introduce some tier hierarchy for currencies
 *** Currencies of Tier 1 should always cost more than Tier 2 currencies
 *** If the conversion rate suggests otherwise, filter out that graph edge
-** TODO Make sure no "paid: 0" paths are possible
-** TODO Make sure all/more API offers with stock numbers are used
-** TODO Do some analysis of the possible trades in the winning graph
+** TODO [#A] Make sure no "paid: 0" paths are possible
+** TODO [#B] Do some analysis of the possible trades in the winning graph
 *** eg. how many trades per currency are possible that could earn winnings
 *** per currency, how big are possible winnings
 *** what non-target currencies are most often part of trade chains
-** TODO Add end-user functionality to easily scan conversion rates for a given currency and league, sorted by descending profitability 
+** TODO [#B] Add end-user functionality to easily scan conversion rates for a given currency and league, sorted by descending profitability 
 *** Especially for scaling down starting payments
-** TODO Try to incorporate remainders of other currencies (due to the different contingents) in the efficiency comparison
+** TODO [#B] Try to incorporate remainders of other currencies (due to the different contingents) in the efficiency comparison
