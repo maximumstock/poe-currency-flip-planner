@@ -16,7 +16,7 @@ def build_graph(offers):
 """
 Returns a list of all possible paths from `want` to `have` for a given graph.
 """
-def find_paths(graph, have, want, max_length = 5):
+def find_paths(graph, have, want, max_length = 3):
   paths = deque()
   correct_paths = []
 
@@ -60,11 +60,15 @@ def maximum_conversion_rate(path):
 def is_profitable(path):
   return maximum_conversion_rate(path) > 1.0
 
+"""
+Finds the maximum flow for a found path and alters the conversion edges accordingly.
+Also rounds up the trading values to trade for full pieces of currency.
+"""
 def equalize_stock_differences(path):
   # add some precalculated values
   for edge in path:
     edge['paid'] = math.floor(edge['stock'] / edge['conversion_rate'])
-    edge['received'] = math.ceil(edge['paid'] * edge['conversion_rate'])
+    edge['received'] = math.floor(edge['paid'] * edge['conversion_rate'])
 
   # need this double loop to make sure that all stock quantity differences
   # per transaction pair are equalized. The worst case for this (starting
@@ -81,7 +85,7 @@ def equalize_stock_differences(path):
 
       if left['received'] > right['paid']:
         factor = left['received'] / right['paid']
-        left['paid'] = math.ceil(left['paid'] / factor)
+        left['paid'] = math.floor(left['paid'] / factor)
         left['received'] = right['paid']
 
       if left['received'] < right['paid']:
@@ -92,13 +96,14 @@ def equalize_stock_differences(path):
   return path
 
 
-def calculate_path(path):
+def build_conversion(path):
   transactions = []
   path = equalize_stock_differences(path)
 
   if path == None:
     return None
 
+  # Map transactions to some nicer format
   for e in path:
     transactions.append({
       "contact_ign": e['contact_ign'],

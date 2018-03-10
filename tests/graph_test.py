@@ -190,8 +190,8 @@ class GraphTest(unittest.TestCase):
     path = expected_paths_small_same_currency()[0]
     self.assertEqual(False, is_profitable(path))
 
-  def test_calculate_paths(self):
+  def test_build_conversions(self):
     path = expected_paths_small_same_currency()[0]
-    conversion = calculate_path(path)
+    conversion = build_conversion(path)
     print(conversion)
     self.assertDictEqual(expected_conversion, conversion)
