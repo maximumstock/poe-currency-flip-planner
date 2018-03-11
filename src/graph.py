@@ -13,6 +13,7 @@ def build_graph(offers):
 
   return graph
 
+
 """
 Returns a list of all possible paths from `want` to `have` for a given graph.
 """
