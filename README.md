@@ -35,7 +35,7 @@ in which succession currencies have to be traded to yield different profits/loss
 
 
 ## Ideas & Roadmap
-See [todo.org](todo.org) for ideas, future features, etc. Feel free to send
+See [todo.org](todo.org) (beware of org-mode format from Emacs :)) for ideas, future features, etc. Feel free to send
 me any feedback, either via email or PR.
 
 
