@@ -1,6 +1,12 @@
 from collections import deque
 import math
 
+"""
+Builds a simple dictionary graph from found offers in our common format.
+An edge can be interpreted as trading from_currency->to_currency.
+Each edge contains a list with all offers that were found for that trading 
+direction between the two currencies.
+"""
 def build_graph(offers):
   graph = {}
 
@@ -16,6 +22,7 @@ def build_graph(offers):
 
 """
 Returns a list of all possible paths from `want` to `have` for a given graph.
+A path is simply a list of transactions between two currency nodes.
 """
 def find_paths(graph, have, want, max_length = 3):
   paths = deque()
@@ -52,14 +59,17 @@ def decorate_offer(offer, have, want):
   offer['want'] = want
   return offer
 
+
 def maximum_conversion_rate(path):
   v = 1.0
   for e in path:
     v = v*e['conversion_rate']
   return v
 
+
 def is_profitable(path):
   return maximum_conversion_rate(path) > 1.0
+
 
 """
 Finds the maximum flow for a found path and alters the conversion edges accordingly.
@@ -97,6 +107,10 @@ def equalize_stock_differences(path):
   return path
 
 
+"""
+Simplifies a found path into a dictionary structure to handle the found data
+for easily. 
+"""
 def build_conversion(path):
   transactions = []
   path = equalize_stock_differences(path)

@@ -1,6 +1,8 @@
 from src.graph import *
 from src.flip import *
 
+
+
 def test():
   trading_currencies = list(currencies.keys())[0:5]
   pf = PathFinder("Bestiary", trading_currencies)
@@ -12,11 +14,16 @@ def format_conversions(conversions):
   msg = "\n".join(formatted_conversions)
   return msg
 
+
 def format_conversion(conversion):
   msg = "{} -> {} -- {} ({}) ".format(conversion['from'], conversion['to'], conversion['winnings'], len(conversion['transactions']))
   return msg
 
 
+"""
+A simple class to abstract away the internal library functions for fetching
+offers, constructing a graph and finding profitable paths along that graph.
+"""
 class PathFinder:
   def __init__(self, league, currencies):
     self.league = league
@@ -46,6 +53,8 @@ class PathFinder:
       self.results[c] = profitable_conversions
       print(format_conversions(profitable_conversions))
 
+
+
+
 if __name__ == '__main__':
   test()
-
