@@ -23,7 +23,7 @@ outcomes:
 Comparing different paths up to an arbitrary depth results in an answer to the question
 in which succession currencies have to be traded to yield different profits/losses.
 
-## Possible problems
+## Problems
 
 * Exchange rates might not be online for long enough to complete complex transaction chains
 * The supply/demand of both parties limits the number of paths that can be taken throughout
@@ -32,6 +32,12 @@ in which succession currencies have to be traded to yield different profits/loss
 
   The simplest model assumes that at each step in the conversion chain the user is able
   to convert all currency that was acquired in the previous step
+
+
+## Ideas & Roadmap
+See [todo.org](todo.org) for ideas, future features, etc. Feel free to send
+me any feedback, either via email or PR.
+
 
 ## Installation
 
