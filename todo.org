@@ -33,6 +33,7 @@
 **** detect maximum flow for each path -> alter paths to make sense
 *** DONE filter sort result winning paths by length and winnings
     CLOSED: [2018-03-10 Sat 15:58]
+** TODO [#A] Parallelize http requests to poe.trade
 ** TODO [#B] Incorporate NPC trading ratios (unlimited stock)
 *** https://pathofexile.gamepedia.com/Currency#Vendor_prices_chart
 *** Master Progression: limited stock
@@ -49,3 +50,5 @@
 ** TODO [#B] Add end-user functionality to easily scan conversion rates for a given currency and league, sorted by descending profitability 
 *** Especially for scaling down starting payments
 ** TODO [#B] Try to incorporate remainders of other currencies (due to the different contingents) in the efficiency comparison
+
+
