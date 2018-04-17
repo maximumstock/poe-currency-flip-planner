@@ -11,6 +11,27 @@ that offer a profitable trade from a lower tier into a higher tier.
 For example, trading 1 Alteration into 1 Chaos should never happen under normal
 considerations, hence we want to ignore these offers. Finding a suitable tier
 for each currency is key to improve the overall quality of found trading paths.
+
+Current tier setup: from 1 to 3. Trading upwards in tiers with a conversion rate
+above 1 is forbidden, while trading within a tier or a tier down with any
+conversion rate is fine. This is very basic at the moment.
+
+Exalted
+
+Chaos
+Fusing
+Cartographer's Chisel
+Regal
+Regret
+Scouring
+Chromatic
+Alchemy
+Gemcutter's Prism
+Jewellers
+
+Alteration
+Augmentation
+Transmutation
 """
 currencies = {
   "Alteration": {
@@ -23,27 +44,27 @@ currencies = {
   },
   "Alchemy": {
     "id": 3,
-    "tier": 3
+    "tier": 2
   },
   "Chaos": {
     "id": 4,
-    "tier": 1
+    "tier": 2
   },
   "Gemcutter's Prism": {
     "id": 5,
-    "tier": 3
+    "tier": 2
   },
   "Exalted": {
     "id": 6,
-    "tier": 0
+    "tier": 1
   },
   "Chromatic": {
     "id": 7,
-    "tier": 3
+    "tier": 2
   },
   "Jewellers": {
     "id": 8,
-    "tier": 3
+    "tier": 2
   },
   "Cartographer's Chisel": {
     "id": 10,
@@ -51,23 +72,23 @@ currencies = {
   },
   "Scouring": {
     "id": 11,
-    "tier": 1
+    "tier": 2
   },
   "Regret": {
     "id": 13,
-    "tier": 1
+    "tier": 2
   },
   "Regal": {
     "id": 14,
-    "tier": 1
+    "tier": 2
   },
   "Transmutation": {
     "id": 22,
-    "tier": 4
+    "tier": 3
   },
   "Augmentation": {
     "id": 23,
-    "tier": 4
+    "tier": 3
   }
 }
 
@@ -116,11 +137,16 @@ def is_offer_viable(want, have, offer):
   conversion_rate = offer["conversion_rate"]
 
   # if `want` is worth more than `have`, the conversion rate cannot be bigger than 1
+  # This should be enough to successfully filter out price-fixing offers.
   if have_tier > want_tier and conversion_rate > 1:
     return False
+
   # if `have` is worth more than `have`, the conversion rate cannot be smaller than 1
-  if have_tier < want_tier and conversion_rate < 1:
-    return False
+  # We shouldn't need this case, since conversion rates below 1 will typically
+  # result in unprofitable conversions and are therefore ignored anyway.
+  # if have_tier < want_tier and conversion_rate < 1:
+    # return False
+
   return True
 
 
