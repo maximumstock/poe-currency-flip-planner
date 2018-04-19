@@ -36,7 +36,7 @@ class PathFinder:
   def run(self, max_transaction_length):
     currency_combinations = list(itertools.permutations(self.currencies, 2))
     print("Fetching offers for", self.currencies)
-    self.offers = [fetch_conversion_offers(self.league, c1, c2) for (c1, c2) in currency_combinations]
+    self.offers = parallel_fetch_conversion_offers(self.league, currency_combinations)
     self.graph = build_graph(self.offers)
 
     for c in self.currencies:

@@ -1,6 +1,8 @@
 import requests
 import itertools
 from bs4 import BeautifulSoup
+import concurrent.futures
+import requests
 
 """
 Dictionary with all supported currencies and their tiers.
@@ -117,6 +119,24 @@ def fetch_conversion_offers(league, want, have):
     "league": league
   }
 
+
+
+def parallel_fetch_conversion_offers(league, currency_pairs):
+  url = "http://currency.poe.trade/search"
+  def build_params(league, currency_pair):
+    return {
+      "league": league,
+      "want": currencies[currency_pair[0]]["id"],
+      "have": currencies[currency_pair[1]]["id"],
+      "online": True
+    }
+
+  params = [[league, pair[0], pair[1]] for pair in currency_pairs]
+
+  with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
+    futures = executor.map(lambda p: fetch_conversion_offers(*p), params)
+    offers = list(map(lambda x: x, futures))
+    return offers
 
 """
 Filters offers for a given pair of currencies via specified tiers (see above)

@@ -1,5 +1,5 @@
 import unittest
-from src.flip import fetch_conversion_offers
+from src.flip import fetch_conversion_offers, parallel_fetch_conversion_offers
 
 
 class FlipTest(unittest.TestCase):
@@ -8,7 +8,10 @@ class FlipTest(unittest.TestCase):
     want = "Chaos"
     have = "Chromatic"
     offers = fetch_conversion_offers(league, want, have)
-    assert ("offers" in offers.keys()) == True
-    assert offers["want"] == want
-    assert offers["have"] == have
-    assert offers["league"] == league
+    parallel_offers = parallel_fetch_conversion_offers(league, [(want, have)])
+
+    for struct in [offers, parallel_offers[0]]:
+      assert ("offers" in struct.keys()) == True
+      assert struct["want"] == want
+      assert struct["have"] == have
+      assert struct["league"] == league
