@@ -38,7 +38,8 @@
 *** https://pathofexile.gamepedia.com/Currency#Vendor_prices_chart
 *** Master Progression: limited stock
 *** Main + Scraps Progression: unlimited stock
-** TODO [#A] Try to filter out impossibly good trades by (eg. 1 Chromatics -> 2 Chaos)
+** DONE [#A] Try to filter out impossibly good trades by (eg. 1 Chromatics -> 2 Chaos)
+   CLOSED: [2018-04-17 Tue 21:09]
 *** Maybe introduce some tier hierarchy for currencies
 *** Currencies of Tier 1 should always cost more than Tier 2 currencies
 *** If the conversion rate suggests otherwise, filter out that graph edge
