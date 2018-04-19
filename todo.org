@@ -33,7 +33,8 @@
 **** detect maximum flow for each path -> alter paths to make sense
 *** DONE filter sort result winning paths by length and winnings
     CLOSED: [2018-03-10 Sat 15:58]
-** TODO [#A] Parallelize http requests to poe.trade
+** DONE [#A] Parallelize http requests to poe.trade
+   CLOSED: [2018-04-19 Thu 20:52]
 ** TODO [#B] Incorporate NPC trading ratios (unlimited stock)
 *** https://pathofexile.gamepedia.com/Currency#Vendor_prices_chart
 *** Master Progression: limited stock
