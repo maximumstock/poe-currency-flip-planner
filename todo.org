@@ -35,22 +35,23 @@
     CLOSED: [2018-03-10 Sat 15:58]
 ** DONE [#A] Parallelize http requests to poe.trade
    CLOSED: [2018-04-19 Thu 20:52]
-** TODO [#B] Incorporate NPC trading ratios (unlimited stock)
-*** https://pathofexile.gamepedia.com/Currency#Vendor_prices_chart
-*** Master Progression: limited stock
-*** Main + Scraps Progression: unlimited stock
 ** DONE [#A] Try to filter out impossibly good trades by (eg. 1 Chromatics -> 2 Chaos)
    CLOSED: [2018-04-17 Tue 21:09]
 *** Maybe introduce some tier hierarchy for currencies
 *** Currencies of Tier 1 should always cost more than Tier 2 currencies
 *** If the conversion rate suggests otherwise, filter out that graph edge
-** TODO [#A] Make sure no "paid: 0" paths are possible
+** DONE [#A] Make sure no "paid: 0" paths are possible
+   CLOSED: [2018-04-20 Fri 22:58]
+** TODO [#A] Add end-user functionality to easily scan conversion rates for a given currency and league, sorted by descending profitability 
+*** Especially for scaling down starting payments
 ** TODO [#B] Do some analysis of the possible trades in the winning graph
 *** eg. how many trades per currency are possible that could earn winnings
 *** per currency, how big are possible winnings
 *** what non-target currencies are most often part of trade chains
-** TODO [#B] Add end-user functionality to easily scan conversion rates for a given currency and league, sorted by descending profitability 
-*** Especially for scaling down starting payments
-** TODO [#B] Try to incorporate remainders of other currencies (due to the different contingents) in the efficiency comparison
+** TODO [#C] Try to incorporate remainders of other currencies (due to the different contingents) in the efficiency comparison
+** TODO [#C] Incorporate NPC trading ratios (unlimited stock)
+*** https://pathofexile.gamepedia.com/Currency#Vendor_prices_chart
+*** Master Progression: limited stock
+*** Main + Scraps Progression: unlimited stock
 
 
