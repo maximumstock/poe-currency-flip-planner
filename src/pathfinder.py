@@ -7,7 +7,7 @@ def test():
   trading_currencies = list(currencies.keys())[0:5]
   pf = PathFinder("Bestiary", trading_currencies)
   pf.run(3)
-  
+
 
 def format_conversions(conversions):
   formatted_conversions = [format_conversion(c) for c in conversions]
@@ -33,7 +33,7 @@ class PathFinder:
     self.graph = {}
     self.results = {}
 
-  def run(self, max_transaction_length):
+  def run(self, max_transaction_length=3):
     currency_combinations = list(itertools.permutations(self.currencies, 2))
     print("Fetching offers for", self.currencies)
     self.offers = parallel_fetch_conversion_offers(self.league, currency_combinations)
