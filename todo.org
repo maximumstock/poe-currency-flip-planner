@@ -9,13 +9,13 @@
 *** What to do with offers with same conversion rates?
 ** DONE Implement graph traversal => paths
    CLOSED: [2018-01-14 Sun 18:34]
-** DONE Transform paths in actual feasible transactions 
+** DONE Transform paths in actual feasible transactions
    CLOSED: [2018-02-21 Wed 23:10]
-*** DONE Build list of transactions "n of currency x for m of currency y" 
+*** DONE Build list of transactions "n of currency x for m of currency y"
     CLOSED: [2018-01-27 Sat 00:45]
-*** DONE Step 1a: Calculate maximum gainable amount of only the target currency 
+*** DONE Step 1a: Calculate maximum gainable amount of only the target currency
     CLOSED: [2018-01-27 Sat 00:45]
-** DONE Handle different contingents correctly 
+** DONE Handle different contingents correctly
    CLOSED: [2018-02-01 Thu 23:05]
 ** DONE Review current functionality
    CLOSED: [2018-03-10 Sat 15:58]
@@ -33,25 +33,27 @@
 **** detect maximum flow for each path -> alter paths to make sense
 *** DONE filter sort result winning paths by length and winnings
     CLOSED: [2018-03-10 Sat 15:58]
-** DONE [#A] Parallelize http requests to poe.trade
+** DONE Parallelize http requests to poe.trade
    CLOSED: [2018-04-19 Thu 20:52]
-** DONE [#A] Try to filter out impossibly good trades by (eg. 1 Chromatics -> 2 Chaos)
+** DONE Try to filter out impossibly good trades by (eg. 1 Chromatics -> 2 Chaos)
    CLOSED: [2018-04-17 Tue 21:09]
 *** Maybe introduce some tier hierarchy for currencies
 *** Currencies of Tier 1 should always cost more than Tier 2 currencies
 *** If the conversion rate suggests otherwise, filter out that graph edge
-** DONE [#A] Make sure no "paid: 0" paths are possible
+** DONE Make sure no "paid: 0" paths are possible
    CLOSED: [2018-04-20 Fri 22:58]
-** TODO [#A] Add end-user functionality to easily scan conversion rates for a given currency and league, sorted by descending profitability 
+** TODO [#A] Add end-user functionality to easily scan conversion rates for a given currency and league, sorted by descending profitability
 *** Especially for scaling down starting payments
-** TODO [#B] Do some analysis of the possible trades in the winning graph
-*** eg. how many trades per currency are possible that could earn winnings
-*** per currency, how big are possible winnings
-*** what non-target currencies are most often part of trade chains
+** TODO [#B] Do some analysis of the possible trades in the graph
+*** Build data collector that regularly serializes the Pathfinder results
+*** Analyze collected results
+**** basic graph exploration
+***** how many paths between two currencies exist (time series per currency)
+**** eg. how many trades per currency are possible that could earn winnings
+**** per currency, how big are possible winnings
+**** what non-target currencies are most often part of trade chains
 ** TODO [#C] Try to incorporate remainders of other currencies (due to the different contingents) in the efficiency comparison
 ** TODO [#C] Incorporate NPC trading ratios (unlimited stock)
 *** https://pathofexile.gamepedia.com/Currency#Vendor_prices_chart
 *** Master Progression: limited stock
 *** Main + Scraps Progression: unlimited stock
-
-
