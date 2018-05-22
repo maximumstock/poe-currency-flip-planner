@@ -1,11 +1,11 @@
 import os
 import operator
 import pickle
-from datetime import datetime
+from datetime import datetime, timedelta
 
 
 def parse_timestamp(filename):
-  return datetime.strptime(filename.split(".")[0], "%Y_%m_%d_%H_%M_%S").isoformat()
+  return (datetime.strptime(filename.split(".")[0], "%Y_%m_%d_%H_%M_%S") - timedelta(hours=2)).isoformat()
 
 def map_filename(filename):
   with open("data_analysis/raw/{}".format(filename), "rb") as f:
