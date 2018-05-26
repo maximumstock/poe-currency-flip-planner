@@ -134,4 +134,4 @@ def plot_heatmap(x, y, z):
 
 
 stuff_per_day(data, timestamps)
-# number_of_edges_between_currencies_per_instance(data, timestamps)
+number_of_edges_between_currencies_per_instance(data, timestamps)
