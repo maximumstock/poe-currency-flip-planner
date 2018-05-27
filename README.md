@@ -1,5 +1,4 @@
 # poe-currency-flip-planner
----
 
 This tool is an attempt at planning short-term arbitrage deals of currency in Path of Exile.
 
