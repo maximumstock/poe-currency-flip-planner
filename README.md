@@ -1,4 +1,5 @@
 # poe-currency-flip-planner
+---
 
 This tool is an attempt at planning short-term arbitrage deals of currency in Path of Exile.
 
@@ -33,6 +34,9 @@ in which succession currencies have to be traded to yield different profits/loss
   The simplest model assumes that at each step in the conversion chain the user is able
   to convert all currency that was acquired in the previous step
 
+
+## Data Exploration
+See [here](data_analysis/README.md).
 
 ## Ideas & Roadmap
 See [todo.org](todo.org) (beware of org-mode format from Emacs :)) for ideas, future features, etc. Feel free to send
