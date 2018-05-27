@@ -27,12 +27,12 @@ I have not done a whole lot yet, but here it is anyway.
 ### Number of proftiable conversions over time
 The first plot is simply showing how many profitable conversion across all currency 2-permutations there were over time. The x-axis is a bit ugly as of now, but each data point simply resembles one snapshot, one every ten minutes.
 
-![](results/number of profitable conversions per 10 minutes.png)
+![](results/number_of_profitable_conversions.png)
 
 ### Currency importance for profitable conversions
 So this should be the most interesting bit of data for now. Below you can see how often each 2-permutation transaction was found in a profitable conversion over the whole ten day dataset. Each number is calculated as `Number of proftiable conversions with that transaction` divided by `Number of snapshots`.
 
-![](results/average number of transactions from proftiable conversions.png)
+![](results/average_number_of_transactions_from_proftiable_conversions.png)
 
 So we can see that selling `Orbs of Regret` for `Chaos Orbs` was especially often part of profitable conversions, averaging around 69 profitable conversions per snapshot. Keep in mind that this only means that there was a least one offer on [poe.trade](http://poe.trade) from `Orbs of Regret` to `Chaos Orbs` which ended up in a lot of conversions, which in turn ended up being profitable. It does not necessarily mean that there were a lot of offers from `Orbs of Regret` to `Chaos Orbs`.
 
