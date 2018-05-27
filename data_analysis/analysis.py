@@ -46,14 +46,14 @@ def stuff_per_day(data, timestamps):
     return s
 
   number_of_results = [sum_results(x["results"]) for x in data]
-  number_of_offers = [len(x["offers"]) for x in data]
+  # number_of_offers = [len(x["offers"]) for x in data]
 
   plt.figure()
-  plt.title("Total number of transactions\nof all profitable conversions\nper 10 minutes (2018-05-14 - 2018-05-24)")
+  plt.title("Total number of profitable conversions\nper 10 minutes (2018-05-14 - 2018-05-24)")
   plt.xlabel("Time (in 10 minute instances)")
-  plt.plot(number_of_results, "b-", label="Number of transactions")
-  plt.plot(number_of_offers, "r-", label="Number of offers")
-  plt.legend(["Number of transactions", "Number of offers"])
+  plt.plot(number_of_results, "b-", label="Number of profitable conversions")
+  # plt.plot(number_of_offers, "r-", label="Number of offers")
+  # plt.legend(["Number of transactions", "Number of offers"])
   plt.show()
 
 
@@ -123,7 +123,7 @@ def plot_heatmap(x, y, z, x_label="Selling", y_label="Receiving"):
   ax.set_title("Average number of transactions\nbetween currencies from profitable conversions\nper 10 minutes (2018-05-14 - 2018-05-24)")
   fig.tight_layout()
   cbar = ax.figure.colorbar(im, ax=ax)
-  cbar.ax.set_ylabel("Number of transactions", rotation=90, va="bottom")
+  cbar.ax.set_ylabel("Number of transactions", rotation=-90, va="bottom")
   for i in range(len(x)):
     for j in range(len(y)):
       text = ax.text(j, i, round(z[i, j], 1), ha="center", va="center", color="w")
