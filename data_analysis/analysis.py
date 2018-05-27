@@ -49,7 +49,7 @@ def stuff_per_day(data, timestamps):
   number_of_offers = [len(x["offers"]) for x in data]
 
   plt.figure()
-  plt.title("Total number of transactions \nof all profitable conversions \nper 10 minutes (2018-05-14 - 2018-05-24)")
+  plt.title("Total number of transactions\nof all profitable conversions\nper 10 minutes (2018-05-14 - 2018-05-24)")
   plt.xlabel("Time (in 10 minute instances)")
   plt.plot(number_of_results, "b-", label="Number of transactions")
   plt.plot(number_of_offers, "r-", label="Number of offers")
@@ -110,23 +110,20 @@ def number_of_edges_between_currencies_per_instance(data, timestamps):
 
   
 
-def plot_heatmap(x, y, z):
+def plot_heatmap(x, y, z, x_label="Selling", y_label="Receiving"):
   fig, ax = plt.subplots()
-  im = ax.imshow(z)
-  # We want to show all ticks...
+  im = ax.imshow(z, aspect="auto")
   ax.set_xticks(np.arange(len(x)))
   ax.set_yticks(np.arange(len(y)))
-  # ... and label them with the respective list entries
   ax.set_xticklabels(x)
   ax.set_yticklabels(y)
-  # Rotate the tick labels and set their alignment.
+  ax.set_xlabel(x_label)
+  ax.set_ylabel(y_label)
   plt.setp(ax.get_xticklabels(), rotation=45, ha="right", rotation_mode="anchor")
-  ax.set_title("Average number of transactions \nbetween currencies from profitable conversions \nper 10 minutes (2018-05-14 - 2018-05-24)")
+  ax.set_title("Average number of transactions\nbetween currencies from profitable conversions\nper 10 minutes (2018-05-14 - 2018-05-24)")
   fig.tight_layout()
-  # Create colorbar
   cbar = ax.figure.colorbar(im, ax=ax)
-  cbar.ax.set_ylabel("Number of Transactions", rotation=-90, va="bottom")
-  # Loop over data dimensions and create text annotations.
+  cbar.ax.set_ylabel("Number of transactions", rotation=90, va="bottom")
   for i in range(len(x)):
     for j in range(len(y)):
       text = ax.text(j, i, round(z[i, j], 1), ha="center", va="center", color="w")

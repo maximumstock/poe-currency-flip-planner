@@ -48,11 +48,10 @@
 *** DONE Build data collector that regularly serializes the Pathfinder results
     CLOSED: [2018-05-12 Sat 17:07]
 *** Analyze collected results
-**** basic graph exploration
-***** how many paths between two currencies exist (time series per currency)
-**** eg. how many trades per currency are possible that could earn winnings
+**** TODO Number of profitable conversions over time
+**** DONE Importance of currency routes in profitable conversions (Heatmap)
+     CLOSED: [2018-05-27 Sun 13:32]
 **** per currency, how big are possible winnings
-**** what non-target currencies are most often part of trade chains
 ** TODO [#C] Try to incorporate remainders of other currencies (due to the different contingents) in the efficiency comparison
 ** TODO [#C] Incorporate NPC trading ratios (unlimited stock)
 *** https://pathofexile.gamepedia.com/Currency#Vendor_prices_chart
