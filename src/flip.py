@@ -19,6 +19,7 @@ above 1 is forbidden, while trading within a tier or a tier down with any
 conversion rate is fine. This is very basic at the moment.
 
 Exalted
+Divine
 
 Chaos
 Fusing
@@ -30,7 +31,9 @@ Chromatic
 Alchemy
 Gemcutter's Prism
 Jewellers
+Vaal
 
+Chance
 Alteration
 Augmentation
 Transmutation
@@ -68,6 +71,10 @@ currencies = {
     "id": 8,
     "tier": 2
   },
+  "Chance": {
+    "id": 9,
+    "tier": 2
+  },
   "Cartographer's Chisel": {
     "id": 10,
     "tier": 2
@@ -82,6 +89,14 @@ currencies = {
   },
   "Regal": {
     "id": 14,
+    "tier": 2
+  },
+  "Divine": {
+    "id": 15,
+    "tier": 2
+  },
+  "Vaal": {
+    "id": 16,
     "tier": 2
   },
   "Transmutation": {
