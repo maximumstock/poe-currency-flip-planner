@@ -3,13 +3,14 @@ import itertools
 from bs4 import BeautifulSoup
 import concurrent.futures
 import urllib
+from ratelimit import limits, sleep_and_retry
 from src import constants, flip
 
 
-def fetch_offers(league, currency_pairs, limit=10):
+def fetch_offers(league, currency_pairs, limit=5):
   params = [[league, pair[0], pair[1], limit] for pair in currency_pairs]
 
-  with concurrent.futures.ThreadPoolExecutor(max_workers=2) as executor:
+  with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
     futures = executor.map(lambda p: fetch_offers_for_pair(*p), params)
     offers = list(map(lambda x: x, futures))
     # Filter offers from currency pairs that do not hold any offers
@@ -21,8 +22,9 @@ def fetch_offers(league, currency_pairs, limit=10):
 Private helpers below
 """
 
-
-def fetch_offers_for_pair(league, want, have, limit=10):
+@sleep_and_retry
+@limits(calls=20, period=6)
+def fetch_offers_for_pair(league, want, have, limit=5):
   offer_ids, query_id = fetch_offers_ids(league, want, have)
   offers = fetch_offers_details(offer_ids, query_id, limit)
   viable_offers = flip.filter_viable_offers(want, have, offers)
@@ -53,7 +55,7 @@ def fetch_offers_ids(league, want, have):
   return offer_ids, query_id
 
 
-def fetch_offers_details(offer_ids, query_id, limit=10):
+def fetch_offers_details(offer_ids, query_id, limit=5):
 
   if len(offer_ids) is 0:
     return []
