@@ -17,7 +17,7 @@ describe different ways to trade the currency for different currencies `x` times
 trading back for the starting currency. Each of these paths yields one of the following
 outcomes:
 
-* You have the same amount than before
+* You have the same amount as before
 * You have less than before
 * You have more than before
 
