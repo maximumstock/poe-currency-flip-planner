@@ -1,5 +1,5 @@
 from src.graph import *
-from src.backends import poeofficial, poetrade
+from src.backends import poeofficial
 from src.constants import currencies
 import itertools
 

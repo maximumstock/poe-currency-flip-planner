@@ -28,7 +28,11 @@ in which succession currencies have to be traded to yield different profits/loss
 ## How it works
 * Currency trade offers are collected from a backend provider, eg.
   * [poe.trade](http://poe.trade)
-  * [Path of Exile Trade](https://www.pathofexile.com/trade/exchange) (under construction)
+  * [Path of Exile Trade](https://www.pathofexile.com/trade/exchange)
+* You should use the latter backend, as [poe.trade](http://poe.trade) data contains
+  price fixer offers, which deludes actually doable trades and profits. I currently
+  do not filter these conversion rate outliers, as the official PoE Trade backend
+  seems to filter these price fixing offers already.
 * Found trade offers are used to build a fully connected graph with currencies as nodes
   and one edge for each offer of each pair of non-identical currencies.
 * The offered exchange rates and stocks are used to find the most profitable trading paths

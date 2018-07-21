@@ -42,8 +42,10 @@
 *** If the conversion rate suggests otherwise, filter out that graph edge
 ** DONE Make sure no "paid: 0" paths are possible
    CLOSED: [2018-04-20 Fri 22:58]
-** TODO [#A] Rewrite data fetching to use pathofexile.com/trade instead of poe.trade
-*** TODO Add backend-specific tests
+** DONE Rewrite data fetching to use pathofexile.com/trade instead of poe.trade
+   CLOSED: [2018-07-21 Sat 14:51]
+*** DONE Add backend-specific tests
+    CLOSED: [2018-07-21 Sat 14:51]
 *** Should yield a very nice performance boost
 ** TODO [#A] Do some analysis of the possible trades in the graph
 *** DONE Build data collector that regularly serializes the Pathfinder results
