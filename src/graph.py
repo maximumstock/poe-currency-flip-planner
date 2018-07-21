@@ -28,6 +28,10 @@ def find_paths(graph, have, want, max_length = 3):
   paths = deque()
   correct_paths = []
 
+  # If there are no paths between the specified currencies, simply abort
+  if not have in graph:
+    return []
+
   for currency in graph[have]:
     for offer in graph[have][currency]:
       o = decorate_offer(offer, have, currency)
@@ -45,11 +49,14 @@ def find_paths(graph, have, want, max_length = 3):
 
     next_currency = next[-1]['want']
     seen_currencies = [edge['have'] for edge in next]
-    for currency in graph[next_currency]:
-      if currency not in seen_currencies[1:]:
-        for offer in graph[next_currency][currency]:
-          o = decorate_offer(offer, next_currency, currency)
-          paths.append(next + [o])
+
+    # If there are no paths between the specified currencies, simply skip
+    if next_currency in graph:
+      for currency in graph[next_currency]:
+        if currency not in seen_currencies[1:]:
+          for offer in graph[next_currency][currency]:
+            o = decorate_offer(offer, next_currency, currency)
+            paths.append(next + [o])
 
   return correct_paths
 

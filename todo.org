@@ -43,9 +43,7 @@
 ** DONE Make sure no "paid: 0" paths are possible
    CLOSED: [2018-04-20 Fri 22:58]
 ** TODO [#A] Rewrite data fetching to use pathofexile.com/trade instead of poe.trade
-*** TODO Split out data fetching into separate modules. One module for each backend
-*** TODO Introduce some static interface for fetching offers in the specified format
-*** TODO Make sure poe.trade still works just in case. Also add backend-specific tests
+*** TODO Add backend-specific tests
 *** Should yield a very nice performance boost
 ** TODO [#A] Do some analysis of the possible trades in the graph
 *** DONE Build data collector that regularly serializes the Pathfinder results
