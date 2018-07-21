@@ -57,7 +57,31 @@
      CLOSED: [2018-05-27 Sun 13:32]
 **** TODO Number of profitable conversions per starting currency over time
 **** TODO per currency, how big are possible winnings
-** TODO [#B] Parallelize graph traversal
+** TODO [#B] Improve Performance
+*** Current Performance (poeofficial with 2 worker threads):
+    Fetching offers for 17 currencies - 272 pairs
+    Spent 94.7s fetching offers
+    Spent 0.0s building the graph
+    Checking Orb of Alteration -> 178 Conversions
+    Checking Orb of Fusing -> 568 Conversions
+    Checking Orb of Alchemy -> 303 Conversions
+    Checking Chaos Orb -> 2267 Conversions
+    Checking Gemcutter's Prism -> 292 Conversions
+    Checking Exalted Orb -> 0 Conversions
+    Checking Chromatic Orb -> 328 Conversions
+    Checking Jewellers Orb -> 205 Conversions
+    Checking Orb of Chance -> 295 Conversions
+    Checking Cartographer's Chisel -> 741 Conversions
+    Checking Orb of Scouring -> 79 Conversions
+    Checking Orb of Regret -> 211 Conversions
+    Checking Regal Orb -> 175 Conversions
+    Checking Divine Orb -> 44 Conversions
+    Checking Vaal Orb -> 537 Conversions
+    Checking Orb of Transmutation -> 0 Conversions
+    Checking Orb of Augmentation -> 2 Conversions
+    Spent 162.3s finding paths
+*** TODO [#B] Parallelize graph traversal
+*** TODO [#B] Avoid poeofficial backend rate limit
 ** TODO [#B] Add end-user functionality to easily scan conversion rates for a given currency and league, sorted by descending profitability
 *** Especially for scaling down starting payments
 ** TODO [#C] Try to incorporate remainders of other currencies (due to the different contingents) in the efficiency comparison
