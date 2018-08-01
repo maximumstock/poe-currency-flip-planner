@@ -1,6 +1,6 @@
 # poe-currency-flip-planner
 
-This tool is an attempt at planning short-term arbitrage deals of currency in Path of Exile.
+This tool is an attempt at finding short-term arbitrage deals of currency in Path of Exile.
 
 ## Background
 Via [poe.trade](http://currency.poe.trade) one can look for currently offered currency
