@@ -47,7 +47,9 @@
 *** DONE Add backend-specific tests
     CLOSED: [2018-07-21 Sat 14:51]
 *** Should yield a very nice performance boost
-** TODO [#A] Do some analysis of the possible trades in the graph
+** TODO [#A] Add end-user functionality to easily scan conversion rates for a given currency and league, sorted by descending profitability
+*** TODO [#A] Add cli interface for finding profitable conversions for a given currency
+** TODO [#B] Do some analysis of the possible trades in the graph
 *** DONE Build data collector that regularly serializes the Pathfinder results
     CLOSED: [2018-05-12 Sat 17:07]
 *** Analyze collected results
@@ -61,8 +63,6 @@
 *** TODO [#B] Parallelize graph traversal
 *** DONE [#B] Avoid poeofficial backend rate limit
     CLOSED: [2018-07-21 Sat 18:02]
-** TODO [#B] Add end-user functionality to easily scan conversion rates for a given currency and league, sorted by descending profitability
-*** Especially for scaling down starting payments
 ** TODO [#C] Try to incorporate remainders of other currencies (due to the different contingents) in the efficiency comparison
 ** TODO [#C] Incorporate NPC trading ratios (unlimited stock)
 *** https://pathofexile.gamepedia.com/Currency#Vendor_prices_chart
