@@ -131,12 +131,15 @@ def expected_paths_small_same_currency():
     ]
   ]
 
+def expected_profitable_paths_small_same_currency():
+  return []
+
 
 # Expected paths from Chaos to Chromatics
 # This is not really relevant to us, since we only care about trade paths between the same currency in order to
 # guarantee easily comparable results. However, it's good to make sure that the path exploration also works for this
 # edge case
-expected_paths_small_different_currency = [
+expected_profitable_paths_small_different_currency = [
   [
     {'contact_ign': 'wreddnuy', 'conversion_rate': 12.0, 'stock': 100, 'have': 'Chaos', 'want': 'Alteration'},
     {'contact_ign': 'Shioua_ouah', 'conversion_rate': 0.6897, 'stock': 1576, 'have': 'Alteration', 'want': 'Chromatic'}
@@ -158,19 +161,22 @@ expected_conversion = {
     "from": "Chaos",
     "to": "Alteration",
     "paid": 8,
-    "received": 96
+    "received": 96,
+    "conversion_rate": 12.0
   }, {
     "contact_ign": "Shioua_ouah",
     "from": "Alteration",
     "to": "Chromatic",
     "paid": 96,
-    "received": 66
+    "received": 66,
+    "conversion_rate": 0.6897
   }, {
     "contact_ign": "MVP_Kefir",
     "from": "Chromatic",
     "to": "Chaos",
     "paid": 66,
-    "received": 5
+    "received": 5,
+    "conversion_rate": 0.087
   }]
 }
 
@@ -182,9 +188,9 @@ class GraphTest(unittest.TestCase):
 
   def test_find_paths(self):
     paths_small_same_currency = find_paths(expected_graph_small, 'Chaos', 'Chaos')
-    self.assertListEqual(expected_paths_small_same_currency(), paths_small_same_currency)
+    self.assertListEqual(expected_profitable_paths_small_same_currency(), paths_small_same_currency)
     paths_small_different_currency = find_paths(expected_graph_small.copy(), 'Chaos', 'Chromatic')
-    self.assertListEqual(expected_paths_small_different_currency, paths_small_different_currency)
+    self.assertListEqual(expected_profitable_paths_small_different_currency, paths_small_different_currency)
 
   def test_is_profitable(self):
     path = expected_paths_small_same_currency()[0]
@@ -195,3 +201,6 @@ class GraphTest(unittest.TestCase):
     conversion = build_conversion(path)
     print(conversion)
     self.assertDictEqual(expected_conversion, conversion)
+
+  def test_stock_equalization(self):
+    pass
