@@ -4,7 +4,7 @@ import math
 """
 Builds a simple dictionary graph from found offers in our common format.
 An edge can be interpreted as trading from_currency->to_currency.
-Each edge contains a list with all offers that were found for that trading 
+Each edge contains a list with all offers that were found for that trading
 direction between the two currencies.
 """
 def build_graph(offers):
@@ -43,8 +43,10 @@ def find_paths(graph, have, want, max_length = 3):
     if len(next) > max_length:
       continue
 
+    # We have arrived at the target currency
     if next[-1]['want'] == want:
-      correct_paths = correct_paths + [next]
+      if is_profitable(next):
+        correct_paths = correct_paths + [next]
       continue
 
     next_currency = next[-1]['want']
@@ -116,7 +118,7 @@ def equalize_stock_differences(path):
 
 """
 Simplifies a found path into a dictionary structure to handle the found data
-for easily. 
+for easily.
 """
 def build_conversion(path):
   transactions = []
@@ -132,7 +134,8 @@ def build_conversion(path):
       "from": e['have'],
       "to": e['want'],
       "paid": e['paid'],
-      "received": e['received']
+      "received": e['received'],
+      "conversion_rate": e['conversion_rate']
     })
 
   return {
