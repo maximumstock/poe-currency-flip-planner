@@ -4,3 +4,4 @@ env
 .cache
 .vscode
 *.pickle
+.pytest_cache
