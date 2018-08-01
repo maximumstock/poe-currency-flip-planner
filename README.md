@@ -73,7 +73,7 @@ instance and can simply be accessed and used for further work.
 ## Tests
 I wrote a few simple unit tests to make the data fetching and parsing, graph 
 construction and traversal and path evaluation a bit more robust. You can run 
-those tests using predefined datastructures via `PYTHONPATH=$(pwd) py.test tests/**`.
+those tests using predefined datastructures via `PYTHONPATH=$(pwd) python -m pytest tests`.
 
 
 ## Data Exploration
