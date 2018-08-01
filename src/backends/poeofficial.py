@@ -7,7 +7,7 @@ from ratelimit import limits, sleep_and_retry
 from src import constants, flip
 
 
-def fetch_offers(league, currency_pairs, limit=5):
+def fetch_offers(league, currency_pairs, limit=3):
   params = [[league, pair[0], pair[1], limit] for pair in currency_pairs]
 
   with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
