@@ -100,7 +100,7 @@ def equalize_stock_differences(path):
       left = path[i-1]
       right = path[i]
 
-      if left['received'] == 0 or right['paid'] == 0:
+      if left['received'] == 0 or left['paid'] == 0 or right['paid'] == 0 or right['received'] == 0:
         return None
 
       if left['received'] > right['paid']:
@@ -137,6 +137,10 @@ def build_conversion(path):
       "received": e['received'],
       "conversion_rate": e['conversion_rate']
     })
+
+  # Filter conversions that do not yield any profit
+  if path[-1]['received'] - path[0]['paid'] < 0:
+    return None
 
   return {
     "from": path[0]['have'],
