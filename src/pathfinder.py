@@ -36,18 +36,22 @@ class PathFinder:
     self.graph = {}
     self.results = {}
 
-  def run(self, max_transaction_length=3):
+  def run(self, max_transaction_length=3, logging=True):
     currency_combinations = list(itertools.permutations(self.currencies, 2))
     if len(self.offers) == 0:
-      print("Fetching offers for {} currencies - {} pairs".format(len(self.currencies), len(currency_combinations)))
+      if logging:
+        print("Fetching offers for {} currencies - {} pairs".format(len(self.currencies), len(currency_combinations)))
       t0 = time.time()
       self.offers = self.backend.fetch_offers(self.league, currency_combinations)
       t1 = time.time()
-      print("Spent {}s fetching offers".format(round(t1 - t0, 1)))
+      if logging:
+        print("Spent {}s fetching offers".format(round(t1 - t0, 1)))
     t1 = time.time()
     self.graph = build_graph(self.offers)
     t2 = time.time()
-    print("Spent {}s building the graph".format(round(t2 - t1, 1)))
+
+    if logging:
+      print("Spent {}s building the graph".format(round(t2 - t1, 1)))
 
     for c in self.currencies:
       # For currency @c, find all paths within the constructed path that are
@@ -58,12 +62,14 @@ class PathFinder:
         conversion = build_conversion(p)
         if conversion is not None:
           profitable_conversions.append(conversion)
-      print("Checking {} -> {} Conversions".format(c, len(profitable_conversions)))
+      if logging:
+        print("Checking {} -> {} Conversions".format(c, len(profitable_conversions)))
       profitable_conversions = sorted(profitable_conversions, key=lambda k: k['winnings'], reverse=True)
       self.results[c] = profitable_conversions
 
     t3 = time.time()
-    print("Spent {}s finding paths".format(round(t3 - t2, 1)))
+    if logging:
+      print("Spent {}s finding paths".format(round(t3 - t2, 1)))
 
 
 if __name__ == '__main__':
