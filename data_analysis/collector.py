@@ -2,7 +2,8 @@ import pickle
 import argparse
 from datetime import datetime
 from src.pathfinder import PathFinder
-from src.flip import currencies
+from src.constants import currencies
+from src.backends import poeofficial
 
 def gen_filename():
   timestamp = str(datetime.now()).split(".")[0]
@@ -17,7 +18,7 @@ def run():
   parser.add_argument("--path", default="data_analysis/raw", help="Location where to save collected data")
   arguments = parser.parse_args()
 
-  p = PathFinder(arguments.league, currencies)
+  p = PathFinder(arguments.league, currencies, poeofficial)
   p.run(3)
 
   filename = "{}/{}".format(arguments.path, gen_filename())
