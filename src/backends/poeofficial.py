@@ -23,7 +23,7 @@ Private helpers below
 """
 
 @sleep_and_retry
-@limits(calls=20, period=6)
+@limits(calls=20, period=11)
 def fetch_offers_for_pair(league, want, have, limit=5):
   offer_ids, query_id = fetch_offers_ids(league, want, have)
   offers = fetch_offers_details(offer_ids, query_id, limit)
@@ -43,8 +43,8 @@ def fetch_offers_ids(league, want, have):
     "exchange": {
       "status": {
         "option": "online"
-      }, 
-      "have": [map_currency(have)], 
+      },
+      "have": [map_currency(have)],
       "want": [map_currency(want)]
     }
   }
