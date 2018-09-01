@@ -3,6 +3,7 @@ from src.backends import poeofficial
 from src.constants import currencies
 import itertools
 import time
+from datetime import datetime
 
 
 def test():
@@ -36,7 +37,18 @@ class PathFinder:
     self.graph = {}
     self.results = {}
 
+  def prepickle(self):
+    return {
+      "timestamp": self.timestamp,
+      "league": self.league,
+      "currencies": self.currencies,
+      "offers": self.offers,
+      "graph": self.graph,
+      "results": self.results
+    }
+
   def run(self, max_transaction_length=3, logging=True):
+    self.timestamp = str(datetime.now()).split(".")[0]
     currency_combinations = list(itertools.permutations(self.currencies, 2))
     if len(self.offers) == 0:
       if logging:

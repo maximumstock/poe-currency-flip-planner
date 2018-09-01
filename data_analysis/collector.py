@@ -23,7 +23,8 @@ def run():
 
   filename = "{}/{}".format(arguments.path, gen_filename())
   with open(filename, "wb") as f:
-    pickle.dump(p, f)
+    data = p.prepickle()
+    pickle.dump(data, f)
 
 if __name__ == "__main__":
   run()
