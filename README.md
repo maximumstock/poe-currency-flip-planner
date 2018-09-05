@@ -54,26 +54,30 @@ in which succession currencies have to be traded to yield different profits/loss
 
 
 ## How to use
-`PYTHONPATH=$(pwd) python src/main.py` starts an example script that prints out all
-profitable trade sequences from currency `x` back to currency `x`, given a list of
-tradeable currencies.
+`PYTHONPATH=$(pwd) python3 src/cli.py` can be used as a CLI interface.
+See `src/cli.py` or `PYTHONPATH=$(pwd) python3 src/cli.py --help` for help
+and options. This uses the official Path of Exile trading API.
 
 If you want to use this project as a library/dependency, feel free to use the
 `PathFinder` class (see `src/pathfinder.py`) as an API.
 
 The PathFinder class is simply a static interface for finding proftiable trade
-paths for arbitrage. You give it the league and a list of currencies. For each
+paths for arbitrage. You give it the league, a list of currencies and a backend
+instace (eg. `backends/poeofficial.py`). For each
 currency it starts looking for all profitable paths that start and end with that
 currency, given a maximum transaction length (default: 3). All stages of data
 (eg. list of collected offers via the respective trading backend, the constructed
 graph of offers and the found profitable paths) are part of each PathFinder
 instance and can simply be accessed and used for further work.
 
+`PYTHONPATH=$(pwd) python3 src/pathfinder.py` is only for debugging the glue
+code that is the PathFinder class.
+
 
 ## Tests
-I wrote a few simple unit tests to make the data fetching and parsing, graph 
-construction and traversal and path evaluation a bit more robust. You can run 
-those tests using predefined datastructures via `PYTHONPATH=$(pwd) python -m pytest tests`.
+I wrote a few simple unit tests to make the data fetching and parsing, graph
+construction and traversal and path evaluation a bit more robust. You can run
+those tests using predefined datastructures via `PYTHONPATH=$(pwd) python3 -m pytest tests`.
 
 
 ## Data Exploration
