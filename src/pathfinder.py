@@ -52,7 +52,7 @@ class PathFinder:
     currency_combinations = list(itertools.permutations(self.currencies, 2))
     if len(self.offers) == 0:
       if logging:
-        print("Fetching offers for {} currencies - {} pairs".format(len(self.currencies), len(currency_combinations)))
+        print("Fetching {} offers for {} currencies - {} pairs".format(self.league, len(self.currencies), len(currency_combinations)))
       t0 = time.time()
       self.offers = self.backend.fetch_offers(self.league, currency_combinations)
       t1 = time.time()
