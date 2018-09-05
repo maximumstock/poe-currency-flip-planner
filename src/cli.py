@@ -29,6 +29,10 @@ chosen_currencies = dict(itertools.islice(currencies.items(), 0, 13))
 p = PathFinder(league, chosen_currencies, poeofficial)
 p.run(3, False)
 try:
-  log_conversions(p.results, currency, limit)
+  if currency is "all":
+    for c in chosen_currencies:
+      log_conversions(p.results, c, limit)
+  else:
+    log_conversions(p.results, currency, limit)
 except KeyError:
   print("Could not find any proftiable conversions for {} in {}".format(currency, league))
