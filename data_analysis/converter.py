@@ -1,25 +1,21 @@
 import os
 import operator
 import pickle
+import argparse
 from datetime import datetime, timedelta
 
+parser = argparse.ArgumentParser(description="Data Converter")
+parser.add_argument("--league-folder", default="delve", help="Folder name of the dumps")
+arguments = parser.parse_args()
 
-def parse_timestamp(filename):
-  return (datetime.strptime(filename.split(".")[0], "%Y_%m_%d_%H_%M_%S") - timedelta(hours=2)).isoformat()
+folder = arguments.league_folder
 
 def map_filename(filename):
-  with open("data_analysis/raw/{}".format(filename), "rb") as f:
+  with open("data_analysis/raw/{}/{}".format(folder, filename), "rb") as f:
     pf = pickle.load(f)
-    return {
-      "created_at": parse_timestamp(filename),
-      "graph": pf.graph,
-      "offers": pf.offers,
-      "results": pf.results,
-      "currencies": pf.currencies
-    }
+    return pf
 
-
-data = [map_filename(x) for x in os.listdir("data_analysis/raw") if "pickle" in x]
-sorted_data = sorted(data, key=operator.itemgetter("created_at"))
-with open("data_analysis/conversion.pickle", "wb") as f:
+data = [map_filename(x) for x in os.listdir("data_analysis/raw/{}".format(folder)) if "pickle" in x]
+sorted_data = sorted(data, key=operator.itemgetter("timestamp"))
+with open("data_analysis/{}_conversion.pickle".format(folder), "wb") as f:
   pickle.dump(sorted_data, f)

@@ -2,10 +2,17 @@ import numpy as np
 import pickle
 from matplotlib import pyplot as plt
 import itertools
+import argparse
 
-with open("data_analysis/conversion.pickle", "rb") as f:
+parser = argparse.ArgumentParser(description="Data Analysis")
+parser.add_argument("--file", help="Path to conversion file to analyze.")
+arguments = parser.parse_args()
+
+file_path = arguments.file
+
+with open(file_path, "rb") as f:
   data = pickle.load(f)
-timestamps = [x["created_at"] for x in data]
+timestamps = [x["timestamp"] for x in data]
 
 
 """
@@ -13,7 +20,7 @@ Helpers
 """
 
 """
-Extracts a list of transactions from all conversions for all currencies 
+Extracts a list of transactions from all conversions for all currencies
 from the `results` property of a PathFinder instance.
 """
 def extract_transaction_edges(day):
@@ -49,8 +56,8 @@ def stuff_per_day(data, timestamps):
   # number_of_offers = [len(x["offers"]) for x in data]
 
   plt.figure()
-  plt.title("Total number of profitable conversions\nper 10 minutes (2018-05-14 - 2018-05-24)")
-  plt.xlabel("Time (in 10 minute instances)")
+  plt.title("Total number of profitable conversions")
+  plt.xlabel("Time")
   plt.plot(number_of_results, "b-", label="Number of profitable conversions")
   # plt.plot(number_of_offers, "r-", label="Number of offers")
   # plt.legend(["Number of transactions", "Number of offers"])
@@ -108,7 +115,7 @@ def number_of_edges_between_currencies_per_instance(data, timestamps):
   Z = np.array(z).reshape(len(currencies), len(currencies))
   plot_heatmap(currencies, currencies, Z)
 
-  
+
 
 def plot_heatmap(x, y, z, x_label="Selling", y_label="Receiving"):
   fig, ax = plt.subplots()
@@ -120,7 +127,7 @@ def plot_heatmap(x, y, z, x_label="Selling", y_label="Receiving"):
   ax.set_xlabel(x_label)
   ax.set_ylabel(y_label)
   plt.setp(ax.get_xticklabels(), rotation=45, ha="right", rotation_mode="anchor")
-  ax.set_title("Average number of transactions\nbetween currencies from profitable conversions\nper 10 minutes (2018-05-14 - 2018-05-24)")
+  ax.set_title("Average number of transactions\nbetween currencies from profitable conversions")
   fig.tight_layout()
   cbar = ax.figure.colorbar(im, ax=ax)
   cbar.ax.set_ylabel("Number of transactions", rotation=-90, va="bottom")
