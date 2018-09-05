@@ -81,13 +81,22 @@ those tests using predefined datastructures via `PYTHONPATH=$(pwd) python3 -m py
 
 
 ## Data Exploration
-See [here](data_analysis/README.md).
-
 The data that is used for the analysis is not part of this repository. Please
 collect your own data. You can use `run_collector.sh` for this. It starts a
 `PathFinder` instance (see `src/pathfinder.py`) for each league. I like running
 this as a cronjob every 30 minutes. The collected PathFinder instances are then
 pickled and persisted in their respective folders, specified in `run_collector.sh`.
+
+See [here](data_analysis/README.md) for discussion.
+
+### General Workflow (as of now)
+
+1. Collect Data
+  `PYTHONPATH=$(pwd) python3 data_analysis/collector.py --league "Delve" --path "data_analysis/raw/delve"`
+2. Merge single `.pickle` files into one `merge.pickle`
+  `PYTHON_PATH=$(pwd) python3 data_analysis/converter.py --path "data_analysis/raw/delve"
+3. Run analysis.py
+  `PYTHONPATH=$(pwd) python3 --path data_analysis/raw/hc_delve/merge.pickle"
 
 
 ## Ideas & Roadmap
