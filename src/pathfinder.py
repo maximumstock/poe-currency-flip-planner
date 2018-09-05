@@ -8,7 +8,7 @@ from datetime import datetime
 
 def test():
   trading_currencies = list(currencies.keys())[:5]
-  pf = PathFinder("Incursion", trading_currencies, poeofficial)
+  pf = PathFinder("Delve", trading_currencies, poeofficial)
   pf.run(3)
 
 
