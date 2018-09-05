@@ -94,9 +94,9 @@ See [here](data_analysis/README.md) for discussion.
 1. Collect Data
   `PYTHONPATH=$(pwd) python3 data_analysis/collector.py --league "Delve" --path "data_analysis/raw/delve"`
 2. Merge single `.pickle` files into one `merge.pickle`
-  `PYTHON_PATH=$(pwd) python3 data_analysis/converter.py --path "data_analysis/raw/delve"
+  `PYTHON_PATH=$(pwd) python3 data_analysis/converter.py --path "data_analysis/raw/delve"`
 3. Run analysis.py
-  `PYTHONPATH=$(pwd) python3 --path data_analysis/raw/hc_delve/merge.pickle"
+  `PYTHONPATH=$(pwd) python3 --path data_analysis/raw/hc_delve/merge.pickle"`
 
 
 ## Ideas & Roadmap
