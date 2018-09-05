@@ -139,7 +139,7 @@ def build_conversion(path):
     })
 
   # Filter conversions that do not yield any profit
-  if path[-1]['received'] - path[0]['paid'] < 0:
+  if path[-1]['received'] - path[0]['paid'] <= 0:
     return None
 
   return {
