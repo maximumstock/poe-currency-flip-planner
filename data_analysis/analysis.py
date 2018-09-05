@@ -5,10 +5,10 @@ import itertools
 import argparse
 
 parser = argparse.ArgumentParser(description="Data Analysis")
-parser.add_argument("--file", help="Path to conversion file to analyze.")
+parser.add_argument("--path", help="Path to conversion file to analyze.")
 arguments = parser.parse_args()
 
-file_path = arguments.file
+file_path = arguments.path
 
 with open(file_path, "rb") as f:
   data = pickle.load(f)
