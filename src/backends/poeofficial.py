@@ -10,7 +10,7 @@ from src import constants, flip
 def fetch_offers(league, currency_pairs, limit=3):
   params = [[league, pair[0], pair[1], limit] for pair in currency_pairs]
 
-  with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
+  with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
     futures = executor.map(lambda p: fetch_offers_for_pair(*p), params)
     offers = list(map(lambda x: x, futures))
     # Filter offers from currency pairs that do not hold any offers
@@ -23,7 +23,7 @@ Private helpers below
 """
 
 @sleep_and_retry
-@limits(calls=20, period=11)
+@limits(calls=4, period=5)
 def fetch_offers_for_pair(league, want, have, limit=5):
   offer_ids, query_id = fetch_offers_ids(league, want, have)
   offers = fetch_offers_details(offer_ids, query_id, limit)
