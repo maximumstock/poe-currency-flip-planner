@@ -10,7 +10,7 @@ from src import constants, flip
 def fetch_offers(league, currency_pairs, limit=3):
   params = [[league, pair[0], pair[1], limit] for pair in currency_pairs]
 
-  with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
+  with concurrent.futures.ThreadPoolExecutor(max_workers=1) as executor:
     futures = executor.map(lambda p: fetch_offers_for_pair(*p), params)
     offers = list(map(lambda x: x, futures))
     # Filter offers from currency pairs that do not hold any offers
@@ -81,7 +81,7 @@ def map_offers_details(offer_details):
     "stock": stock
   }
 
-  
+ 
 def map_currency(currency):
   if currency in constants.currencies:
     return constants.currencies[currency]["poeofficial"]

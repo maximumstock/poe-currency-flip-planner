@@ -49,7 +49,7 @@ currencies = {
     "tier": 2
   },
   "Chaos Orb": {
-    "poetrade": 4,    
+    "poetrade": 4,
     "poeofficial": "chaos",
     "tier": 2
   },
