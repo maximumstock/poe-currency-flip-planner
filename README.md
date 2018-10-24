@@ -54,8 +54,8 @@ in which succession currencies have to be traded to yield different profits/loss
 
 
 ## How to use
-`PYTHONPATH=$(pwd) python3 src/cli.py` can be used as a CLI interface.
-See `src/cli.py` or `PYTHONPATH=$(pwd) python3 src/cli.py --help` for help
+`python cli.py` can be used as a CLI interface.
+See `src/cli.py` or `python cli.py --help` for help
 and options. This uses the official Path of Exile trading API.
 
 If you want to use this project as a library/dependency, feel free to use the
@@ -70,14 +70,11 @@ currency, given a maximum transaction length (default: 3). All stages of data
 graph of offers and the found profitable paths) are part of each PathFinder
 instance and can simply be accessed and used for further work.
 
-`PYTHONPATH=$(pwd) python3 src/pathfinder.py` is only for debugging the glue
-code that is the PathFinder class.
-
 
 ## Tests
 I wrote a few simple unit tests to make the data fetching and parsing, graph
 construction and traversal and path evaluation a bit more robust. You can run
-those tests using predefined datastructures via `PYTHONPATH=$(pwd) python3 -m pytest tests`.
+those tests using predefined datastructures via `python -m pytest tests`.
 
 
 ## Data Exploration
@@ -92,11 +89,11 @@ See [here](data_analysis/README.md) for discussion.
 ### General Workflow (as of now)
 
 1. Collect Data
-  `PYTHONPATH=$(pwd) python3 data_analysis/collector.py --league "Delve" --path "data_analysis/raw/delve"`
+  `PYTHONPATH=$(pwd) python data_analysis/collector.py --league "Delve" --path "data_analysis/raw/delve"`
 2. Merge single `.pickle` files into one `merge.pickle`
-  `PYTHON_PATH=$(pwd) python3 data_analysis/converter.py --path "data_analysis/raw/delve"`
+  `PYTHON_PATH=$(pwd) python data_analysis/converter.py --path "data_analysis/raw/delve"`
 3. Run analysis.py
-  `PYTHONPATH=$(pwd) python3 analysis.py --path data_analysis/raw/delve/merge.pickle"`
+  `PYTHONPATH=$(pwd) python data_analysis/analysis.py --path data_analysis/raw/delve/merge.pickle"`
 
 
 ## Ideas & Roadmap
