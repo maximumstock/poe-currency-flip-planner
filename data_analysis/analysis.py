@@ -13,6 +13,7 @@ file_path = arguments.path
 with open(file_path, "rb") as f:
     data = pickle.load(f)
 timestamps = [x["timestamp"] for x in data]
+currencies = list(data[0]["currencies"].keys())
 
 
 """
@@ -111,7 +112,7 @@ def number_of_edges_between_currencies_per_instance(data, timestamps):
             z.append(0)
 
     Z = np.array(z).reshape(len(currencies), len(currencies))
-    plot_heatmap(currencies, currencies, Z)
+    return Z
 
 
 def plot_heatmap(x, y, z, x_label="Selling", y_label="Receiving"):
@@ -137,4 +138,5 @@ def plot_heatmap(x, y, z, x_label="Selling", y_label="Receiving"):
 
 
 stuff_per_day(data, timestamps)
-number_of_edges_between_currencies_per_instance(data, timestamps)
+heatmap_data = number_of_edges_between_currencies_per_instance(data, timestamps)
+plot_heatmap(currencies, currencies, heatmap_data)
