@@ -9,7 +9,7 @@ from src import flip
 def fetch_offers(league, currency_pairs, limit=3):
     params = [[league, pair[0], pair[1], limit] for pair in currency_pairs]
 
-    with concurrent.futures.ThreadPoolExecutor(max_workers=1) as executor:
+    with concurrent.futures.ThreadPoolExecutor(max_workers=4) as executor:
         futures = executor.map(lambda p: fetch_offers_for_pair(*p), params)
         offers = list(map(lambda x: x, futures))
         # Filter offers from currency pairs that do not hold any offers
@@ -23,7 +23,7 @@ Private helpers below
 
 
 @sleep_and_retry
-@limits(calls=4, period=5)
+@limits(calls=5, period=5)
 def fetch_offers_for_pair(league, want, have, limit=5):
     offer_ids, query_id = fetch_offers_ids(league, want, have)
     offers = fetch_offers_details(offer_ids, query_id, limit)
@@ -35,6 +35,10 @@ def fetch_offers_for_pair(league, want, have, limit=5):
         "have": have,
         "league": league
     }
+
+
+class RateLimitException(Exception):
+    pass
 
 
 def fetch_offers_ids(league, want, have):
@@ -51,9 +55,13 @@ def fetch_offers_ids(league, want, have):
     }
     r = requests.post(url, json=payload)
     json = r.json()
-    offer_ids = json["result"]
-    query_id = json["id"]
-    return offer_ids, query_id
+
+    try:
+        offer_ids = json["result"]
+        query_id = json["id"]
+        return offer_ids, query_id
+    except KeyError:
+        raise RateLimitException("Reached rate-limit when fetching offer ids")
 
 
 def fetch_offers_details(offer_ids, query_id, limit=5):
@@ -65,9 +73,12 @@ def fetch_offers_details(offer_ids, query_id, limit=5):
     url = "http://www.pathofexile.com/api/trade/fetch/{}?query={}&exchange".format(
         id_string, query_id)
     r = requests.get(url)
-    result = r.json()["result"]
-    offers = [map_offers_details(x) for x in result]
-    return offers
+    try:
+        result = r.json()["result"]
+        offers = [map_offers_details(x) for x in result]
+        return offers
+    except KeyError:
+        raise Exception("Reached rate-limit when feting offer details")
 
 
 def map_offers_details(offer_details):
