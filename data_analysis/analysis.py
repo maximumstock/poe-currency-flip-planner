@@ -3,17 +3,7 @@ import pickle
 from matplotlib import pyplot as plt
 import itertools
 import argparse
-
-parser = argparse.ArgumentParser(description="Data Analysis")
-parser.add_argument("--path", help="Path to conversion file to analyze.")
-arguments = parser.parse_args()
-
-file_path = arguments.path
-
-with open(file_path, "rb") as f:
-    data = pickle.load(f)
-timestamps = [x["timestamp"] for x in data]
-currencies = list(data[0]["currencies"].keys())
+import operator
 
 
 """
@@ -112,10 +102,10 @@ def number_of_edges_between_currencies_per_instance(data, timestamps):
             z.append(0)
 
     Z = np.array(z).reshape(len(currencies), len(currencies))
-    return Z
+    return key_groups, Z
 
 
-def plot_heatmap(x, y, z, x_label="Selling", y_label="Receiving"):
+def plot_heatmap(x, y, z, league, x_label="Selling", y_label="Buying"):
     fig, ax = plt.subplots()
     im = ax.imshow(z, aspect="auto")
     ax.set_xticks(np.arange(len(x)))
@@ -127,16 +117,51 @@ def plot_heatmap(x, y, z, x_label="Selling", y_label="Receiving"):
     plt.setp(ax.get_xticklabels(), rotation=45,
              ha="right", rotation_mode="anchor")
     ax.set_title(
-        "Average number of transactions\nbetween currencies from profitable conversions")
+        "Average number of transactions\nbetween currencies from profitable conversions\n{}".format(league))
     fig.tight_layout()
     cbar = ax.figure.colorbar(im, ax=ax)
     cbar.ax.set_ylabel("Number of transactions", rotation=-90, va="bottom")
     for i in range(len(x)):
         for j in range(len(y)):
             ax.text(j, i, round(z[i, j], 1), ha="center", va="center", color="w")
-    plt.show()
+    return fig, ax
 
 
-stuff_per_day(data, timestamps)
-heatmap_data = number_of_edges_between_currencies_per_instance(data, timestamps)
-plot_heatmap(currencies, currencies, heatmap_data)
+def find_relevant_currency_hops(data, minimum=.25):
+    timestamps = [x["timestamp"] for x in data]
+    key_groups, _ = number_of_edges_between_currencies_per_instance(data, timestamps)
+    k = filter(lambda x: True if x[1] / len(timestamps) > minimum else False, key_groups.items())
+    m = map(lambda x: (x[0], x[1] / len(timestamps)), k)
+    sorted_groups = sorted(m, key=operator.itemgetter(1))
+    sorted_groups.reverse()
+
+    return {
+        "groups": sorted_groups,
+        "share": len(sorted_groups) / len(data)
+    }
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Data Analysis")
+    parser.add_argument("--path", help="Path to conversion file to analyze.")
+    arguments = parser.parse_args()
+
+    file_path = arguments.path
+
+    with open(file_path, "rb") as f:
+        data = pickle.load(f)
+    timestamps = [x["timestamp"] for x in data]
+    s_timestamps = sorted(timestamps)
+    min_timestamp = timestamps[0].split(" ")[0]
+    max_timestamp = timestamps[-1].split(" ")[0]
+    league = data[0]["league"]
+    currencies = list(data[0]["currencies"].keys())
+
+    stuff_per_day(data, timestamps)
+    # # Heatmap
+    _, heatmap_data = number_of_edges_between_currencies_per_instance(data, timestamps)
+    fig, ax = plot_heatmap(currencies, currencies, heatmap_data, league)
+    plt.savefig("data_analysis/results/heatmap_{}_{}-{}".format(league, min_timestamp, max_timestamp))
+    # Relevant currency hops
+    hops = find_relevant_currency_hops(data)
+    print(hops)
