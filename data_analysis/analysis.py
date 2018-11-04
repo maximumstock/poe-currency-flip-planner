@@ -4,6 +4,7 @@ from matplotlib import pyplot as plt
 import itertools
 import argparse
 import operator
+from src.constants import currencies as all_currencies
 
 
 """
@@ -63,8 +64,6 @@ def number_of_edges_between_currencies_per_instance(data, timestamps):
 
     assert len(data) == len(timestamps)
 
-    currencies = list(data[0]["currencies"].keys())
-
     daily_edges = []
     for i in range(len(data)):
         edges = extract_transaction_edges(data[i])
@@ -94,7 +93,8 @@ def number_of_edges_between_currencies_per_instance(data, timestamps):
     # x = currencies
     # y = currencies
     z = []
-    for combo in itertools.product(currencies, repeat=2):
+    combos = itertools.product(currencies, repeat=2)
+    for combo in combos:
         key = "{}-{}".format(combo[0], combo[1])
         if key in key_groups:
             z.append(key_groups[key]/len(timestamps))
@@ -129,8 +129,10 @@ def plot_heatmap(x, y, z, league, start_date, end_date, x_label="Selling", y_lab
 
 def find_relevant_currency_hops(data, minimum=.25):
     timestamps = [x["timestamp"] for x in data]
-    key_groups, _ = number_of_edges_between_currencies_per_instance(data, timestamps)
-    k = filter(lambda x: True if x[1] / len(timestamps) > minimum else False, key_groups.items())
+    key_groups, _ = number_of_edges_between_currencies_per_instance(
+        data, timestamps)
+    k = filter(lambda x: True if x[1] / len(timestamps)
+               > minimum else False, key_groups.items())
     m = map(lambda x: (x[0], x[1] / len(timestamps)), k)
     sorted_groups = sorted(m, key=operator.itemgetter(1))
     sorted_groups.reverse()
@@ -155,12 +157,15 @@ if __name__ == "__main__":
     min_timestamp = timestamps[0].split(" ")[0]
     max_timestamp = timestamps[-1].split(" ")[0]
     league = data[0]["league"]
-    currencies = list(data[0]["currencies"].keys())
+    currencies = sorted(all_currencies)
 
     # stuff_per_day(data, timestamps)
     # # Heatmap
-    _, heatmap_data = number_of_edges_between_currencies_per_instance(data, timestamps)
-    fig, ax = plot_heatmap(currencies, currencies, heatmap_data, league, min_timestamp, max_timestamp)
-    plt.savefig("data_analysis/results/heatmap_{}_{}-{}".format(league, min_timestamp, max_timestamp))
+    _, heatmap_data = number_of_edges_between_currencies_per_instance(
+        data, timestamps)
+    fig, ax = plot_heatmap(currencies, currencies,
+                           heatmap_data, league, min_timestamp, max_timestamp)
+    plt.savefig("data_analysis/results/heatmap_{}_{}-{}".format(league,
+                                                                min_timestamp, max_timestamp))
     # Relevant currency hops
     # hops = find_relevant_currency_hops(data)
