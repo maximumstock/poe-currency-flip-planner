@@ -16,7 +16,7 @@ The set of currencies was more or less consciously chosen. There are a lot of co
 
 For each 2-permutation of currencies from the list above, I request trade offers from [poe.com/trade](http://pathofexile.com/trade). For each list of offers, I filter out those who do not come with stock information, because this piece of information is important for constructing profitable trading paths, and then select the first five offers from these.
 
-For the list of 17 currencies above this makes 182 permutations, 5 offers each, resulting in 910 offers at max. At this point I'd like to introduce `transaction` as a synonym for an offer on [poe.com/trade](http://pathofexile.com/trade).
+For the list of 17 currencies above this makes 272 permutations, 5 offers each, resulting in 1360 offers at max. At this point I'd like to introduce `transaction` as a synonym for an offer on [poe.com/trade](http://pathofexile.com/trade).
 
 From this list of transactions, I construct a fully-meshed graph. For each currency from the above list, I start a breadth-first search to find all profitable trading paths (with a maximum length of 3 transactions) starting **AND** ending in that currency. So at the end of this I have 17 lists of profitable trading paths along this transaction graph. I call these trading paths `conversions`.
 
