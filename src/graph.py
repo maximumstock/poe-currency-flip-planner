@@ -30,7 +30,7 @@ def find_paths(graph, have, want, max_length=3):
     correct_paths = []
 
     # If there are no paths between the specified currencies, simply abort
-    if not have in graph:
+    if have not in graph:
         return []
 
     for currency in graph[have]:
@@ -125,7 +125,7 @@ def build_conversion(path):
     transactions = []
     path = equalize_stock_differences(path)
 
-    if path == None:
+    if path is None:
         return None
 
     # Map transactions to some nicer format
