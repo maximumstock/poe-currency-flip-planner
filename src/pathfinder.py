@@ -3,13 +3,13 @@ import time
 from datetime import datetime
 
 from src import graph
-from src.backends import poeofficial
+from src.backends import poetrade as backend
 from src.constants import currencies
 
 
 def test():
     trading_currencies = list(currencies.keys())[:5]
-    pf = PathFinder("Delve", trading_currencies, poeofficial)
+    pf = PathFinder("Delve", trading_currencies, backend)
     pf.run(3)
 
 

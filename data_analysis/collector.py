@@ -3,7 +3,8 @@ import argparse
 from datetime import datetime
 from src.pathfinder import PathFinder
 from src.constants import currencies
-from src.backends import poeofficial
+from src.backends import poetrade as backend
+import itertools
 
 
 def gen_filename():
@@ -23,7 +24,8 @@ def run():
                         help="Location where to save collected data")
     arguments = parser.parse_args()
 
-    p = PathFinder(arguments.league, currencies, poeofficial)
+    currencies2 = dict(itertools.islice(currencies.items(), 5))
+    p = PathFinder(arguments.league, currencies2, backend)
     p.run(3)
 
     filename = "{}/{}".format(arguments.path, gen_filename())

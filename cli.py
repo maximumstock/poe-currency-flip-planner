@@ -2,7 +2,7 @@ import argparse
 import itertools
 from src.pathfinder import PathFinder
 from src.constants import currencies
-from src.backends import poeofficial
+from src.backends import poetrade as backend
 
 
 def log_conversions(conversions, currency, limit):
@@ -33,7 +33,7 @@ currency = arguments.currency
 limit = arguments.limit
 
 chosen_currencies = dict(itertools.islice(currencies.items(), 0, 13))
-p = PathFinder(league, chosen_currencies, poeofficial)
+p = PathFinder(league, chosen_currencies, backend)
 p.run(3, True)
 try:
     if currency is "all":
