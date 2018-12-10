@@ -47,9 +47,10 @@
 *** DONE Add backend-specific tests
     CLOSED: [2018-07-21 Sat 14:51]
 *** Should yield a very nice performance boost
+** DONE [#B] Do some analysis of the possible trades in the graph
 ** TODO [#A] Add end-user functionality to easily scan conversion rates for a given currency and league, sorted by descending profitability
-*** TODO [#A] Add cli interface for finding profitable conversions for a given currency
-** TODO [#B] Do some analysis of the possible trades in the graph
+*** DONE [#A] Add cli interface for finding profitable conversions for a given currency
+   CLOSED: [2018-12-11 Tue 00:41]
 *** DONE Build data collector that regularly serializes the Pathfinder results
     CLOSED: [2018-05-12 Sat 17:07]
 *** Analyze collected results
@@ -57,10 +58,11 @@
      CLOSED: [2018-05-27 Sun 15:23]
 **** DONE Importance of currency routes in profitable conversions (Heatmap)
      CLOSED: [2018-05-27 Sun 13:32]
-**** TODO Number of profitable conversions per starting currency over time
-**** TODO per currency, how big are possible winnings
+**** DONE Number of profitable conversions per starting currency over time
+     CLOSED: [2018-12-11 Tue 00:40]
 ** TODO [#B] Improve Performance
-*** TODO [#B] Parallelize graph traversal
+*** Parallelize graph traversal
+**** As of now, this is not needed, as the graphs are traversed fast enough, ~1s
 *** DONE [#B] Avoid poeofficial backend rate limit
     CLOSED: [2018-07-21 Sat 18:02]
 ** TODO [#C] Try to incorporate remainders of other currencies (due to the different contingents) in the efficiency comparison
