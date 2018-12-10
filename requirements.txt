@@ -1,6 +1,7 @@
 appnope==0.1.0
 atomicwrites==1.2.1
 attrs==18.2.0
+autopep8==1.4.2
 backcall==0.1.0
 beautifulsoup4==4.6.3
 bleach==3.0.2
@@ -10,6 +11,7 @@ cycler==0.10.0
 decorator==4.3.0
 defusedxml==0.5.0
 entrypoints==0.2.3
+flake8==3.6.0
 idna==2.7
 ipykernel==5.1.0
 ipython==7.0.1
@@ -24,6 +26,7 @@ jupyter-core==4.4.0
 kiwisolver==1.0.1
 MarkupSafe==1.0
 matplotlib==3.0.0
+mccabe==0.6.1
 mistune==0.8.4
 more-itertools==4.3.0
 nbconvert==5.4.0
@@ -40,6 +43,8 @@ prometheus-client==0.4.2
 prompt-toolkit==2.0.6
 ptyprocess==0.6.0
 py==1.7.0
+pycodestyle==2.4.0
+pyflakes==2.0.0
 Pygments==2.2.0
 pyparsing==2.2.2
 pytest==3.9.2
@@ -49,6 +54,7 @@ pyzmq==17.1.2
 qtconsole==4.4.2
 ratelimit==2.2.0
 requests==2.20.0
+scipy==1.1.0
 Send2Trash==1.5.0
 simplegeneric==0.8.1
 six==1.11.0
