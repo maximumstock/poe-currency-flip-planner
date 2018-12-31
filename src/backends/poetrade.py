@@ -4,6 +4,10 @@ import concurrent.futures
 from src import flip, constants
 
 
+def name():
+    return "poe.trade"
+
+
 def fetch_offers(league, currency_pairs, limit=10):
     """
     Fetches trading offers for a specific league and a pair of currencies from

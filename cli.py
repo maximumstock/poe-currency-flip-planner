@@ -2,7 +2,8 @@ import argparse
 import itertools
 from src.pathfinder import PathFinder
 from src.constants import currencies
-from src.backends import poetrade as backend
+from src.backends import poeofficial
+from src.backends import poetrade
 
 
 def log_conversions(conversions, currency, limit):
@@ -26,13 +27,18 @@ parser.add_argument("--currency", default="all",
                     help="Full name of currency to flip, ie. 'Cartographer\'s Chisel, or 'Chaos Orb'. See a full list of currency names under src/constants.py. Defaults to all currencies.")
 parser.add_argument("--limit", default=3,
                     help="Limit the number of displayed conversions. Defaults to 3.")
+parser.add_argument("--poetrade", default=False,
+                    help="Flag to fetch trading data from poe.trade instead of pathofexile.com/trade.")
 arguments = parser.parse_args()
 
 league = arguments.league
 currency = arguments.currency
 limit = arguments.limit
+use_poetrade = arguments.poetrade
 
-chosen_currencies = dict(itertools.islice(currencies.items(), 0, 13))
+backend = poetrade if use_poetrade else poeofficial
+
+chosen_currencies = dict(itertools.islice(currencies.items(), 0, 15))
 p = PathFinder(league, chosen_currencies, backend)
 p.run(3, True)
 try:

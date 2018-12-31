@@ -3,7 +3,7 @@ import time
 from datetime import datetime
 
 from src import graph
-from src.backends import poetrade as backend
+from src.backends import poeofficial as backend
 from src.constants import currencies
 
 
@@ -58,6 +58,7 @@ class PathFinder:
             if logging:
                 print("Fetching {} offers for {} currencies - {} pairs".format(
                     self.league, len(self.currencies), len(currency_combinations)))
+                print("Backend: {}".format(self.backend.name()))
             t0 = time.time()
             self.offers = self.backend.fetch_offers(
                 self.league, currency_combinations)
