@@ -33,7 +33,10 @@ def map_groups_to_dataframe(groups: List[Tuple[str, int]], league: str) -> pd.Da
     })
 
 
-edge_popularity_dfs = [map_groups_to_dataframe(x, leagues[idx]) for idx, x in enumerate(hop_groups)]
-final_df = reduce(lambda x, y: pd.merge(x, y, on="edge", how="outer"), edge_popularity_dfs, pd.DataFrame({"edge": []}))
+edge_popularity_dfs = [map_groups_to_dataframe(
+    x, leagues[idx]) for idx, x in enumerate(hop_groups)]
+final_df = reduce(lambda x, y: pd.merge(x, y, on="edge", how="outer"),
+                  edge_popularity_dfs, pd.DataFrame({"edge": []}))
 final_df = final_df.set_index("edge")
-final_df.to_csv("data_analysis/experiments/edge_popularity_per_snapshot/data/edge_popularity.csv")
+final_df.to_csv(
+    "data_analysis/experiments/edge_popularity_per_snapshot_delve/data/edge_popularity.csv")
