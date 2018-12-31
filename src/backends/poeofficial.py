@@ -6,6 +6,10 @@ from src import constants
 from src import flip
 
 
+def name():
+    return "Path of Exile Offical Trade API"
+
+
 def fetch_offers(league, currency_pairs, limit=3):
     params = [[league, pair[0], pair[1], limit] for pair in currency_pairs]
 
@@ -22,9 +26,10 @@ Private helpers below
 """
 
 
-@sleep_and_retry
-@limits(calls=4, period=5)
 def fetch_offers_for_pair(league, want, have, limit=5):
+    """
+    The official rate-limit is 5:5:60 -> stay right under it with 4:5
+    """
     offer_ids, query_id = fetch_offers_ids(league, want, have)
     offers = fetch_offers_details(offer_ids, query_id, limit)
     viable_offers = flip.filter_viable_offers(want, have, offers)
@@ -41,6 +46,8 @@ class RateLimitException(Exception):
     pass
 
 
+@sleep_and_retry
+@limits(calls=4, period=5)
 def fetch_offers_ids(league, want, have):
     url = "http://www.pathofexile.com/api/trade/exchange/{}".format(
         urllib.parse.quote(league))
@@ -64,6 +71,8 @@ def fetch_offers_ids(league, want, have):
         raise RateLimitException("Reached rate-limit when fetching offer ids")
 
 
+@sleep_and_retry
+@limits(calls=4, period=5)
 def fetch_offers_details(offer_ids, query_id, limit=5):
 
     if len(offer_ids) is 0:
