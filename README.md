@@ -29,8 +29,12 @@ in which succession currencies have to be traded to yield different profits/loss
 * Currency trade offers are collected from a backend provider, eg.
   * [poe.trade](http://poe.trade)
   * [Path of Exile Trade](https://www.pathofexile.com/trade/exchange)
-* I currently use [poe.trade](http://poe.trade) per default, as the official PoE Trade
-  API imposes a rate-limit, which slows this data collection process down very much.
+* I currently use [Path of Exile Trade](https://www.pathofexile.com/trade/exchange) as a
+  default, since they seem to automatically filter out certain price-fixing offers, which
+  is really great!
+* Alternatively you can use [poe.trade](http://poe.trade) which does not impose a rate-limit.
+  With some tweaks you can then collect the offer data much faster, but it might contain
+  price-fixing offers or otherwise corrupt information.
 * Found trade offers are used to build a fully connected graph with currencies as nodes
   and one edge for each offer of each pair of non-identical currencies.
 * The offered exchange rates and stocks are used to find the most profitable trading paths
@@ -54,7 +58,10 @@ in which succession currencies have to be traded to yield different profits/loss
 ## How to use
 `python cli.py` can be used as a CLI interface.
 See `src/cli.py` or `python cli.py --help` for help
-and options. This uses the official Path of Exile trading API.
+and options. This uses the official Path of Exile trading API per default.
+
+After a while you will get a bunch of text printed out with your suggested
+conversions.
 
 If you want to use this project as a library/dependency, feel free to use the
 `PathFinder` class (see `src/pathfinder.py`) as an API.
