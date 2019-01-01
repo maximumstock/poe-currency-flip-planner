@@ -1,24 +1,35 @@
 import requests
-import concurrent.futures
 import urllib
-from ratelimit import limits, sleep_and_retry
 from src import constants
 from src import flip
+from src.backends.lib import AsyncRateLimiter
+import asyncio
+import aiohttp
 
 
 def name():
     return "Path of Exile Offical Trade API"
 
 
-def fetch_offers(league, currency_pairs, limit=3):
-    params = [[league, pair[0], pair[1], limit] for pair in currency_pairs]
+class RateLimitException(Exception):
+    pass
 
-    with concurrent.futures.ThreadPoolExecutor(max_workers=2) as executor:
-        futures = executor.map(lambda p: fetch_offers_for_pair(*p), params)
-        offers = list(map(lambda x: x, futures))
-        # Filter offers from currency pairs that do not hold any offers
-        offers = [x for x in offers if len(x["offers"]) > 0]
-        return offers
+
+def fetch_offers(league, currency_pairs, limit=3):
+    loop = asyncio.get_event_loop()
+    results = loop.run_until_complete(
+        fetch_offers_async(league, currency_pairs, limit))
+    return results
+
+
+async def fetch_offers_async(league, currency_pairs, limit=3):
+    rlimiter = AsyncRateLimiter(4, 5)
+    results = []
+    for p in currency_pairs:
+        async with rlimiter:
+            result = await fetch_offers_for_pair(league, p[0], p[1], limit)
+            results.append(result)
+    return results
 
 
 """
@@ -26,68 +37,56 @@ Private helpers below
 """
 
 
-def fetch_offers_for_pair(league, want, have, limit=5):
+async def fetch_offers_for_pair(league, want, have, limit=5):
     """
     The official rate-limit is 5:5:60 -> stay right under it with 4:5
     """
-    offer_ids, query_id = fetch_offers_ids(league, want, have)
-    offers = fetch_offers_details(offer_ids, query_id, limit)
-    viable_offers = flip.filter_viable_offers(want, have, offers)
+    async with aiohttp.ClientSession() as sess:
 
-    return {
-        "offers": viable_offers,
-        "want": want,
-        "have": have,
-        "league": league
-    }
+        offer_ids = []
+        query_id = None
+        offers = []
 
-
-class RateLimitException(Exception):
-    pass
-
-
-@sleep_and_retry
-@limits(calls=4, period=5)
-def fetch_offers_ids(league, want, have):
-    url = "http://www.pathofexile.com/api/trade/exchange/{}".format(
-        urllib.parse.quote(league))
-    payload = {
-        "exchange": {
-            "status": {
-                "option": "online"
-            },
-            "have": [map_currency(have)],
-            "want": [map_currency(want)]
+        offer_id_url = "http://www.pathofexile.com/api/trade/exchange/{}".format(
+            urllib.parse.quote(league))
+        payload = {
+            "exchange": {
+                "status": {
+                    "option": "online"
+                },
+                "have": [map_currency(have)],
+                "want": [map_currency(want)]
+            }
         }
-    }
-    r = requests.post(url, json=payload)
-    json = r.json()
 
-    try:
-        offer_ids = json["result"]
-        query_id = json["id"]
-        return offer_ids, query_id
-    except KeyError:
-        raise RateLimitException("Reached rate-limit when fetching offer ids")
+        response = await sess.request("POST", url=offer_id_url, json=payload)
+        try:
+            json = await response.json()
+            offer_ids = json["result"]
+            query_id = json["id"]
+        except Exception:
+            raise
 
+        if len(offer_ids) != 0:
+            id_string = ",".join(offer_ids[:limit])
+            url = "http://www.pathofexile.com/api/trade/fetch/{}?query={}&exchange".format(
+                id_string, query_id)
 
-@sleep_and_retry
-@limits(calls=4, period=5)
-def fetch_offers_details(offer_ids, query_id, limit=5):
+            response = await sess.get(url)
+            try:
+                json = await response.json()
+                offers = [map_offers_details(x) for x in json["result"]]
+            except Exception:
+                raise
 
-    if len(offer_ids) is 0:
-        return []
+        viable_offers = flip.filter_viable_offers(want, have, offers)
 
-    id_string = ",".join(offer_ids[:limit])
-    url = "http://www.pathofexile.com/api/trade/fetch/{}?query={}&exchange".format(
-        id_string, query_id)
-    r = requests.get(url)
-    try:
-        result = r.json()["result"]
-        offers = [map_offers_details(x) for x in result]
-        return offers
-    except KeyError:
-        raise Exception("Reached rate-limit when feting offer details")
+        return {
+            "offers": viable_offers,
+            "want": want,
+            "have": have,
+            "league": league
+        }
 
 
 def map_offers_details(offer_details):
