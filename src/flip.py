@@ -6,7 +6,7 @@ def filter_viable_offers(want, have, offers):
     Filters offers for a given pair of currencies via specified tiers (see above)
     to filter out unrealistically good offers.
     """
-    return [x for x in offers if is_offer_viable(want, have, x) == True]
+    return [x for x in offers if is_offer_viable(want, have, x) is True]
 
 
 def is_offer_viable(want, have, offer):
