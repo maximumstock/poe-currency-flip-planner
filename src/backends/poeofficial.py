@@ -1,10 +1,10 @@
-import requests
-import urllib
-from src import constants
-from src import flip
-from src.backends.lib import AsyncRateLimiter
 import asyncio
+import urllib
+
 import aiohttp
+
+from src import constants, flip
+from src.backends.lib import AsyncRateLimiter
 
 
 def name():

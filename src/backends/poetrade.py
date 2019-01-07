@@ -1,7 +1,9 @@
+import concurrent.futures
+
 import requests
 from bs4 import BeautifulSoup
-import concurrent.futures
-from src import flip, constants
+
+from src import constants, flip
 
 
 def name():

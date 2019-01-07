@@ -1,8 +1,6 @@
 # Credit to http://markalansmith.com/2018/03/04/asyncio-rate-limit/
 
-import aiohttp
 import asyncio
-import async_timeout
 from collections import deque
 
 
