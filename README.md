@@ -52,7 +52,9 @@ in which succession currencies have to be traded to yield different profits/loss
 
 
 ## Installation
-`pip install -r requirements.txt`
+
+I use Python >=3.5 for everything. I haven't tried running it with different versions.
+You can install all dependencies by running `pip install -r requirements.txt`.
 
 
 ## How to use
