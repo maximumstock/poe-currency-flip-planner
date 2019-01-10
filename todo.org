@@ -66,6 +66,8 @@
 *** DONE [#B] Avoid poeofficial backend rate limit
     CLOSED: [2018-07-21 Sat 18:02]
 ** TODO [#C] Try to incorporate remainders of other currencies (due to the different contingents) in the efficiency comparison
+** TODO [#A] Benchmark poe.trade req/s performance
+  Depending on how strong the speedup compared to poeofficial is, it might be worth it to invest time to find a solution to the price-fixing filterting issue
 ** TODO [#C] Incorporate NPC trading ratios (unlimited stock)
 *** https://pathofexile.gamepedia.com/Currency#Vendor_prices_chart
 *** Master Progression: limited stock
