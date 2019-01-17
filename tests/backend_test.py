@@ -14,13 +14,11 @@ class BackendTest(unittest.TestCase):
         want = "Chaos Orb"
         have = "Chromatic Orb"
 
-        poe_official_single = poeofficial.fetch_offers_for_pair(
-            league, want, have)
         poe_official_many = poeofficial.fetch_offers(league, [(want, have)])
         poe_trade_single = poetrade.fetch_offers_for_pair(league, want, have)
         poe_trade_many = poetrade.fetch_offers(league, [(want, have)])
 
-        for struct in [poe_official_single] + poe_official_many + [poe_official_single] + poe_trade_many:
+        for struct in poe_official_many + [poe_trade_single] + poe_trade_many:
             assert ("offers" in struct.keys()) == True
             assert len(struct["offers"]) > 0
             assert struct["want"] == want
