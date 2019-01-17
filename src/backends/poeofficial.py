@@ -23,6 +23,9 @@ def fetch_offers(league, currency_pairs, limit=3):
 
 
 async def fetch_offers_async(league, currency_pairs, limit=3):
+    """
+    The official rate-limit is 5:5:60 -> stay right under it with 4:5
+    """
     rlimiter = AsyncRateLimiter(4, 5)
     sess = aiohttp.ClientSession()
     results = []
@@ -40,9 +43,6 @@ Private helpers below
 
 
 async def fetch_offers_for_pair(sess, league, want, have, limit=5):
-    """
-    The official rate-limit is 5:5:60 -> stay right under it with 4:5
-    """
     offer_ids = []
     query_id = None
     offers = []
