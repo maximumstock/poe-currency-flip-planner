@@ -40,6 +40,10 @@ in which succession currencies have to be traded to yield different profits/loss
 * The offered exchange rates and stocks are used to find the most profitable trading paths
   within the graph.
 
+At the end, it might look something like this:
+
+![](assets/result_screenshot.png)
+
 
 ## Problems
 * Exchange rates might not be online for long enough to complete complex transaction chains
