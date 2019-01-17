@@ -24,11 +24,13 @@ def fetch_offers(league, currency_pairs, limit=3):
 
 async def fetch_offers_async(league, currency_pairs, limit=3):
     rlimiter = AsyncRateLimiter(4, 5)
+    sess = aiohttp.ClientSession()
     results = []
     for p in currency_pairs:
         async with rlimiter:
-            result = await fetch_offers_for_pair(league, p[0], p[1], limit)
+            result = await fetch_offers_for_pair(sess, league, p[0], p[1], limit)
             results.append(result)
+    await sess.close()
     return results
 
 
@@ -37,56 +39,54 @@ Private helpers below
 """
 
 
-async def fetch_offers_for_pair(league, want, have, limit=5):
+async def fetch_offers_for_pair(sess, league, want, have, limit=5):
     """
     The official rate-limit is 5:5:60 -> stay right under it with 4:5
     """
-    async with aiohttp.ClientSession() as sess:
+    offer_ids = []
+    query_id = None
+    offers = []
 
-        offer_ids = []
-        query_id = None
-        offers = []
-
-        offer_id_url = "http://www.pathofexile.com/api/trade/exchange/{}".format(
-            urllib.parse.quote(league))
-        payload = {
-            "exchange": {
-                "status": {
-                    "option": "online"
-                },
-                "have": [map_currency(have)],
-                "want": [map_currency(want)]
-            }
+    offer_id_url = "http://www.pathofexile.com/api/trade/exchange/{}".format(
+        urllib.parse.quote(league))
+    payload = {
+        "exchange": {
+            "status": {
+                "option": "online"
+            },
+            "have": [map_currency(have)],
+            "want": [map_currency(want)]
         }
+    }
 
-        response = await sess.request("POST", url=offer_id_url, json=payload)
+    response = await sess.request("POST", url=offer_id_url, json=payload)
+    try:
+        json = await response.json()
+        offer_ids = json["result"]
+        query_id = json["id"]
+    except Exception:
+        raise
+
+    if len(offer_ids) != 0:
+        id_string = ",".join(offer_ids[:limit])
+        url = "http://www.pathofexile.com/api/trade/fetch/{}?query={}&exchange".format(
+            id_string, query_id)
+
+        response = await sess.get(url)
         try:
             json = await response.json()
-            offer_ids = json["result"]
-            query_id = json["id"]
+            offers = [map_offers_details(x) for x in json["result"]]
         except Exception:
             raise
 
-        if len(offer_ids) != 0:
-            id_string = ",".join(offer_ids[:limit])
-            url = "http://www.pathofexile.com/api/trade/fetch/{}?query={}&exchange".format(
-                id_string, query_id)
+    viable_offers = flip.filter_viable_offers(want, have, offers)
 
-            response = await sess.get(url)
-            try:
-                json = await response.json()
-                offers = [map_offers_details(x) for x in json["result"]]
-            except Exception:
-                raise
-
-        viable_offers = flip.filter_viable_offers(want, have, offers)
-
-        return {
-            "offers": viable_offers,
-            "want": want,
-            "have": have,
-            "league": league
-        }
+    return {
+        "offers": viable_offers,
+        "want": want,
+        "have": have,
+        "league": league
+    }
 
 
 def map_offers_details(offer_details):
