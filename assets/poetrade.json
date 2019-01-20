@@ -1,0 +1,4478 @@
+{
+  "Orb of Alteration": {
+    "id": 1,
+    "name": "Orb of Alteration",
+    "currency": true,
+    "non_currency_sales_target": false
+  },
+  "Orb of Fusing": {
+    "id": 2,
+    "name": "Orb of Fusing",
+    "currency": true,
+    "non_currency_sales_target": false
+  },
+  "Orb of Alchemy": {
+    "id": 3,
+    "name": "Orb of Alchemy",
+    "currency": true,
+    "non_currency_sales_target": false
+  },
+  "Chaos Orb": {
+    "id": 4,
+    "name": "Chaos Orb",
+    "currency": true,
+    "non_currency_sales_target": true
+  },
+  "Gemcutter's Prism": {
+    "id": 5,
+    "name": "Gemcutter's Prism",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Exalted Orb": {
+    "id": 6,
+    "name": "Exalted Orb",
+    "currency": true,
+    "non_currency_sales_target": true
+  },
+  "Chromatic Orb": {
+    "id": 7,
+    "name": "Chromatic Orb",
+    "currency": true,
+    "non_currency_sales_target": false
+  },
+  "Jeweller's Orb": {
+    "id": 8,
+    "name": "Jeweller's Orb",
+    "currency": true,
+    "non_currency_sales_target": false
+  },
+  "Orb of Chance": {
+    "id": 9,
+    "name": "Orb of Chance",
+    "currency": true,
+    "non_currency_sales_target": false
+  },
+  "Cartographer's Chisel": {
+    "id": 10,
+    "name": "Cartographer's Chisel",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Orb of Scouring": {
+    "id": 11,
+    "name": "Orb of Scouring",
+    "currency": true,
+    "non_currency_sales_target": false
+  },
+  "Blessed Orb": {
+    "id": 12,
+    "name": "Blessed Orb",
+    "currency": true,
+    "non_currency_sales_target": false
+  },
+  "Orb of Regret": {
+    "id": 13,
+    "name": "Orb of Regret",
+    "currency": true,
+    "non_currency_sales_target": false
+  },
+  "Regal Orb": {
+    "id": 14,
+    "name": "Regal Orb",
+    "currency": true,
+    "non_currency_sales_target": false
+  },
+  "Divine Orb": {
+    "id": 15,
+    "name": "Divine Orb",
+    "currency": true,
+    "non_currency_sales_target": false
+  },
+  "Vaal Orb": {
+    "id": 16,
+    "name": "Vaal Orb",
+    "currency": true,
+    "non_currency_sales_target": false
+  },
+  "Glassblower's Bauble": {
+    "id": 21,
+    "name": "Glassblower's Bauble",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Orb of Transmutation": {
+    "id": 22,
+    "name": "Orb of Transmutation",
+    "currency": true,
+    "non_currency_sales_target": false
+  },
+  "Orb of Augmentation": {
+    "id": 23,
+    "name": "Orb of Augmentation",
+    "currency": true,
+    "non_currency_sales_target": false
+  },
+  "Mirror of Kalandra": {
+    "id": 24,
+    "name": "Mirror of Kalandra",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Eternal Orb": {
+    "id": 25,
+    "name": "Eternal Orb",
+    "currency": true,
+    "non_currency_sales_target": false
+  },
+  "Perandus Coin": {
+    "id": 26,
+    "name": "Perandus Coin",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Sacrifice at Dusk": {
+    "id": 27,
+    "name": "Sacrifice at Dusk",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Sacrifice at Midnight": {
+    "id": 28,
+    "name": "Sacrifice at Midnight",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Sacrifice at Dawn": {
+    "id": 29,
+    "name": "Sacrifice at Dawn",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Sacrifice at Noon": {
+    "id": 30,
+    "name": "Sacrifice at Noon",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Mortal Grief": {
+    "id": 31,
+    "name": "Mortal Grief",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Mortal Rage": {
+    "id": 32,
+    "name": "Mortal Rage",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Mortal Hope": {
+    "id": 33,
+    "name": "Mortal Hope",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Mortal Ignorance": {
+    "id": 34,
+    "name": "Mortal Ignorance",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Eber's Key": {
+    "id": 36,
+    "name": "Eber's Key",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Yriel's Key": {
+    "id": 37,
+    "name": "Yriel's Key",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Inya's Key": {
+    "id": 38,
+    "name": "Inya's Key",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Volkuur's Key": {
+    "id": 39,
+    "name": "Volkuur's Key",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Offering to the Goddess": {
+    "id": 40,
+    "name": "Offering to the Goddess",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Fragment of the Hydra": {
+    "id": 41,
+    "name": "Fragment of the Hydra",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Fragment of the Phoenix": {
+    "id": 42,
+    "name": "Fragment of the Phoenix",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Fragment of the Minotaur": {
+    "id": 43,
+    "name": "Fragment of the Minotaur",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Fragment of the Chimera": {
+    "id": 44,
+    "name": "Fragment of the Chimera",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Apprentice Cartographer's Sextant": {
+    "id": 45,
+    "name": "Apprentice Cartographer's Sextant",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Journeyman Cartographer's Sextant": {
+    "id": 46,
+    "name": "Journeyman Cartographer's Sextant",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Master Cartographer's Sextant": {
+    "id": 47,
+    "name": "Master Cartographer's Sextant",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Sacrifice set": {
+    "id": 48,
+    "name": "Sacrifice set",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Mortal set": {
+    "id": 49,
+    "name": "Mortal set",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Pale Court set": {
+    "id": 50,
+    "name": "Pale Court set",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaper set": {
+    "id": 51,
+    "name": "Shaper set",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Splinter of Xoph": {
+    "id": 52,
+    "name": "Splinter of Xoph",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Splinter of Tul": {
+    "id": 53,
+    "name": "Splinter of Tul",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Splinter of Esh": {
+    "id": 54,
+    "name": "Splinter of Esh",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Splinter of Uul-Netol": {
+    "id": 55,
+    "name": "Splinter of Uul-Netol",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Splinter of Chayula": {
+    "id": 56,
+    "name": "Splinter of Chayula",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Blessing of Xoph": {
+    "id": 57,
+    "name": "Blessing of Xoph",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Blessing of Tul": {
+    "id": 58,
+    "name": "Blessing of Tul",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Blessing of Esh": {
+    "id": 59,
+    "name": "Blessing of Esh",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Blessing of Uul-Netol": {
+    "id": 60,
+    "name": "Blessing of Uul-Netol",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Blessing of Chayula": {
+    "id": 61,
+    "name": "Blessing of Chayula",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Xoph's Breachstone": {
+    "id": 62,
+    "name": "Xoph's Breachstone",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Tul's Breachstone": {
+    "id": 63,
+    "name": "Tul's Breachstone",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Esh's Breachstone": {
+    "id": 64,
+    "name": "Esh's Breachstone",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Uul-Netol's Breachstone": {
+    "id": 65,
+    "name": "Uul-Netol's Breachstone",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Chayula's Breachstone": {
+    "id": 66,
+    "name": "Chayula's Breachstone",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Screaming Essence of Anger": {
+    "id": 67,
+    "name": "Screaming Essence of Anger",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shrieking Essence of Anger": {
+    "id": 68,
+    "name": "Shrieking Essence of Anger",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Deafening Essence of Anger": {
+    "id": 69,
+    "name": "Deafening Essence of Anger",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Screaming Essence of Anguish": {
+    "id": 70,
+    "name": "Screaming Essence of Anguish",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shrieking Essence of Anguish": {
+    "id": 71,
+    "name": "Shrieking Essence of Anguish",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Deafening Essence of Anguish": {
+    "id": 72,
+    "name": "Deafening Essence of Anguish",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Screaming Essence of Contempt": {
+    "id": 73,
+    "name": "Screaming Essence of Contempt",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shrieking Essence of Contempt": {
+    "id": 74,
+    "name": "Shrieking Essence of Contempt",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Deafening Essence of Contempt": {
+    "id": 75,
+    "name": "Deafening Essence of Contempt",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Essence of Delirium": {
+    "id": 76,
+    "name": "Essence of Delirium",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Screaming Essence of Doubt": {
+    "id": 77,
+    "name": "Screaming Essence of Doubt",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shrieking Essence of Doubt": {
+    "id": 78,
+    "name": "Shrieking Essence of Doubt",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Deafening Essence of Doubt": {
+    "id": 79,
+    "name": "Deafening Essence of Doubt",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Screaming Essence of Dread": {
+    "id": 80,
+    "name": "Screaming Essence of Dread",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shrieking Essence of Dread": {
+    "id": 81,
+    "name": "Shrieking Essence of Dread",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Deafening Essence of Dread": {
+    "id": 82,
+    "name": "Deafening Essence of Dread",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Screaming Essence of Envy": {
+    "id": 83,
+    "name": "Screaming Essence of Envy",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shrieking Essence of Envy": {
+    "id": 84,
+    "name": "Shrieking Essence of Envy",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Deafening Essence of Envy": {
+    "id": 85,
+    "name": "Deafening Essence of Envy",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Screaming Essence of Fear": {
+    "id": 86,
+    "name": "Screaming Essence of Fear",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shrieking Essence of Fear": {
+    "id": 87,
+    "name": "Shrieking Essence of Fear",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Deafening Essence of Fear": {
+    "id": 88,
+    "name": "Deafening Essence of Fear",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Screaming Essence of Greed": {
+    "id": 89,
+    "name": "Screaming Essence of Greed",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shrieking Essence of Greed": {
+    "id": 90,
+    "name": "Shrieking Essence of Greed",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Deafening Essence of Greed": {
+    "id": 91,
+    "name": "Deafening Essence of Greed",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Screaming Essence of Hatred": {
+    "id": 92,
+    "name": "Screaming Essence of Hatred",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shrieking Essence of Hatred": {
+    "id": 93,
+    "name": "Shrieking Essence of Hatred",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Deafening Essence of Hatred": {
+    "id": 94,
+    "name": "Deafening Essence of Hatred",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Essence of Horror": {
+    "id": 95,
+    "name": "Essence of Horror",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Essence of Hysteria": {
+    "id": 96,
+    "name": "Essence of Hysteria",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Essence of Insanity": {
+    "id": 97,
+    "name": "Essence of Insanity",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Screaming Essence of Loathing": {
+    "id": 98,
+    "name": "Screaming Essence of Loathing",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shrieking Essence of Loathing": {
+    "id": 99,
+    "name": "Shrieking Essence of Loathing",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Deafening Essence of Loathing": {
+    "id": 100,
+    "name": "Deafening Essence of Loathing",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Screaming Essence of Misery": {
+    "id": 101,
+    "name": "Screaming Essence of Misery",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shrieking Essence of Misery": {
+    "id": 102,
+    "name": "Shrieking Essence of Misery",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Deafening Essence of Misery": {
+    "id": 103,
+    "name": "Deafening Essence of Misery",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Screaming Essence of Rage": {
+    "id": 104,
+    "name": "Screaming Essence of Rage",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shrieking Essence of Rage": {
+    "id": 105,
+    "name": "Shrieking Essence of Rage",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Deafening Essence of Rage": {
+    "id": 106,
+    "name": "Deafening Essence of Rage",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Screaming Essence of Scorn": {
+    "id": 107,
+    "name": "Screaming Essence of Scorn",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shrieking Essence of Scorn": {
+    "id": 108,
+    "name": "Shrieking Essence of Scorn",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Deafening Essence of Scorn": {
+    "id": 109,
+    "name": "Deafening Essence of Scorn",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Screaming Essence of Sorrow": {
+    "id": 110,
+    "name": "Screaming Essence of Sorrow",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shrieking Essence of Sorrow": {
+    "id": 111,
+    "name": "Shrieking Essence of Sorrow",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Deafening Essence of Sorrow": {
+    "id": 112,
+    "name": "Deafening Essence of Sorrow",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Screaming Essence of Spite": {
+    "id": 113,
+    "name": "Screaming Essence of Spite",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shrieking Essence of Spite": {
+    "id": 114,
+    "name": "Shrieking Essence of Spite",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Deafening Essence of Spite": {
+    "id": 115,
+    "name": "Deafening Essence of Spite",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Screaming Essence of Suffering": {
+    "id": 116,
+    "name": "Screaming Essence of Suffering",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shrieking Essence of Suffering": {
+    "id": 117,
+    "name": "Shrieking Essence of Suffering",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Deafening Essence of Suffering": {
+    "id": 118,
+    "name": "Deafening Essence of Suffering",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Screaming Essence of Torment": {
+    "id": 119,
+    "name": "Screaming Essence of Torment",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shrieking Essence of Torment": {
+    "id": 120,
+    "name": "Shrieking Essence of Torment",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Deafening Essence of Torment": {
+    "id": 121,
+    "name": "Deafening Essence of Torment",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Screaming Essence of Woe": {
+    "id": 122,
+    "name": "Screaming Essence of Woe",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shrieking Essence of Woe": {
+    "id": 123,
+    "name": "Shrieking Essence of Woe",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Deafening Essence of Woe": {
+    "id": 124,
+    "name": "Deafening Essence of Woe",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Screaming Essence of Wrath": {
+    "id": 125,
+    "name": "Screaming Essence of Wrath",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shrieking Essence of Wrath": {
+    "id": 126,
+    "name": "Shrieking Essence of Wrath",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Deafening Essence of Wrath": {
+    "id": 127,
+    "name": "Deafening Essence of Wrath",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Screaming Essence of Zeal": {
+    "id": 128,
+    "name": "Screaming Essence of Zeal",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shrieking Essence of Zeal": {
+    "id": 129,
+    "name": "Shrieking Essence of Zeal",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Deafening Essence of Zeal": {
+    "id": 130,
+    "name": "Deafening Essence of Zeal",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Remnant of Corruption": {
+    "id": 131,
+    "name": "Remnant of Corruption",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "A Mother's Parting Gift": {
+    "id": 132,
+    "name": "A Mother's Parting Gift",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Abandoned Wealth": {
+    "id": 133,
+    "name": "Abandoned Wealth",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Anarchy's Price": {
+    "id": 134,
+    "name": "Anarchy's Price",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Assassin's Favour": {
+    "id": 135,
+    "name": "Assassin's Favour",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Atziri's Arsenal": {
+    "id": 136,
+    "name": "Atziri's Arsenal",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Audacity": {
+    "id": 137,
+    "name": "Audacity",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Birth of the Three": {
+    "id": 138,
+    "name": "Birth of the Three",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Blind Venture": {
+    "id": 139,
+    "name": "Blind Venture",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Boundless Realms": {
+    "id": 140,
+    "name": "Boundless Realms",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Bowyer's Dream": {
+    "id": 141,
+    "name": "Bowyer's Dream",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Call to the First Ones": {
+    "id": 142,
+    "name": "Call to the First Ones",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Cartographer's Delight": {
+    "id": 143,
+    "name": "Cartographer's Delight",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Chaotic Disposition": {
+    "id": 144,
+    "name": "Chaotic Disposition",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Coveted Possession": {
+    "id": 145,
+    "name": "Coveted Possession",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Death": {
+    "id": 146,
+    "name": "Death",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Destined to Crumble": {
+    "id": 147,
+    "name": "Destined to Crumble",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Dialla's Subjugation": {
+    "id": 148,
+    "name": "Dialla's Subjugation",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Doedre's Madness": {
+    "id": 149,
+    "name": "Doedre's Madness",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Dying Anguish": {
+    "id": 150,
+    "name": "Dying Anguish",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Earth Drinker": {
+    "id": 151,
+    "name": "Earth Drinker",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Emperor of Purity": {
+    "id": 152,
+    "name": "Emperor of Purity",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Emperor's Luck": {
+    "id": 153,
+    "name": "Emperor's Luck",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Gemcutter's Promise": {
+    "id": 154,
+    "name": "Gemcutter's Promise",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Gift of the Gemling Queen": {
+    "id": 155,
+    "name": "Gift of the Gemling Queen",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Glimmer of Hope": {
+    "id": 156,
+    "name": "Glimmer of Hope",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Grave Knowledge": {
+    "id": 157,
+    "name": "Grave Knowledge",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Her Mask": {
+    "id": 158,
+    "name": "Her Mask",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Heterochromia": {
+    "id": 159,
+    "name": "Heterochromia",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Hope": {
+    "id": 160,
+    "name": "Hope",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "House of Mirrors": {
+    "id": 161,
+    "name": "House of Mirrors",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Hubris": {
+    "id": 162,
+    "name": "Hubris",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Humility": {
+    "id": 163,
+    "name": "Humility",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Hunter's Resolve": {
+    "id": 164,
+    "name": "Hunter's Resolve",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Hunter's Reward": {
+    "id": 165,
+    "name": "Hunter's Reward",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Jack in the Box": {
+    "id": 166,
+    "name": "Jack in the Box",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Lantador's Lost Love": {
+    "id": 167,
+    "name": "Lantador's Lost Love",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Last Hope": {
+    "id": 168,
+    "name": "Last Hope",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Light and Truth": {
+    "id": 169,
+    "name": "Light and Truth",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Lingering Remnants": {
+    "id": 170,
+    "name": "Lingering Remnants",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Lost Worlds": {
+    "id": 171,
+    "name": "Lost Worlds",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Loyalty": {
+    "id": 172,
+    "name": "Loyalty",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Lucky Connections": {
+    "id": 173,
+    "name": "Lucky Connections",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Lucky Deck": {
+    "id": 174,
+    "name": "Lucky Deck",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Lysah's Respite": {
+    "id": 175,
+    "name": "Lysah's Respite",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Mawr Blaidd": {
+    "id": 176,
+    "name": "Mawr Blaidd",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Merciless Armament": {
+    "id": 177,
+    "name": "Merciless Armament",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Might is Right": {
+    "id": 178,
+    "name": "Might is Right",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Mitts": {
+    "id": 179,
+    "name": "Mitts",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Pride Before the Fall": {
+    "id": 180,
+    "name": "Pride Before the Fall",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Prosperity": {
+    "id": 181,
+    "name": "Prosperity",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Rain Tempter": {
+    "id": 182,
+    "name": "Rain Tempter",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Rain of Chaos": {
+    "id": 183,
+    "name": "Rain of Chaos",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Rats": {
+    "id": 184,
+    "name": "Rats",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Scholar of the Seas": {
+    "id": 185,
+    "name": "Scholar of the Seas",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shard of Fate": {
+    "id": 186,
+    "name": "Shard of Fate",
+    "currency": true,
+    "non_currency_sales_target": false
+  },
+  "Struck by Lightning": {
+    "id": 187,
+    "name": "Struck by Lightning",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Aesthete": {
+    "id": 188,
+    "name": "The Aesthete",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Arena Champion": {
+    "id": 189,
+    "name": "The Arena Champion",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Artist": {
+    "id": 190,
+    "name": "The Artist",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Avenger": {
+    "id": 191,
+    "name": "The Avenger",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Battle Born": {
+    "id": 192,
+    "name": "The Battle Born",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Betrayal": {
+    "id": 193,
+    "name": "The Betrayal",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Body": {
+    "id": 194,
+    "name": "The Body",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Brittle Emperor": {
+    "id": 195,
+    "name": "The Brittle Emperor",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Calling": {
+    "id": 196,
+    "name": "The Calling",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Carrion Crow": {
+    "id": 197,
+    "name": "The Carrion Crow",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Cartographer": {
+    "id": 198,
+    "name": "The Cartographer",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Cataclysm": {
+    "id": 199,
+    "name": "The Cataclysm",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Catalyst": {
+    "id": 200,
+    "name": "The Catalyst",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Celestial Justicar": {
+    "id": 201,
+    "name": "The Celestial Justicar",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Chains that Bind": {
+    "id": 202,
+    "name": "The Chains that Bind",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Coming Storm": {
+    "id": 203,
+    "name": "The Coming Storm",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Conduit": {
+    "id": 204,
+    "name": "The Conduit",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Cursed King": {
+    "id": 205,
+    "name": "The Cursed King",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Dapper Prodigy": {
+    "id": 206,
+    "name": "The Dapper Prodigy",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Dark Mage": {
+    "id": 207,
+    "name": "The Dark Mage",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Demoness": {
+    "id": 208,
+    "name": "The Demoness",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Devastator": {
+    "id": 209,
+    "name": "The Devastator",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Doctor": {
+    "id": 210,
+    "name": "The Doctor",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Doppelganger": {
+    "id": 211,
+    "name": "The Doppelganger",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Dragon": {
+    "id": 212,
+    "name": "The Dragon",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Dragon's Heart": {
+    "id": 213,
+    "name": "The Dragon's Heart",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Drunken Aristocrat": {
+    "id": 214,
+    "name": "The Drunken Aristocrat",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Encroaching Darkness": {
+    "id": 215,
+    "name": "The Encroaching Darkness",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Endurance": {
+    "id": 216,
+    "name": "The Endurance",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Enlightened": {
+    "id": 217,
+    "name": "The Enlightened",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Ethereal": {
+    "id": 218,
+    "name": "The Ethereal",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Explorer": {
+    "id": 219,
+    "name": "The Explorer",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Feast": {
+    "id": 220,
+    "name": "The Feast",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Fiend": {
+    "id": 221,
+    "name": "The Fiend",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Fletcher": {
+    "id": 222,
+    "name": "The Fletcher",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Flora's Gift": {
+    "id": 223,
+    "name": "The Flora's Gift",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Formless Sea": {
+    "id": 224,
+    "name": "The Formless Sea",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Forsaken": {
+    "id": 225,
+    "name": "The Forsaken",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Fox": {
+    "id": 226,
+    "name": "The Fox",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Gambler": {
+    "id": 227,
+    "name": "The Gambler",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Garish Power": {
+    "id": 228,
+    "name": "The Garish Power",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Gemcutter": {
+    "id": 229,
+    "name": "The Gemcutter",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Gentleman": {
+    "id": 230,
+    "name": "The Gentleman",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Gladiator": {
+    "id": 231,
+    "name": "The Gladiator",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Harvester": {
+    "id": 232,
+    "name": "The Harvester",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Hermit": {
+    "id": 233,
+    "name": "The Hermit",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Hoarder": {
+    "id": 234,
+    "name": "The Hoarder",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Hunger": {
+    "id": 235,
+    "name": "The Hunger",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Immortal": {
+    "id": 236,
+    "name": "The Immortal",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Incantation": {
+    "id": 237,
+    "name": "The Incantation",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Inoculated": {
+    "id": 238,
+    "name": "The Inoculated",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Inventor": {
+    "id": 239,
+    "name": "The Inventor",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Jester": {
+    "id": 240,
+    "name": "The Jester",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The King's Blade": {
+    "id": 241,
+    "name": "The King's Blade",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The King's Heart": {
+    "id": 242,
+    "name": "The King's Heart",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Last One Standing": {
+    "id": 243,
+    "name": "The Last One Standing",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Lich": {
+    "id": 244,
+    "name": "The Lich",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Lion": {
+    "id": 245,
+    "name": "The Lion",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Lord in Black": {
+    "id": 246,
+    "name": "The Lord in Black",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Lover": {
+    "id": 247,
+    "name": "The Lover",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Lunaris Priestess": {
+    "id": 248,
+    "name": "The Lunaris Priestess",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Mercenary": {
+    "id": 249,
+    "name": "The Mercenary",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Metalsmith's Gift": {
+    "id": 250,
+    "name": "The Metalsmith's Gift",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Oath": {
+    "id": 251,
+    "name": "The Oath",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Offering": {
+    "id": 252,
+    "name": "The Offering",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The One With All": {
+    "id": 253,
+    "name": "The One With All",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Opulent": {
+    "id": 254,
+    "name": "The Opulent",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Pack Leader": {
+    "id": 255,
+    "name": "The Pack Leader",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Pact": {
+    "id": 256,
+    "name": "The Pact",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Penitent": {
+    "id": 257,
+    "name": "The Penitent",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Poet": {
+    "id": 258,
+    "name": "The Poet",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Polymath": {
+    "id": 259,
+    "name": "The Polymath",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Porcupine": {
+    "id": 260,
+    "name": "The Porcupine",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Queen": {
+    "id": 261,
+    "name": "The Queen",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Rabid Rhoa": {
+    "id": 262,
+    "name": "The Rabid Rhoa",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Risk": {
+    "id": 263,
+    "name": "The Risk",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Road to Power": {
+    "id": 264,
+    "name": "The Road to Power",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Saint's Treasure": {
+    "id": 265,
+    "name": "The Saint's Treasure",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Scarred Meadow": {
+    "id": 266,
+    "name": "The Scarred Meadow",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Scavenger": {
+    "id": 267,
+    "name": "The Scavenger",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Scholar": {
+    "id": 268,
+    "name": "The Scholar",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Sephirot": {
+    "id": 269,
+    "name": "The Sephirot",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Sigil": {
+    "id": 270,
+    "name": "The Sigil",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Siren": {
+    "id": 271,
+    "name": "The Siren",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Soul": {
+    "id": 272,
+    "name": "The Soul",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Spark and the Flame": {
+    "id": 273,
+    "name": "The Spark and the Flame",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Spoiled Prince": {
+    "id": 274,
+    "name": "The Spoiled Prince",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Standoff": {
+    "id": 275,
+    "name": "The Standoff",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Stormcaller": {
+    "id": 276,
+    "name": "The Stormcaller",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Summoner": {
+    "id": 277,
+    "name": "The Summoner",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Sun": {
+    "id": 278,
+    "name": "The Sun",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Surgeon": {
+    "id": 279,
+    "name": "The Surgeon",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Surveyor": {
+    "id": 280,
+    "name": "The Surveyor",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Survivalist": {
+    "id": 281,
+    "name": "The Survivalist",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Thaumaturgist": {
+    "id": 282,
+    "name": "The Thaumaturgist",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Throne": {
+    "id": 283,
+    "name": "The Throne",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Tower": {
+    "id": 284,
+    "name": "The Tower",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Traitor": {
+    "id": 285,
+    "name": "The Traitor",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Trial": {
+    "id": 286,
+    "name": "The Trial",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Twins": {
+    "id": 287,
+    "name": "The Twins",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Tyrant": {
+    "id": 288,
+    "name": "The Tyrant",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Union": {
+    "id": 289,
+    "name": "The Union",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Valkyrie": {
+    "id": 290,
+    "name": "The Valkyrie",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Valley of Steel Boxes": {
+    "id": 291,
+    "name": "The Valley of Steel Boxes",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Vast": {
+    "id": 292,
+    "name": "The Vast",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Visionary": {
+    "id": 293,
+    "name": "The Visionary",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Void": {
+    "id": 294,
+    "name": "The Void",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Warden": {
+    "id": 295,
+    "name": "The Warden",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Warlord": {
+    "id": 296,
+    "name": "The Warlord",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Watcher": {
+    "id": 297,
+    "name": "The Watcher",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Web": {
+    "id": 298,
+    "name": "The Web",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Wind": {
+    "id": 299,
+    "name": "The Wind",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Wolf": {
+    "id": 300,
+    "name": "The Wolf",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Wolf's Shadow": {
+    "id": 301,
+    "name": "The Wolf's Shadow",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Wolven King's Bite": {
+    "id": 302,
+    "name": "The Wolven King's Bite",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Wolverine": {
+    "id": 303,
+    "name": "The Wolverine",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Wrath": {
+    "id": 304,
+    "name": "The Wrath",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Wretched": {
+    "id": 305,
+    "name": "The Wretched",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Three Faces in the Dark": {
+    "id": 306,
+    "name": "Three Faces in the Dark",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Thunderous Skies": {
+    "id": 307,
+    "name": "Thunderous Skies",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Time-Lost Relic": {
+    "id": 308,
+    "name": "Time-Lost Relic",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Tranquillity": {
+    "id": 309,
+    "name": "Tranquillity",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Treasure Hunter": {
+    "id": 310,
+    "name": "Treasure Hunter",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Turn the Other Cheek": {
+    "id": 311,
+    "name": "Turn the Other Cheek",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Vinia's Token": {
+    "id": 312,
+    "name": "Vinia's Token",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Volatile Power": {
+    "id": 313,
+    "name": "Volatile Power",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Wealth and Power": {
+    "id": 314,
+    "name": "Wealth and Power",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Abyss": {
+    "id": 315,
+    "name": "Abyss",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Academy": {
+    "id": 316,
+    "name": "Academy",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Acid Lakes": {
+    "id": 317,
+    "name": "Acid Lakes",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Arachnid Nest": {
+    "id": 318,
+    "name": "Arachnid Nest",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Arachnid Tomb": {
+    "id": 319,
+    "name": "Arachnid Tomb",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Arcade": {
+    "id": 320,
+    "name": "Arcade",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Arena": {
+    "id": 321,
+    "name": "Arena",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Arid Lake": {
+    "id": 322,
+    "name": "Arid Lake",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Armoury": {
+    "id": 323,
+    "name": "Armoury",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Arsenal": {
+    "id": 324,
+    "name": "Arsenal",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Ashen Wood": {
+    "id": 325,
+    "name": "Ashen Wood",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Atoll": {
+    "id": 326,
+    "name": "Atoll",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Barrows": {
+    "id": 327,
+    "name": "Barrows",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Bazaar": {
+    "id": 328,
+    "name": "Bazaar",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Beach": {
+    "id": 329,
+    "name": "Beach",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Beacon": {
+    "id": 330,
+    "name": "Beacon",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Bog": {
+    "id": 331,
+    "name": "Bog",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Burial Chambers": {
+    "id": 332,
+    "name": "Burial Chambers",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Canyon": {
+    "id": 333,
+    "name": "Canyon",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Castle Ruins": {
+    "id": 334,
+    "name": "Castle Ruins",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Catacombs": {
+    "id": 335,
+    "name": "Catacombs",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Cavern": {
+    "id": 336,
+    "name": "Cavern",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Cells": {
+    "id": 337,
+    "name": "Cells",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Cemetery": {
+    "id": 338,
+    "name": "Cemetery",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Channel": {
+    "id": 339,
+    "name": "Channel",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Chateau": {
+    "id": 340,
+    "name": "Chateau",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Colonnade": {
+    "id": 341,
+    "name": "Colonnade",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Colosseum": {
+    "id": 342,
+    "name": "Colosseum",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Core": {
+    "id": 343,
+    "name": "Core",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Courtyard": {
+    "id": 344,
+    "name": "Courtyard",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Coves": {
+    "id": 345,
+    "name": "Coves",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Crematorium": {
+    "id": 346,
+    "name": "Crematorium",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Crypt": {
+    "id": 347,
+    "name": "Crypt",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Crystal Ore": {
+    "id": 348,
+    "name": "Crystal Ore",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Dark Forest": {
+    "id": 349,
+    "name": "Dark Forest",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Desert": {
+    "id": 350,
+    "name": "Desert",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Dunes": {
+    "id": 351,
+    "name": "Dunes",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Dungeon": {
+    "id": 352,
+    "name": "Dungeon",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Estuary": {
+    "id": 353,
+    "name": "Estuary",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Excavation": {
+    "id": 354,
+    "name": "Excavation",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Factory": {
+    "id": 355,
+    "name": "Factory",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Forge of the Phoenix": {
+    "id": 356,
+    "name": "Forge of the Phoenix",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Ghetto": {
+    "id": 357,
+    "name": "Ghetto",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Gorge": {
+    "id": 358,
+    "name": "Gorge",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Graveyard": {
+    "id": 359,
+    "name": "Graveyard",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Grotto": {
+    "id": 360,
+    "name": "Grotto",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "High Gardens": {
+    "id": 361,
+    "name": "High Gardens",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Ivory Temple": {
+    "id": 362,
+    "name": "Ivory Temple",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Jungle Valley": {
+    "id": 363,
+    "name": "Jungle Valley",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Lair": {
+    "id": 364,
+    "name": "Lair",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Lair of the Hydra": {
+    "id": 365,
+    "name": "Lair of the Hydra",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Malformation": {
+    "id": 366,
+    "name": "Malformation",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Marshes": {
+    "id": 367,
+    "name": "Marshes",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Maze": {
+    "id": 368,
+    "name": "Maze",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Maze of the Minotaur": {
+    "id": 369,
+    "name": "Maze of the Minotaur",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Mesa": {
+    "id": 370,
+    "name": "Mesa",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Mineral Pools": {
+    "id": 371,
+    "name": "Mineral Pools",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Mud Geyser": {
+    "id": 372,
+    "name": "Mud Geyser",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Museum": {
+    "id": 373,
+    "name": "Museum",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Necropolis": {
+    "id": 374,
+    "name": "Necropolis",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Oasis": {
+    "id": 375,
+    "name": "Oasis",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Orchard": {
+    "id": 376,
+    "name": "Orchard",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Overgrown Ruin": {
+    "id": 377,
+    "name": "Overgrown Ruin",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Overgrown Shrine": {
+    "id": 378,
+    "name": "Overgrown Shrine",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Palace": {
+    "id": 379,
+    "name": "Palace",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Peninsula": {
+    "id": 380,
+    "name": "Peninsula",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Phantasmagoria": {
+    "id": 381,
+    "name": "Phantasmagoria",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Pier": {
+    "id": 382,
+    "name": "Pier",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Pit": {
+    "id": 383,
+    "name": "Pit",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Pit of the Chimera": {
+    "id": 384,
+    "name": "Pit of the Chimera",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Plateau": {
+    "id": 385,
+    "name": "Plateau",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Plaza": {
+    "id": 386,
+    "name": "Plaza",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Precinct": {
+    "id": 387,
+    "name": "Precinct",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Primordial Pool": {
+    "id": 388,
+    "name": "Primordial Pool",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Promenade": {
+    "id": 389,
+    "name": "Promenade",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Quarry": {
+    "id": 390,
+    "name": "Quarry",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Port": {
+    "id": 391,
+    "name": "Port",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Racecourse": {
+    "id": 392,
+    "name": "Racecourse",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Ramparts": {
+    "id": 393,
+    "name": "Ramparts",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Reef": {
+    "id": 394,
+    "name": "Reef",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Residence": {
+    "id": 395,
+    "name": "Residence",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Scriptorium": {
+    "id": 396,
+    "name": "Scriptorium",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Sewer": {
+    "id": 397,
+    "name": "Sewer",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Academy": {
+    "id": 398,
+    "name": "Shaped Academy",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Acid Lakes": {
+    "id": 399,
+    "name": "Shaped Acid Lakes",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Arachnid Nest": {
+    "id": 400,
+    "name": "Shaped Arachnid Nest",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Arachnid Tomb": {
+    "id": 401,
+    "name": "Shaped Arachnid Tomb",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Arcade": {
+    "id": 402,
+    "name": "Shaped Arcade",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Arena": {
+    "id": 403,
+    "name": "Shaped Arena",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Arid Lake": {
+    "id": 404,
+    "name": "Shaped Arid Lake",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Armoury": {
+    "id": 405,
+    "name": "Shaped Armoury",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Arsenal": {
+    "id": 406,
+    "name": "Shaped Arsenal",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Ashen Wood": {
+    "id": 407,
+    "name": "Shaped Ashen Wood",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Atoll": {
+    "id": 408,
+    "name": "Shaped Atoll",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Barrows": {
+    "id": 409,
+    "name": "Shaped Barrows",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Beach": {
+    "id": 410,
+    "name": "Shaped Beach",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Bog": {
+    "id": 411,
+    "name": "Shaped Bog",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Burial Chambers": {
+    "id": 412,
+    "name": "Shaped Burial Chambers",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Canyon": {
+    "id": 413,
+    "name": "Shaped Canyon",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Castle Ruins": {
+    "id": 414,
+    "name": "Shaped Castle Ruins",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Catacombs": {
+    "id": 415,
+    "name": "Shaped Catacombs",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Cavern": {
+    "id": 416,
+    "name": "Shaped Cavern",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Cells": {
+    "id": 417,
+    "name": "Shaped Cells",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Cemetery": {
+    "id": 418,
+    "name": "Shaped Cemetery",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Channel": {
+    "id": 419,
+    "name": "Shaped Channel",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Colonnade": {
+    "id": 420,
+    "name": "Shaped Colonnade",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Courtyard": {
+    "id": 421,
+    "name": "Shaped Courtyard",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Coves": {
+    "id": 422,
+    "name": "Shaped Coves",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Crypt": {
+    "id": 423,
+    "name": "Shaped Crypt",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Crystal Ore": {
+    "id": 424,
+    "name": "Shaped Crystal Ore",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Desert": {
+    "id": 425,
+    "name": "Shaped Desert",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Dunes": {
+    "id": 426,
+    "name": "Shaped Dunes",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Dungeon": {
+    "id": 427,
+    "name": "Shaped Dungeon",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Factory": {
+    "id": 428,
+    "name": "Shaped Factory",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Ghetto": {
+    "id": 429,
+    "name": "Shaped Ghetto",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Graveyard": {
+    "id": 430,
+    "name": "Shaped Graveyard",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Grotto": {
+    "id": 431,
+    "name": "Shaped Grotto",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Jungle Valley": {
+    "id": 432,
+    "name": "Shaped Jungle Valley",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Malformation": {
+    "id": 433,
+    "name": "Shaped Malformation",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Marshes": {
+    "id": 434,
+    "name": "Shaped Marshes",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Mesa": {
+    "id": 435,
+    "name": "Shaped Mesa",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Mud Geyser": {
+    "id": 436,
+    "name": "Shaped Mud Geyser",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Museum": {
+    "id": 437,
+    "name": "Shaped Museum",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Oasis": {
+    "id": 438,
+    "name": "Shaped Oasis",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Orchard": {
+    "id": 439,
+    "name": "Shaped Orchard",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Overgrown Shrine": {
+    "id": 440,
+    "name": "Shaped Overgrown Shrine",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Peninsula": {
+    "id": 441,
+    "name": "Shaped Peninsula",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Phantasmagoria": {
+    "id": 442,
+    "name": "Shaped Phantasmagoria",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Pier": {
+    "id": 443,
+    "name": "Shaped Pier",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Pit": {
+    "id": 444,
+    "name": "Shaped Pit",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Primordial Pool": {
+    "id": 445,
+    "name": "Shaped Primordial Pool",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Promenade": {
+    "id": 446,
+    "name": "Shaped Promenade",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Quarry": {
+    "id": 447,
+    "name": "Shaped Quarry",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Port": {
+    "id": 448,
+    "name": "Shaped Port",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Racecourse": {
+    "id": 449,
+    "name": "Shaped Racecourse",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Ramparts": {
+    "id": 450,
+    "name": "Shaped Ramparts",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Reef": {
+    "id": 451,
+    "name": "Shaped Reef",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Toxic Sewer": {
+    "id": 452,
+    "name": "Shaped Toxic Sewer",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Shore": {
+    "id": 453,
+    "name": "Shaped Shore",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Spider Forest": {
+    "id": 454,
+    "name": "Shaped Spider Forest",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Spider Lair": {
+    "id": 455,
+    "name": "Shaped Spider Lair",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Strand": {
+    "id": 456,
+    "name": "Shaped Strand",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Temple": {
+    "id": 457,
+    "name": "Shaped Temple",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Terrace": {
+    "id": 458,
+    "name": "Shaped Terrace",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Thicket": {
+    "id": 459,
+    "name": "Shaped Thicket",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Tower": {
+    "id": 460,
+    "name": "Shaped Tower",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Tropical Island": {
+    "id": 461,
+    "name": "Shaped Tropical Island",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Underground River": {
+    "id": 462,
+    "name": "Shaped Underground River",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Vaal City": {
+    "id": 463,
+    "name": "Shaped Vaal City",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Vaal Pyramid": {
+    "id": 464,
+    "name": "Shaped Vaal Pyramid",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Villa": {
+    "id": 465,
+    "name": "Shaped Villa",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Waste Pool": {
+    "id": 466,
+    "name": "Shaped Waste Pool",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Wharf": {
+    "id": 467,
+    "name": "Shaped Wharf",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shipyard": {
+    "id": 468,
+    "name": "Shipyard",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shore": {
+    "id": 469,
+    "name": "Shore",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shrine": {
+    "id": 470,
+    "name": "Shrine",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Spider Forest": {
+    "id": 471,
+    "name": "Spider Forest",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Spider Lair": {
+    "id": 472,
+    "name": "Spider Lair",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Springs": {
+    "id": 473,
+    "name": "Springs",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Strand": {
+    "id": 474,
+    "name": "Strand",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Sulphur Wastes": {
+    "id": 475,
+    "name": "Sulphur Wastes",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Temple": {
+    "id": 476,
+    "name": "Temple",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Terrace": {
+    "id": 477,
+    "name": "Terrace",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Thicket": {
+    "id": 478,
+    "name": "Thicket",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Torture Chamber": {
+    "id": 479,
+    "name": "Torture Chamber",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Tower": {
+    "id": 480,
+    "name": "Tower",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Tropical Island": {
+    "id": 481,
+    "name": "Tropical Island",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Underground River": {
+    "id": 482,
+    "name": "Underground River",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Underground Sea": {
+    "id": 483,
+    "name": "Underground Sea",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Vaal City": {
+    "id": 484,
+    "name": "Vaal City",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Vaal Pyramid": {
+    "id": 485,
+    "name": "Vaal Pyramid",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Vaal Temple": {
+    "id": 486,
+    "name": "Vaal Temple",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Vault": {
+    "id": 487,
+    "name": "Vault",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Villa": {
+    "id": 488,
+    "name": "Villa",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Volcano": {
+    "id": 489,
+    "name": "Volcano",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Waste Pool": {
+    "id": 490,
+    "name": "Waste Pool",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Wasteland": {
+    "id": 491,
+    "name": "Wasteland",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Waterways": {
+    "id": 492,
+    "name": "Waterways",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Wharf": {
+    "id": 493,
+    "name": "Wharf",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Ancient Reliquary Key": {
+    "id": 494,
+    "name": "Ancient Reliquary Key",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Ambush": {
+    "id": 495,
+    "name": "Ambush",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Anarchy": {
+    "id": 496,
+    "name": "Anarchy",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Beyond": {
+    "id": 497,
+    "name": "Beyond",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Bloodlines": {
+    "id": 498,
+    "name": "Bloodlines",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Breach": {
+    "id": 499,
+    "name": "Breach",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Domination": {
+    "id": 500,
+    "name": "Domination",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Essence": {
+    "id": 501,
+    "name": "Essence",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Invasion": {
+    "id": 502,
+    "name": "Invasion",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Nemesis": {
+    "id": 503,
+    "name": "Nemesis",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Onslaught": {
+    "id": 504,
+    "name": "Onslaught",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Perandus": {
+    "id": 505,
+    "name": "Perandus",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Prophecy": {
+    "id": 506,
+    "name": "Prophecy",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Rampage": {
+    "id": 507,
+    "name": "Rampage",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Talisman": {
+    "id": 508,
+    "name": "Talisman",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Tempest": {
+    "id": 509,
+    "name": "Tempest",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Torment": {
+    "id": 510,
+    "name": "Torment",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Warbands": {
+    "id": 511,
+    "name": "Warbands",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Divine Vessel": {
+    "id": 512,
+    "name": "Divine Vessel",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Orb of Annulment": {
+    "id": 513,
+    "name": "Orb of Annulment",
+    "currency": true,
+    "non_currency_sales_target": false
+  },
+  "Orb of Binding": {
+    "id": 514,
+    "name": "Orb of Binding",
+    "currency": true,
+    "non_currency_sales_target": false
+  },
+  "Orb of Horizons": {
+    "id": 515,
+    "name": "Orb of Horizons",
+    "currency": true,
+    "non_currency_sales_target": false
+  },
+  "Harbinger's Orb": {
+    "id": 516,
+    "name": "Harbinger's Orb",
+    "currency": true,
+    "non_currency_sales_target": false
+  },
+  "Engineer's Orb": {
+    "id": 517,
+    "name": "Engineer's Orb",
+    "currency": true,
+    "non_currency_sales_target": false
+  },
+  "Ancient Orb": {
+    "id": 518,
+    "name": "Ancient Orb",
+    "currency": true,
+    "non_currency_sales_target": false
+  },
+  "Annulment Shard": {
+    "id": 519,
+    "name": "Annulment Shard",
+    "currency": true,
+    "non_currency_sales_target": false
+  },
+  "Mirror Shard": {
+    "id": 520,
+    "name": "Mirror Shard",
+    "currency": true,
+    "non_currency_sales_target": false
+  },
+  "Exalted Shard": {
+    "id": 521,
+    "name": "Exalted Shard",
+    "currency": true,
+    "non_currency_sales_target": false
+  },
+  "Alleyways": {
+    "id": 522,
+    "name": "Alleyways",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Ancient City": {
+    "id": 523,
+    "name": "Ancient City",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Basilica": {
+    "id": 524,
+    "name": "Basilica",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Belfry": {
+    "id": 525,
+    "name": "Belfry",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Bone Crypt": {
+    "id": 526,
+    "name": "Bone Crypt",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Cage": {
+    "id": 527,
+    "name": "Cage",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Caldera": {
+    "id": 528,
+    "name": "Caldera",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Carcass": {
+    "id": 529,
+    "name": "Carcass",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "City Square": {
+    "id": 530,
+    "name": "City Square",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Conservatory": {
+    "id": 531,
+    "name": "Conservatory",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Coral Ruins": {
+    "id": 532,
+    "name": "Coral Ruins",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Courthouse": {
+    "id": 533,
+    "name": "Courthouse",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Crimson Temple": {
+    "id": 534,
+    "name": "Crimson Temple",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Cursed Crypt": {
+    "id": 535,
+    "name": "Cursed Crypt",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Defiled Cathedral": {
+    "id": 536,
+    "name": "Defiled Cathedral",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Desert Spring": {
+    "id": 537,
+    "name": "Desert Spring",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Dig": {
+    "id": 538,
+    "name": "Dig",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Fields": {
+    "id": 539,
+    "name": "Fields",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Flooded Mine": {
+    "id": 540,
+    "name": "Flooded Mine",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Gardens": {
+    "id": 541,
+    "name": "Gardens",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Geode": {
+    "id": 542,
+    "name": "Geode",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Harbinger": {
+    "id": 543,
+    "name": "Harbinger",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Haunted Mansion": {
+    "id": 544,
+    "name": "Haunted Mansion",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Iceberg": {
+    "id": 545,
+    "name": "Iceberg",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Infested Valley": {
+    "id": 546,
+    "name": "Infested Valley",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Laboratory": {
+    "id": 547,
+    "name": "Laboratory",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Lava Chamber": {
+    "id": 548,
+    "name": "Lava Chamber",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Lava Lake": {
+    "id": 549,
+    "name": "Lava Lake",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Leyline": {
+    "id": 550,
+    "name": "Leyline",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Lighthouse": {
+    "id": 551,
+    "name": "Lighthouse",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Lookout": {
+    "id": 552,
+    "name": "Lookout",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Mausoleum": {
+    "id": 553,
+    "name": "Mausoleum",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Moon Temple": {
+    "id": 554,
+    "name": "Moon Temple",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Park": {
+    "id": 555,
+    "name": "Park",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Pen": {
+    "id": 556,
+    "name": "Pen",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Relic Chambers": {
+    "id": 557,
+    "name": "Relic Chambers",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Sepulchre": {
+    "id": 558,
+    "name": "Sepulchre",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Siege": {
+    "id": 559,
+    "name": "Siege",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Sulphur Vents": {
+    "id": 560,
+    "name": "Sulphur Vents",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Summit": {
+    "id": 561,
+    "name": "Summit",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Sunken City": {
+    "id": 562,
+    "name": "Sunken City",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Toxic Sewer": {
+    "id": 563,
+    "name": "Toxic Sewer",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Tribunal": {
+    "id": 564,
+    "name": "Tribunal",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Ruthless Ceinture": {
+    "id": 565,
+    "name": "The Ruthless Ceinture",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "No Traces": {
+    "id": 566,
+    "name": "No Traces",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Realm": {
+    "id": 567,
+    "name": "The Realm",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Eye of the Dragon": {
+    "id": 568,
+    "name": "The Eye of the Dragon",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Blazing Fire": {
+    "id": 569,
+    "name": "The Blazing Fire",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Left to Fate": {
+    "id": 570,
+    "name": "Left to Fate",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Vault": {
+    "id": 571,
+    "name": "Shaped Vault",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Bazaar": {
+    "id": 572,
+    "name": "Shaped Bazaar",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Haunted Mansion": {
+    "id": 573,
+    "name": "Shaped Haunted Mansion",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Infested Valley": {
+    "id": 574,
+    "name": "Shaped Infested Valley",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Mausoleum": {
+    "id": 575,
+    "name": "Shaped Mausoleum",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Lookout": {
+    "id": 576,
+    "name": "Shaped Lookout",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Alleyways": {
+    "id": 577,
+    "name": "Shaped Alleyways",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Pen": {
+    "id": 578,
+    "name": "Shaped Pen",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Flooded Mine": {
+    "id": 579,
+    "name": "Shaped Flooded Mine",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Iceberg": {
+    "id": 580,
+    "name": "Shaped Iceberg",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Cage": {
+    "id": 581,
+    "name": "Shaped Cage",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Springs": {
+    "id": 582,
+    "name": "Shaped Springs",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Excavation": {
+    "id": 583,
+    "name": "Shaped Excavation",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Leyline": {
+    "id": 584,
+    "name": "Shaped Leyline",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped City Square": {
+    "id": 585,
+    "name": "Shaped City Square",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Relic Chambers": {
+    "id": 586,
+    "name": "Shaped Relic Chambers",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Courthouse": {
+    "id": 587,
+    "name": "Shaped Courthouse",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Chateau": {
+    "id": 588,
+    "name": "Shaped Chateau",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Gorge": {
+    "id": 589,
+    "name": "Shaped Gorge",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Volcano": {
+    "id": 590,
+    "name": "Shaped Volcano",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Lighthouse": {
+    "id": 591,
+    "name": "Shaped Lighthouse",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Conservatory": {
+    "id": 592,
+    "name": "Shaped Conservatory",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Sulphur Vents": {
+    "id": 593,
+    "name": "Shaped Sulphur Vents",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Ancient City": {
+    "id": 595,
+    "name": "Shaped Ancient City",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Ivory Temple": {
+    "id": 596,
+    "name": "Shaped Ivory Temple",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Fields": {
+    "id": 597,
+    "name": "Shaped Fields",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Underground Sea": {
+    "id": 598,
+    "name": "Shaped Underground Sea",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Tribunal": {
+    "id": 599,
+    "name": "Shaped Tribunal",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Coral Ruins": {
+    "id": 600,
+    "name": "Shaped Coral Ruins",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Lava Chamber": {
+    "id": 601,
+    "name": "Shaped Lava Chamber",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Residence": {
+    "id": 602,
+    "name": "Shaped Residence",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Bone Crypt": {
+    "id": 603,
+    "name": "Shaped Bone Crypt",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Gardens": {
+    "id": 604,
+    "name": "Shaped Gardens",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Laboratory": {
+    "id": 605,
+    "name": "Shaped Laboratory",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Overgrown Ruin": {
+    "id": 606,
+    "name": "Shaped Overgrown Ruin",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Geode": {
+    "id": 607,
+    "name": "Shaped Geode",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Mineral Pools": {
+    "id": 608,
+    "name": "Shaped Mineral Pools",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Moon Temple": {
+    "id": 609,
+    "name": "Shaped Moon Temple",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Sepulchre": {
+    "id": 610,
+    "name": "Shaped Sepulchre",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Plateau": {
+    "id": 611,
+    "name": "Shaped Plateau",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Estuary": {
+    "id": 612,
+    "name": "Shaped Estuary",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Scriptorium": {
+    "id": 613,
+    "name": "Shaped Scriptorium",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Siege": {
+    "id": 614,
+    "name": "Shaped Siege",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Shipyard": {
+    "id": 615,
+    "name": "Shaped Shipyard",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Belfry": {
+    "id": 616,
+    "name": "Shaped Belfry",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Wasteland": {
+    "id": 617,
+    "name": "Shaped Wasteland",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Precinct": {
+    "id": 618,
+    "name": "Shaped Precinct",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Cursed Crypt": {
+    "id": 619,
+    "name": "Shaped Cursed Crypt",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Insatiable": {
+    "id": 620,
+    "name": "The Insatiable",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Obscured": {
+    "id": 621,
+    "name": "The Obscured",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Iron Bard": {
+    "id": 622,
+    "name": "The Iron Bard",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Forbidden Power": {
+    "id": 623,
+    "name": "Forbidden Power",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Breach": {
+    "id": 624,
+    "name": "The Breach",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Dreamer": {
+    "id": 625,
+    "name": "The Dreamer",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The World Eater": {
+    "id": 626,
+    "name": "The World Eater",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Deceiver": {
+    "id": 627,
+    "name": "The Deceiver",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Blessing of God": {
+    "id": 628,
+    "name": "Blessing of God",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Puzzle": {
+    "id": 629,
+    "name": "The Puzzle",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Bestiary Orb": {
+    "id": 630,
+    "name": "Bestiary Orb",
+    "currency": true,
+    "non_currency_sales_target": false
+  },
+  "Harbinger's Shard": {
+    "id": 643,
+    "name": "Harbinger's Shard",
+    "currency": true,
+    "non_currency_sales_target": false
+  },
+  "Vial of Dominance": {
+    "id": 644,
+    "name": "Vial of Dominance",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Vial of Summoning": {
+    "id": 645,
+    "name": "Vial of Summoning",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Vial of Awakening": {
+    "id": 646,
+    "name": "Vial of Awakening",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Vial of the Ritual": {
+    "id": 647,
+    "name": "Vial of the Ritual",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Vial of Fate": {
+    "id": 648,
+    "name": "Vial of Fate",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Vial of Consequence": {
+    "id": 649,
+    "name": "Vial of Consequence",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Vial of the Ghost": {
+    "id": 650,
+    "name": "Vial of the Ghost",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Vial of Transcendence": {
+    "id": 651,
+    "name": "Vial of Transcendence",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Vial of Sacrifice": {
+    "id": 652,
+    "name": "Vial of Sacrifice",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Harmony of Souls": {
+    "id": 653,
+    "name": "Harmony of Souls",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Immortal Resolve": {
+    "id": 654,
+    "name": "Immortal Resolve",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Perfection": {
+    "id": 655,
+    "name": "Perfection",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Admirer": {
+    "id": 656,
+    "name": "The Admirer",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Army of Blood": {
+    "id": 657,
+    "name": "The Army of Blood",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Beast": {
+    "id": 658,
+    "name": "The Beast",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Celestial Stone": {
+    "id": 659,
+    "name": "The Celestial Stone",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Darkest Dream": {
+    "id": 660,
+    "name": "The Darkest Dream",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Dreamland": {
+    "id": 661,
+    "name": "The Dreamland",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Fathomless Depths": {
+    "id": 662,
+    "name": "The Fathomless Depths",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Hale Heart": {
+    "id": 663,
+    "name": "The Hale Heart",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Jeweller's Boon": {
+    "id": 664,
+    "name": "The Jeweller's Boon",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Master": {
+    "id": 665,
+    "name": "The Master",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Mayor": {
+    "id": 666,
+    "name": "The Mayor",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Professor": {
+    "id": 667,
+    "name": "The Professor",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Rite of Elements": {
+    "id": 668,
+    "name": "The Rite of Elements",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Samurai's Eye": {
+    "id": 669,
+    "name": "The Samurai's Eye",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Sword King's Salute": {
+    "id": 670,
+    "name": "The Sword King's Salute",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Undaunted": {
+    "id": 671,
+    "name": "The Undaunted",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Undisputed": {
+    "id": 672,
+    "name": "The Undisputed",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Witch": {
+    "id": 673,
+    "name": "The Witch",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Three Voices": {
+    "id": 674,
+    "name": "Three Voices",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Primitive Alchemical Resonator": {
+    "id": 675,
+    "name": "Primitive Alchemical Resonator",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Potent Alchemical Resonator": {
+    "id": 676,
+    "name": "Potent Alchemical Resonator",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Powerful Alchemical Resonator": {
+    "id": 677,
+    "name": "Powerful Alchemical Resonator",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Prime Alchemical Resonator": {
+    "id": 678,
+    "name": "Prime Alchemical Resonator",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Primitive Chaotic Resonator": {
+    "id": 679,
+    "name": "Primitive Chaotic Resonator",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Potent Chaotic Resonator": {
+    "id": 680,
+    "name": "Potent Chaotic Resonator",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Powerful Chaotic Resonator": {
+    "id": 681,
+    "name": "Powerful Chaotic Resonator",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Prime Chaotic Resonator": {
+    "id": 682,
+    "name": "Prime Chaotic Resonator",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Scorched Fossil": {
+    "id": 683,
+    "name": "Scorched Fossil",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Frigid Fossil": {
+    "id": 684,
+    "name": "Frigid Fossil",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Metallic Fossil": {
+    "id": 685,
+    "name": "Metallic Fossil",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Jagged Fossil": {
+    "id": 686,
+    "name": "Jagged Fossil",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Aberrant Fossil": {
+    "id": 687,
+    "name": "Aberrant Fossil",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Pristine Fossil": {
+    "id": 688,
+    "name": "Pristine Fossil",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Dense Fossil": {
+    "id": 689,
+    "name": "Dense Fossil",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Corroded Fossil": {
+    "id": 690,
+    "name": "Corroded Fossil",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Prismatic Fossil": {
+    "id": 691,
+    "name": "Prismatic Fossil",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Aetheric Fossil": {
+    "id": 692,
+    "name": "Aetheric Fossil",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Serrated Fossil": {
+    "id": 693,
+    "name": "Serrated Fossil",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Lucent Fossil": {
+    "id": 694,
+    "name": "Lucent Fossil",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shuddering Fossil": {
+    "id": 695,
+    "name": "Shuddering Fossil",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Bound Fossil": {
+    "id": 696,
+    "name": "Bound Fossil",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Perfect Fossil": {
+    "id": 697,
+    "name": "Perfect Fossil",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Enchanted Fossil": {
+    "id": 698,
+    "name": "Enchanted Fossil",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Encrusted Fossil": {
+    "id": 699,
+    "name": "Encrusted Fossil",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Faceted Fossil": {
+    "id": 700,
+    "name": "Faceted Fossil",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Bloodstained Fossil": {
+    "id": 701,
+    "name": "Bloodstained Fossil",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Hollow Fossil": {
+    "id": 702,
+    "name": "Hollow Fossil",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Fractured Fossil": {
+    "id": 703,
+    "name": "Fractured Fossil",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Glyphic Fossil": {
+    "id": 704,
+    "name": "Glyphic Fossil",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Tangled Fossil": {
+    "id": 705,
+    "name": "Tangled Fossil",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Sanctified Fossil": {
+    "id": 706,
+    "name": "Sanctified Fossil",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Gilded Fossil": {
+    "id": 707,
+    "name": "Gilded Fossil",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Timeworn Reliquary Key": {
+    "id": 708,
+    "name": "Timeworn Reliquary Key",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Innocent": {
+    "id": 709,
+    "name": "The Innocent",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Wilted Rose": {
+    "id": 710,
+    "name": "The Wilted Rose",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Endless Darkness": {
+    "id": 711,
+    "name": "The Endless Darkness",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Beauty Through Death": {
+    "id": 712,
+    "name": "Beauty Through Death",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Price of Protection": {
+    "id": 713,
+    "name": "The Price of Protection",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Boon of the First Ones": {
+    "id": 714,
+    "name": "Boon of the First Ones",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Twilight Moon": {
+    "id": 715,
+    "name": "The Twilight Moon",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Cacophony": {
+    "id": 716,
+    "name": "The Cacophony",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Sacrifice": {
+    "id": 717,
+    "name": "The Sacrifice",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "A Dab of Ink": {
+    "id": 718,
+    "name": "A Dab of Ink",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Nurse": {
+    "id": 719,
+    "name": "The Nurse",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Master Artisan": {
+    "id": 720,
+    "name": "The Master Artisan",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Life Thief": {
+    "id": 721,
+    "name": "The Life Thief",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Acid Caverns": {
+    "id": 722,
+    "name": "Acid Caverns",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Crater": {
+    "id": 723,
+    "name": "Crater",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Fungal Hollow": {
+    "id": 724,
+    "name": "Fungal Hollow",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Glacier": {
+    "id": 725,
+    "name": "Glacier",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Lava Chambers": {
+    "id": 726,
+    "name": "Lava Chambers",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Primordial Blocks": {
+    "id": 727,
+    "name": "Primordial Blocks",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Gilded Ambush Scarab": {
+    "id": 728,
+    "name": "Gilded Ambush Scarab",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Gilded Bestiary Scarab": {
+    "id": 729,
+    "name": "Gilded Bestiary Scarab",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Gilded Breach Scarab": {
+    "id": 730,
+    "name": "Gilded Breach Scarab",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Gilded Cartography Scarab": {
+    "id": 731,
+    "name": "Gilded Cartography Scarab",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Gilded Divination Scarab": {
+    "id": 732,
+    "name": "Gilded Divination Scarab",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Gilded Elder Scarab": {
+    "id": 733,
+    "name": "Gilded Elder Scarab",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Gilded Harbinger Scarab": {
+    "id": 734,
+    "name": "Gilded Harbinger Scarab",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Gilded Perandus Scarab": {
+    "id": 735,
+    "name": "Gilded Perandus Scarab",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Gilded Reliquary Scarab": {
+    "id": 736,
+    "name": "Gilded Reliquary Scarab",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Gilded Shaper Scarab": {
+    "id": 737,
+    "name": "Gilded Shaper Scarab",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Gilded Sulphite Scarab": {
+    "id": 738,
+    "name": "Gilded Sulphite Scarab",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Gilded Torment Scarab": {
+    "id": 739,
+    "name": "Gilded Torment Scarab",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Polished Ambush Scarab": {
+    "id": 740,
+    "name": "Polished Ambush Scarab",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Polished Bestiary Scarab": {
+    "id": 741,
+    "name": "Polished Bestiary Scarab",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Polished Breach Scarab": {
+    "id": 742,
+    "name": "Polished Breach Scarab",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Polished Cartography Scarab": {
+    "id": 743,
+    "name": "Polished Cartography Scarab",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Polished Divination Scarab": {
+    "id": 744,
+    "name": "Polished Divination Scarab",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Polished Elder Scarab": {
+    "id": 745,
+    "name": "Polished Elder Scarab",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Polished Harbinger Scarab": {
+    "id": 746,
+    "name": "Polished Harbinger Scarab",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Polished Perandus Scarab": {
+    "id": 747,
+    "name": "Polished Perandus Scarab",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Polished Reliquary Scarab": {
+    "id": 748,
+    "name": "Polished Reliquary Scarab",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Polished Shaper Scarab": {
+    "id": 749,
+    "name": "Polished Shaper Scarab",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Polished Sulphite Scarab": {
+    "id": 750,
+    "name": "Polished Sulphite Scarab",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Polished Torment Scarab": {
+    "id": 751,
+    "name": "Polished Torment Scarab",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Rusted Ambush Scarab": {
+    "id": 752,
+    "name": "Rusted Ambush Scarab",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Rusted Bestiary Scarab": {
+    "id": 753,
+    "name": "Rusted Bestiary Scarab",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Rusted Breach Scarab": {
+    "id": 754,
+    "name": "Rusted Breach Scarab",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Rusted Cartography Scarab": {
+    "id": 755,
+    "name": "Rusted Cartography Scarab",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Rusted Divination Scarab": {
+    "id": 756,
+    "name": "Rusted Divination Scarab",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Rusted Elder Scarab": {
+    "id": 757,
+    "name": "Rusted Elder Scarab",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Rusted Harbinger Scarab": {
+    "id": 758,
+    "name": "Rusted Harbinger Scarab",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Rusted Perandus Scarab": {
+    "id": 759,
+    "name": "Rusted Perandus Scarab",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Rusted Reliquary Scarab": {
+    "id": 760,
+    "name": "Rusted Reliquary Scarab",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Rusted Shaper Scarab": {
+    "id": 761,
+    "name": "Rusted Shaper Scarab",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Rusted Sulphite Scarab": {
+    "id": 762,
+    "name": "Rusted Sulphite Scarab",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Rusted Torment Scarab": {
+    "id": 763,
+    "name": "Rusted Torment Scarab",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Shaped Maze": {
+    "id": 764,
+    "name": "Shaped Maze",
+    "currency": false,
+    "non_currency_sales_target": false
+  }
+}
