@@ -21,13 +21,13 @@ def log_conversion(c):
 
 
 parser = argparse.ArgumentParser(description="CLI interface for PathFinder")
-parser.add_argument("--league", default="Delve",
-                    help="League specifier, ie. 'Delve', 'Hardcore Delve' or 'Flashback Event (BRE001)'. Defaults to 'Delve'.")
-parser.add_argument("--currency", default="all",
+parser.add_argument("--league", default="Betrayal", type=str,
+                    help="League specifier, ie. 'Betrayal', 'Hardcore Betrayal' or 'Flashback Event (BRE001)'. Defaults to 'Betrayal'.")
+parser.add_argument("--currency", default="all", type=str,
                     help="Full name of currency to flip, ie. 'Cartographer\'s Chisel, or 'Chaos Orb'. See a full list of currency names under src/constants.py. Defaults to all currencies.")
-parser.add_argument("--limit", default=3,
+parser.add_argument("--limit", default=3, type=int,
                     help="Limit the number of displayed conversions. Defaults to 3.")
-parser.add_argument("--poetrade", default=False,
+parser.add_argument("--poetrade", default=False, type=bool,
                     help="Flag to fetch trading data from poe.trade instead of pathofexile.com/trade.")
 arguments = parser.parse_args()
 
