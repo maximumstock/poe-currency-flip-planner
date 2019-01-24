@@ -1,9 +1,19 @@
 import argparse
-import itertools
+
 from src.pathfinder import PathFinder
-from src.constants import currencies
 from src.backends import poeofficial
 from src.backends import poetrade
+from src.currency import build_item_list, load_items
+
+
+currency_items = [x["name"] for x in load_items("poetrade").values() if x["currency"] is True]
+
+league_names = [
+    "Betrayal",
+    "Hardcore Betrayal",
+    "Standard",
+    "Hardcore"
+]
 
 
 def log_conversions(conversions, currency, limit):
@@ -21,13 +31,13 @@ def log_conversion(c):
 
 
 parser = argparse.ArgumentParser(description="CLI interface for PathFinder")
-parser.add_argument("--league", default="Delve",
-                    help="League specifier, ie. 'Delve', 'Hardcore Delve' or 'Flashback Event (BRE001)'. Defaults to 'Delve'.")
-parser.add_argument("--currency", default="all",
+parser.add_argument("--league", default="Betrayal", choices=league_names, type=str,
+                    help="League specifier, ie. 'Betrayal', 'Hardcore Betrayal' or 'Flashback Event (BRE001)'. Defaults to 'Betrayal'.")
+parser.add_argument("--currency", default="all", choices=currency_items, type=str,
                     help="Full name of currency to flip, ie. 'Cartographer\'s Chisel, or 'Chaos Orb'. See a full list of currency names under src/constants.py. Defaults to all currencies.")
-parser.add_argument("--limit", default=3,
+parser.add_argument("--limit", default=3, type=int,
                     help="Limit the number of displayed conversions. Defaults to 3.")
-parser.add_argument("--poetrade", default=False,
+parser.add_argument("--poetrade", default=False, action="store_true",
                     help="Flag to fetch trading data from poe.trade instead of pathofexile.com/trade.")
 arguments = parser.parse_args()
 
@@ -38,15 +48,21 @@ use_poetrade = arguments.poetrade
 
 backend = poetrade if use_poetrade else poeofficial
 
-chosen_currencies = dict(itertools.islice(currencies.items(), 0, 15))
+if use_poetrade is True:
+    chosen_currencies = build_item_list("poetrade", {})
+else:
+    chosen_currencies = build_item_list("poeofficial", {})
+
 p = PathFinder(league, chosen_currencies, backend)
 p.run(3, True)
+
 try:
-    if currency is "all":
-        for c in chosen_currencies:
+    if currency == "all":
+        for c in p.graph.keys():
             log_conversions(p.results, c, limit)
     else:
         log_conversions(p.results, currency, limit)
+
 except KeyError:
     print("Could not find any proftiable conversions for {} in {}".format(
         currency, league))
