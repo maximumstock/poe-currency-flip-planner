@@ -1,3 +1,10 @@
+"""
+@Deprecated
+
+A simple tier-model to assess quality of offers. Currently not used anywhere,
+but still here for reference.
+"""
+
 from src import constants
 
 

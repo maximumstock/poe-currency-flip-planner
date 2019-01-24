@@ -1,9 +1,8 @@
 import asyncio
 import urllib
-
 import aiohttp
 
-from src import constants, flip
+from src import constants
 from src.backends.lib import AsyncRateLimiter
 
 
@@ -79,10 +78,8 @@ async def fetch_offers_for_pair(sess, league, want, have, limit=5):
         except Exception:
             raise
 
-    viable_offers = flip.filter_viable_offers(want, have, offers)
-
     return {
-        "offers": viable_offers,
+        "offers": offers,
         "want": want,
         "have": have,
         "league": league
