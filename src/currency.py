@@ -72,7 +72,7 @@ def build_item_list_poetrade(items: List, config: Dict = {}):
 
 
 def build_item_list_poeofficial(items: List, config: Dict = {}):
-    permutations = itertools.permutations(items, 2)
+    permutations = list(itertools.permutations(items, 2))
     return permutations
 
 
