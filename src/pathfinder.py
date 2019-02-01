@@ -1,19 +1,23 @@
 import time
 from datetime import datetime
-from typing import List, Dict
+from typing import Dict, List
 
 from src import graph
 
 
-def format_conversions(conversions):
+def format_conversions(conversions) -> str:
     formatted_conversions = [format_conversion(c) for c in conversions]
     msg = "\n".join(formatted_conversions)
     return msg
 
 
-def format_conversion(conversion):
+def format_conversion(conversion) -> str:
     msg = "{} -> {} -- {} ({} transactions) ".format(
-        conversion['from'], conversion['to'], conversion['winnings'], len(conversion['transactions']))
+        conversion["from"],
+        conversion["to"],
+        conversion["winnings"],
+        len(conversion["transactions"]),
+    )
     return msg
 
 
@@ -34,36 +38,41 @@ class PathFinder:
         self.graph = {}
         self.results = {}
 
-    def prepickle(self):
+    def prepickle(self) -> Dict:
         return {
             "timestamp": self.timestamp,
             "league": self.league,
             "item_pairs": self.item_pairs,
             "offers": self.offers,
             "graph": self.graph,
-            "results": self.results
+            "results": self.results,
         }
 
-    def filter_traders(self, offers: List[Dict], excluded_traders=[]):
+    def filter_traders(self, offers: List[Dict], excluded_traders=[]) -> List:
         for idx in range(len(offers)):
             offers[idx]["offers"] = list(
-                filter(lambda x: x["contact_ign"] not in excluded_traders, offers[idx]["offers"]))
+                filter(
+                    lambda x: x["contact_ign"] not in excluded_traders,
+                    offers[idx]["offers"],
+                )
+            )
         return offers
 
     def run(self, max_transaction_length=3, logging=True):
         self.timestamp = str(datetime.now()).split(".")[0]
         if len(self.offers) == 0:
             if logging:
-                print("Fetching {} offers for {} pairs".format(
-                    self.league, len(self.item_pairs)))
+                print(
+                    "Fetching {} offers for {} pairs".format(
+                        self.league, len(self.item_pairs)
+                    )
+                )
                 print("Backend: {}".format(self.backend.name()))
             t0 = time.time()
-            self.offers = self.backend.fetch_offers(
-                self.league, self.item_pairs)
+            self.offers = self.backend.fetch_offers(self.league, self.item_pairs)
 
             # Filter out unwanted traders
-            self.offers = self.filter_traders(
-                self.offers, self.excluded_traders)
+            self.offers = self.filter_traders(self.offers, self.excluded_traders)
 
             t1 = time.time()
             if logging:
@@ -85,10 +94,14 @@ class PathFinder:
                 if conversion is not None:
                     profitable_conversions.append(conversion)
             if logging:
-                print("Checking {} -> {} Conversions".format(c,
-                                                             len(profitable_conversions)))
+                print(
+                    "Checking {} -> {} Conversions".format(
+                        c, len(profitable_conversions)
+                    )
+                )
             profitable_conversions = sorted(
-                profitable_conversions, key=lambda k: k['winnings'], reverse=True)
+                profitable_conversions, key=lambda k: k["winnings"], reverse=True
+            )
             self.results[c] = profitable_conversions
 
         t3 = time.time()

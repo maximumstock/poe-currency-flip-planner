@@ -33,18 +33,13 @@ def fetch_offers_for_pair(league, want, have, limit=10):
         "league": league,
         "want": map_currency(want),
         "have": map_currency(have),
-        "online": True
+        "online": True,
     }
 
     r = requests.get(url, params=params)
     offers = parse_conversion_offers(r.text)
 
-    return {
-        "offers": offers,
-        "want": want,
-        "have": have,
-        "league": league
-    }
+    return {"offers": offers, "want": want, "have": have, "league": league}
 
 
 """
@@ -66,13 +61,13 @@ def parse_conversion_offer(offer_html):
 
     receive = float(offer_html["data-sellvalue"])
     pay = float(offer_html["data-buyvalue"])
-    conversion_rate = round(receive/pay, 4)
+    conversion_rate = round(receive / pay, 4)
     stock = int(offer_html["data-stock"])
 
     return {
         "contact_ign": offer_html["data-ign"],
         "conversion_rate": conversion_rate,
-        "stock": stock
+        "stock": stock,
     }
 
 

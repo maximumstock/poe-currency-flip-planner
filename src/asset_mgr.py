@@ -24,14 +24,11 @@ blacklist = [
     "Portal Scroll",
     "Armourer's Scrap",
     "Blacksmith's Whetstone",
-    "Silver Coin"
+    "Silver Coin",
 ]
 
 # List of items that people usually sell their non-currency bulk items for
-target_currency_for_item_sales = [
-    "Chaos Orb",
-    "Exalted Orb"
-]
+target_currency_for_item_sales = ["Chaos Orb", "Exalted Orb"]
 
 
 def poetrade():
@@ -41,12 +38,15 @@ def poetrade():
     soup = BeautifulSoup(html, "html.parser")
     currency_have_div = soup.find("div", {"id": "currency-have"})
     elements = currency_have_div.find_all(class_="currency-selectable")
-    parsed = [{
-        "id": int(x["data-id"]),
-        "name": x.get("title", x["data-title"]),
-        "currency": False,
-        "non_currency_sales_target": False
-    } for x in elements]
+    parsed = [
+        {
+            "id": int(x["data-id"]),
+            "name": x.get("title", x["data-title"]),
+            "currency": False,
+            "non_currency_sales_target": False,
+        }
+        for x in elements
+    ]
 
     # Filter out Nets
     parsed = [x for x in parsed if " Net" not in x["name"]]

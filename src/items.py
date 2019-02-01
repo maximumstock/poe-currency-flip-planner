@@ -24,7 +24,7 @@ def load_items(backend: str) -> Dict[str, Dict]:
 
 def build_item_list(backend: str, config: Dict = {}) -> List:
     """
-    Builds a list of currency/item pairs to use for arbitrage planning based
+    Builds a list of item pairs to use for arbitrage planning based
     on a given backend.
     """
     if backend is "poetrade":
@@ -57,21 +57,22 @@ def build_item_list_poetrade(items: List, config: Dict = {}):
     """
     currency_items = [x for x in items if x["currency"] is True]
     non_currency_items = [x for x in items if x["currency"] is False]
-    non_currency_targets = [
-        x for x in items if x["non_currency_sales_target"] is True]
+    non_currency_targets = [x for x in items if x["non_currency_sales_target"] is True]
 
     result: List = list(itertools.permutations(currency_items, 2))
 
     if "use_bulk_items" in config.keys():
-        result = result + \
-            list(itertools.product(non_currency_targets, non_currency_items))
-        result = result + \
-            list(itertools.product(non_currency_items, non_currency_targets))
+        result = result + list(
+            itertools.product(non_currency_targets, non_currency_items)
+        )
+        result = result + list(
+            itertools.product(non_currency_items, non_currency_targets)
+        )
 
     return result
 
 
-def build_item_list_poeofficial(items: List, config: Dict = {}):
+def build_item_list_poeofficial(items: List, config: Dict = {}) -> List:
     permutations = list(itertools.permutations(items, 2))
     return permutations
 
