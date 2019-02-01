@@ -1,5 +1,6 @@
 import time
 from datetime import datetime
+from typing import List, Dict
 
 from src import graph
 
@@ -22,10 +23,11 @@ class PathFinder:
     offers, constructing a graph and finding profitable paths along that graph.
     """
 
-    def __init__(self, league, item_pairs, backend):
+    def __init__(self, league, item_pairs, backend, excluded_traders=[]):
         self.league = league
         self.item_pairs = item_pairs
         self.backend = backend
+        self.excluded_traders = excluded_traders
 
         # Private internal fields to store partial results
         self.offers = []
@@ -42,6 +44,12 @@ class PathFinder:
             "results": self.results
         }
 
+    def filter_traders(self, offers: List[Dict], excluded_traders=[]):
+        for idx in range(len(offers)):
+            offers[idx]["offers"] = list(
+                filter(lambda x: x["contact_ign"] not in excluded_traders, offers[idx]["offers"]))
+        return offers
+
     def run(self, max_transaction_length=3, logging=True):
         self.timestamp = str(datetime.now()).split(".")[0]
         if len(self.offers) == 0:
@@ -52,6 +60,11 @@ class PathFinder:
             t0 = time.time()
             self.offers = self.backend.fetch_offers(
                 self.league, self.item_pairs)
+
+            # Filter out unwanted traders
+            self.offers = self.filter_traders(
+                self.offers, self.excluded_traders)
+
             t1 = time.time()
             if logging:
                 print("Spent {}s fetching offers".format(round(t1 - t0, 1)))

@@ -54,7 +54,11 @@ if use_poetrade is True:
 else:
     chosen_currencies = build_item_list("poeofficial", {})
 
-p = PathFinder(league, chosen_currencies, backend)
+# Load excluded trader list
+with open("excluded_traders.txt", "r") as f:
+    excluded_traders = [x.strip() for x in f.readlines()]
+
+p = PathFinder(league, chosen_currencies, backend, excluded_traders)
 p.run(3, True)
 
 try:
