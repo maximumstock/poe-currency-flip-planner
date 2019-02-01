@@ -3,10 +3,11 @@ import argparse
 from src.pathfinder import PathFinder
 from src.backends import poeofficial
 from src.backends import poetrade
-from src.currency import build_item_list, load_items
+from src.items import build_item_list, load_items
 
 
-currency_items = [x["name"] for x in load_items("poetrade").values() if x["currency"] is True]
+currency_items = [x["name"] for x in load_items(
+    "poetrade").values() if x["currency"] is True]
 
 league_names = [
     "Betrayal",

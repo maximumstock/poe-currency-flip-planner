@@ -2,7 +2,7 @@ import concurrent.futures
 import requests
 from bs4 import BeautifulSoup
 
-from src.currency import load_items_poetrade
+from src.items import load_items_poetrade
 
 items = load_items_poetrade()
 

@@ -1,16 +1,7 @@
-import itertools
 import time
 from datetime import datetime
 
 from src import graph
-from src.backends import poeofficial as backend
-from src.constants import currencies
-
-
-def test():
-    trading_currencies = list(currencies.keys())[:5]
-    pf = PathFinder("Delve", trading_currencies, backend)
-    pf.run(3)
 
 
 def format_conversions(conversions):
@@ -31,11 +22,12 @@ class PathFinder:
     offers, constructing a graph and finding profitable paths along that graph.
     """
 
-    def __init__(self, league, currencies, backend):
+    def __init__(self, league, item_pairs, backend):
         self.league = league
-        self.currencies = currencies
+        self.item_pairs = item_pairs
         self.backend = backend
 
+        # Private internal fields to store partial results
         self.offers = []
         self.graph = {}
         self.results = {}
@@ -44,7 +36,7 @@ class PathFinder:
         return {
             "timestamp": self.timestamp,
             "league": self.league,
-            "currencies": self.currencies,
+            "item_pairs": self.item_pairs,
             "offers": self.offers,
             "graph": self.graph,
             "results": self.results
@@ -52,16 +44,14 @@ class PathFinder:
 
     def run(self, max_transaction_length=3, logging=True):
         self.timestamp = str(datetime.now()).split(".")[0]
-        currency_combinations = list(
-            itertools.permutations(self.currencies, 2))
         if len(self.offers) == 0:
             if logging:
-                print("Fetching {} offers for {} currencies - {} pairs".format(
-                    self.league, len(self.currencies), len(currency_combinations)))
+                print("Fetching {} offers for {} pairs".format(
+                    self.league, len(self.item_pairs)))
                 print("Backend: {}".format(self.backend.name()))
             t0 = time.time()
             self.offers = self.backend.fetch_offers(
-                self.league, currency_combinations)
+                self.league, self.item_pairs)
             t1 = time.time()
             if logging:
                 print("Spent {}s fetching offers".format(round(t1 - t0, 1)))
@@ -72,7 +62,7 @@ class PathFinder:
         if logging:
             print("Spent {}s building the graph".format(round(t2 - t1, 1)))
 
-        for c in self.currencies:
+        for c in self.graph.keys():
             # For currency @c, find all paths within the constructed path that are
             # at most @max_transaction_length long
             paths = graph.find_paths(self.graph, c, c, max_transaction_length)
