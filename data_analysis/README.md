@@ -24,7 +24,7 @@ At this point I'd like to clarify that my definition of a conversion being **pro
 
 ## Importance of certain currencies for profitable conversions
 So this should be the most interesting bit of data for now. Below you can see how often each 2-permutation transaction was found in a profitable conversion.
-Each number is calculated as the `total number of proftiable conversions for that transaction over all snapshots` divided by `number of snapshots`.
+Each number is calculated as the `total number of profitable conversions for that transaction over all snapshots` divided by `number of snapshots`.
 The higher the number, the more profitable conversions were dependent on transactions between those two currencies.
 Below are heatmap visualizations for each league during the Delve season.
 
@@ -44,6 +44,6 @@ So we can see that selling `Chaos Orbs` for `Vaal Orbs` in `Delve` was especiall
 
 As stated above, the maximum length of trading paths I evaluated was `3`, meaning three trades in a row, ending up at the starting currency, ie. trading `Exalted` -> `Regrets` -> `Chaos` -> `Exalted`. If the middle transaction is particularly profitable, the other two might be bad or average at best, but are improved by the middle one. At the same time, it does not mean that a certain transaction/2-permuation is especially profitable, but rather leads to a currency that itself offers more profitable transactions along the way.
 
-We can also see that the matrix is relatively sparse, meaning only relatively few 2-permutations are often seen in profitable conversions. For example, all 2-permutations including `Orbs of Augmentation` or `Orbs of Transmutation` are basically non-existent when it comes to my method for finding proftiable conversions.
+We can also see that the matrix is relatively sparse, meaning only relatively few 2-permutations are often seen in profitable conversions. For example, all 2-permutations including `Orbs of Augmentation` or `Orbs of Transmutation` are basically non-existent when it comes to my method for finding profitable conversions.
 
-Generally speaking, selling and buying `Chaos Orbs` looks like the easiest way of making proftiable currency trades. This of course makes sense considering the significance of `Chaos Orbs` in everyday tades.
+Generally speaking, selling and buying `Chaos Orbs` looks like the easiest way of making profitable currency trades. This of course makes sense considering the significance of `Chaos Orbs` in everyday trades.
