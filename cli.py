@@ -69,6 +69,13 @@ parser.add_argument(
     action="store_true",
     help="Whether to use all supported bulk items",
 )
+parser.add_argument(
+    "--nofilter",
+    default=False,
+    action="store_true",
+    help="Whether to disable item pair filters"
+)
+
 arguments = parser.parse_args()
 
 league = arguments.league
@@ -76,6 +83,7 @@ currency = arguments.currency
 limit = arguments.limit
 use_poetrade = arguments.poetrade
 fullbulk = arguments.fullbulk
+use_filter = False if arguments.nofilter else True
 
 backend = poetrade if use_poetrade else poeofficial
 
@@ -92,7 +100,7 @@ else:
 with open("excluded_traders.txt", "r") as f:
     excluded_traders = [x.strip() for x in f.readlines()]
 
-p = PathFinder(league, chosen_currencies, backend, excluded_traders)
+p = PathFinder(league, chosen_currencies, backend, excluded_traders, use_filter)
 p.run(3, True)
 
 try:

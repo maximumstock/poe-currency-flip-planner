@@ -5,7 +5,7 @@ arbitrage planning for a given backend.
 
 import json
 import itertools
-from typing import Dict, List, Tuple
+from typing import Dict, List
 
 """
 Public API
@@ -60,10 +60,6 @@ def build_item_list_poetrade(items: List, config: Dict = {}):
 
     result: List = list(itertools.permutations(currency_items, 2))
 
-    # Use edge filter to remove unnecessary edges
-    allowed_pairs = load_pair_filter()
-    result = filter_pairs(result, allowed_pairs)
-
     if config.get("fullbulk") is True:
         result = result + list(
             itertools.product(non_currency_targets, non_currency_items)
@@ -96,7 +92,3 @@ def load_items_poeofficial() -> Dict[str, Dict]:
 def load_pair_filter() -> List[str]:
     with open("assets/pair_filter.json", "r") as f:
         return list(set(json.load(f)))
-
-
-def filter_pairs(pairs: List[Tuple[str, str]], allowed_pairs: List[str]):
-    return [x for x in pairs if "{}-{}".format(x[0]["name"], x[1]["name"]) in allowed_pairs]

@@ -1,8 +1,9 @@
 import time
 from datetime import datetime
-from typing import Dict, List
+from typing import Dict, List, Tuple
 
 from src import graph
+from src.items import load_pair_filter
 
 
 def format_conversions(conversions) -> str:
@@ -27,16 +28,19 @@ class PathFinder:
     offers, constructing a graph and finding profitable paths along that graph.
     """
 
-    def __init__(self, league, item_pairs, backend, excluded_traders=[]):
+    def __init__(self, league, item_pairs, backend, excluded_traders=[], use_filter=True):
         self.league = league
         self.item_pairs = item_pairs
         self.backend = backend
         self.excluded_traders = excluded_traders
+        self.use_filter = use_filter
 
         # Private internal fields to store partial results
         self.offers = []
         self.graph = {}
         self.results = {}
+
+        self.pair_filter = load_pair_filter()
 
     def prepickle(self) -> Dict:
         return {
@@ -58,17 +62,27 @@ class PathFinder:
             )
         return offers
 
+    def filter_pairs(self, pairs: List[Tuple[str, str]], allowed_pairs: List[str]):
+        return [x for x in pairs if "{}-{}".format(x[0], x[1]) in allowed_pairs]
+
     def run(self, max_transaction_length=3, logging=True):
         self.timestamp = str(datetime.now()).split(".")[0]
         if len(self.offers) == 0:
+
+            # Filter out unwanted item pairs if filtering is enabled
+            if self.use_filter is True:
+                self.item_pairs = self.filter_pairs(self.item_pairs, self.pair_filter)
+
             if logging:
                 print(
                     "Fetching {} offers for {} pairs".format(
                         self.league, len(self.item_pairs)
                     )
                 )
+                print("Filter: {}".format("Enabled" if self.use_filter else "Disabled"))
                 print("Backend: {}".format(self.backend.name()))
             t0 = time.time()
+
             self.offers = self.backend.fetch_offers(self.league, self.item_pairs)
 
             # Filter out unwanted traders
