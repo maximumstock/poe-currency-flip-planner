@@ -7,5 +7,4 @@ env
 .pytest_cache
 .ipynb_checkpoints
 .mypy_cache
-types.py
 graph_test2.py
