@@ -37,6 +37,7 @@ def log_conversion(c):
 
 
 parser = argparse.ArgumentParser(description="CLI interface for PathFinder")
+
 parser.add_argument(
     "--league",
     default=league_names[0],
