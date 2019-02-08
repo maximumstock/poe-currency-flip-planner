@@ -2,8 +2,10 @@ import asyncio
 import urllib
 import aiohttp
 
-from src import constants
 from src.backends.lib import AsyncRateLimiter
+from src.items import load_items
+
+currencies = load_items("poeofficial")
 
 
 def name():
@@ -95,7 +97,7 @@ def map_offers_details(offer_details):
 
 
 def map_currency(currency):
-    if currency in constants.currencies:
-        return constants.currencies[currency]["poeofficial"]
+    if currency in currencies:
+        return currencies[currency]["poeofficial"]
     else:
         raise Exception("Unknown currency key")
