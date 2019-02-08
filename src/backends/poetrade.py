@@ -1,9 +1,10 @@
 import concurrent.futures
-
 import requests
 from bs4 import BeautifulSoup
 
-from src import constants, flip
+from src.items import load_items_poetrade
+
+items = load_items_poetrade()
 
 
 def name():
@@ -32,19 +33,13 @@ def fetch_offers_for_pair(league, want, have, limit=10):
         "league": league,
         "want": map_currency(want),
         "have": map_currency(have),
-        "online": True
+        "online": True,
     }
 
     r = requests.get(url, params=params)
     offers = parse_conversion_offers(r.text)
-    viable_offers = flip.filter_viable_offers(want, have, offers)
 
-    return {
-        "offers": viable_offers,
-        "want": want,
-        "have": have,
-        "league": league
-    }
+    return {"offers": offers, "want": want, "have": have, "league": league}
 
 
 """
@@ -66,18 +61,18 @@ def parse_conversion_offer(offer_html):
 
     receive = float(offer_html["data-sellvalue"])
     pay = float(offer_html["data-buyvalue"])
-    conversion_rate = round(receive/pay, 4)
+    conversion_rate = round(receive / pay, 4)
     stock = int(offer_html["data-stock"])
 
     return {
         "contact_ign": offer_html["data-ign"],
         "conversion_rate": conversion_rate,
-        "stock": stock
+        "stock": stock,
     }
 
 
 def map_currency(currency):
-    if currency in constants.currencies:
-        return constants.currencies[currency]["poetrade"]
+    if currency in items.keys():
+        return items[currency]["id"]
     else:
         raise Exception("Unknown currency key")

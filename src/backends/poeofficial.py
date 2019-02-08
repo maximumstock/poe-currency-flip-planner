@@ -1,10 +1,11 @@
 import asyncio
 import urllib
-
 import aiohttp
 
-from src import constants, flip
 from src.backends.lib import AsyncRateLimiter
+from src.items import load_items
+
+currencies = load_items("poeofficial")
 
 
 def name():
@@ -17,8 +18,7 @@ class RateLimitException(Exception):
 
 def fetch_offers(league, currency_pairs, limit=3):
     loop = asyncio.get_event_loop()
-    results = loop.run_until_complete(
-        fetch_offers_async(league, currency_pairs, limit))
+    results = loop.run_until_complete(fetch_offers_async(league, currency_pairs, limit))
     return results
 
 
@@ -48,14 +48,13 @@ async def fetch_offers_for_pair(sess, league, want, have, limit=5):
     offers = []
 
     offer_id_url = "http://www.pathofexile.com/api/trade/exchange/{}".format(
-        urllib.parse.quote(league))
+        urllib.parse.quote(league)
+    )
     payload = {
         "exchange": {
-            "status": {
-                "option": "online"
-            },
+            "status": {"option": "online"},
             "have": [map_currency(have)],
-            "want": [map_currency(want)]
+            "want": [map_currency(want)],
         }
     }
 
@@ -70,7 +69,8 @@ async def fetch_offers_for_pair(sess, league, want, have, limit=5):
     if len(offer_ids) != 0:
         id_string = ",".join(offer_ids[:limit])
         url = "http://www.pathofexile.com/api/trade/fetch/{}?query={}&exchange".format(
-            id_string, query_id)
+            id_string, query_id
+        )
 
         response = await sess.get(url)
         try:
@@ -79,14 +79,7 @@ async def fetch_offers_for_pair(sess, league, want, have, limit=5):
         except Exception:
             raise
 
-    viable_offers = flip.filter_viable_offers(want, have, offers)
-
-    return {
-        "offers": viable_offers,
-        "want": want,
-        "have": have,
-        "league": league
-    }
+    return {"offers": offers, "want": want, "have": have, "league": league}
 
 
 def map_offers_details(offer_details):
@@ -94,17 +87,17 @@ def map_offers_details(offer_details):
     stock = offer_details["listing"]["price"]["item"]["stock"]
     receive = offer_details["listing"]["price"]["item"]["amount"]
     pay = offer_details["listing"]["price"]["exchange"]["amount"]
-    conversion_rate = round(receive/pay, 4)
+    conversion_rate = round(receive / pay, 4)
 
     return {
         "contact_ign": contact_ign,
         "conversion_rate": conversion_rate,
-        "stock": stock
+        "stock": stock,
     }
 
 
 def map_currency(currency):
-    if currency in constants.currencies:
-        return constants.currencies[currency]["poeofficial"]
+    if currency in currencies:
+        return currencies[currency]["poeofficial"]
     else:
         raise Exception("Unknown currency key")

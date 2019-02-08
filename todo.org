@@ -47,28 +47,37 @@
 *** DONE Add backend-specific tests
     CLOSED: [2018-07-21 Sat 14:51]
 *** Should yield a very nice performance boost
-** DONE [#B] Do some analysis of the possible trades in the graph
-** TODO [#A] Add end-user functionality to easily scan conversion rates for a given currency and league, sorted by descending profitability
+** DONE Add end-user functionality to easily scan conversion rates for a given currency and league, sorted by descending profitability
+   CLOSED: [2019-02-06 Wed 23:53]
 *** DONE [#A] Add cli interface for finding profitable conversions for a given currency
    CLOSED: [2018-12-11 Tue 00:41]
 *** DONE Build data collector that regularly serializes the Pathfinder results
     CLOSED: [2018-05-12 Sat 17:07]
-*** Analyze collected results
-**** DONE Number of profitable conversions over time
-     CLOSED: [2018-05-27 Sun 15:23]
-**** DONE Importance of currency routes in profitable conversions (Heatmap)
-     CLOSED: [2018-05-27 Sun 13:32]
-**** DONE Number of profitable conversions per starting currency over time
-     CLOSED: [2018-12-11 Tue 00:40]
-** TODO [#B] Improve Performance
+** DONE Analyze collected data
+   CLOSED: [2019-02-06 Wed 23:53]
+*** DONE Number of profitable conversions over time
+    CLOSED: [2018-05-27 Sun 15:23]
+*** DONE Importance of currency routes in profitable conversions (Heatmap)
+    CLOSED: [2018-05-27 Sun 13:32]
+*** DONE Number of profitable conversions per starting currency over time
+    CLOSED: [2018-12-11 Tue 00:40]
+** DONE Improve Performance
+   CLOSED: [2019-02-06 Wed 23:53]
 *** Parallelize graph traversal
 **** As of now, this is not needed, as the graphs are traversed fast enough, ~1s
 *** DONE [#B] Avoid poeofficial backend rate limit
     CLOSED: [2018-07-21 Sat 18:02]
-** TODO [#C] Try to incorporate remainders of other currencies (due to the different contingents) in the efficiency comparison
-** TODO [#A] Benchmark poe.trade req/s performance
+** DONE Benchmark poe.trade req/s performance
+   CLOSED: [2019-02-06 Wed 23:54]
   Depending on how strong the speedup compared to poeofficial is, it might be worth it to invest time to find a solution to the price-fixing filterting issue
+*** poe.trade performance specs
+**** 812 items
+**** roughly 180s with 20 threads
+** TODO [#C] Try to incorporate remainders of other currencies (due to the different contingents) in the efficiency comparison
 ** TODO [#C] Incorporate NPC trading ratios (unlimited stock)
 *** https://pathofexile.gamepedia.com/Currency#Vendor_prices_chart
 *** Master Progression: limited stock
 *** Main + Scraps Progression: unlimited stock
+** TODO Collect bulk item data with poe.trade and new item list to find edges to prune
+** TODO [#B] Unify CLI and collector argument parsing behaviour/functionality
+** TODO [#A] Add option to CLI and collector to support full bulk and currency only pairs

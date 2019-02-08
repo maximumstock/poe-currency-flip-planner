@@ -1,7 +1,15 @@
+"""
+@Deprecated
+
+A simple tier-model to assess quality of offers. Currently not used anywhere,
+but still here for reference.
+"""
+
 from src import constants
+from typing import List
 
 
-def filter_viable_offers(want, have, offers):
+def filter_viable_offers(want, have, offers) -> List:
     """
     Filters offers for a given pair of currencies via specified tiers (see above)
     to filter out unrealistically good offers.
@@ -9,7 +17,7 @@ def filter_viable_offers(want, have, offers):
     return [x for x in offers if is_offer_viable(want, have, x) is True]
 
 
-def is_offer_viable(want, have, offer):
+def is_offer_viable(want, have, offer) -> bool:
     """
     Helper method that holds the actual logic for deciding whether an offer is too
     good to be true or not.
@@ -28,6 +36,6 @@ def is_offer_viable(want, have, offer):
     # We shouldn't need this case, since conversion rates below 1 will typically
     # result in unprofitable conversions and are therefore ignored anyway.
     # if have_tier < want_tier and conversion_rate < 1:
-        # return False
+    # return False
 
     return True

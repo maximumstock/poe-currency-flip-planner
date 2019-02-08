@@ -42,7 +42,7 @@ in which succession currencies have to be traded to yield different profits/loss
 
 At the end, it might look something like this:
 
-![](assets/result_screenshot.png)
+![](examples/result_screenshot.png)
 
 
 ## Problems
@@ -72,9 +72,9 @@ conversions.
 If you want to use this project as a library/dependency, feel free to use the
 `PathFinder` class (see `src/pathfinder.py`) as an API.
 
-The PathFinder class is simply a static interface for finding proftiable trade
+The PathFinder class is simply a static interface for finding profitable trade
 paths for arbitrage. You give it the league, a list of currencies and a backend
-instace (eg. `backends/poeofficial.py`). For each
+instance (eg. `backends/poeofficial.py`). For each
 currency it starts looking for all profitable paths that start and end with that
 currency, given a maximum transaction length (default: 3). All stages of data
 (eg. list of collected offers via the respective trading backend, the constructed
@@ -85,7 +85,7 @@ instance and can simply be accessed and used for further work.
 ## Tests
 I wrote a few simple unit tests to make the data fetching and parsing, graph
 construction and traversal and path evaluation a bit more robust. You can run
-those tests using predefined datastructures via `python -m pytest tests`.
+those tests using predefined data structures via `python -m pytest tests`.
 
 
 ## Data Exploration
