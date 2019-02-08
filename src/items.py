@@ -61,11 +61,10 @@ def build_item_list_poetrade(items: List, config: Dict = {}):
 
     result: List = list(itertools.permutations(currency_items, 2))
 
-    if "use_bulk_items" in config.keys():
+    if config.get("fullbulk") is True:
         result = result + list(
             itertools.product(non_currency_targets, non_currency_items)
-        )
-        result = result + list(
+        ) + list(
             itertools.product(non_currency_items, non_currency_targets)
         )
 

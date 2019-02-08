@@ -49,8 +49,7 @@ parser.add_argument(
     default="all",
     choices=currency_items,
     type=str,
-    help="Full name of currency to flip, ie. 'Cartographer's Chisel, or 'Chaos Orb'. See a full list of currency names \
-            under src/constants.py. Defaults to all currencies.",
+    help="Full name of currency to flip, ie. 'Cartographer's Chisel, or 'Chaos Orb'. Defaults to all currencies.",
 )
 parser.add_argument(
     "--limit",
@@ -80,10 +79,14 @@ fullbulk = arguments.fullbulk
 
 backend = poetrade if use_poetrade else poeofficial
 
+config = {
+    "fullbulk": fullbulk
+}
+
 if use_poetrade is True:
-    chosen_currencies = build_item_list("poetrade", fullbulk)
+    chosen_currencies = build_item_list("poetrade", config)
 else:
-    chosen_currencies = build_item_list("poeofficial", fullbulk)
+    chosen_currencies = build_item_list("poeofficial", config)
 
 # Load excluded trader list
 with open("excluded_traders.txt", "r") as f:
