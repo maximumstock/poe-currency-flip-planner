@@ -41,22 +41,36 @@ def run():
         action="store_true",
         help="Whether to use all supported bulk items",
     )
+    parser.add_argument(
+        "--nofilter",
+        default=False,
+        action="store_true",
+        help="Whether to disable item pair filters"
+    )
 
     arguments = parser.parse_args()
 
     league = arguments.league
     path = arguments.path
     use_poetrade = arguments.poetrade
-    fullbulk = arguments.fullbulk
+    use_filter = False if arguments.nofilter else True
+
+    config = {
+        "fullbulk": arguments.fullbulk
+    }
 
     backend = poetrade if use_poetrade else poeofficial
 
     if use_poetrade is True:
-        chosen_currencies = build_item_list("poetrade", fullbulk)
+        chosen_currencies = build_item_list("poetrade", config)
     else:
-        chosen_currencies = build_item_list("poeofficial", fullbulk)
+        chosen_currencies = build_item_list("poeofficial", config)
 
-    p = PathFinder(league, chosen_currencies, backend)
+    # Load excluded trader list
+    with open("excluded_traders.txt", "r") as f:
+        excluded_traders = [x.strip() for x in f.readlines()]
+
+    p = PathFinder(league, chosen_currencies, backend, excluded_traders, use_filter)
     p.run(3)
 
     filename = "{}/{}".format(path, gen_filename())
