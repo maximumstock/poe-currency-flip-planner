@@ -4,7 +4,10 @@ from matplotlib import pyplot as plt
 import itertools
 import argparse
 import operator
-from src.constants import currencies as all_currencies
+from src.items import load_items
+
+all_items = [x["name"] for x in load_items("poetrade").values()]
+all_currencies = [x["name"] for x in load_items("poetrade").values() if x["currency"] is True]
 
 
 """
@@ -98,7 +101,7 @@ def number_of_edges_between_currencies_per_instance(data, timestamps):
     # x = currencies
     # y = currencies
     z = []
-    combos = itertools.product(currencies, repeat=2)
+    combos = itertools.product(all_currencies, repeat=2)
     for combo in combos:
         key = "{}-{}".format(combo[0], combo[1])
         if key in key_groups:
@@ -106,7 +109,7 @@ def number_of_edges_between_currencies_per_instance(data, timestamps):
         else:
             z.append(0)
 
-    Z = np.array(z).reshape(len(currencies), len(currencies))
+    Z = np.array(z).reshape(len(all_currencies), len(all_currencies))
     return key_groups, Z
 
 
@@ -170,7 +173,7 @@ if __name__ == "__main__":
     # # Heatmap
     _, heatmap_data = number_of_edges_between_currencies_per_instance(data, timestamps)
     fig, ax = plot_heatmap(
-        currencies, currencies, heatmap_data, league, min_timestamp, max_timestamp
+        all_currencies, all_currencies, heatmap_data, league, min_timestamp, max_timestamp
     )
     plt.savefig(
         "data_analysis/results/heatmap_{}_{}-{}".format(
