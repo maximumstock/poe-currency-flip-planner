@@ -42,5 +42,5 @@ final_df = reduce(
 )
 final_df = final_df.set_index("edge")
 final_df.to_csv(
-    "data_analysis/experiments/edge_popularity_per_snapshot_delve/data/edge_popularity.csv"
+    "data_analysis/experiments/edge_popularity_per_snapshot_betrayal/data/edge_popularity.csv"
 )
