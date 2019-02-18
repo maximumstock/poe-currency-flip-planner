@@ -78,6 +78,18 @@
 *** https://pathofexile.gamepedia.com/Currency#Vendor_prices_chart
 *** Master Progression: limited stock
 *** Main + Scraps Progression: unlimited stock
-** TODO Collect bulk item data with poe.trade and new item list to find edges to prune
+** DONE Collect bulk item data with poe.trade and new item list to find edges to prune
+   CLOSED: [2019-02-18 Mon 22:35]
 ** TODO [#B] Unify CLI and collector argument parsing behaviour/functionality
-** TODO [#A] Add option to CLI and collector to support full bulk and currency only pairs
+** DONE [#A] Add option to CLI and collector to support full bulk and currency only pairs
+   CLOSED: [2019-02-18 Mon 22:35]
+** TODO [#A] New experiment: Relative impact of edge on number of profitable conversions
+*** combine all offers for a given league (Delve and Betrayal probably)
+*** construct a graph for all offers
+*** find all profitable conversions after taking edges out
+*** per disabled edge, count how many profitable conversions were lost relative to a full graph without disabled edges
+*** plot impact per edge (sorted) -> climbing graph?
+*** compare results for Delve and Betrayal
+**** decide if most important edges are league-specific
+**** if they are not, hand-craft a good list of edges
+**** if they are, dunno yet :)
