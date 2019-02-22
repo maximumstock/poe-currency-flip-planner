@@ -69,6 +69,11 @@ and options. This uses the official Path of Exile trading API per default.
 After a while you will get a bunch of text printed out with your suggested
 conversions.
 
+### Exclude Traders
+If you want to exclude traders you can add their names to `excluded_traders.txt`.
+
+### Library Usage
+
 If you want to use this project as a library/dependency, feel free to use the
 `PathFinder` class (see `src/pathfinder.py`) as an API.
 
