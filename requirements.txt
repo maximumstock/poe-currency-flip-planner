@@ -35,7 +35,7 @@ more-itertools==4.3.0
 multidict==4.5.2
 nbconvert==5.4.0
 nbformat==4.4.0
-notebook==5.7.4
+notebook==5.7.8
 numpy==1.15.3
 pandas==0.23.4
 pandocfilters==1.4.2
