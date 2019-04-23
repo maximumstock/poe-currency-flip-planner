@@ -20,9 +20,9 @@ def run():
     )
     parser.add_argument(
         "--league",
-        default="Betrayal",
-        choices=["Betrayal", "Hardcore Betrayal", "Standard", "Hardcore"],
-        help="League specifier, ie. 'Betrayal', 'Hardcore Betrayal' or 'Flashback Event (BRE001)'",
+        default="Synthesis",
+        choices=["Synthesis", "Hardcore Synthesis", "Standard", "Hardcore"],
+        help="League specifier, ie. 'Synthesis', 'Hardcore Synthesis' or 'Flashback Event (BRE001)'",
     )
     parser.add_argument(
         "--path",
