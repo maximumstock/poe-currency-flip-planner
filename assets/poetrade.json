@@ -4474,5 +4474,89 @@
     "name": "Shaped Maze",
     "currency": false,
     "non_currency_sales_target": false
+  },
+  "The Seeker": {
+    "id": 765,
+    "name": "The Seeker",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Messenger": {
+    "id": 766,
+    "name": "The Messenger",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Mad King": {
+    "id": 767,
+    "name": "The Mad King",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Boon of Justice": {
+    "id": 768,
+    "name": "Boon of Justice",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Journey": {
+    "id": 769,
+    "name": "The Journey",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Arrogance of the Vaal": {
+    "id": 770,
+    "name": "Arrogance of the Vaal",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Landing": {
+    "id": 771,
+    "name": "The Landing",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Seven Years Bad Luck": {
+    "id": 772,
+    "name": "Seven Years Bad Luck",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Golden Era": {
+    "id": 773,
+    "name": "The Golden Era",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Monochrome": {
+    "id": 774,
+    "name": "Monochrome",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Dark Temptation": {
+    "id": 775,
+    "name": "Dark Temptation",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Alone in the Darkness": {
+    "id": 776,
+    "name": "Alone in the Darkness",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Sambodhi's Vow": {
+    "id": 777,
+    "name": "Sambodhi's Vow",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "The Lord of Celebration": {
+    "id": 778,
+    "name": "The Lord of Celebration",
+    "currency": false,
+    "non_currency_sales_target": false
   }
 }
