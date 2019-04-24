@@ -57,7 +57,7 @@ At the end, it might look something like this:
 
 ## Installation
 
-I use Python >=3.5 for everything. I haven't tried running it with different versions.
+I use Python >=3.7 for everything. I haven't tried running it with different versions.
 You can install all dependencies by running `pip install -r requirements.txt`.
 
 
