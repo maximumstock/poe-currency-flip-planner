@@ -1,6 +1,6 @@
 # poe-currency-flip-planner
 
-This tool is an attempt at finding short-term arbitrage deals of currency in Path of Exile.
+This tool is an attempt at finding short-term arbitrage deals of currency and items in Path of Exile.
 
 ## Background
 Via [poe.trade](http://currency.poe.trade) one can look for currently offered currency
@@ -23,6 +23,58 @@ outcomes:
 
 Comparing different paths up to an arbitrary depth results in an answer to the question
 in which succession currencies have to be traded to yield different profits/losses.
+
+
+## How to use
+
+If you simply want to use this tool to find profitable trades, 
+please use `python cli.py` as a CLI interface.
+See `src/cli.py` or `python cli.py --help` for help and options. 
+This uses poe.trade per default as it is faster than the official Path of Exile Trading API.
+
+After a while you will get a bunch of text printed out with your suggested conversions.
+
+### Default Settings
+Per default, we use all traditional currency items (aka `Orbs` plus some manually selected)
+for this search.
+Additionally, we use a data-mined filter (see `data_analysis/README.md`) to only
+request data for pairs that usually provide profitable conversions.
+You might manually alter this filter by editing `assets/pair_filter.json`.
+
+### Options
+You can disable using above item pair filter via the `--nofilter` option (again, see `python cli.py --help`).
+
+You can also request data for **ALL** items there are on poe.trade (see `assets/poetrade.json`)
+by additionally specifying the `--fullbulk` option: 
+
+`python cli.py --league Synthesis --nofilter --fullbulk`
+
+Please note that this takes a long time and is basically useless unless
+you want to collect your own data for analysis (see `data_analysis/README.md`).
+However, you might just use `run_collector.sh` (which uses `data_analyis/collector.py`)
+and is specifically built for this purpose.
+
+
+### Exclude Traders
+Some traders offer either very good or bad conversion rates, depending on their
+price-fixing goal.
+As of now there is no built-in way to detect price-fixing offers.
+If you want to exclude traders you can add their names to `excluded_traders.txt`
+(one name per line).
+
+### Library Usage
+
+If you want to use this project as a library/dependency, feel free to use the
+`PathFinder` class (see `src/pathfinder.py`) as an API.
+
+The PathFinder class is simply a static interface for finding profitable trade
+paths for arbitrage. You give it the league, a list of currencies and a backend
+instance (eg. `backends/poeofficial.py`). For each
+currency it starts looking for all profitable paths that start and end with that
+currency, given a maximum transaction length (default: 3). All stages of data
+(eg. list of collected offers via the respective trading backend, the constructed
+graph of offers and the found profitable paths) are part of each PathFinder
+instance and can simply be accessed and used for further work.
 
 
 ## How it works
@@ -56,35 +108,9 @@ At the end, it might look something like this:
 
 
 ## Installation
-
 I use Python >=3.7 for everything. I haven't tried running it with different versions.
 You can install all dependencies by running `pip install -r requirements.txt`.
 
-
-## How to use
-`python cli.py` can be used as a CLI interface.
-See `src/cli.py` or `python cli.py --help` for help
-and options. This uses the official Path of Exile trading API per default.
-
-After a while you will get a bunch of text printed out with your suggested
-conversions.
-
-### Exclude Traders
-If you want to exclude traders you can add their names to `excluded_traders.txt`.
-
-### Library Usage
-
-If you want to use this project as a library/dependency, feel free to use the
-`PathFinder` class (see `src/pathfinder.py`) as an API.
-
-The PathFinder class is simply a static interface for finding profitable trade
-paths for arbitrage. You give it the league, a list of currencies and a backend
-instance (eg. `backends/poeofficial.py`). For each
-currency it starts looking for all profitable paths that start and end with that
-currency, given a maximum transaction length (default: 3). All stages of data
-(eg. list of collected offers via the respective trading backend, the constructed
-graph of offers and the found profitable paths) are part of each PathFinder
-instance and can simply be accessed and used for further work.
 
 
 ## Tests
