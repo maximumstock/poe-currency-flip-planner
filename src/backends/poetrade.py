@@ -72,7 +72,8 @@ def parse_conversion_offer(offer_html):
 
 
 def map_currency(currency):
-    if currency in items.keys():
-        return items[currency]["id"]
+    sanitized_currency = "".join(currency.split("'"))
+    if sanitized_currency in items.keys():
+        return items[sanitized_currency]["id"]
     else:
-        raise Exception("Unknown currency key")
+        raise Exception("Unknown currency key " + currency)
