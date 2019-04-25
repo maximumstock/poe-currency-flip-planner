@@ -30,10 +30,10 @@ def run():
         help="Location where to save collected data",
     )
     parser.add_argument(
-        "--poetrade",
+        "--poeofficial",
         default=False,
         action="store_true",
-        help="Flag to fetch trading data from poe.trade instead of pathofexile.com/trade.",
+        help="Flag to fetch trading data from pathofexile.com/trade instead of poe.trade.",
     )
     parser.add_argument(
         "--fullbulk",
@@ -52,19 +52,19 @@ def run():
 
     league = arguments.league
     path = arguments.path
-    use_poetrade = arguments.poetrade
+    use_poeofficial = arguments.poeofficial
     use_filter = False if arguments.nofilter else True
 
     config = {
         "fullbulk": arguments.fullbulk
     }
 
-    backend = poetrade if use_poetrade else poeofficial
+    backend = poeofficial if use_poeofficial else poetrade
 
-    if use_poetrade is True:
-        chosen_currencies = build_item_list("poetrade", config)
-    else:
+    if use_poeofficial is True:
         chosen_currencies = build_item_list("poeofficial", config)
+    else:
+        chosen_currencies = build_item_list("poetrade", config)
 
     # Load excluded trader list
     with open("excluded_traders.txt", "r") as f:

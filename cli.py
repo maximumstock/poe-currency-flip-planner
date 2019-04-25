@@ -59,10 +59,10 @@ parser.add_argument(
     help="Limit the number of displayed conversions. Defaults to 3.",
 )
 parser.add_argument(
-    "--poetrade",
+    "--poeofficial",
     default=False,
     action="store_true",
-    help="Flag to fetch trading data from poe.trade instead of pathofexile.com/trade.",
+    help="Flag to fetch trading data from pathofexile.com/trade instead of poe.trade.",
 )
 parser.add_argument(
     "--fullbulk",
@@ -82,20 +82,20 @@ arguments = parser.parse_args()
 league = arguments.league
 currency = arguments.currency
 limit = arguments.limit
-use_poetrade = arguments.poetrade
+use_poeofficial = arguments.poeofficial
 fullbulk = arguments.fullbulk
 use_filter = False if arguments.nofilter else True
 
-backend = poetrade if use_poetrade else poeofficial
+backend = poeofficial if use_poeofficial else poetrade
 
 config = {
     "fullbulk": fullbulk
 }
 
-if use_poetrade is True:
-    chosen_currencies = build_item_list("poetrade", config)
-else:
+if use_poeofficial is True:
     chosen_currencies = build_item_list("poeofficial", config)
+else:
+    chosen_currencies = build_item_list("poetrade", config)
 
 # Load excluded trader list
 with open("excluded_traders.txt", "r") as f:
