@@ -23,7 +23,7 @@
     "currency": true,
     "non_currency_sales_target": true
   },
-  "Gemcutter's Prism": {
+  "Gemcutters Prism": {
     "id": 5,
     "name": "Gemcutter's Prism",
     "currency": false,
@@ -41,7 +41,7 @@
     "currency": true,
     "non_currency_sales_target": false
   },
-  "Jeweller's Orb": {
+  "Jewellers Orb": {
     "id": 8,
     "name": "Jeweller's Orb",
     "currency": true,
@@ -53,7 +53,7 @@
     "currency": true,
     "non_currency_sales_target": false
   },
-  "Cartographer's Chisel": {
+  "Cartographers Chisel": {
     "id": 10,
     "name": "Cartographer's Chisel",
     "currency": false,
@@ -95,7 +95,7 @@
     "currency": true,
     "non_currency_sales_target": false
   },
-  "Glassblower's Bauble": {
+  "Glassblowers Bauble": {
     "id": 21,
     "name": "Glassblower's Bauble",
     "currency": false,
@@ -179,25 +179,25 @@
     "currency": false,
     "non_currency_sales_target": false
   },
-  "Eber's Key": {
+  "Ebers Key": {
     "id": 36,
     "name": "Eber's Key",
     "currency": false,
     "non_currency_sales_target": false
   },
-  "Yriel's Key": {
+  "Yriels Key": {
     "id": 37,
     "name": "Yriel's Key",
     "currency": false,
     "non_currency_sales_target": false
   },
-  "Inya's Key": {
+  "Inyas Key": {
     "id": 38,
     "name": "Inya's Key",
     "currency": false,
     "non_currency_sales_target": false
   },
-  "Volkuur's Key": {
+  "Volkuurs Key": {
     "id": 39,
     "name": "Volkuur's Key",
     "currency": false,
@@ -233,19 +233,19 @@
     "currency": false,
     "non_currency_sales_target": false
   },
-  "Apprentice Cartographer's Sextant": {
+  "Apprentice Cartographers Sextant": {
     "id": 45,
     "name": "Apprentice Cartographer's Sextant",
     "currency": false,
     "non_currency_sales_target": false
   },
-  "Journeyman Cartographer's Sextant": {
+  "Journeyman Cartographers Sextant": {
     "id": 46,
     "name": "Journeyman Cartographer's Sextant",
     "currency": false,
     "non_currency_sales_target": false
   },
-  "Master Cartographer's Sextant": {
+  "Master Cartographers Sextant": {
     "id": 47,
     "name": "Master Cartographer's Sextant",
     "currency": false,
@@ -335,31 +335,31 @@
     "currency": false,
     "non_currency_sales_target": false
   },
-  "Xoph's Breachstone": {
+  "Xophs Breachstone": {
     "id": 62,
     "name": "Xoph's Breachstone",
     "currency": false,
     "non_currency_sales_target": false
   },
-  "Tul's Breachstone": {
+  "Tuls Breachstone": {
     "id": 63,
     "name": "Tul's Breachstone",
     "currency": false,
     "non_currency_sales_target": false
   },
-  "Esh's Breachstone": {
+  "Eshs Breachstone": {
     "id": 64,
     "name": "Esh's Breachstone",
     "currency": false,
     "non_currency_sales_target": false
   },
-  "Uul-Netol's Breachstone": {
+  "Uul-Netols Breachstone": {
     "id": 65,
     "name": "Uul-Netol's Breachstone",
     "currency": false,
     "non_currency_sales_target": false
   },
-  "Chayula's Breachstone": {
+  "Chayulas Breachstone": {
     "id": 66,
     "name": "Chayula's Breachstone",
     "currency": false,
@@ -755,7 +755,7 @@
     "currency": false,
     "non_currency_sales_target": false
   },
-  "A Mother's Parting Gift": {
+  "A Mothers Parting Gift": {
     "id": 132,
     "name": "A Mother's Parting Gift",
     "currency": false,
@@ -767,19 +767,19 @@
     "currency": false,
     "non_currency_sales_target": false
   },
-  "Anarchy's Price": {
+  "Anarchys Price": {
     "id": 134,
     "name": "Anarchy's Price",
     "currency": false,
     "non_currency_sales_target": false
   },
-  "Assassin's Favour": {
+  "Assassins Favour": {
     "id": 135,
     "name": "Assassin's Favour",
     "currency": false,
     "non_currency_sales_target": false
   },
-  "Atziri's Arsenal": {
+  "Atziris Arsenal": {
     "id": 136,
     "name": "Atziri's Arsenal",
     "currency": false,
@@ -809,7 +809,7 @@
     "currency": false,
     "non_currency_sales_target": false
   },
-  "Bowyer's Dream": {
+  "Bowyers Dream": {
     "id": 141,
     "name": "Bowyer's Dream",
     "currency": false,
@@ -821,7 +821,7 @@
     "currency": false,
     "non_currency_sales_target": false
   },
-  "Cartographer's Delight": {
+  "Cartographers Delight": {
     "id": 143,
     "name": "Cartographer's Delight",
     "currency": false,
@@ -851,13 +851,13 @@
     "currency": false,
     "non_currency_sales_target": false
   },
-  "Dialla's Subjugation": {
+  "Diallas Subjugation": {
     "id": 148,
     "name": "Dialla's Subjugation",
     "currency": false,
     "non_currency_sales_target": false
   },
-  "Doedre's Madness": {
+  "Doedres Madness": {
     "id": 149,
     "name": "Doedre's Madness",
     "currency": false,
@@ -881,13 +881,13 @@
     "currency": false,
     "non_currency_sales_target": false
   },
-  "Emperor's Luck": {
+  "Emperors Luck": {
     "id": 153,
     "name": "Emperor's Luck",
     "currency": false,
     "non_currency_sales_target": false
   },
-  "Gemcutter's Promise": {
+  "Gemcutters Promise": {
     "id": 154,
     "name": "Gemcutter's Promise",
     "currency": false,
@@ -947,13 +947,13 @@
     "currency": false,
     "non_currency_sales_target": false
   },
-  "Hunter's Resolve": {
+  "Hunters Resolve": {
     "id": 164,
     "name": "Hunter's Resolve",
     "currency": false,
     "non_currency_sales_target": false
   },
-  "Hunter's Reward": {
+  "Hunters Reward": {
     "id": 165,
     "name": "Hunter's Reward",
     "currency": false,
@@ -965,7 +965,7 @@
     "currency": false,
     "non_currency_sales_target": false
   },
-  "Lantador's Lost Love": {
+  "Lantadors Lost Love": {
     "id": 167,
     "name": "Lantador's Lost Love",
     "currency": false,
@@ -1013,7 +1013,7 @@
     "currency": false,
     "non_currency_sales_target": false
   },
-  "Lysah's Respite": {
+  "Lysahs Respite": {
     "id": 175,
     "name": "Lysah's Respite",
     "currency": false,
@@ -1241,7 +1241,7 @@
     "currency": false,
     "non_currency_sales_target": false
   },
-  "The Dragon's Heart": {
+  "The Dragons Heart": {
     "id": 213,
     "name": "The Dragon's Heart",
     "currency": false,
@@ -1301,7 +1301,7 @@
     "currency": false,
     "non_currency_sales_target": false
   },
-  "The Flora's Gift": {
+  "The Floras Gift": {
     "id": 223,
     "name": "The Flora's Gift",
     "currency": false,
@@ -1409,13 +1409,13 @@
     "currency": false,
     "non_currency_sales_target": false
   },
-  "The King's Blade": {
+  "The Kings Blade": {
     "id": 241,
     "name": "The King's Blade",
     "currency": false,
     "non_currency_sales_target": false
   },
-  "The King's Heart": {
+  "The Kings Heart": {
     "id": 242,
     "name": "The King's Heart",
     "currency": false,
@@ -1463,7 +1463,7 @@
     "currency": false,
     "non_currency_sales_target": false
   },
-  "The Metalsmith's Gift": {
+  "The Metalsmiths Gift": {
     "id": 250,
     "name": "The Metalsmith's Gift",
     "currency": false,
@@ -1553,7 +1553,7 @@
     "currency": false,
     "non_currency_sales_target": false
   },
-  "The Saint's Treasure": {
+  "The Saints Treasure": {
     "id": 265,
     "name": "The Saint's Treasure",
     "currency": false,
@@ -1769,13 +1769,13 @@
     "currency": false,
     "non_currency_sales_target": false
   },
-  "The Wolf's Shadow": {
+  "The Wolfs Shadow": {
     "id": 301,
     "name": "The Wolf's Shadow",
     "currency": false,
     "non_currency_sales_target": false
   },
-  "The Wolven King's Bite": {
+  "The Wolven Kings Bite": {
     "id": 302,
     "name": "The Wolven King's Bite",
     "currency": false,
@@ -1835,7 +1835,7 @@
     "currency": false,
     "non_currency_sales_target": false
   },
-  "Vinia's Token": {
+  "Vinias Token": {
     "id": 312,
     "name": "Vinia's Token",
     "currency": false,
@@ -3059,13 +3059,13 @@
     "currency": true,
     "non_currency_sales_target": false
   },
-  "Harbinger's Orb": {
+  "Harbingers Orb": {
     "id": 516,
     "name": "Harbinger's Orb",
     "currency": true,
     "non_currency_sales_target": false
   },
-  "Engineer's Orb": {
+  "Engineers Orb": {
     "id": 517,
     "name": "Engineer's Orb",
     "currency": true,
@@ -3743,7 +3743,7 @@
     "currency": true,
     "non_currency_sales_target": false
   },
-  "Harbinger's Shard": {
+  "Harbingers Shard": {
     "id": 643,
     "name": "Harbinger's Shard",
     "currency": true,
@@ -3869,7 +3869,7 @@
     "currency": false,
     "non_currency_sales_target": false
   },
-  "The Jeweller's Boon": {
+  "The Jewellers Boon": {
     "id": 664,
     "name": "The Jeweller's Boon",
     "currency": false,
@@ -3899,13 +3899,13 @@
     "currency": false,
     "non_currency_sales_target": false
   },
-  "The Samurai's Eye": {
+  "The Samurais Eye": {
     "id": 669,
     "name": "The Samurai's Eye",
     "currency": false,
     "non_currency_sales_target": false
   },
-  "The Sword King's Salute": {
+  "The Sword Kings Salute": {
     "id": 670,
     "name": "The Sword King's Salute",
     "currency": false,
@@ -4547,7 +4547,7 @@
     "currency": false,
     "non_currency_sales_target": false
   },
-  "Sambodhi's Vow": {
+  "Sambodhis Vow": {
     "id": 777,
     "name": "Sambodhi's Vow",
     "currency": false,
