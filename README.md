@@ -42,17 +42,22 @@ request data for pairs that usually provide profitable conversions.
 You might manually alter this filter by editing `assets/pair_filter.json`.
 
 ### Options
-You can disable using above item pair filter via the `--nofilter` option (again, see `python cli.py --help`).
 
-You can also request data for **ALL** items there are on poe.trade (see `assets/poetrade.json`)
-by additionally specifying the `--fullbulk` option: 
+There are the following options:
 
-`python cli.py --league Synthesis --nofilter --fullbulk`
+1. look at all items poe.trade supports (--nofilter + --fullbulk)
+2. look at all traditional currencies, ie. `Orbs` (--nofilter)
+3. look at a data-mined preset of item pairs that are probably profitable most of the time, see `assets/pair_filter.json`, the default
 
-Please note that this takes a long time and is basically useless unless
+Please note that option #1 takes a long time and is basically useless unless
 you want to collect your own data for analysis (see `data_analysis/README.md`).
 However, you might just use `run_collector.sh` (which uses `data_analyis/collector.py`)
 and is specifically built for this purpose.
+
+If you are interested in a subset of this, eg. all Orbs + Fossils, you might edit
+`assets/poetrade.json` to only contain those items and run option #1.
+You can always reset `assets/poetrade.json` to its default by running `python src/asset_mgr.py`.
+View this as an Path of Exile item filter :).
 
 
 ### Exclude Traders
