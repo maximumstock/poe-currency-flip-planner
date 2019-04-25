@@ -64,7 +64,7 @@ def poetrade():
 
     # transform into dictionary with the name as key
     parsed = sorted(parsed, key=lambda x: x["id"])
-    parsed = [{x["name"]: x} for x in parsed]
+    parsed = [{"".join(x["name"].split('\'')): x} for x in parsed]
     parsed_dictionary = reduce(lambda x, y: x.update(y) or x, parsed)
 
     return parsed_dictionary
