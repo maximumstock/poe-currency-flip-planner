@@ -8,9 +8,6 @@ class ItemTest(unittest.TestCase):
         self.assertIsInstance(data, dict)
         assert len(data.keys()) > 600
 
-        data = load_items("poeofficial")
-        self.assertIsInstance(data, dict)
-
     def test_build_items_list(self):
         data = [
             {
@@ -50,31 +47,30 @@ class ItemTest(unittest.TestCase):
                 "non_currency_sales_target": False,
             },
         ]
-        poetrade_pairs = build_item_list_poetrade(data, {"use_bulk_items": True})
+        poetrade_pairs = build_item_list_poetrade(data,
+                                                  {"use_bulk_items": True})
         poetrade_pairs = list(
-            sorted(map(lambda x: (x[0]["name"], x[1]["name"]), poetrade_pairs))
-        )
-        expected_result = sorted(
-            [
-                ("Chaos Orb", "Exalted Orb"),
-                ("Chaos Orb", "Chromatic Orb"),
-                ("Exalted Orb", "Chaos Orb"),
-                ("Exalted Orb", "Chromatic Orb"),
-                ("Chromatic Orb", "Chaos Orb"),
-                ("Chromatic Orb", "Exalted Orb"),
-                ("Chaos Orb", "Perandus Coin"),
-                ("Exalted Orb", "Perandus Coin"),
-                ("Chaos Orb", "Sacrifice at Dusk"),
-                ("Exalted Orb", "Sacrifice at Dusk"),
-                ("Chaos Orb", "Sacrifice at Midnight"),
-                ("Exalted Orb", "Sacrifice at Midnight"),
-                ("Sacrifice at Dusk", "Chaos Orb"),
-                ("Sacrifice at Dusk", "Exalted Orb"),
-                ("Sacrifice at Midnight", "Chaos Orb"),
-                ("Sacrifice at Midnight", "Exalted Orb"),
-                ("Perandus Coin", "Chaos Orb"),
-                ("Perandus Coin", "Exalted Orb"),
-            ]
-        )
+            sorted(
+                map(lambda x: (x[0]["name"], x[1]["name"]), poetrade_pairs)))
+        expected_result = sorted([
+            ("Chaos Orb", "Exalted Orb"),
+            ("Chaos Orb", "Chromatic Orb"),
+            ("Exalted Orb", "Chaos Orb"),
+            ("Exalted Orb", "Chromatic Orb"),
+            ("Chromatic Orb", "Chaos Orb"),
+            ("Chromatic Orb", "Exalted Orb"),
+            ("Chaos Orb", "Perandus Coin"),
+            ("Exalted Orb", "Perandus Coin"),
+            ("Chaos Orb", "Sacrifice at Dusk"),
+            ("Exalted Orb", "Sacrifice at Dusk"),
+            ("Chaos Orb", "Sacrifice at Midnight"),
+            ("Exalted Orb", "Sacrifice at Midnight"),
+            ("Sacrifice at Dusk", "Chaos Orb"),
+            ("Sacrifice at Dusk", "Exalted Orb"),
+            ("Sacrifice at Midnight", "Chaos Orb"),
+            ("Sacrifice at Midnight", "Exalted Orb"),
+            ("Perandus Coin", "Chaos Orb"),
+            ("Perandus Coin", "Exalted Orb"),
+        ])
         self.assertEqual(len(poetrade_pairs), len(expected_result))
         self.assertListEqual(poetrade_pairs, expected_result)

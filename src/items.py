@@ -6,7 +6,6 @@ arbitrage planning for a given backend.
 import json
 import itertools
 from typing import Dict, List
-
 """
 Public API
 """
@@ -15,8 +14,6 @@ Public API
 def load_items(backend: str) -> Dict[str, Dict]:
     if backend is "poetrade":
         return load_items_poetrade()
-    if backend is "poeofficial":
-        return load_items_poeofficial()
 
     raise UnknownBackendException("Unknown or empty backend string given")
 
@@ -31,9 +28,6 @@ def build_item_list(backend: str, config: Dict = {}) -> List:
         data = build_item_list_poetrade(items.values(), config)
         data = list(map(lambda x: (x[0]["name"], x[1]["name"]), data))
         return data
-    if backend is "poeofficial":
-        items = load_items_poeofficial()
-        return build_item_list_poeofficial(items.keys(), config)
 
     raise UnknownBackendException("Unknown or empty backend string given")
 
@@ -56,23 +50,18 @@ def build_item_list_poetrade(items: List, config: Dict = {}):
     """
     currency_items = [x for x in items if x["currency"] is True]
     non_currency_items = [x for x in items if x["currency"] is False]
-    non_currency_targets = [x for x in items if x["non_currency_sales_target"] is True]
+    non_currency_targets = [
+        x for x in items if x["non_currency_sales_target"] is True
+    ]
 
     result: List = list(itertools.permutations(currency_items, 2))
 
     if config.get("fullbulk") is True:
         result = result + list(
             itertools.product(non_currency_targets, non_currency_items)
-        ) + list(
-            itertools.product(non_currency_items, non_currency_targets)
-        )
+        ) + list(itertools.product(non_currency_items, non_currency_targets))
 
     return result
-
-
-def build_item_list_poeofficial(items: List, config: Dict = {}) -> List:
-    permutations = list(itertools.permutations(items, 2))
-    return permutations
 
 
 class UnknownBackendException(Exception):
@@ -81,11 +70,6 @@ class UnknownBackendException(Exception):
 
 def load_items_poetrade() -> Dict[str, Dict]:
     with open("assets/poetrade.json", "r") as f:
-        return json.load(f)
-
-
-def load_items_poeofficial() -> Dict[str, Dict]:
-    with open("assets/poeofficial.json", "r") as f:
         return json.load(f)
 
 

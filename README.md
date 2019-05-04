@@ -29,12 +29,9 @@ in which succession currencies have to be traded to yield different profits/loss
 * Currency trade offers are collected from a backend provider, eg.
   * [poe.trade](http://poe.trade)
   * [Path of Exile Trade](https://www.pathofexile.com/trade/exchange)
-* I currently use [Path of Exile Trade](https://www.pathofexile.com/trade/exchange) as a
+* I currently use [poe.trade](http://currency.poe.trade) as a
   default, since they seem to automatically filter out certain price-fixing offers, which
   is really great!
-* Alternatively you can use [poe.trade](http://poe.trade) which does not impose a rate-limit.
-  With some tweaks you can then collect the offer data much faster, but it might contain
-  price-fixing offers or otherwise corrupt information.
 * Found trade offers are used to build a fully connected graph with currencies as nodes
   and one edge for each offer of each pair of non-identical currencies.
 * The offered exchange rates and stocks are used to find the most profitable trading paths
@@ -64,7 +61,7 @@ You can install all dependencies by running `pip install -r requirements.txt`.
 ## How to use
 `python cli.py` can be used as a CLI interface.
 See `src/cli.py` or `python cli.py --help` for help
-and options. This uses the official Path of Exile trading API per default.
+and options.
 
 After a while you will get a bunch of text printed out with your suggested
 conversions.
@@ -79,7 +76,8 @@ If you want to use this project as a library/dependency, feel free to use the
 
 The PathFinder class is simply a static interface for finding profitable trade
 paths for arbitrage. You give it the league, a list of currencies and a backend
-instance (eg. `backends/poeofficial.py`). For each
+instance (eg. `backends/poetrade.py`).
+For each
 currency it starts looking for all profitable paths that start and end with that
 currency, given a maximum transaction length (default: 3). All stages of data
 (eg. list of collected offers via the respective trading backend, the constructed
