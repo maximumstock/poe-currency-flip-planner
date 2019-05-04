@@ -3,12 +3,11 @@ import argparse
 from src.backends import poetrade
 from src.items import build_item_list, load_items
 from src.pathfinder import PathFinder
+from src.commons import league_names
 
 currency_items = [
     x["name"] for x in load_items("poetrade").values() if x["currency"] is True
 ]
-
-league_names = ["Synthesis", "Hardcore Synthesis", "Standard", "Hardcore"]
 
 
 def log_conversions(conversions, currency, limit):
@@ -71,7 +70,6 @@ arguments = parser.parse_args()
 league = arguments.league
 currency = arguments.currency
 limit = arguments.limit
-use_poeofficial = arguments.poeofficial
 fullbulk = arguments.fullbulk
 use_filter = False if arguments.nofilter else True
 backend = poetrade

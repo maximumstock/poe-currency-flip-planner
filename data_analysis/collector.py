@@ -4,6 +4,7 @@ from datetime import datetime
 from src.pathfinder import PathFinder
 from src.backends import poetrade
 from src.items import build_item_list
+from src.commons import league_names
 
 
 def gen_filename() -> str:
@@ -19,8 +20,8 @@ def run():
         description="data collection tool for PathFinder class")
     parser.add_argument(
         "--league",
-        default="Synthesis",
-        choices=["Synthesis", "Hardcore Synthesis", "Standard", "Hardcore"],
+        default=league_names[0],
+        choices=league_names,
         help=
         "League specifier, ie. 'Synthesis', 'Hardcore Synthesis' or 'Flashback Event (BRE001)'",
     )
