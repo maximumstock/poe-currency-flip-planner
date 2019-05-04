@@ -19,10 +19,10 @@ def run():
         description="data collection tool for PathFinder class")
     parser.add_argument(
         "--league",
-        default="Betrayal",
-        choices=["Betrayal", "Hardcore Betrayal", "Standard", "Hardcore"],
+        default="Synthesis",
+        choices=["Synthesis", "Hardcore Synthesis", "Standard", "Hardcore"],
         help=
-        "League specifier, ie. 'Betrayal', 'Hardcore Betrayal' or 'Flashback Event (BRE001)'",
+        "League specifier, ie. 'Synthesis', 'Hardcore Synthesis' or 'Flashback Event (BRE001)'",
     )
     parser.add_argument(
         "--path",

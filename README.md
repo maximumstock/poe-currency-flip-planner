@@ -1,6 +1,6 @@
 # poe-currency-flip-planner
 
-This tool is an attempt at finding short-term arbitrage deals of currency in Path of Exile.
+This tool is an attempt at finding short-term arbitrage deals of currency and items in Path of Exile.
 
 ## Background
 Via [poe.trade](http://currency.poe.trade) one can look for currently offered currency
@@ -24,6 +24,60 @@ outcomes:
 Comparing different paths up to an arbitrary depth results in an answer to the question
 in which succession currencies have to be traded to yield different profits/losses.
 
+## How to use
+
+If you simply want to use this tool to find profitable trades,
+please use `python cli.py` as a CLI interface.
+See `src/cli.py` or `python cli.py --help` for help and options.
+This uses poe.trade per default as it is faster than the official Path of Exile Trading API.
+
+After a while you will get a bunch of text printed out with your suggested conversions.
+
+### Default Settings
+Per default, we use all traditional currency items (aka `Orbs` plus some manually selected)
+for this search.
+Additionally, we use a data-mined filter (see `data_analysis/README.md`) to only
+request data for pairs that usually provide profitable conversions.
+You might manually alter this filter by editing `assets/pair_filter.json`.
+
+### Options
+
+There are the following options:
+
+1. look at all items poe.trade supports (--nofilter + --fullbulk)
+2. look at all traditional currencies, ie. `Orbs` (--nofilter)
+3. look at a data-mined preset of item pairs that are probably profitable most of the time, see `assets/pair_filter.json`, the default
+
+Please note that option #1 takes a long time and is basically useless unless
+you want to collect your own data for analysis (see `data_analysis/README.md`).
+However, you might just use `run_collector.sh` (which uses `data_analyis/collector.py`)
+and is specifically built for this purpose.
+
+If you are interested in a subset of this, eg. all Orbs + Fossils, you might edit
+`assets/poetrade.json` to only contain those items and run option #1.
+You can always reset `assets/poetrade.json` to its default by running `python src/asset_mgr.py`.
+View this as an Path of Exile item filter :).
+
+### Exclude Traders
+Some traders offer either very good or bad conversion rates, depending on their
+price-fixing goal.
+As of now there is no built-in way to detect price-fixing offers.
+If you want to exclude traders you can add their names to `excluded_traders.txt`
+(one name per line).
+
+### Library Usage
+
+If you want to use this project as a library/dependency, feel free to use the
+`PathFinder` class (see `src/pathfinder.py`) as an API.
+
+The PathFinder class is simply a static interface for finding profitable trade
+paths for arbitrage. You give it the league, a list of currencies and a backend
+instance (eg. `backends/poeofficial.py`). For each
+currency it starts looking for all profitable paths that start and end with that
+currency, given a maximum transaction length (default: 3). All stages of data
+(eg. list of collected offers via the respective trading backend, the constructed
+graph of offers and the found profitable paths) are part of each PathFinder
+instance and can simply be accessed and used for further work.
 
 ## How it works
 * Currency trade offers are collected from a backend provider, eg.
@@ -41,7 +95,6 @@ At the end, it might look something like this:
 
 ![](examples/result_screenshot.png)
 
-
 ## Problems
 * Exchange rates might not be online for long enough to complete complex transaction chains
 * The supply/demand of both parties limits the number of paths that can be taken throughout
@@ -51,45 +104,14 @@ At the end, it might look something like this:
   The simplest model assumes that at each step in the conversion chain the user is able
   to convert all currency that was acquired in the previous step
 
-
 ## Installation
-
-I use Python >=3.5 for everything. I haven't tried running it with different versions.
+I use Python >=3.7 for everything. I haven't tried running it with different versions.
 You can install all dependencies by running `pip install -r requirements.txt`.
-
-
-## How to use
-`python cli.py` can be used as a CLI interface.
-See `src/cli.py` or `python cli.py --help` for help
-and options.
-
-After a while you will get a bunch of text printed out with your suggested
-conversions.
-
-### Exclude Traders
-If you want to exclude traders you can add their names to `excluded_traders.txt`.
-
-### Library Usage
-
-If you want to use this project as a library/dependency, feel free to use the
-`PathFinder` class (see `src/pathfinder.py`) as an API.
-
-The PathFinder class is simply a static interface for finding profitable trade
-paths for arbitrage. You give it the league, a list of currencies and a backend
-instance (eg. `backends/poetrade.py`).
-For each
-currency it starts looking for all profitable paths that start and end with that
-currency, given a maximum transaction length (default: 3). All stages of data
-(eg. list of collected offers via the respective trading backend, the constructed
-graph of offers and the found profitable paths) are part of each PathFinder
-instance and can simply be accessed and used for further work.
-
 
 ## Tests
 I wrote a few simple unit tests to make the data fetching and parsing, graph
 construction and traversal and path evaluation a bit more robust. You can run
 those tests using predefined data structures via `python -m pytest tests`.
-
 
 ## Data Exploration
 The data that is used for the analysis is not part of this repository. Please
@@ -108,7 +130,6 @@ See [here](data_analysis/README.md) for discussion.
   `PYTHON_PATH=$(pwd) python data_analysis/converter.py --path "data_analysis/raw/delve"`
 3. Run analysis.py
   `PYTHONPATH=$(pwd) python data_analysis/analysis.py --path "data_analysis/raw/delve/merge.pickle"`
-
 
 ## Ideas & Roadmap
 See [todo.org](todo.org) (beware of org-mode format from Emacs :)) for ideas, future features, etc. Feel free to send

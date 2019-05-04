@@ -8,7 +8,7 @@ currency_items = [
     x["name"] for x in load_items("poetrade").values() if x["currency"] is True
 ]
 
-league_names = ["Betrayal", "Hardcore Betrayal", "Standard", "Hardcore"]
+league_names = ["Synthesis", "Hardcore Synthesis", "Standard", "Hardcore"]
 
 
 def log_conversions(conversions, currency, limit):
@@ -39,7 +39,7 @@ parser.add_argument(
     choices=league_names,
     type=str,
     help=
-    "League specifier, ie. 'Betrayal', 'Hardcore Betrayal' or 'Flashback Event (BRE001)'. Defaults to 'Betrayal'.",
+    "League specifier, ie. 'Synthesis', 'Hardcore Synthesis' or 'Flashback Event (BRE001)'. Defaults to 'Synthesis'.",
 )
 parser.add_argument(
     "--currency",
@@ -71,7 +71,7 @@ arguments = parser.parse_args()
 league = arguments.league
 currency = arguments.currency
 limit = arguments.limit
-use_poetrade = arguments.poetrade
+use_poeofficial = arguments.poeofficial
 fullbulk = arguments.fullbulk
 use_filter = False if arguments.nofilter else True
 backend = poetrade

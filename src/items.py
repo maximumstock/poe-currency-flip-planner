@@ -54,7 +54,7 @@ def build_item_list_poetrade(items: List, config: Dict = {}):
         x for x in items if x["non_currency_sales_target"] is True
     ]
 
-    result: List = list(itertools.permutations(currency_items, 2))
+    result = list(itertools.permutations(currency_items, 2))
 
     if config.get("fullbulk") is True:
         result = result + list(
