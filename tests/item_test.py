@@ -47,8 +47,7 @@ class ItemTest(unittest.TestCase):
                 "non_currency_sales_target": False,
             },
         ]
-        poetrade_pairs = build_item_list_poetrade(data,
-                                                  {"use_bulk_items": True})
+        poetrade_pairs = build_item_list_poetrade(data, {"fullbulk": True})
         poetrade_pairs = list(
             sorted(
                 map(lambda x: (x[0]["name"], x[1]["name"]), poetrade_pairs)))
