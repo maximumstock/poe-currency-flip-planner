@@ -102,17 +102,13 @@ def equalize_stock_differences(path):
             left = path[i - 1]
             right = path[i]
 
-            if (
-                left["received"] == 0
-                or left["paid"] == 0
-                or right["paid"] == 0
-                or right["received"] == 0
-            ):
+            if (left["received"] == 0 or left["paid"] == 0
+                    or right["paid"] == 0 or right["received"] == 0):
                 return None
 
             if left["received"] > right["paid"]:
                 factor = left["received"] / right["paid"]
-                left["paid"] = math.floor(left["paid"] / factor)
+                left["paid"] = math.ceil(left["paid"] / factor)
                 left["received"] = right["paid"]
 
             if left["received"] < right["paid"]:
@@ -136,16 +132,14 @@ def build_conversion(path) -> Dict:
 
     # Map transactions to some nicer format
     for e in path:
-        transactions.append(
-            {
-                "contact_ign": e["contact_ign"],
-                "from": e["have"],
-                "to": e["want"],
-                "paid": e["paid"],
-                "received": e["received"],
-                "conversion_rate": e["conversion_rate"],
-            }
-        )
+        transactions.append({
+            "contact_ign": e["contact_ign"],
+            "from": e["have"],
+            "to": e["want"],
+            "paid": e["paid"],
+            "received": e["received"],
+            "conversion_rate": e["conversion_rate"],
+        })
 
     # Filter conversions that do not yield any profit
     if path[-1]["received"] - path[0]["paid"] <= 0:
