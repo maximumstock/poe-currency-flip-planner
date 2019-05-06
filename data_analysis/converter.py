@@ -5,7 +5,7 @@ import argparse
 
 parser = argparse.ArgumentParser(description="Data Converter")
 parser.add_argument(
-    "--path", default="data_analysis/raw/delve", help="Folder name of the dumps"
+    "--path", help="Folder name of the dumps"
 )
 arguments = parser.parse_args()
 
