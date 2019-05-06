@@ -62,7 +62,30 @@ divided by `number of snapshots`.
 This is a simply relative metric to determine which transactions are most important.
 The higher the number, the more profitable conversions were dependent on
 transactions between those two currencies.
-Below are heatmap visualizations for each league during the Delve season.
+Below are heatmap visualizations for data I collected during some leagues.
+
+## Betrayal Challenge Leagues
+
+### Betrayal
+![](results/betrayal/betrayal.png)
+
+### Hardcore Betrayal
+![](results/betrayal/hardcore_betrayal.png)
+
+</details>
+
+<details>
+<summary>Standard & Hardcore during Betrayal Era</summary>
+
+### Standard
+![](results/betrayal/standard.png)
+
+### Hardcore
+![](results/betrayal/hardcore.png)
+</details>
+
+<details>
+<summary>Delve Challenge League</summary>
 
 ### Delve
 ![](results/delve/delve.png)
@@ -70,16 +93,45 @@ Below are heatmap visualizations for each league during the Delve season.
 ### Hardcore Delve
 ![](results/delve/hardcore_delve.png)
 
+</details>
+
+<details>
+<summary>Standard & Hardcore during Delve Era</summary>
+
 ### Standard
 ![](results/delve/standard.png)
 
 ### Hardcore
 ![](results/delve/hardcore.png)
 
-So we can see that selling `Chaos Orbs` for `Vaal Orbs` in `Delve` was especially often part of profitable conversions, averaging around 65 profitable conversions per snapshot. Keep in mind that this only means that there was a least one offer from `Chaos Orbs` to `Vaal Orbs` which ended up in a lot of conversions, which in turn ended up being profitable. It does not necessarily mean that there were a lot of offers from `Chaos Orbs` to `Vaal Orbs`.
+</details>
 
-As stated above, the maximum length of trading paths I evaluated was `3`, meaning three trades in a row, ending up at the starting currency, ie. trading `Exalted` -> `Regrets` -> `Chaos` -> `Exalted`. If the middle transaction is particularly profitable, the other two might be bad or average at best, but are improved by the middle one. At the same time, it does not mean that a certain transaction/2-permuation is especially profitable, but rather leads to a currency that itself offers more profitable transactions along the way.
 
-We can also see that the matrix is relatively sparse, meaning only relatively few 2-permutations are often seen in profitable conversions. For example, all 2-permutations including `Orbs of Augmentation` or `Orbs of Transmutation` are basically non-existent when it comes to my method for finding profitable conversions.
+For `Delve` we can see that selling `Chaos Orbs` for `Vaal Orbs` in `Delve` was
+especially often part of profitable conversions, averaging around 65 profitable
+conversions per snapshot.
+Keep in mind that this only means that there was a least one offer from
+`Chaos Orb` to `Vaal Orb` which ended up in a lot of conversions, which in turn
+ended up being profitable.
+It does not necessarily mean that there were a lot of offers from
+`Chaos Orb` to `Vaal Orb`.
+There are similar patterns observed throughout all leagues.
 
-Generally speaking, selling and buying `Chaos Orbs` looks like the easiest way of making profitable currency trades. This of course makes sense considering the significance of `Chaos Orbs` in everyday trades.
+As stated above, the maximum length of trading paths I evaluated was `3`, meaning
+three trades in a row, ending up at the starting currency, ie. trading
+`Exalted` -> `Regrets` -> `Chaos` -> `Exalted`.
+If the middle transaction is particularly profitable, the other two might be bad
+or average at best, but are improved by the middle one.
+At the same time, it does not mean that a certain transaction/pair is
+especially profitable, but rather leads to a currency that itself offers more
+profitable transactions along the way.
+
+We can also see that all matrices are sparse, meaning only relatively
+few pairs are often seen in profitable conversions.
+For example, all pairs including `Orb of Augmentation` or
+`Orb of Transmutation` are basically non-existent when it comes to my method
+for finding profitable conversions.
+
+Generally speaking, selling and buying `Chaos Orbs` looks like the easiest way of
+making profitable currency trades.
+This of course makes sense considering the significance of `Chaos Orbs` in everyday trades.
