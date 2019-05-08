@@ -10,7 +10,5 @@ install:
 # Run the unit test
 script:
   - export PYTHONPATH=$(pwd)
-  - pytest tests
-  - coverage run --source=src tests/**/*.py
-  - coverage report
+  - pytest --cov=src tests
 
