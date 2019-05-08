@@ -28,7 +28,12 @@ class PathFinder:
     offers, constructing a graph and finding profitable paths along that graph.
     """
 
-    def __init__(self, league, item_pairs, backend, excluded_traders=[], use_filter=True):
+    def __init__(self,
+                 league,
+                 item_pairs,
+                 backend,
+                 excluded_traders=[],
+                 use_filter=True):
         self.league = league
         self.item_pairs = item_pairs
         self.backend = backend
@@ -58,11 +63,11 @@ class PathFinder:
                 filter(
                     lambda x: x["contact_ign"] not in excluded_traders,
                     offers[idx]["offers"],
-                )
-            )
+                ))
         return offers
 
-    def filter_pairs(self, pairs: List[Tuple[str, str]], allowed_pairs: List[str]):
+    def filter_pairs(self, pairs: List[Tuple[str, str]],
+                     allowed_pairs: List[str]):
         return [(x.split("-")[0], x.split("-")[1]) for x in allowed_pairs]
 
     def run(self, max_transaction_length=3, logging=True):
@@ -71,22 +76,23 @@ class PathFinder:
 
             # Filter out unwanted item pairs if filtering is enabled
             if self.use_filter is True:
-                self.item_pairs = self.filter_pairs(self.item_pairs, self.pair_filter)
+                self.item_pairs = self.filter_pairs(self.item_pairs,
+                                                    self.pair_filter)
 
             if logging:
-                print(
-                    "Fetching {} offers for {} pairs".format(
-                        self.league, len(self.item_pairs)
-                    )
-                )
-                print("Filter: {}".format("Enabled" if self.use_filter else "Disabled"))
+                print("Fetching {} offers for {} pairs".format(
+                    self.league, len(self.item_pairs)))
+                print("Filter: {}".format(
+                    "Enabled" if self.use_filter else "Disabled"))
                 print("Backend: {}".format(self.backend.name()))
             t0 = time.time()
 
-            self.offers = self.backend.fetch_offers(self.league, self.item_pairs)
+            self.offers = self.backend.fetch_offers(self.league,
+                                                    self.item_pairs)
 
             # Filter out unwanted traders
-            self.offers = self.filter_traders(self.offers, self.excluded_traders)
+            self.offers = self.filter_traders(self.offers,
+                                              self.excluded_traders)
 
             t1 = time.time()
             if logging:
@@ -108,14 +114,12 @@ class PathFinder:
                 if conversion is not None:
                     profitable_conversions.append(conversion)
             if logging:
-                print(
-                    "Checking {} -> {} Conversions".format(
-                        c, len(profitable_conversions)
-                    )
-                )
+                print("Checking {} -> {} Conversions".format(
+                    c, len(profitable_conversions)))
             profitable_conversions = sorted(
-                profitable_conversions, key=lambda k: k["winnings"], reverse=True
-            )
+                profitable_conversions,
+                key=lambda k: k["winnings"],
+                reverse=True)
             self.results[c] = profitable_conversions
 
         t3 = time.time()
