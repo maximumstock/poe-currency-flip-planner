@@ -63,7 +63,7 @@ class PathFinder:
         return offers
 
     def filter_pairs(self, pairs: List[Tuple[str, str]], allowed_pairs: List[str]):
-        return [x for x in pairs if "{}-{}".format(x[0], x[1]) in allowed_pairs]
+        return [(x.split("-")[0], x.split("-")[1]) for x in allowed_pairs]
 
     def run(self, max_transaction_length=3, logging=True):
         self.timestamp = str(datetime.now()).split(".")[0]
