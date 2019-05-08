@@ -1,5 +1,7 @@
 # poe-currency-flip-planner
 
+![](https://api.travis-ci.com/maximumstock/poe-currency-flip-planner.svg?branch=master)
+
 This tool is an attempt at finding short-term arbitrage deals of currency and items in Path of Exile.
 
 ## Background
