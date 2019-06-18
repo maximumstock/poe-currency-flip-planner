@@ -107,8 +107,11 @@ At the end, it might look something like this:
   to convert all currency that was acquired in the previous step
 
 ## Installation
+I highly recommend using [Pipenv](https://github.com/pypa/pipenv) for managing
+Python projects and their dependencies.
+
 I use Python >=3.7 for everything. I haven't tried running it with different versions.
-You can install all dependencies by running `pip install -r requirements.txt`.
+You can install all dependencies by running `pipenv install`.
 
 ## Tests
 I wrote a few simple unit tests to make the data fetching and parsing, graph
