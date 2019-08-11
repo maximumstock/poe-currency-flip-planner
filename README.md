@@ -5,6 +5,7 @@
 This tool is an attempt at finding short-term arbitrage deals of currency and items in Path of Exile.
 
 ## Background
+
 Via [poe.trade](http://currency.poe.trade) one can look for currently offered currency
 conversion rates of other players. By indexing these conversion rates, it should be
 possible to find a perfect chain of conversions between two preselected currencies that
@@ -19,9 +20,9 @@ describe different ways to trade the currency for different currencies `x` times
 trading back for the starting currency. Each of these paths yields one of the following
 outcomes:
 
-* You have the same amount as before
-* You have less than before
-* You have more than before
+- You have the same amount as before
+- You have less than before
+- You have more than before
 
 Comparing different paths up to an arbitrary depth results in an answer to the question
 in which succession currencies have to be traded to yield different profits/losses.
@@ -36,6 +37,7 @@ This uses poe.trade per default as it is faster than the official Path of Exile 
 After a while you will get a bunch of text printed out with your suggested conversions.
 
 ### Default Settings
+
 Per default, we use all traditional currency items (aka `Orbs` plus some manually selected)
 for this search.
 Additionally, we use a data-mined filter (see `data_analysis/README.md`) to only
@@ -61,6 +63,7 @@ You can always reset `assets/poetrade.json` to its default by running `python sr
 View this as an Path of Exile item filter :).
 
 ### Exclude Traders
+
 Some traders offer either very good or bad conversion rates, depending on their
 price-fixing goal.
 As of now there is no built-in way to detect price-fixing offers.
@@ -82,15 +85,16 @@ graph of offers and the found profitable paths) are part of each PathFinder
 instance and can simply be accessed and used for further work.
 
 ## How it works
-* Currency trade offers are collected from a backend provider, eg.
-  * [poe.trade](http://poe.trade)
-  * [Path of Exile Trade](https://www.pathofexile.com/trade/exchange)
-* I currently use [poe.trade](http://currency.poe.trade) as a
+
+- Currency trade offers are collected from a backend provider, eg.
+  - [poe.trade](http://poe.trade)
+  - [Path of Exile Trade](https://www.pathofexile.com/trade/exchange)
+- I currently use [poe.trade](http://currency.poe.trade) as a
   default, since they seem to automatically filter out certain price-fixing offers, which
   is really great!
-* Found trade offers are used to build a fully connected graph with currencies as nodes
+- Found trade offers are used to build a fully connected graph with currencies as nodes
   and one edge for each offer of each pair of non-identical currencies.
-* The offered exchange rates and stocks are used to find the most profitable trading paths
+- The offered exchange rates and stocks are used to find the most profitable trading paths
   within the graph.
 
 At the end, it might look something like this:
@@ -98,8 +102,9 @@ At the end, it might look something like this:
 ![](examples/result_screenshot.png)
 
 ## Problems
-* Exchange rates might not be online for long enough to complete complex transaction chains
-* The supply/demand of both parties limits the number of paths that can be taken throughout
+
+- Exchange rates might not be online for long enough to complete complex transaction chains
+- The supply/demand of both parties limits the number of paths that can be taken throughout
   the graph without collecting excess currency or investing additional currency to make
   up for the difference in trading volume between the parties.
 
@@ -107,18 +112,23 @@ At the end, it might look something like this:
   to convert all currency that was acquired in the previous step
 
 ## Installation
+
 I highly recommend using [Pipenv](https://github.com/pypa/pipenv) for managing
 Python projects and their dependencies.
 
+1. `pipenv shell` to enter a shell session with my environment settings
+2. `pipenv install` to install all dependencies
+
 I use Python >=3.7 for everything. I haven't tried running it with different versions.
-You can install all dependencies by running `pipenv install`.
 
 ## Tests
+
 I wrote a few simple unit tests to make the data fetching and parsing, graph
 construction and traversal and path evaluation a bit more robust. You can run
 those tests using predefined data structures via `python -m pytest tests`.
 
 ## Data Exploration
+
 The data that is used for the analysis is not part of this repository. Please
 collect your own data. You can use `run_collector.sh` for this. It starts a
 `PathFinder` instance (see `src/pathfinder.py`) for each league. I like running
@@ -130,12 +140,13 @@ See [here](data_analysis/README.md) for discussion.
 ### General Workflow (as of now)
 
 1. Collect Data
-  `PYTHONPATH=$(pwd) python data_analysis/collector.py --league "Delve" --path "data_analysis/raw/delve"`
+   `PYTHONPATH=$(pwd) python data_analysis/collector.py --league "Delve" --path "data_analysis/raw/delve"`
 2. Merge single `.pickle` files into one `merge.pickle`
-  `PYTHON_PATH=$(pwd) python data_analysis/converter.py --path "data_analysis/raw/delve"`
+   `PYTHON_PATH=$(pwd) python data_analysis/converter.py --path "data_analysis/raw/delve"`
 3. Run analysis.py
-  `PYTHONPATH=$(pwd) python data_analysis/analysis.py --path "data_analysis/raw/delve/merge.pickle"`
+   `PYTHONPATH=$(pwd) python data_analysis/analysis.py --path "data_analysis/raw/delve/merge.pickle"`
 
 ## Ideas & Roadmap
+
 See [todo.org](todo.org) (beware of org-mode format from Emacs :)) for ideas, future features, etc. Feel free to send
 me any feedback, either via email or PR.
