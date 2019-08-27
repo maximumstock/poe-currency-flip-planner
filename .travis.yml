@@ -8,10 +8,9 @@ python:
 
 # Install the codecov pip dependency
 install:
-  - pip install -r requirements.txt
+  - pipenv install 
 
 # Run the unit test
 script:
-  - export PYTHONPATH=$(pwd)
-  - pytest --cov=src tests
+  - pipenv run python -m pytest
 
