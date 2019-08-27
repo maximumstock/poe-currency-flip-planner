@@ -8,6 +8,8 @@ env
 .ipynb_checkpoints
 .mypy_cache
 graph_test2.py
+coverage
 .coverage
 .idea
 htmlcov
+.nyc_output
