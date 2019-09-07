@@ -10,7 +10,7 @@ def build_graph(offers) -> Dict:
     Each edge contains a list with all offers that were found for that trading
     direction between the two currencies.
     """
-    graph = {}
+    graph = dict()
 
     for cur_pair in offers:
         # if the `have` currency does not exist as a property yet

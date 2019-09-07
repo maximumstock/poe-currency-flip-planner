@@ -44,6 +44,7 @@ class PathFinder:
         self.offers = []
         self.graph = {}
         self.results = {}
+        self.timestamp = str(datetime.now()).split(".")[0]
 
         self.pair_filter = load_pair_filter()
 
