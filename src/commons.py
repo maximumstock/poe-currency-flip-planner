@@ -1,1 +1,1 @@
-league_names = ["Legion", "Hardcore Legion", "Standard", "Hardcore"]
+league_names = ["Blight", "Hardcore Blight", "Standard", "Hardcore"]
