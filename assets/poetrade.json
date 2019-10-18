@@ -4774,5 +4774,77 @@
     "name": "Timeless Vaal Splinter",
     "currency": false,
     "non_currency_sales_target": false
+  },
+  "Clear Oil": {
+    "id": 815,
+    "name": "Clear Oil",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Sepia Oil": {
+    "id": 816,
+    "name": "Sepia Oil",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Amber Oil": {
+    "id": 817,
+    "name": "Amber Oil",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Verdant Oil": {
+    "id": 818,
+    "name": "Verdant Oil",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Teal Oil": {
+    "id": 819,
+    "name": "Teal Oil",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Azure Oil": {
+    "id": 820,
+    "name": "Azure Oil",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Violet Oil": {
+    "id": 821,
+    "name": "Violet Oil",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Crimson Oil": {
+    "id": 822,
+    "name": "Crimson Oil",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Black Oil": {
+    "id": 823,
+    "name": "Black Oil",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Opalescent Oil": {
+    "id": 824,
+    "name": "Opalescent Oil",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Silver Oil": {
+    "id": 825,
+    "name": "Silver Oil",
+    "currency": false,
+    "non_currency_sales_target": false
+  },
+  "Golden Oil": {
+    "id": 826,
+    "name": "Golden Oil",
+    "currency": false,
+    "non_currency_sales_target": false
   }
 }
