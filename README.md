@@ -140,11 +140,11 @@ See [here](data_analysis/README.md) for discussion.
 ### General Workflow (as of now)
 
 1. Collect Data
-   `PYTHONPATH=$(pwd) python data_analysis/collector.py --league "Delve" --path "data_analysis/raw/delve"`
+   `python data_analysis/collector.py --league "Blight" --path "data_analysis/Blight/Softcore"`
 2. Merge single `.pickle` files into one `merge.pickle`
-   `PYTHON_PATH=$(pwd) python data_analysis/converter.py --path "data_analysis/raw/delve"`
+   `python data_analysis/converter.py --path "data_analysis/raw/Delve/Softcore"`
 3. Run analysis.py
-   `PYTHONPATH=$(pwd) python data_analysis/analysis.py --path "data_analysis/raw/delve/merge.pickle"`
+   `python data_analysis/analysis.py --path "data_analysis/raw/Delve/Softcore/merge.pickle"`
 
 ## Ideas & Roadmap
 
