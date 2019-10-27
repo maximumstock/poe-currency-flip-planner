@@ -62,7 +62,7 @@ class PathFinder:
         for idx in range(len(offers)):
             offers[idx]["offers"] = list(
                 filter(
-                    lambda x: x["contact_ign"] not in excluded_traders,
+                    lambda x: x.contact_ign not in excluded_traders,
                     offers[idx]["offers"],
                 ))
         return offers

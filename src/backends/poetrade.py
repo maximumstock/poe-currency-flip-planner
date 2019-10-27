@@ -1,10 +1,32 @@
 import concurrent.futures
 import requests
 from bs4 import BeautifulSoup
+from typing import Optional, List
 
 from src.items import load_items_poetrade
 
 items = load_items_poetrade()
+
+
+class Offer:
+    def __init__(self, contact_ign: str, sell_price: float, buy_price: float,
+                 stock: int):
+        self.contact_ign = contact_ign
+        self.conversion_rate = round(sell_price / buy_price, 5)
+        self.stock = stock
+        self.have: str
+        self.want: str
+
+        if len(self.contact_ign
+               ) == 0 or self.conversion_rate == 0 or self.stock == 0:
+            raise Exception("Parsing offer from poe.trade failed", self)
+
+    def __str__(self):
+        return "{} {} {}".format(self.contact_ign, self.conversion_rate,
+                                 self.stock)
+
+    def __repr__(self):
+        return self.__str__()
 
 
 def name():
@@ -47,28 +69,31 @@ Helper functions to parse results from poe.trade."
 """
 
 
-def parse_conversion_offers(html):
+def parse_conversion_offers(html) -> List[Offer]:
     soup = BeautifulSoup(html, "html.parser")
     rows = soup.find_all(class_="displayoffer")
     parsed_rows = [parse_conversion_offer(x) for x in rows]
-    return [x for x in parsed_rows if x is not None][:5]
+    offers = [x for x in parsed_rows if x is not None][:10]
+    return offers
 
 
-def parse_conversion_offer(offer_html):
+def parse_conversion_offer(offer_html) -> Optional[Offer]:
+    """
+    Parses a single offer from the poe.trade HTML.
+    """
 
     if "data-stock" not in offer_html.attrs:
         return None
 
-    receive = float(offer_html["data-sellvalue"])
-    pay = float(offer_html["data-buyvalue"])
-    conversion_rate = round(receive / pay, 4)
+    sell = float(offer_html["data-sellvalue"])
+    buy = float(offer_html["data-buyvalue"])
     stock = int(offer_html["data-stock"])
-
-    return {
-        "contact_ign": offer_html["data-ign"],
-        "conversion_rate": conversion_rate,
-        "stock": stock,
-    }
+    contact_ign = offer_html["data-ign"]
+    try:
+        offer = Offer(contact_ign, sell, buy, stock)
+        return offer
+    except:
+        return None
 
 
 def map_currency(currency):
