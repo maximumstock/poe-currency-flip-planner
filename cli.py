@@ -35,10 +35,9 @@ parser = argparse.ArgumentParser(description="CLI interface for PathFinder")
 parser.add_argument(
     "--league",
     default=league_names[0],
-    choices=league_names,
     type=str,
     help=
-    "League specifier, ie. 'Synthesis', 'Hardcore Synthesis' or 'Flashback Event (BRE001)'. Defaults to 'Synthesis'.",
+    "League specifier, ie. 'Synthesis', 'Hardcore Synthesis' or 'Flashback Event (BRE001)'. Defaults to '{}'.".format(league_names[0]),
 )
 parser.add_argument(
     "--currency",
