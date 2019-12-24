@@ -1,6 +1,5 @@
 from collections import deque
 import math
-from src.backends.poetrade import Offer
 from typing import Dict, List
 
 
@@ -47,13 +46,13 @@ def find_paths(graph, have, want, max_length=3) -> List:
             continue
 
         # We have arrived at the target currency
-        if next[-1].want == want:
+        if next[-1]["want"] == want:
             if is_profitable(next):
                 correct_paths = correct_paths + [next]
             continue
 
-        next_currency = next[-1].want
-        seen_currencies = [edge.have for edge in next]
+        next_currency = next[-1]["want"]
+        seen_currencies = [edge["have"] for edge in next]
 
         # If there are no paths between the specified currencies, simply skip
         if next_currency in graph:
@@ -66,16 +65,16 @@ def find_paths(graph, have, want, max_length=3) -> List:
     return correct_paths
 
 
-def decorate_offer(offer: Offer, have, want):
-    offer.have = have
-    offer.want = want
+def decorate_offer(offer, have, want):
+    offer["have"] = have
+    offer["want"] = want
     return offer
 
 
 def maximum_conversion_rate(path):
     v = 1.0
     for e in path:
-        v = v * e.conversion_rate
+        v = v * e["conversion_rate"]
     return v
 
 
@@ -90,8 +89,8 @@ def equalize_stock_differences(path):
     """
     # add some precalculated values
     for edge in path:
-        edge.paid = math.floor(edge.stock / edge.conversion_rate)
-        edge.received = math.floor(edge.paid * edge.conversion_rate)
+        edge["paid"] = math.floor(edge["stock"] / edge["conversion_rate"])
+        edge["received"] = math.floor(edge["paid"] * edge["conversion_rate"])
 
     # need this double loop to make sure that all stock quantity differences
     # per transaction pair are equalized. The worst case for this (starting
@@ -103,19 +102,19 @@ def equalize_stock_differences(path):
             left = path[i - 1]
             right = path[i]
 
-            if (left.received == 0 or left.paid == 0 or right.paid == 0
-                    or right.received == 0):
+            if (left["received"] == 0 or left["paid"] == 0
+                    or right["paid"] == 0 or right["received"] == 0):
                 return None
 
-            if left.received > right.paid:
-                factor = left.received / right.paid
-                left.paid = math.ceil(left.paid / factor)
-                left.received = right.paid
+            if left["received"] > right["paid"]:
+                factor = left["received"] / right["paid"]
+                left["paid"] = math.ceil(left["paid"] / factor)
+                left["received"] = right["paid"]
 
-            if left.received < right.paid:
-                factor = right.paid / left.received
-                right.received = math.floor(right.received / factor)
-                right.paid = left.received
+            if left["received"] < right["paid"]:
+                factor = right["paid"] / left["received"]
+                right["received"] = math.floor(right["received"] / factor)
+                right["paid"] = left["received"]
 
     return path
 
@@ -134,23 +133,23 @@ def build_conversion(path) -> Dict:
     # Map transactions to some nicer format
     for e in path:
         transactions.append({
-            "contact_ign": e.contact_ign,
-            "from": e.have,
-            "to": e.want,
-            "paid": e.paid,
-            "received": e.received,
-            "conversion_rate": e.conversion_rate,
+            "contact_ign": e["contact_ign"],
+            "from": e["have"],
+            "to": e["want"],
+            "paid": e["paid"],
+            "received": e["received"],
+            "conversion_rate": e["conversion_rate"],
         })
 
     # Filter conversions that do not yield any profit
-    if path[-1].received - path[0].paid <= 0:
+    if path[-1]["received"] - path[0]["paid"] <= 0:
         return None
 
     return {
-        "from": path[0].have,
-        "to": path[-1].want,
-        "starting": path[0].paid,
-        "ending": path[-1].received,
-        "winnings": path[-1].received - path[0].paid,
+        "from": path[0]["have"],
+        "to": path[-1]["want"],
+        "starting": path[0]["paid"],
+        "ending": path[-1]["received"],
+        "winnings": path[-1]["received"] - path[0]["paid"],
         "transactions": transactions,
     }
