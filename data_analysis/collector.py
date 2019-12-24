@@ -21,9 +21,8 @@ def run():
     parser.add_argument(
         "--league",
         default=league_names[0],
-        choices=league_names,
         help=
-        "League specifier, ie. 'Synthesis', 'Hardcore Synthesis' or 'Flashback Event (BRE001)'",
+        "League specifier, ie. 'Synthesis', 'Hardcore Synthesis' or 'Flashback Event (BRE001)'. Defaults to {}".format(league_names[0]),
     )
     parser.add_argument(
         "--path",
