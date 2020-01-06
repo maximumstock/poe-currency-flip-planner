@@ -13,7 +13,6 @@ Notes:
 - we filter out all types of nets
 """
 
-
 from bs4 import BeautifulSoup
 import requests
 from functools import reduce
@@ -29,6 +28,7 @@ blacklist = [
 
 # List of items that people usually sell their non-currency bulk items for
 target_currency_for_item_sales = ["Chaos Orb", "Exalted Orb"]
+EVERYTHING_UNTIL_VAAL_ORBS = 16
 
 
 def poetrade():
@@ -38,23 +38,46 @@ def poetrade():
     soup = BeautifulSoup(html, "html.parser")
     currency_have_div = soup.find("div", {"id": "currency-have"})
     elements = currency_have_div.find_all(class_="currency-selectable")
-    parsed = [
-        {
-            "id": int(x["data-id"]),
-            "name": x.get("title", x["data-title"]),
-            "currency": False,
-            "basic": True if int(x["data-id"]) <= 16 else False,
-            "non_currency_sales_target": False,
-        }
-        for x in elements
-    ]
+    parsed = [{
+        "id": int(x["data-id"]),
+        "name": x.get("title", x["data-title"]),
+        "currency": False,
+        "basic": True if int(x["data-id"]) <= EVERYTHING_UNTIL_VAAL_ORBS else False,
+        "non_currency_sales_target": False,
+    } for x in elements]
 
+    parsed = postprocess_list(parsed)
+    parsed_dictionary = list_to_dict(parsed)
+
+    return parsed_dictionary
+
+
+def poeofficial():
+    resp = requests.get("https://www.pathofexile.com/api/trade/data/static")
+    json_data = resp.json()["result"]
+
+    currency_data = [x for x in json_data if x["id"] == "Currency"][0]["entries"]
+
+    currency_data = [{
+        "id": x["id"],
+        "name": x["text"],
+        "currency": False,
+        "basic": False,
+        "non_currency_sales_target": False
+    } for x in currency_data]
+
+    postprocess_list(currency_data)
+    return list_to_dict(currency_data)
+
+
+def postprocess_list(item_list):
     # Filter out Nets
-    parsed = [x for x in parsed if " Net" not in x["name"]]
+    parsed = [x for x in item_list if " Net" not in x["name"]]
 
     # Filter out blacklisted items
     parsed = [x for x in parsed if x["name"] not in blacklist]
 
+    # Mark certain currency items for analysis usage
     for e in parsed:
         # mark orbs and shards as actual currency
         if "Orb" in e["name"] or "Shard" in e["name"]:
@@ -63,11 +86,14 @@ def poetrade():
         if e["name"] in target_currency_for_item_sales:
             e["non_currency_sales_target"] = True
 
+    return parsed
+
+
+def list_to_dict(dictionary):
     # transform into dictionary with the name as key
-    parsed = sorted(parsed, key=lambda x: x["id"])
+    parsed = sorted(dictionary, key=lambda x: x["id"])
     parsed = [{"".join(x["name"].split('\'')): x} for x in parsed]
     parsed_dictionary = reduce(lambda x, y: x.update(y) or x, parsed)
-
     return parsed_dictionary
 
 
@@ -75,3 +101,7 @@ if __name__ == "__main__":
     poe_trade_data = poetrade()
     with open("assets/poetrade.json", "w") as f:
         json.dump(poe_trade_data, f, indent=2)
+
+    poeofficial_data = poeofficial()
+    with open("assets/poeofficial.json", "w") as f:
+        json.dump(poeofficial_data, f, indent=2)

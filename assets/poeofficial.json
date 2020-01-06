@@ -1,0 +1,436 @@
+{
+  "Orb of Alchemy": {
+    "id": "alch",
+    "name": "Orb of Alchemy",
+    "currency": true,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Orb of Alteration": {
+    "id": "alt",
+    "name": "Orb of Alteration",
+    "currency": true,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Ancient Orb": {
+    "id": "ancient-orb",
+    "name": "Ancient Orb",
+    "currency": true,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Ancient Shard": {
+    "id": "ancient-shard",
+    "name": "Ancient Shard",
+    "currency": true,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Annulment Shard": {
+    "id": "annulment-shard",
+    "name": "Annulment Shard",
+    "currency": true,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Simple Sextant": {
+    "id": "apprentice-sextant",
+    "name": "Simple Sextant",
+    "currency": false,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Orb of Augmentation": {
+    "id": "aug",
+    "name": "Orb of Augmentation",
+    "currency": true,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Glassblowers Bauble": {
+    "id": "ba",
+    "name": "Glassblower's Bauble",
+    "currency": false,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Binding Shard": {
+    "id": "binding-shard",
+    "name": "Binding Shard",
+    "currency": true,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Blessed Orb": {
+    "id": "blessed",
+    "name": "Blessed Orb",
+    "currency": true,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Blessing of Chayula": {
+    "id": "blessing-chayula",
+    "name": "Blessing of Chayula",
+    "currency": false,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Blessing of Esh": {
+    "id": "blessing-esh",
+    "name": "Blessing of Esh",
+    "currency": false,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Blessing of Tul": {
+    "id": "blessing-tul",
+    "name": "Blessing of Tul",
+    "currency": false,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Blessing of Uul-Netol": {
+    "id": "blessing-uul-netol",
+    "name": "Blessing of Uul-Netol",
+    "currency": false,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Blessing of Xoph": {
+    "id": "blessing-xoph",
+    "name": "Blessing of Xoph",
+    "currency": false,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Orb of Chance": {
+    "id": "chance",
+    "name": "Orb of Chance",
+    "currency": true,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Chaos Orb": {
+    "id": "chaos",
+    "name": "Chaos Orb",
+    "currency": true,
+    "basic": false,
+    "non_currency_sales_target": true
+  },
+  "Chaos Shard": {
+    "id": "chaos-shard",
+    "name": "Chaos Shard",
+    "currency": true,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Cartographers Chisel": {
+    "id": "chisel",
+    "name": "Cartographer's Chisel",
+    "currency": false,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Chromatic Orb": {
+    "id": "chrom",
+    "name": "Chromatic Orb",
+    "currency": true,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Divine Orb": {
+    "id": "divine",
+    "name": "Divine Orb",
+    "currency": true,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Engineers Orb": {
+    "id": "engineers-orb",
+    "name": "Engineer's Orb",
+    "currency": true,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Engineers Shard": {
+    "id": "engineers-shard",
+    "name": "Engineer's Shard",
+    "currency": true,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Eternal Orb": {
+    "id": "ete",
+    "name": "Eternal Orb",
+    "currency": true,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Exalted Orb": {
+    "id": "exa",
+    "name": "Exalted Orb",
+    "currency": true,
+    "basic": false,
+    "non_currency_sales_target": true
+  },
+  "Exalted Shard": {
+    "id": "exalted-shard",
+    "name": "Exalted Shard",
+    "currency": true,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Orb of Fusing": {
+    "id": "fuse",
+    "name": "Orb of Fusing",
+    "currency": true,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Gemcutters Prism": {
+    "id": "gcp",
+    "name": "Gemcutter's Prism",
+    "currency": false,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Harbingers Orb": {
+    "id": "harbingers-orb",
+    "name": "Harbinger's Orb",
+    "currency": true,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Harbingers Shard": {
+    "id": "harbingers-shard",
+    "name": "Harbinger's Shard",
+    "currency": true,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Horizon Shard": {
+    "id": "horizon-shard",
+    "name": "Horizon Shard",
+    "currency": true,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Jewellers Orb": {
+    "id": "jew",
+    "name": "Jeweller's Orb",
+    "currency": true,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Prime Sextant": {
+    "id": "journeyman-sextant",
+    "name": "Prime Sextant",
+    "currency": false,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Awakened Sextant": {
+    "id": "master-sextant",
+    "name": "Awakened Sextant",
+    "currency": false,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Mirror of Kalandra": {
+    "id": "mir",
+    "name": "Mirror of Kalandra",
+    "currency": false,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Mirror Shard": {
+    "id": "mirror-shard",
+    "name": "Mirror Shard",
+    "currency": true,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Orb of Annulment": {
+    "id": "orb-of-annulment",
+    "name": "Orb of Annulment",
+    "currency": true,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Orb of Binding": {
+    "id": "orb-of-binding",
+    "name": "Orb of Binding",
+    "currency": true,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Orb of Horizons": {
+    "id": "orb-of-horizons",
+    "name": "Orb of Horizons",
+    "currency": true,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Perandus Coin": {
+    "id": "p",
+    "name": "Perandus Coin",
+    "currency": false,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Portal Scroll": {
+    "id": "port",
+    "name": "Portal Scroll",
+    "currency": false,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Regal Orb": {
+    "id": "regal",
+    "name": "Regal Orb",
+    "currency": true,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Regal Shard": {
+    "id": "regal-shard",
+    "name": "Regal Shard",
+    "currency": true,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Orb of Regret": {
+    "id": "regret",
+    "name": "Orb of Regret",
+    "currency": true,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Orb of Scouring": {
+    "id": "scour",
+    "name": "Orb of Scouring",
+    "currency": true,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Armourers Scrap": {
+    "id": "scr",
+    "name": "Armourer's Scrap",
+    "currency": false,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Silver Coin": {
+    "id": "silver",
+    "name": "Silver Coin",
+    "currency": false,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Splinter of Chayula": {
+    "id": "splinter-chayula",
+    "name": "Splinter of Chayula",
+    "currency": false,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Splinter of Esh": {
+    "id": "splinter-esh",
+    "name": "Splinter of Esh",
+    "currency": false,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Splinter of Tul": {
+    "id": "splinter-tul",
+    "name": "Splinter of Tul",
+    "currency": false,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Splinter of Uul-Netol": {
+    "id": "splinter-uul",
+    "name": "Splinter of Uul-Netol",
+    "currency": false,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Splinter of Xoph": {
+    "id": "splinter-xoph",
+    "name": "Splinter of Xoph",
+    "currency": false,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Stacked Deck": {
+    "id": "stacked-deck",
+    "name": "Stacked Deck",
+    "currency": false,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Timeless Eternal Empire Splinter": {
+    "id": "timeless-eternal-empire-splinter",
+    "name": "Timeless Eternal Empire Splinter",
+    "currency": false,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Timeless Karui Splinter": {
+    "id": "timeless-karui-splinter",
+    "name": "Timeless Karui Splinter",
+    "currency": false,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Timeless Maraketh Splinter": {
+    "id": "timeless-maraketh-splinter",
+    "name": "Timeless Maraketh Splinter",
+    "currency": false,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Timeless Templar Splinter": {
+    "id": "timeless-templar-splinter",
+    "name": "Timeless Templar Splinter",
+    "currency": false,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Timeless Vaal Splinter": {
+    "id": "timeless-vaal-splinter",
+    "name": "Timeless Vaal Splinter",
+    "currency": false,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Orb of Transmutation": {
+    "id": "tra",
+    "name": "Orb of Transmutation",
+    "currency": true,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Vaal Orb": {
+    "id": "vaal",
+    "name": "Vaal Orb",
+    "currency": true,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Blacksmiths Whetstone": {
+    "id": "whe",
+    "name": "Blacksmith's Whetstone",
+    "currency": false,
+    "basic": false,
+    "non_currency_sales_target": false
+  },
+  "Scroll of Wisdom": {
+    "id": "wis",
+    "name": "Scroll of Wisdom",
+    "currency": false,
+    "basic": false,
+    "non_currency_sales_target": false
+  }
+}
