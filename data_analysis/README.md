@@ -68,34 +68,46 @@ Below are heatmap visualizations for data I collected during some leagues.
 
 <details>
 <summary>Blight Challenge League</summary>
+
 ### Betrayal
 ![](results/heatmaps/blight.png)
+
 ### Hardcore Betrayal
 ![](results/heatmaps/blight_hardcore.png)
+
 </details>
 
 <details>
 <summary>Synthesis Challenge League</summary>
+
 ### Betrayal
 ![](results/heatmaps/synthesis.png)
+
 ### Hardcore Betrayal
 ![](results/heatmaps/synthesis_hardcore.png)
+
 </details>
 
 <details>
 <summary>Legion Challenge League</summary>
+
 ### Betrayal
 ![](results/heatmaps/legion.png)
+
 ### Hardcore Betrayal
 ![](results/heatmaps/legion_hardcore.png)
+
 </details>
 
 <details>
 <summary>Betrayal Challenge League</summary>
+
 ### Betrayal
 ![](results/heatmaps/betrayal.png)
+
 ### Hardcore Betrayal
 ![](results/heatmaps/betrayal_hardcore.png)
+
 </details>
 
 <details>
