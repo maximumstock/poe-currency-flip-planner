@@ -43,6 +43,7 @@ def poetrade():
             "id": int(x["data-id"]),
             "name": x.get("title", x["data-title"]),
             "currency": False,
+            "basic": True if int(x["data-id"]) <= 16 else False,
             "non_currency_sales_target": False,
         }
         for x in elements

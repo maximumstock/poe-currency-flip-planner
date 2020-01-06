@@ -59,53 +59,52 @@ Below you can see how often each 2-permutation transaction was found in a
 profitable conversion.
 Each number is calculated as the `total number of profitable conversions for that transaction over all snapshots`
 divided by `number of snapshots`.
-This is a simply relative metric to determine which transactions are most important.
+This is a simple relative metric to determine which transactions are most important.
 The higher the number, the more profitable conversions were dependent on
 transactions between those two currencies.
 Below are heatmap visualizations for data I collected during some leagues.
 
-## Betrayal Challenge Leagues
+## Challenge League Data
 
+<details>
+<summary>Blight Challenge League</summary>
 ### Betrayal
-![](results/betrayal/betrayal.png)
-
+![](results/heatmaps/blight.png)
 ### Hardcore Betrayal
-![](results/betrayal/hardcore_betrayal.png)
-
+![](results/heatmaps/blight_hardcore.png)
 </details>
 
 <details>
-<summary>Standard & Hardcore during Betrayal Era</summary>
+<summary>Synthesis Challenge League</summary>
+### Betrayal
+![](results/heatmaps/synthesis.png)
+### Hardcore Betrayal
+![](results/heatmaps/synthesis_hardcore.png)
+</details>
 
-### Standard
-![](results/betrayal/standard.png)
+<details>
+<summary>Legion Challenge League</summary>
+### Betrayal
+![](results/heatmaps/legion.png)
+### Hardcore Betrayal
+![](results/heatmaps/legion_hardcore.png)
+</details>
 
-### Hardcore
-![](results/betrayal/hardcore.png)
+<details>
+<summary>Betrayal Challenge League</summary>
+### Betrayal
+![](results/heatmaps/betrayal.png)
+### Hardcore Betrayal
+![](results/heatmaps/betrayal_hardcore.png)
 </details>
 
 <details>
 <summary>Delve Challenge League</summary>
-
 ### Delve
-![](results/delve/delve.png)
-
+![](results/heatmaps/delve.png)
 ### Hardcore Delve
-![](results/delve/hardcore_delve.png)
-
+![](results/heatmaps/delve_hardcore.png)
 </details>
-
-<details>
-<summary>Standard & Hardcore during Delve Era</summary>
-
-### Standard
-![](results/delve/standard.png)
-
-### Hardcore
-![](results/delve/hardcore.png)
-
-</details>
-
 
 For `Delve` we can see that selling `Chaos Orbs` for `Vaal Orbs` in `Delve` was
 especially often part of profitable conversions, averaging around 65 profitable

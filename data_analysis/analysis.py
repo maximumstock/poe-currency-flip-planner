@@ -7,7 +7,7 @@ import operator
 from src.items import load_items
 
 all_items = [x["name"] for x in load_items("poetrade").values()]
-all_currencies = [x["name"] for x in load_items("poetrade").values() if x["currency"] is True]
+all_currencies = [x["name"] for x in load_items("poetrade").values() if x["currency"] is True and x["basic"] is True]
 
 
 """
