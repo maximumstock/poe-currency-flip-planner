@@ -8,7 +8,7 @@ items = load_items_poetrade()
 
 
 def name():
-    return "poe.trade"
+    return "poetrade"
 
 
 def fetch_offers(league, currency_pairs, limit=10):

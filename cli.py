@@ -1,12 +1,12 @@
 import argparse
 
-from src.backends import poetrade
+from src.backends import poetrade, poeofficial
 from src.items import build_item_list, load_items
 from src.pathfinder import PathFinder
 from src.commons import league_names
 
-currency_items = [
-    x["name"] for x in load_items("poetrade").values() if x["currency"] is True
+cli_default_items = [
+    x["name"] for x in load_items(poetrade).values() if x["currency"] is True
 ]
 
 
@@ -36,16 +36,14 @@ parser.add_argument(
     "--league",
     default=league_names[0],
     type=str,
-    help=
-    "League specifier, ie. 'Synthesis', 'Hardcore Synthesis' or 'Flashback Event (BRE001)'. Defaults to '{}'.".format(league_names[0]),
+    help="League specifier, ie. 'Synthesis', 'Hardcore Synthesis' or 'Flashback Event (BRE001)'. Defaults to '{}'.".format(league_names[0]),
 )
 parser.add_argument(
     "--currency",
     default="all",
-    choices=currency_items,
+    choices=cli_default_items,
     type=str,
-    help=
-    "Full name of currency to flip, ie. 'Cartographer's Chisel, or 'Chaos Orb'. Defaults to all currencies.",
+    help="Full name of currency to flip, ie. 'Cartographer's Chisel, or 'Chaos Orb'. Defaults to all currencies.",
 )
 parser.add_argument(
     "--limit",
@@ -73,7 +71,7 @@ fullbulk = arguments.fullbulk
 use_filter = False if arguments.nofilter else True
 backend = poetrade
 config = {"fullbulk": fullbulk}
-chosen_currencies = build_item_list("poetrade", config)
+chosen_currencies = build_item_list(backend, config)
 
 # Load excluded trader list
 with open("excluded_traders.txt", "r") as f:

@@ -11,25 +11,30 @@ Public API
 """
 
 
-def load_items(backend: str) -> Dict[str, Dict]:
-    if backend is "poetrade":
+def load_items(backend) -> Dict[str, Dict]:
+    if backend.name() is "poetrade":
         return load_items_poetrade()
+    if backend.name() is "poeofficial":
+        return load_items_poeofficial()
 
     raise UnknownBackendException("Unknown or empty backend string given")
 
 
-def build_item_list(backend: str, config: Dict = {}) -> List:
+def build_item_list(backend, config: Dict = {}) -> List:
     """
     Builds a list of item pairs to use for arbitrage planning based
     on a given backend.
     """
-    if backend is "poetrade":
-        items = load_items_poetrade()
+    items = load_items(backend)
+    if backend.name() is "poetrade":
         data = build_item_list_poetrade(items.values(), config)
-        data = list(map(lambda x: (x[0]["name"], x[1]["name"]), data))
-        return data
+    elif backend.name() is "poeofficial":
+        data = build_item_list_poetrade(items.values(), config)
+    else:
+        raise UnknownBackendException("Unknown Backend")
 
-    raise UnknownBackendException("Unknown or empty backend string given")
+    data = list(map(lambda x: (x[0]["name"], x[1]["name"]), data))
+    return data
 
 
 """
@@ -70,6 +75,11 @@ class UnknownBackendException(Exception):
 
 def load_items_poetrade() -> Dict[str, Dict]:
     with open("assets/poetrade.json", "r") as f:
+        return json.load(f)
+
+
+def load_items_poeofficial() -> Dict[str, Dict]:
+    with open("assets/poeofficial.json", "r") as f:
         return json.load(f)
 
 
