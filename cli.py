@@ -6,7 +6,7 @@ from src.pathfinder import PathFinder
 from src.commons import league_names
 
 cli_default_items = [
-    x["name"] for x in load_items(poetrade).values() if x["currency"] is True
+    x["name"] for x in load_items(poeofficial).values() if x["currency"] is True
 ]
 
 
@@ -69,7 +69,7 @@ currency = arguments.currency
 limit = arguments.limit
 fullbulk = arguments.fullbulk
 use_filter = False if arguments.nofilter else True
-backend = poetrade
+backend = poeofficial
 config = {"fullbulk": fullbulk}
 chosen_currencies = build_item_list(backend, config)
 
