@@ -1,12 +1,12 @@
 import argparse
-
 from src.backends import poetrade, poeofficial
 from src.items import build_item_list, load_items
 from src.pathfinder import PathFinder
 from src.commons import league_names
 
+default_backend = poeofficial
 cli_default_items = [
-    x["name"] for x in load_items(poeofficial).values() if x["currency"] is True
+    x["name"] for x in load_items(default_backend).values() if x["currency"] is True
 ]
 
 
@@ -55,13 +55,18 @@ parser.add_argument(
     "--fullbulk",
     default=False,
     action="store_true",
-    help="Whether to use all supported bulk items",
+    help="Use all supported bulk items",
 )
 parser.add_argument(
     "--nofilter",
     default=False,
     action="store_true",
-    help="Whether to disable item pair filters")
+    help="Disable item pair filters")
+parser.add_argument(
+    "--poetrade",
+    default=False,
+    action="store_true",
+    help="Use poe.trade instead of pathofexile.com/trade")
 
 arguments = parser.parse_args()
 league = arguments.league
@@ -69,7 +74,7 @@ currency = arguments.currency
 limit = arguments.limit
 fullbulk = arguments.fullbulk
 use_filter = False if arguments.nofilter else True
-backend = poeofficial
+backend = poetrade if arguments.poetrade else poeofficial
 config = {"fullbulk": fullbulk}
 chosen_currencies = build_item_list(backend, config)
 

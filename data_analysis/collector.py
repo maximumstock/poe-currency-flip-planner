@@ -2,7 +2,7 @@ import pickle
 import argparse
 from datetime import datetime
 from src.pathfinder import PathFinder
-from src.backends import poetrade
+from src.backends import poeofficial as default_backend
 from src.items import build_item_list
 from src.commons import league_names
 
@@ -46,8 +46,8 @@ def run():
     path = arguments.path
     use_filter = False if arguments.nofilter else True
     config = {"fullbulk": arguments.fullbulk}
-    backend = poetrade
-    chosen_currencies = build_item_list("poetrade", config)
+    backend = default_backend
+    chosen_currencies = build_item_list(default_backend, config)
 
     # Load excluded trader list
     with open("excluded_traders.txt", "r") as f:
