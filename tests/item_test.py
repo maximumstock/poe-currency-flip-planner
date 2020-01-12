@@ -1,10 +1,11 @@
 import unittest
 from src.items import load_items, build_item_list_poetrade
+from src.backends import poetrade
 
 
 class ItemTest(unittest.TestCase):
     def test_items_loading(self):
-        data = load_items("poetrade")
+        data = load_items(poetrade)
         self.assertIsInstance(data, dict)
         assert len(data.keys()) > 600
 
