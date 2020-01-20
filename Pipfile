@@ -7,7 +7,7 @@ verify_ssl = true
 rope = "*"
 
 [packages]
-aiohttp = "==3.5.1"
+aiohttp = "==3.6.2"
 appnope = "==0.1.0"
 asyncio = "==3.4.3"
 atomicwrites = "==1.2.1"
