@@ -10,21 +10,22 @@ cli_default_items = [
 ]
 
 
-def log_conversions(conversions, currency, limit):
+def log_conversions(conversions, league, currency, limit):
     for c in conversions[currency][:limit]:
-        log_conversion(c)
+        log_conversion(c, league)
 
 
-def log_conversion(c):
+def log_conversion(c, league):
     print("{} {} -> {} {}: {} {}".format(c["starting"], c["from"], c["ending"],
                                          c["to"], c["winnings"], c["to"]))
     for t in c["transactions"]:
-        print("\t@{} Hi, I'd like to buy your {} {} for {} {}. ({})".format(
+        print("\t@{} Hi, I'd like to buy your {} {} for {} {} in {}. ({}x)".format(
             t["contact_ign"],
             t["received"],
             t["to"],
             t["paid"],
             t["from"],
+            league,
             t["conversion_rate"],
         ))
     print("\n")
@@ -36,7 +37,8 @@ parser.add_argument(
     "--league",
     default=league_names[0],
     type=str,
-    help="League specifier, ie. 'Synthesis', 'Hardcore Synthesis' or 'Flashback Event (BRE001)'. Defaults to '{}'.".format(league_names[0]),
+    help="League specifier, ie. 'Synthesis', 'Hardcore Synthesis' or 'Flashback Event (BRE001)'. Defaults to '{}'.".format(
+        league_names[0]),
 )
 parser.add_argument(
     "--currency",
@@ -89,9 +91,9 @@ p.run(3, True)
 try:
     if currency == "all":
         for c in p.graph.keys():
-            log_conversions(p.results, c, limit)
+            log_conversions(p.results, league, c, limit)
     else:
-        log_conversions(p.results, currency, limit)
+        log_conversions(p.results, league, currency, limit)
 
 except KeyError:
     print("Could not find any profitable conversions for {} in {}".format(
