@@ -67,7 +67,7 @@ async def fetch_offers_for_pair(sess, throttler, league, want, have, limit=5):
             offer_ids = json["result"]
             query_id = json["id"]
         except Exception:
-            raise
+            print("Rate limited during initial fetch")
 
         if len(offer_ids) != 0:
             id_string = ",".join(offer_ids[:limit])
@@ -78,8 +78,8 @@ async def fetch_offers_for_pair(sess, throttler, league, want, have, limit=5):
             try:
                 json = await response.json()
                 offers = [map_offers_details(x) for x in json["result"]]
-            except Exception as ex:
-                raise ex
+            except Exception:
+                print("Rate limited during second fetch")
 
         return {"offers": offers, "want": want, "have": have, "league": league}
 
