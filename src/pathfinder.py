@@ -1,6 +1,6 @@
 import time
 from datetime import datetime
-from typing import Dict, List, Tuple
+from typing import Dict, List, Optional, Tuple
 
 from src import graph
 from src.items import load_pair_filter
@@ -45,6 +45,7 @@ class PathFinder:
         self.graph = {}
         self.results = {}
         self.timestamp = str(datetime.now()).split(".")[0]
+        self.logging = True
 
         self.pair_filter = load_pair_filter()
 
@@ -58,7 +59,7 @@ class PathFinder:
             "results": self.results,
         }
 
-    def filter_traders(self, offers: List[Dict], excluded_traders=[]) -> List:
+    def _filter_traders(self, offers: List[Dict], excluded_traders=[]) -> List:
         for idx in range(len(offers)):
             offers[idx]["offers"] = list(
                 filter(
@@ -67,62 +68,68 @@ class PathFinder:
                 ))
         return offers
 
-    def filter_pairs(self, pairs: List[Tuple[str, str]],
-                     allowed_pairs: List[str]):
+    def _filter_pairs(self, pairs: List[Tuple[str, str]], allowed_pairs: List[str]):
         return [(x.split("-")[0], x.split("-")[1]) for x in allowed_pairs]
 
-    def run(self, max_transaction_length=3, logging=True):
-        self.timestamp = str(datetime.now()).split(".")[0]
-        if len(self.offers) == 0:
+    def _fetch(self):
+        t_start = time.time()
 
-            # Filter out unwanted item pairs if filtering is enabled
-            if self.use_filter is True:
-                self.item_pairs = self.filter_pairs(self.item_pairs,
-                                                    self.pair_filter)
+        # Filter out unwanted item pairs if filtering is enabled
+        if self.use_filter is True:
+            self.item_pairs = self._filter_pairs(self.item_pairs, self.pair_filter)
 
-            if logging:
-                print("Fetching {} offers for {} pairs".format(
-                    self.league, len(self.item_pairs)))
-                print("Filter: {}".format(
-                    "Enabled" if self.use_filter else "Disabled"))
-                print("Backend: {}".format(self.backend.name()))
-            t0 = time.time()
+        if self.logging:
+            print("Fetching {} offers for {} pairs".format(self.league, len(self.item_pairs)))
+            print("Filter: {}".format("Enabled" if self.use_filter else "Disabled"))
+            print("Backend: {}".format(self.backend.name()))
 
-            self.offers = self.backend.fetch_offers(self.league,
-                                                    self.item_pairs)
+        self.offers = self.backend.fetch_offers(self.league, self.item_pairs)
 
-            # Filter out unwanted traders
-            self.offers = self.filter_traders(self.offers,
-                                              self.excluded_traders)
+        # Filter out unwanted traders
+        self.offers = self._filter_traders(self.offers, self.excluded_traders)
 
-            t1 = time.time()
-            if logging:
-                print("Spent {}s fetching offers".format(round(t1 - t0, 1)))
-        t1 = time.time()
+        t_end = time.time()
+
+        if self.logging:
+            print("Spent {}s fetching offers".format(round(t_end - t_start, 1)))
+
+    def _build_graph(self):
+        t_start = time.time()
         self.graph = graph.build_graph(self.offers)
-        t2 = time.time()
+        t_end = time.time()
 
-        if logging:
-            print("Spent {}s building the graph".format(round(t2 - t1, 1)))
+        if self.logging:
+            print("Spent {}s building the graph".format(round(t_end - t_start, 1)))
 
+    def _find_profitable_paths(self, max_transaction_length):
+        t_start = time.time()
         for c in self.graph.keys():
             # For currency @c, find all paths within the constructed path that are
             # at most @max_transaction_length long
             paths = graph.find_paths(self.graph, c, c, max_transaction_length)
             profitable_conversions = []
+
             for p in paths:
                 conversion = graph.build_conversion(p)
                 if conversion is not None:
                     profitable_conversions.append(conversion)
-            if logging:
+
+            if self.logging:
                 print("Checking {} -> {} Conversions".format(
                     c, len(profitable_conversions)))
+
             profitable_conversions = sorted(
                 profitable_conversions,
                 key=lambda k: k["winnings"],
                 reverse=True)
+
             self.results[c] = profitable_conversions
 
-        t3 = time.time()
-        if logging:
-            print("Spent {}s finding paths".format(round(t3 - t2, 1)))
+        t_end = time.time()
+        if self.logging:
+            print("Spent {}s finding paths".format(round(t_end - t_start, 1)))
+
+    def run(self, max_transaction_length=3, max_amount: Optional[int] = None):
+        self._fetch()
+        self._build_graph()
+        self._find_profitable_paths(max_transaction_length)
