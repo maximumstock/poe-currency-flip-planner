@@ -2,6 +2,10 @@ from collections import deque
 import math
 from typing import Dict, List
 
+# Introduce a volume cap for a single trade to avoid trading too much currency
+# for a single inventory to handle
+TRADE_VOLUME_CAP = 600
+
 
 def build_graph(offers) -> Dict:
     """
@@ -89,7 +93,8 @@ def equalize_stock_differences(path):
     """
     # add some precalculated values
     for edge in path:
-        edge["paid"] = math.floor(edge["stock"] / edge["conversion_rate"])
+        stock = min(edge["stock"], TRADE_VOLUME_CAP)
+        edge["paid"] = math.floor(stock / edge["conversion_rate"])
         edge["received"] = math.floor(edge["paid"] * edge["conversion_rate"])
 
     # need this double loop to make sure that all stock quantity differences
