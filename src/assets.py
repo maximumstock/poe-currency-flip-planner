@@ -16,10 +16,9 @@ from __future__ import annotations
 
 from bs4 import BeautifulSoup
 import requests
-from functools import reduce
-import json
 from dataclasses import dataclass
 from typing import List, Dict
+import pickle
 
 # List of items that people usually sell their non-currency bulk items (eg.
 # maps, div cards, fossils, etc.) for
@@ -33,7 +32,6 @@ blacklist = [
     "Portal Scroll",
     "Armourer's Scrap",
     "Blacksmith's Whetstone",
-    "Silver Coin",
 ]
 
 # List of items that represent basic currencies, commonly used
@@ -74,15 +72,31 @@ class Item:
 class ItemList:
     items: Dict[str, Item]
 
-    def add_item(self, item: Item):
-        pass
-
     @staticmethod
-    def load_from_file(path: str) -> List[Item]:
-        pass
+    def load_from_file(path: str = None) -> ItemList:
+        if path is None:
+            path = "assets/items.pickle"
 
-    def serialize(self):
-        return self.items
+        with open(path, "rb") as f:
+            return pickle.load(f)
+
+    def find_discrepancies(self) -> (Dict[str, int], List[Item]):
+        backend_counts: Dict[str, int] = dict()
+        backend_counts["all"] = 0
+        supported_backends = ["poetrade", "poeofficial"]
+
+        unsynced_items: List[Item] = []
+
+        for item in self.items.values():
+            if len(item.ids) == len(supported_backends):
+                backend_counts["all"] = backend_counts["all"] + 1
+            else:
+                unsynced_items.append(item)
+            for backend in supported_backends:
+                if backend in item.ids.keys():
+                    backend_counts[backend] = (backend_counts[backend] if backend in backend_counts else 0) + 1
+
+        return (backend_counts, unsynced_items)
 
     @staticmethod
     def generate() -> ItemList:
@@ -91,7 +105,7 @@ class ItemList:
 
         # Needs to be in this order for current naive merging approach, as
         # more details are pulled from official sources
-        item_list = ItemList.__merge_lists(poetrade_data, poeofficial_data)
+        item_list = ItemList.__merge_lists(poeofficial_data, poetrade_data)
         item_list = ItemList.__postprocess_list(item_list)
 
         item_dict = dict()
@@ -102,17 +116,23 @@ class ItemList:
         return ItemList(item_dict)
 
     @staticmethod
-    def __merge_lists(list1: List[Item], list2: List[Item]) -> List[Item]:
-        main_list: List[Item] = sorted(list1, key=lambda x: x.name)
-        secondary_list: List[Item] = sorted(list2, key=lambda x: x.name)
+    def __merge_lists(ground_truth: List[Item], incoming: List[Item]) -> List[Item]:
+        """
+        Try to merge @incoming list of items into @ground_truth list of items
+        """
+        ground_truth: List[Item] = sorted(ground_truth, key=lambda x: x.name)
+        incoming: List[Item] = sorted(incoming, key=lambda x: x.name)
 
-        for i1 in main_list:
-            for i2 in secondary_list:
-                if i1.name == i2.name:
-                    i1.ids.update(i2.ids)
-                    i1.category = i2.category
+        for true_item in ground_truth:
+            for inc_item in incoming:
+                if true_item.name == inc_item.name:
+                    true_item.ids.update(inc_item.ids)
+                    true_item.category = inc_item.category
 
-        return main_list
+                if inc_item.name in true_item.name:
+                    true_item.ids.update(inc_item.ids)
+
+        return ground_truth
 
     @staticmethod
     def __postprocess_list(item_list: List[Item]) -> List[Item]:
@@ -135,21 +155,30 @@ class ItemList:
 
 
 def poetrade() -> List[Item]:
+    item_list: List[Item] = []
+
     resp = requests.get("http://currency.poe.trade/")
     html = resp.text
-
     soup = BeautifulSoup(html, "html.parser")
-    currency_have_div = soup.find("div", {"id": "currency-have"})
-    elements = currency_have_div.find_all(class_="currency-selectable")
 
-    item_list = [Item(
-        name=x.get("title", x["data-title"]),
-        backend="poetrade",
-        item_id=x["data-id"],
-        is_currency=False,
-        is_basic=False,
-        is_bulk_target=False
-    ) for x in elements]
+    currency_have_div = soup.find("div", {"id": "currency-have"})
+    item_categories = currency_have_div.find_all_next("div", {"class": "category"})
+
+    for category_div in item_categories:
+        category_name = category_div.find_all_next("div", {"class": "currency-toggle"})[0].contents[1]
+        elements = category_div.find_all_next("div", {"class": "currency-selectable"})
+
+        for x in elements:
+            item = Item(
+                name=str(x.get("title", x.text.strip())),
+                backend="poetrade",
+                item_id=x["data-id"],
+                is_currency=False,
+                is_basic=False,
+                is_bulk_target=False,
+                category=category_name or "Currency"
+            )
+            item_list.append(item)
 
     return item_list
 
@@ -158,36 +187,37 @@ def poeofficial() -> List[Item]:
     resp = requests.get("https://www.pathofexile.com/api/trade/data/static")
     json_data = resp.json()["result"]
 
-    # currency_data = [x for x in json_data if x["id"] == "Currency"][0]["entries"]
     item_list = []
     for category in json_data:
         for x in category["entries"]:
             item = Item(
-                name=x["text"],
+                name=x["text"].strip(),
                 backend="poeofficial",
                 item_id=x["id"],
                 is_currency=False,
                 is_basic=False,
                 is_bulk_target=False,
-                category=category["id"]
+                category=category["label"] or category["id"]
             )
             item_list.append(item)
 
     return item_list
 
 
-if __name__ == "__main__":
-    # poe_trade_data = poetrade()
-    # with open("assets/poetrade.json", "w") as f:
-    #     json.dump(poe_trade_data, f, indent=2)
-
-    # poeofficial_data = poeofficial()
-    # with open("assets/poeofficial.json", "w") as f:
-    #     json.dump(poeofficial_data, f, indent=2)
-
+def test():
     item_list = ItemList.generate()
-    with open("assets/items.json", "w") as f:
-        data = json.dumps(item_list.serialize(), default=lambda o: o.__dict__,
-                   sort_keys=True, indent=4)
-        f.write(data)
 
+    (n_unsynced_items, unsynced_items) = item_list.find_discrepancies()
+    print("Item counts:", n_unsynced_items)
+    print("Encountered {} unsynced items".format(len(unsynced_items)))
+    for item in unsynced_items:
+        print(item)
+
+    with open("assets/items.pickle", "wb") as f:
+        import sys
+        sys.setrecursionlimit(1000000)
+        pickle.dump(item_list, f)
+
+
+if __name__ == "__main__":
+    test()
