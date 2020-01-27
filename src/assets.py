@@ -59,7 +59,6 @@ class Item:
 
     def __init__(self, name: str, backend: str, item_id: str, is_currency: bool, is_basic: bool, is_bulk_target: bool,
                  category: str = None):
-
         self.name = name
         self.ids = {backend: item_id}
         self.is_currency = is_currency
@@ -96,7 +95,7 @@ class ItemList:
                 if backend in item.ids.keys():
                     backend_counts[backend] = (backend_counts[backend] if backend in backend_counts else 0) + 1
 
-        return (backend_counts, unsynced_items)
+        return backend_counts, unsynced_items
 
     @staticmethod
     def generate() -> ItemList:
@@ -111,7 +110,6 @@ class ItemList:
         item_dict = dict()
         for item in item_list:
             item_dict[item.name] = item
-
 
         return ItemList(item_dict)
 
