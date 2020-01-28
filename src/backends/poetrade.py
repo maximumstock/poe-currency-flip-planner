@@ -2,22 +2,20 @@ import concurrent.futures
 import requests
 from bs4 import BeautifulSoup
 
-from src.items import load_items_poetrade
-
-items = load_items_poetrade()
+from src.assets import ItemList
 
 
 def name():
     return "poetrade"
 
 
-def fetch_offers(league, currency_pairs, limit=10):
+def fetch_offers(league, currency_pairs, item_list: ItemList, limit=10):
     """
     Fetches trading offers for a specific league and a pair of currencies from
     poe.trade and turns the data into a suitable format.
     """
 
-    params = [[league, pair[0], pair[1], limit] for pair in currency_pairs]
+    params = [[league, pair[0], pair[1], item_list, limit] for pair in currency_pairs]
 
     with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
         futures = executor.map(lambda p: fetch_offers_for_pair(*p), params)
@@ -27,17 +25,17 @@ def fetch_offers(league, currency_pairs, limit=10):
         return offers
 
 
-def fetch_offers_for_pair(league, want, have, limit=10):
+def fetch_offers_for_pair(league, want, have, item_list: ItemList, limit):
     url = "http://currency.poe.trade/search"
     params = {
         "league": league,
-        "want": map_currency(want),
-        "have": map_currency(have),
+        "want": item_list.map_item(want, name()),
+        "have": item_list.map_item(have, name()),
         "online": True,
     }
 
     r = requests.get(url, params=params)
-    offers = parse_conversion_offers(r.text)
+    offers = parse_conversion_offers(r.text, limit)
 
     return {"offers": offers, "want": want, "have": have, "league": league}
 
@@ -47,11 +45,11 @@ Helper functions to parse results from poe.trade."
 """
 
 
-def parse_conversion_offers(html):
+def parse_conversion_offers(html, limit: int):
     soup = BeautifulSoup(html, "html.parser")
     rows = soup.find_all(class_="displayoffer")
     parsed_rows = [parse_conversion_offer(x) for x in rows]
-    return [x for x in parsed_rows if x is not None][:5]
+    return [x for x in parsed_rows if x is not None][:limit]
 
 
 def parse_conversion_offer(offer_html):
@@ -70,10 +68,3 @@ def parse_conversion_offer(offer_html):
         "stock": stock,
     }
 
-
-def map_currency(currency):
-    sanitized_currency = "".join(currency.split("'"))
-    if sanitized_currency in items.keys():
-        return items[sanitized_currency]["id"]
-    else:
-        raise Exception("Unknown currency key " + currency)

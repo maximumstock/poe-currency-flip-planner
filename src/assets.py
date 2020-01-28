@@ -17,8 +17,14 @@ from __future__ import annotations
 from bs4 import BeautifulSoup
 import requests
 from dataclasses import dataclass
-from typing import List, Dict
+from typing import List, Dict, Tuple, Any
 import pickle
+import itertools
+
+
+class UnsupportedItemException(Exception):
+    pass
+
 
 # List of items that people usually sell their non-currency bulk items (eg.
 # maps, div cards, fossils, etc.) for
@@ -66,6 +72,13 @@ class Item:
         self.is_bulk_target = is_bulk_target
         self.category = category
 
+    def is_supported_by(self, backend_name: str) -> bool:
+        return backend_name in self.ids.keys()
+
+
+class UnknownBackendException(Exception):
+    pass
+
 
 @dataclass
 class ItemList:
@@ -96,6 +109,44 @@ class ItemList:
                     backend_counts[backend] = (backend_counts[backend] if backend in backend_counts else 0) + 1
 
         return backend_counts, unsynced_items
+
+    def map_item(self, name: str, backend: str) -> str:
+        try:
+            return self.items[name].ids[backend]
+        except Exception:
+            raise UnsupportedItemException("{} backend does not support item {}".format(backend, name))
+
+    def are_items_supported(self, requested_item_pairs: List[Tuple[str, str]], backend: Any) -> bool:
+        for pair in requested_item_pairs:
+            self.map_item(pair[0], backend.name())
+            self.map_item(pair[1], backend.name())
+
+        return True
+
+    def get_item_list_for_backend(self, backend: Any, config: Dict = {}) -> List[Tuple[str, ...]]:
+        backend_name: str = backend.name()
+
+        supported_items = [i for i in self.items.values() if i.is_supported_by(backend_name)]
+
+        if len(supported_items) == 0:
+            raise UnknownBackendException("Unknown backend {}".format(backend_name))
+
+        for item in self.items.values():
+            if item.is_supported_by(backend_name):
+
+                currency_items = [i.name for i in supported_items if i.is_currency is True]
+                bulk_items = [i.name for i in supported_items if i.is_currency is False]
+                bulk_targets = [i.name for i in supported_items if i.is_bulk_target is True]
+
+                result = list(itertools.permutations(currency_items, 2))
+
+                if config.get("fullbulk") is True:
+                    result = result + list(
+                        itertools.product(bulk_targets, bulk_items)
+                    ) + list(itertools.product(bulk_items, bulk_targets))
+
+                return result
+
 
     @staticmethod
     def generate() -> ItemList:
