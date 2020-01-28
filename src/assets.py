@@ -213,13 +213,23 @@ def poetrade() -> List[Item]:
     currency_have_div = soup.find("div", {"id": "currency-have"})
     item_categories = currency_have_div.find_all_next("div", {"class": "category"})
 
+    def map_item_name(input):
+        _map = {
+            "Apprentice Cartographer's Sextant": "Simple Sextant",
+            "Journeyman Cartographer's Sextant": "Prime Sextant",
+            "Master Cartographer's Sextant": "Awakened Sextant"
+        }
+        return _map[input] if input in _map else input
+
     for category_div in item_categories:
         category_name = category_div.find_all_next("div", {"class": "currency-toggle"})[0].contents[1]
         elements = category_div.find_all_next("div", {"class": "currency-selectable"})
 
         for x in elements:
+            item_name = str(x.get("title", x.text.strip()))
+            item_name = map_item_name(item_name)
             item = Item(
-                name=str(x.get("title", x.text.strip())),
+                name=item_name,
                 backend="poetrade",
                 item_id=x["data-id"],
                 is_currency=False,
@@ -228,6 +238,8 @@ def poetrade() -> List[Item]:
                 category=category_name or "Currency"
             )
             item_list.append(item)
+
+
 
     return item_list
 
