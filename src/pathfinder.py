@@ -4,6 +4,7 @@ from typing import Dict, List, Tuple
 
 from src import graph
 from src.items import load_pair_filter
+from src.assets import ItemList, UnsupportedItemException
 
 
 def format_conversions(conversions) -> str:
@@ -45,8 +46,12 @@ class PathFinder:
         self.graph = {}
         self.results = {}
         self.timestamp = str(datetime.now()).split(".")[0]
+        self.item_list = ItemList.load_from_file()
 
         self.pair_filter = load_pair_filter()
+
+        self.item_list.are_items_supported(self.item_pairs, self.backend)
+        self.item_list.are_items_supported(self.pair_filter, self.backend)
 
     def prepickle(self) -> Dict:
         return {
@@ -59,19 +64,20 @@ class PathFinder:
         }
 
     def filter_traders(self, offers: List[Dict], excluded_traders=[]) -> List:
+        excluded_traders = [name.lower() for name in excluded_traders]
         for idx in range(len(offers)):
             offers[idx]["offers"] = list(
                 filter(
-                    lambda x: x["contact_ign"] not in excluded_traders,
+                    lambda x: x["contact_ign"].lower() not in excluded_traders,
                     offers[idx]["offers"],
                 ))
         return offers
 
-    def filter_pairs(self, pairs: List[Tuple[str, str]],
-                     allowed_pairs: List[str]):
-        return [(x.split("-")[0], x.split("-")[1]) for x in allowed_pairs]
+    def filter_pairs(self, pairs: List[Tuple[str, str]], allowed_pairs: List[Tuple[str, str]]):
+        return [(x[0], x[1]) for x in allowed_pairs]
 
     def run(self, max_transaction_length=3, logging=True):
+
         self.timestamp = str(datetime.now()).split(".")[0]
         if len(self.offers) == 0:
 
@@ -89,7 +95,8 @@ class PathFinder:
             t0 = time.time()
 
             self.offers = self.backend.fetch_offers(self.league,
-                                                    self.item_pairs)
+                                                    self.item_pairs,
+                                                    self.item_list)
 
             # Filter out unwanted traders
             self.offers = self.filter_traders(self.offers,

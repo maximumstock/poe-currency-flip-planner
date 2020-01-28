@@ -1,6 +1,7 @@
 import unittest
 from src.items import load_items, build_item_list_poetrade
 from src.backends import poetrade
+from src.assets import ItemList
 
 
 class ItemTest(unittest.TestCase):
@@ -74,3 +75,9 @@ class ItemTest(unittest.TestCase):
         ])
         self.assertEqual(len(poetrade_pairs), len(expected_result))
         self.assertListEqual(poetrade_pairs, expected_result)
+
+
+class ItemListTest(unittest.TestCase):
+    def test_loading_itemlist_from_fs(self):
+        item_list: ItemList = ItemList.load_from_file()
+        self.assertTrue(len(item_list.items) > 800)

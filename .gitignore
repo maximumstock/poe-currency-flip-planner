@@ -3,7 +3,7 @@ __pycache__
 env
 .cache
 .vscode
-*.pickle
+data_analysis/**/*.pickle
 .pytest_cache
 .ipynb_checkpoints
 .mypy_cache

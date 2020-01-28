@@ -3,9 +3,7 @@ import urllib
 import aiohttp
 from asyncio_throttle import Throttler
 
-from src.items import load_items_poeofficial
-
-currencies = load_items_poeofficial()
+from src.assets import ItemList
 
 
 def name():
@@ -16,20 +14,20 @@ class RateLimitException(Exception):
     pass
 
 
-def fetch_offers(league, currency_pairs, limit=3):
+def fetch_offers(league, currency_pairs, item_list: ItemList, limit=3):
     loop = asyncio.get_event_loop()
     results = loop.run_until_complete(
-        fetch_offers_async(league, currency_pairs, limit))
+        fetch_offers_async(league, currency_pairs, item_list, limit))
     return results
 
 
-async def fetch_offers_async(league, currency_pairs, limit=3):
+async def fetch_offers_async(league, currency_pairs, item_list: ItemList, limit=3):
     throttler = Throttler(10)
 
     async with aiohttp.ClientSession() as sess:
         tasks = [
             asyncio.ensure_future(
-                fetch_offers_for_pair(sess, throttler, league, p[0], p[1],
+                fetch_offers_for_pair(sess, throttler, league, p[0], p[1], item_list,
                                       limit)) for p in currency_pairs
         ]
 
@@ -43,7 +41,7 @@ Private helpers below
 """
 
 
-async def fetch_offers_for_pair(sess, throttler, league, want, have, limit=5):
+async def fetch_offers_for_pair(sess, throttler, league, want, have, item_list: ItemList, limit=5):
     async with throttler:
         offer_ids = []
         query_id = None
@@ -56,8 +54,8 @@ async def fetch_offers_for_pair(sess, throttler, league, want, have, limit=5):
                 "status": {
                     "option": "online"
                 },
-                "have": [map_currency(have)],
-                "want": [map_currency(want)],
+                "have": [item_list.map_item(have, name())],
+                "want": [item_list.map_item(want, name())],
             }
         }
 
@@ -96,11 +94,3 @@ def map_offers_details(offer_details):
         "conversion_rate": conversion_rate,
         "stock": stock,
     }
-
-
-def map_currency(currency):
-    sanitized_currency = "".join(currency.split("'"))
-    if sanitized_currency in currencies:
-        return currencies[sanitized_currency]["id"]
-    else:
-        raise Exception("Unknown currency key", sanitized_currency)

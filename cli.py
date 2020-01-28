@@ -1,13 +1,11 @@
 import argparse
 from src.backends import poetrade, poeofficial
-from src.items import build_item_list, load_items
 from src.pathfinder import PathFinder
 from src.commons import league_names
+from src.assets import ItemList
 
 default_backend = poeofficial
-cli_default_items = [
-    x["name"] for x in load_items(default_backend).values() if x["currency"] is True
-]
+item_list = ItemList.load_from_file()
 
 
 def log_conversions(conversions, league, currency, limit):
@@ -43,7 +41,7 @@ parser.add_argument(
 parser.add_argument(
     "--currency",
     default="all",
-    choices=cli_default_items,
+    #choices=cli_default_items,
     type=str,
     help="Full name of currency to flip, ie. 'Cartographer's Chisel, or 'Chaos Orb'. Defaults to all currencies.",
 )
@@ -78,7 +76,7 @@ fullbulk = arguments.fullbulk
 use_filter = False if arguments.nofilter else True
 backend = poetrade if arguments.poetrade else poeofficial
 config = {"fullbulk": fullbulk}
-chosen_currencies = build_item_list(backend, config)
+chosen_currencies = item_list.get_item_list_for_backend(backend, config)
 
 # Load excluded trader list
 with open("excluded_traders.txt", "r") as f:
