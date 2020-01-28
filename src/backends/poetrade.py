@@ -25,7 +25,7 @@ def fetch_offers(league, currency_pairs, item_list: ItemList, limit=10):
         return offers
 
 
-def fetch_offers_for_pair(league, want, have, item_list: ItemList, limit):
+def fetch_offers_for_pair(league, want, have, item_list: ItemList, limit=10):
     url = "http://currency.poe.trade/search"
     params = {
         "league": league,
