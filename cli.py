@@ -1,8 +1,8 @@
 import argparse
-from src.backends import poetrade, poeofficial
+from src.core.backends import poetrade, poeofficial
 from src.pathfinder import PathFinder
 from src.commons import league_names
-from src.assets import ItemList
+from src.trading import ItemList
 
 default_backend = poeofficial
 item_list = ItemList.load_from_file()

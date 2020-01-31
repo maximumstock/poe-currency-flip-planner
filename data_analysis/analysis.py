@@ -4,10 +4,11 @@ from matplotlib import pyplot as plt
 import itertools
 import argparse
 import operator
-from src.items import load_items
+from src.trading import ItemList
 
-all_items = [x["name"] for x in load_items("poetrade").values()]
-all_currencies = [x["name"] for x in load_items("poetrade").values() if x["currency"] is True and x["basic"] is True]
+item_list = ItemList.load_from_file()
+all_items = [x for x in item_list.items.keys()]
+all_currencies = [x.name for x in item_list.items.values() if x.is_basic_currency and x.is_currency]
 
 
 """

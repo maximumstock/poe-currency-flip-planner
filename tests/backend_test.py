@@ -1,6 +1,6 @@
 import unittest
-from src.backends import poetrade, poeofficial
-from src.assets import ItemList
+from src.core.backends import poetrade, poeofficial
+from src.trading.items import ItemList
 
 item_list = ItemList.load_from_file()
 

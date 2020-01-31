@@ -1,5 +1,5 @@
 import unittest
-from src.assets import ItemList
+from src.trading.items import ItemList
 
 item_list = ItemList.load_from_file()
 

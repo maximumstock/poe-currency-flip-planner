@@ -1,5 +1,5 @@
 import unittest
-from src.graph import build_graph, find_paths, build_conversion, is_profitable
+from src.core.graph import build_graph, find_paths, build_conversion, is_profitable
 
 
 test_offers = [

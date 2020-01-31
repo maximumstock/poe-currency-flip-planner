@@ -3,7 +3,7 @@ import urllib
 import aiohttp
 from asyncio_throttle import Throttler
 
-from src.assets import ItemList
+from src.trading.items import ItemList
 
 
 def name():

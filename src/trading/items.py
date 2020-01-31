@@ -51,6 +51,13 @@ basic_currencies = [
     "Orb of Alteration",
     "Orb of Scouring",
     "Orb of Regret",
+    "Vaal Orb",
+    "Gemcutter's Prism",
+    "Glassblower's Bauble",
+    "Divine Orb",
+    "Blessed Orb",
+    "Regal Orb",
+    "Cartographer's Chisel",
 ]
 
 
@@ -147,7 +154,6 @@ class ItemList:
 
                 return result
 
-
     @staticmethod
     def generate() -> ItemList:
         poetrade_data = poetrade()
@@ -176,7 +182,6 @@ class ItemList:
             for inc_item in incoming:
                 if true_item.name == inc_item.name:
                     true_item.ids.update(inc_item.ids)
-                    true_item.category = inc_item.category
 
                 if inc_item.name in true_item.name:
                     true_item.ids.update(inc_item.ids)
@@ -239,8 +244,6 @@ def poetrade() -> List[Item]:
             )
             item_list.append(item)
 
-
-
     return item_list
 
 
@@ -263,22 +266,3 @@ def poeofficial() -> List[Item]:
             item_list.append(item)
 
     return item_list
-
-
-def test():
-    item_list = ItemList.generate()
-
-    (n_unsynced_items, unsynced_items) = item_list.find_discrepancies()
-    print("Item counts:", n_unsynced_items)
-    print("Encountered {} unsynced items".format(len(unsynced_items)))
-    for item in unsynced_items:
-        print(item)
-
-    with open("assets/items.pickle", "wb") as f:
-        import sys
-        sys.setrecursionlimit(1000000)
-        pickle.dump(item_list, f)
-
-
-if __name__ == "__main__":
-    test()
