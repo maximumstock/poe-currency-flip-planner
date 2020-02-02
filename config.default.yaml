@@ -1,0 +1,22 @@
+# Here we define various settings for different items, one item at a time
+Items:
+  # Each item has a fixed set of properties with pre-defined default values
+  - name: "Chaos Orb"
+    # Minimum Stock Size
+    # This defines
+    minimum_stock_size: 1
+    # Maximum Stock Size
+    # This defines how
+    maximum_stock_size: 0
+    trades_into:
+      - "*"
+  - name: "Exalted Orb"
+    minimum_stock_size: 1
+    maximum_stock_size: 0
+    trades_into:
+      - "*"
+  - name: "Orb of Fusing"
+    minimum_stock_size: 1
+    maximum_stock_size: 0
+    trades_into:
+      - "*"
