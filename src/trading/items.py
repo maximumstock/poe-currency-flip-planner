@@ -71,7 +71,7 @@ class Item:
     category: str
 
     def __init__(self, name: str, backend: str, item_id: str, is_currency: bool, is_basic: bool, is_bulk_target: bool,
-                 category: str = None):
+                 category: str):
         self.name = name
         self.ids = {backend: item_id}
         self.is_currency = is_currency
@@ -99,7 +99,7 @@ class ItemList:
         with open(path, "rb") as f:
             return pickle.load(f)
 
-    def find_discrepancies(self) -> (Dict[str, int], List[Item]):
+    def find_discrepancies(self) -> Tuple[Dict[str, int], List[Item]]:
         backend_counts: Dict[str, int] = dict()
         backend_counts["all"] = 0
         supported_backends = ["poetrade", "poeofficial"]
@@ -175,8 +175,8 @@ class ItemList:
         """
         Try to merge @incoming list of items into @ground_truth list of items
         """
-        ground_truth: List[Item] = sorted(ground_truth, key=lambda x: x.name)
-        incoming: List[Item] = sorted(incoming, key=lambda x: x.name)
+        ground_truth = sorted(ground_truth, key=lambda x: x.name)
+        incoming = sorted(incoming, key=lambda x: x.name)
 
         for true_item in ground_truth:
             for inc_item in incoming:
