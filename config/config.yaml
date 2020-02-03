@@ -1,0 +1,23 @@
+[Items]
+- name: "Ancient Orb"
+  sell_for:
+    - "Chaos Orb"
+- name: "Chaos Orb"
+  minimum_stock_size: 1
+  maximum_stock_size: 1
+  sell_for:
+    - "Blessed Orb"
+    - "Cartographer's Chisel"
+    - "Chromatic Orb"
+    - "Divine Orb"
+    - "Exalted Orb"
+    - "Gemcutter's Prism"
+    - "Jeweller's Orb"
+    - "Orb of Alchemy"
+    - "Orb of Alteration"
+    - "Orb of Chance"
+    - "Orb of Fusing"
+    - "Orb of Regret"
+    - "Orb of Scouring"
+    - "Regal Orb"
+    - "Vaal Orb"
