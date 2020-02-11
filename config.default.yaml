@@ -1,22 +1,26 @@
 # Here we define various settings for different items, one item at a time
 Items:
   # Each item has a fixed set of properties with pre-defined default values
+
+  # Name
+  # The name of an item we want to configure
   - name: "Chaos Orb"
-    # Minimum Stock Size
-    # This defines
-    minimum_stock_size: 1
-    # Maximum Stock Size
+    # Minimum Stock
+    # This defines the minimum stock a trade offer has to have to be considered.
+    # If an offer permits less than this thres
+    minimum_stock: 1
+    # Maximum Stock
     # This defines how
-    maximum_stock_size: 0
+    maximum_stock: 0
     trades_into:
       - "*"
   - name: "Exalted Orb"
-    minimum_stock_size: 1
-    maximum_stock_size: 0
+    minimum_stock: 1
+    maximum_stock: 0
     trades_into:
       - "*"
   - name: "Orb of Fusing"
-    minimum_stock_size: 1
-    maximum_stock_size: 0
+    minimum_stock: 1
+    maximum_stock: 0
     trades_into:
       - "*"
