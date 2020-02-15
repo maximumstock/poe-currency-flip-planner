@@ -79,7 +79,7 @@ config = {"fullbulk": fullbulk}
 chosen_currencies = item_list.get_item_list_for_backend(backend, config)
 
 # Load excluded trader list
-with open("excluded_traders.txt", "r") as f:
+with open("excluded_traders.txt", "r", encoding='utf-8') as f:
     excluded_traders = [x.strip() for x in f.readlines()]
 
 p = PathFinder(league, chosen_currencies, backend, excluded_traders,
