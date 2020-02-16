@@ -2,7 +2,10 @@ version: 1
 update_configs:
   - package_manager: "python"
     directory: "/"
-    update_schedule: "daily"
+    update_schedule: "live"
+    commit_message:
+      prefix: "chore"
+      include_scope: true
     automerged_updates:
       - match:
           dependency_name: "*"
