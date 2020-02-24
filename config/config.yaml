@@ -1,3 +1,4 @@
+-version: 1
 [Items]
 - name: "Ancient Orb"
   sell_for:
@@ -21,3 +22,18 @@
     - "Orb of Scouring"
     - "Regal Orb"
     - "Vaal Orb"
+
+version: 1
+items:
+	Exalted Orb:
+    stock_sizes:
+      minimum: 10
+      maximum: 20
+    sell_for:
+      Chaos Orb: 10
+	Chaos Orb:
+    stock_sizes:
+      minimum: 40
+      maximum: 20
+    sell_for:
+      Cartographer's Chisel: 10
