@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "assets": {
+    "Chaos Orb": 200,
+    "Exalted Orb": 5,
+    "Chromatic Orb": 1000,
+    "Orb of Fusing": 340
+  },
+  "trading": {
+    "Chaos Orb": {
+      "minimum_stock": 40,
+      "maximum_stock": 500,
+      "sell_for": {
+        "Cartographer's Chisel": null,
+        "Chromatic Orb": null,
+        "Divine Orb": null,
+        "Orb of Alchemy": null,
+        "Orb of Regret": null,
+        "Exalted Orb": null
+      }
+    },
+    "Exalted Orb": {
+      "minimum_stock": 1,
+      "maximum_stock": 100,
+      "sell_for": {
+        "Cartographer's Chisel": null,
+        "Chaos Orb": null,
+        "Orb of Alchemy": null,
+        "Orb of Alteration": null,
+        "Orb of Annulment": {
+          "minimum_stock": 10,
+          "maximum_stock": 30
+        }
+      }
+    },
+    "Orb of Annulment": {
+      "minimum_stock": 1,
+      "sell_for": {
+        "Exalted Orb": 5
+      }
+    }
+  }
+}
