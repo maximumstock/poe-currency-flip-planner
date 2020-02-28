@@ -4,6 +4,7 @@ from typing import Dict, List, Optional, Tuple
 
 from src.core import graph
 from src.trading import ItemList, load_pair_filter
+from src.config.user_config import UserConfig
 
 
 def format_conversions(conversions) -> str:
@@ -32,11 +33,13 @@ class PathFinder:
                  league,
                  item_pairs,
                  backend,
+                 user_config: UserConfig,
                  excluded_traders=[],
                  use_filter=True):
         self.league = league
         self.item_pairs = item_pairs
         self.backend = backend
+        self.user_config = user_config
         self.excluded_traders = excluded_traders
         self.use_filter = use_filter
 
@@ -115,7 +118,7 @@ class PathFinder:
             profitable_conversions = []
 
             for p in paths:
-                conversion = graph.build_conversion(p)
+                conversion = graph.build_conversion(p, self.user_config)
                 if conversion is not None:
                     profitable_conversions.append(conversion)
 

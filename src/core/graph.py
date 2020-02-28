@@ -2,9 +2,7 @@ from collections import deque
 import math
 from typing import Dict, List
 
-# Introduce a volume cap for a single trade to avoid trading too much currency
-# for a single inventory to handle
-TRADE_VOLUME_CAP = 600
+from src.config.user_config import UserConfig
 
 
 def build_graph(offers) -> Dict:
@@ -86,14 +84,15 @@ def is_profitable(path):
     return maximum_conversion_rate(path) > 1.0
 
 
-def equalize_stock_differences(path):
+def equalize_stock_differences(path, user_config: UserConfig):
     """
     Finds the maximum flow for a found path and alters the conversion edges accordingly.
     Also rounds up the trading values to trade for full pieces of currency.
     """
     # add some precalculated values
     for edge in path:
-        stock = min(edge["stock"], TRADE_VOLUME_CAP)
+        trading_cap = user_config.get_maximum_trade_volume_for_item(edge["have"])
+        stock = min(edge["stock"], trading_cap)
         edge["paid"] = math.floor(stock / edge["conversion_rate"])
         edge["received"] = math.floor(edge["paid"] * edge["conversion_rate"])
 
@@ -124,13 +123,13 @@ def equalize_stock_differences(path):
     return path
 
 
-def build_conversion(path) -> Dict:
+def build_conversion(path, user_config: UserConfig) -> Dict:
     """
     Simplifies a found path into a dictionary structure to handle the found data
     for easily.
     """
     transactions = []
-    path = equalize_stock_differences(path)
+    path = equalize_stock_differences(path, user_config)
 
     if path is None:
         return None

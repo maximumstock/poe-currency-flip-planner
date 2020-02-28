@@ -1,4 +1,6 @@
 import unittest
+
+from src.config.user_config import UserConfig
 from src.core.graph import build_graph, find_paths, build_conversion, is_profitable
 
 
@@ -311,6 +313,9 @@ expected_conversion = {
 
 
 class GraphTest(unittest.TestCase):
+
+    user_config = UserConfig.from_file()
+
     def test_build_graph(self):
         graph = build_graph(test_offers)
         self.assertDictEqual(graph, expected_graph)
@@ -334,7 +339,7 @@ class GraphTest(unittest.TestCase):
 
     def test_build_conversions(self):
         path = expected_paths_small_same_currency()[0]
-        conversion = build_conversion(path)
+        conversion = build_conversion(path, self.user_config)
         self.assertEqual(None, conversion)
 
     def test_stock_equalization(self):

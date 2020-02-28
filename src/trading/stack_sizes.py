@@ -38,5 +38,8 @@ class StackSizeHelper:
         pass
 
     def get_stack_size(self, name: str) -> int:
-        return self.stack_sizes.get(name) if name in self.stack_sizes else 1
+        return self.stack_sizes.get(name, 1)
+
+    def get_maximum_volume_for_item(self, name: str) -> int:
+        return self.get_stack_size(name) * 12 * 5
 

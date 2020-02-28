@@ -1,4 +1,6 @@
 import argparse
+
+from src.config.user_config import UserConfig
 from src.core.backends import poetrade, poeofficial
 from src.pathfinder import PathFinder
 from src.commons import league_names
@@ -80,9 +82,12 @@ chosen_currencies = item_list.get_item_list_for_backend(backend, config)
 
 # Load excluded trader list
 with open("config/excluded_traders.txt", "r", encoding='utf-8') as f:
-    excluded_traders = [x.strip() for x in f.readlines()]
+    excluded_traders = [x.strip().lower() for x in f.readlines()]
 
-p = PathFinder(league, chosen_currencies, backend, excluded_traders,
+# Load user config
+user_config = UserConfig.from_file()
+
+p = PathFinder(league, chosen_currencies, backend, user_config, excluded_traders,
                use_filter)
 p.run(3, True)
 
