@@ -89,11 +89,16 @@ def equalize_stock_differences(path, user_config: UserConfig):
     Finds the maximum flow for a found path and alters the conversion edges accordingly.
     Also rounds up the trading values to trade for full pieces of currency.
     """
+
+    # Limit the first transaction's volume based on maximum trading volume
+    first_edge = path[0]
+    sell_trading_cap = user_config.get_maximum_trade_volume_for_item(first_edge["have"])
+    buy_trading_cap = math.floor(first_edge["conversion_rate"] * sell_trading_cap)
+    first_edge["stock"] = min(first_edge["stock"], buy_trading_cap)
+
     # add some precalculated values
-    for edge in path:
-        trading_cap = user_config.get_maximum_trade_volume_for_item(edge["have"])
-        stock = min(edge["stock"], trading_cap)
-        edge["paid"] = math.floor(stock / edge["conversion_rate"])
+    for idx, edge in enumerate(path):
+        edge["paid"] = math.floor(edge["stock"] / edge["conversion_rate"])
         edge["received"] = math.floor(edge["paid"] * edge["conversion_rate"])
 
     # need this double loop to make sure that all stock quantity differences
@@ -107,7 +112,7 @@ def equalize_stock_differences(path, user_config: UserConfig):
             right = path[i]
 
             if (left["received"] == 0 or left["paid"] == 0
-                    or right["paid"] == 0 or right["received"] == 0):
+                or right["paid"] == 0 or right["received"] == 0):
                 return None
 
             if left["received"] > right["paid"]:
