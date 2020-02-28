@@ -92,7 +92,7 @@ class ItemList:
     items: Dict[str, Item]
 
     @staticmethod
-    def load_from_file(path: str = None) -> ItemList:
+    def load_from_file(path: str = None) -> ItemList:  # noqa: F821
         if path is None:
             path = "assets/items.pickle"
 

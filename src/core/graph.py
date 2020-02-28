@@ -30,7 +30,7 @@ def find_paths(graph, have, want, max_length=3) -> List:
     A path is simply a list of transactions between two currency nodes.
     """
     paths = deque()
-    correct_paths = []
+    correct_paths: List[any] = []
 
     # If there are no paths between the specified currencies, simply abort
     if have not in graph:
