@@ -36,7 +36,7 @@
     "Orb of Annulment": {
       "minimum_stock": 1,
       "sell_for": {
-        "Exalted Orb": 5
+        "Exalted Orb": null
       }
     }
   }

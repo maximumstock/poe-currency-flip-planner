@@ -1,9 +1,9 @@
 from __future__ import annotations
 
-import math
 from typing import Dict, NewType, Optional, Tuple
-import json
+from marshmallow import Schema, fields, post_load
 import os
+import json
 
 from src.trading import StackSizeHelper
 
@@ -21,22 +21,49 @@ class TradingConfigItemSellItem:
         self.maximum_stock = maximum_stock
 
 
+class TradingConfigItemSellItemSchema(Schema):
+    minimum_stock = fields.Int(allow_none=True, default=0)
+    maximum_stock = fields.Int(allow_none=True, default=INT_INFINITY)
+
+    @post_load
+    def make_trading_config_item_sell_item(self, data, many, partial):
+        return TradingConfigItemSellItem(**data)
+
+
 class TradingConfigItem:
     minimum_stock: int
     maximum_stock: int
     sell_for: Dict[str, Optional[TradingConfigItemSellItem]]
 
-    def __init__(self, minimum_stock: int = 0, maximum_stock: int = INT_INFINITY,
-                 sell_for: Dict[str, Optional[TradingConfigItemSellItem]] = None):
-        if sell_for is None:
-            sell_for = dict()
+    def __init__(self, sell_for: Dict[str, Optional[TradingConfigItemSellItem]] = {}, minimum_stock: int = 0, maximum_stock: int = INT_INFINITY):
         self.minimum_stock = minimum_stock
         self.maximum_stock = maximum_stock
         self.sell_for = sell_for
 
 
+class TradingConfigItemSchema(Schema):
+    minimum_stock = fields.Int(allow_none=True, default=0)
+    maximum_stock = fields.Int(allow_none=True, default=INT_INFINITY)
+    sell_for = fields.Dict(keys=fields.Str(), values=fields.Nested(TradingConfigItemSellItemSchema, allow_none=True), allow_none=True)
+
+    @post_load
+    def make_trading_config_item(self, data, many, partial):
+        print(data)
+        return TradingConfigItem(**data)
+
+
 AssetConfig = NewType("AssetConfig", Dict[str, int])
 TradingConfig = NewType("TradingConfig", Dict[str, TradingConfigItem])
+
+
+class UserConfigSchema(Schema):
+    version = fields.Int()
+    assets = fields.Dict(keys=fields.Str(), values=fields.Int())
+    trading = fields.Dict(keys=fields.Str(), values=fields.Nested(TradingConfigItemSchema, allow_none=True), allow_none=True)
+
+    @post_load
+    def make_user_config(self, data, many, partial):
+        return UserConfig(**data)
 
 
 class UserConfig:
@@ -45,18 +72,11 @@ class UserConfig:
     trading: TradingConfig
     stack_sizes: StackSizeHelper
 
-    def __init__(self, raw: str):
-        self.__dict__ = json.loads(raw)
+    def __init__(self, version: int, assets: AssetConfig, trading: TradingConfig):
+        self.version = version
+        self.assets = assets
+        self.trading = trading
         self.stack_sizes = StackSizeHelper()
-        self.__validate()
-
-    def __validate(self):
-        try:
-            assert (self.__dict__["version"] is not None)
-            assert (self.__dict__["assets"] is not None)
-            assert (self.__dict__["trading"] is not None)
-        except AssertionError:
-            raise Exception("Seems like your config file is malformed")
 
     def get_maximum_trade_volume_for_item(self, item: str) -> int:
         """
@@ -122,6 +142,12 @@ class UserConfig:
 
         try:
             with open(file_path, "r") as f:
-                return UserConfig(f.read())
+                data = json.loads(f.read())
+                return UserConfigSchema().load(data)
         except OSError:
             raise Exception("The specified config file path does not exist")
+
+    @staticmethod
+    def from_raw(raw: str) -> UserConfig:  # noqa F821
+        data = json.loads(raw)
+        return UserConfigSchema().load(data)
