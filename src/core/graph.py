@@ -5,14 +5,14 @@ from typing import Dict, List
 from src.config.user_config import UserConfig
 
 
-def build_graph(offers) -> Dict:
+def build_graph(offers) -> Dict[str, Dict]:
     """
     Builds a simple dictionary graph from found offers in our common format.
     An edge can be interpreted as trading from_currency->to_currency.
     Each edge contains a list with all offers that were found for that trading
     direction between the two currencies.
     """
-    graph = dict()
+    graph: Dict[str, Dict] = dict()
 
     for cur_pair in offers:
         # if the `have` currency does not exist as a property yet
@@ -24,13 +24,13 @@ def build_graph(offers) -> Dict:
     return graph
 
 
-def find_paths(graph, have, want, max_length=3) -> List:
+def find_paths(graph, have, want, user_config: UserConfig, max_length=3) -> List:
     """
     Returns a list of all possible paths from `want` to `have` for a given graph.
     A path is simply a list of transactions between two currency nodes.
     """
     paths = deque()
-    correct_paths: List[any] = []
+    correct_paths: List[List[Dict]] = []
 
     # If there are no paths between the specified currencies, simply abort
     if have not in graph:
@@ -42,15 +42,21 @@ def find_paths(graph, have, want, max_length=3) -> List:
             paths.append([o])
 
     while len(paths) > 0:
-        next = paths.pop()
+        next: List[Dict] = paths.pop()
 
         if len(next) > max_length:
             continue
 
+        # If a path contains an edge with a stock outside of the user-specified boundaries, prune it
+        for edge in next:
+            (minimum, maximum) = user_config.get_stock_boundaries(edge["have"], edge["want"])
+            if edge["stock"] < minimum or edge["stock"] > maximum:
+                continue
+
         # We have arrived at the target currency
         if next[-1]["want"] == want:
             if is_profitable(next):
-                correct_paths = correct_paths + [next]
+                correct_paths.append(next)
             continue
 
         next_currency = next[-1]["want"]

@@ -114,7 +114,7 @@ class PathFinder:
         for c in self.graph.keys():
             # For currency @c, find all paths within the constructed path that are
             # at most @max_transaction_length long
-            paths = graph.find_paths(self.graph, c, c, max_transaction_length)
+            paths = graph.find_paths(self.graph, c, c, self.user_config, max_transaction_length)
             profitable_conversions = []
 
             for p in paths:
