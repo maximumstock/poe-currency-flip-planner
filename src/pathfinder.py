@@ -137,7 +137,7 @@ class PathFinder:
         if self.logging:
             print("Spent {}s finding paths".format(round(t_end - t_start, 1)))
 
-    def run(self, max_transaction_length=3, max_amount: Optional[int] = None):
+    def run(self, max_transaction_length=3):
         self._fetch()
         self._build_graph()
         self._find_profitable_paths(max_transaction_length)

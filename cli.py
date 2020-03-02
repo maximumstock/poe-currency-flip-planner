@@ -43,15 +43,15 @@ parser.add_argument(
 parser.add_argument(
     "--currency",
     default="all",
-    #choices=cli_default_items,
+    # choices=cli_default_items,
     type=str,
     help="Full name of currency to flip, ie. 'Cartographer's Chisel, or 'Chaos Orb'. Defaults to all currencies.",
 )
 parser.add_argument(
     "--limit",
-    default=3,
+    default=5,
     type=int,
-    help="Limit the number of displayed conversions. Defaults to 3.",
+    help="Limit the number of displayed conversions. Defaults to 5.",
 )
 parser.add_argument(
     "--fullbulk",
@@ -89,7 +89,7 @@ user_config = UserConfig.from_file()
 
 p = PathFinder(league, chosen_currencies, backend, user_config, excluded_traders,
                use_filter)
-p.run(3, True)
+p.run(3)
 
 try:
     if currency == "all":

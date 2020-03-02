@@ -138,6 +138,8 @@ class ItemList:
         if len(supported_items) == 0:
             raise UnknownBackendException("Unknown backend {}".format(backend_name))
 
+        item_list: List = []
+
         for item in self.items.values():
             if item.is_supported_by(backend_name):
 
@@ -152,7 +154,10 @@ class ItemList:
                         itertools.product(bulk_targets, bulk_items)
                     ) + list(itertools.product(bulk_items, bulk_targets))
 
-                return result
+                item_list = result
+                return item_list
+
+        return item_list
 
     @staticmethod
     def generate() -> ItemList:
