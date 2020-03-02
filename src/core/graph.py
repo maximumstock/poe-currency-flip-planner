@@ -1,11 +1,11 @@
 from collections import deque
 import math
-from typing import Dict, List
+from typing import Dict, List, Optional
 
 from src.config.user_config import UserConfig
 
 
-def build_graph(offers) -> Dict[str, Dict]:
+def build_graph(offers: List[Dict]) -> Dict[str, Dict]:
     """
     Builds a simple dictionary graph from found offers in our common format.
     An edge can be interpreted as trading from_currency->to_currency.
@@ -24,12 +24,12 @@ def build_graph(offers) -> Dict[str, Dict]:
     return graph
 
 
-def find_paths(graph, have, want, user_config: UserConfig, max_length=3) -> List:
+def find_paths(graph: Dict[str, Dict[str, List[Dict]]], have: str, want: str, user_config: UserConfig, max_length: int = 3) -> List:
     """
     Returns a list of all possible paths from `want` to `have` for a given graph.
     A path is simply a list of transactions between two currency nodes.
     """
-    paths = deque()
+    paths: deque = deque()
     correct_paths: List[List[Dict]] = []
 
     # If there are no paths between the specified currencies, simply abort
@@ -73,24 +73,24 @@ def find_paths(graph, have, want, user_config: UserConfig, max_length=3) -> List
     return correct_paths
 
 
-def decorate_offer(offer, have, want):
+def decorate_offer(offer: Dict, have: str, want: str):
     offer["have"] = have
     offer["want"] = want
     return offer
 
 
-def maximum_conversion_rate(path):
+def maximum_conversion_rate(path: List[Dict]):
     v = 1.0
     for e in path:
         v = v * e["conversion_rate"]
     return v
 
 
-def is_profitable(path):
+def is_profitable(path: List[Dict]):
     return maximum_conversion_rate(path) > 1.0
 
 
-def equalize_stock_differences(path, user_config: UserConfig):
+def equalize_stock_differences(path: List[Dict], user_config: UserConfig):
     """
     Finds the maximum flow for a found path and alters the conversion edges accordingly.
     Also rounds up the trading values to trade for full pieces of currency.
@@ -118,7 +118,7 @@ def equalize_stock_differences(path, user_config: UserConfig):
             right = path[i]
 
             if (left["received"] == 0 or left["paid"] == 0
-                or right["paid"] == 0 or right["received"] == 0):
+                    or right["paid"] == 0 or right["received"] == 0):
                 return None
 
             if left["received"] > right["paid"]:
@@ -134,7 +134,7 @@ def equalize_stock_differences(path, user_config: UserConfig):
     return path
 
 
-def build_conversion(path, user_config: UserConfig) -> Dict:
+def build_conversion(path: List[Dict], user_config: UserConfig) -> Optional[Dict]:
     """
     Simplifies a found path into a dictionary structure to handle the found data
     for easily.
