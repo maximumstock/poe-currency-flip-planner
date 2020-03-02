@@ -37,7 +37,7 @@ as shown below.
 ![](examples/result_screenshot.png)
 
 By default, it uses [pathofexile.com/trade](https://pathofexile.com/trade/exchange) and
-works with currency pairs specified in `assets/pair_filter.json`.
+works with currency pairs specified in `config/config.json` (and `config/config.default.json`).
 You can also alter this list to your liking to either remove or add trading paths.
 
 If you want to dig in a little, check out `src/cli.py` or `python cli.py --help` for help

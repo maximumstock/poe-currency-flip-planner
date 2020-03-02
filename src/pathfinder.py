@@ -3,7 +3,7 @@ from datetime import datetime
 from typing import Dict, List, Optional, Tuple
 
 from src.core import graph
-from src.trading import ItemList, load_pair_filter
+from src.trading import ItemList
 from src.config.user_config import UserConfig
 
 
@@ -44,17 +44,17 @@ class PathFinder:
         self.use_filter = use_filter
 
         # Private internal fields to store partial results
-        self.offers = []
-        self.graph = {}
-        self.results = {}
+        self.offers: List = []
+        self.graph: Dict = {}
+        self.results: Dict = {}
         self.timestamp = str(datetime.now()).split(".")[0]
         self.item_list = ItemList.load_from_file()
         self.logging = True
+        self.pair_filter = self.user_config.get_item_pairs()
 
-        self.pair_filter = load_pair_filter()
-
-        self.item_list.are_items_supported(self.item_pairs, self.backend)
-        self.item_list.are_items_supported(self.pair_filter, self.backend)
+        # Ensure all specified items actually exist
+        self.item_list.ensure_items_are_supported(self.item_pairs, self.backend)
+        self.item_list.ensure_items_are_supported(self.pair_filter, self.backend)
 
     def prepickle(self) -> Dict:
         return {

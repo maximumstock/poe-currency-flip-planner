@@ -1,65 +1,23 @@
 from __future__ import annotations
 
-from typing import Dict, NewType, Optional, Tuple
+from typing import Optional, Tuple, List
 from marshmallow import Schema, fields, post_load
 import os
 import json
 
 from src.trading import StackSizeHelper
+from src.config.parser import AssetConfig, TradingConfig, TradingConfigItemSchema, TradingConfigItem, TradingConfigItemSellItem
 
 DEFAULT_CONFIG_FILE_PATH = "config/config.json"
 DEFAULT_CONFIG_DEFAULT_FILE_PATH = "config/config.default.json"
 INT_INFINITY = 1_000_000
 
 
-class TradingConfigItemSellItem:
-    minimum_stock: int
-    maximum_stock: int
-
-    def __init__(self, minimum_stock: int = 0, maximum_stock: int = INT_INFINITY):
-        self.minimum_stock = minimum_stock
-        self.maximum_stock = maximum_stock
-
-
-class TradingConfigItemSellItemSchema(Schema):
-    minimum_stock = fields.Int(allow_none=True, default=0)
-    maximum_stock = fields.Int(allow_none=True, default=INT_INFINITY)
-
-    @post_load
-    def make_trading_config_item_sell_item(self, data, many, partial):
-        return TradingConfigItemSellItem(**data)
-
-
-class TradingConfigItem:
-    minimum_stock: int
-    maximum_stock: int
-    sell_for: Dict[str, Optional[TradingConfigItemSellItem]]
-
-    def __init__(self, sell_for: Dict[str, Optional[TradingConfigItemSellItem]] = {}, minimum_stock: int = 0, maximum_stock: int = INT_INFINITY):
-        self.minimum_stock = minimum_stock
-        self.maximum_stock = maximum_stock
-        self.sell_for = sell_for
-
-
-class TradingConfigItemSchema(Schema):
-    minimum_stock = fields.Int(allow_none=True, default=0)
-    maximum_stock = fields.Int(allow_none=True, default=INT_INFINITY)
-    sell_for = fields.Dict(keys=fields.Str(), values=fields.Nested(TradingConfigItemSellItemSchema, allow_none=True), allow_none=True)
-
-    @post_load
-    def make_trading_config_item(self, data, many, partial):
-        print(data)
-        return TradingConfigItem(**data)
-
-
-AssetConfig = NewType("AssetConfig", Dict[str, int])
-TradingConfig = NewType("TradingConfig", Dict[str, TradingConfigItem])
-
-
 class UserConfigSchema(Schema):
     version = fields.Int()
     assets = fields.Dict(keys=fields.Str(), values=fields.Int())
-    trading = fields.Dict(keys=fields.Str(), values=fields.Nested(TradingConfigItemSchema, allow_none=True), allow_none=True)
+    trading = fields.Dict(keys=fields.Str(), values=fields.Nested(
+        TradingConfigItemSchema, allow_none=True), allow_none=True)
 
     @post_load
     def make_user_config(self, data, many, partial):
@@ -132,8 +90,21 @@ class UserConfig:
 
         return minimum, maximum
 
+    def get_item_pairs(self) -> List[Tuple[str, str]]:
+        """
+        Constructs a list of item pairs based on config/config.(default.)json.
+        Replaces the old load_pair_filter logic.
+        """
+        item_pairs = []
+
+        for have in self.trading:
+            for want in self.trading[have].sell_for:
+                item_pairs.append((have, want))
+
+        return item_pairs
+
     @staticmethod
-    def from_file(file_path: Optional[str] = None) -> UserConfig:  # noqa F821
+    def from_file(file_path: Optional[str] = None) -> UserConfig:
         if file_path is None:
             file_path = DEFAULT_CONFIG_FILE_PATH
 
@@ -148,6 +119,6 @@ class UserConfig:
             raise Exception("The specified config file path does not exist")
 
     @staticmethod
-    def from_raw(raw: str) -> UserConfig:  # noqa F821
+    def from_raw(raw: str) -> UserConfig:
         data = json.loads(raw)
         return UserConfigSchema().load(data)

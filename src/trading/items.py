@@ -92,7 +92,7 @@ class ItemList:
     items: Dict[str, Item]
 
     @staticmethod
-    def load_from_file(path: str = None) -> ItemList:  # noqa: F821
+    def load_from_file(path: str = None) -> ItemList:
         if path is None:
             path = "assets/items.pickle"
 
@@ -123,7 +123,7 @@ class ItemList:
         except Exception:
             raise UnsupportedItemException("{} backend does not support item {}".format(backend, name))
 
-    def are_items_supported(self, requested_item_pairs: List[Tuple[str, str]], backend: Any) -> bool:
+    def ensure_items_are_supported(self, requested_item_pairs: List[Tuple[str, str]], backend: Any) -> bool:
         for pair in requested_item_pairs:
             self.map_item(pair[0], backend.name())
             self.map_item(pair[1], backend.name())
