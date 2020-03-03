@@ -16,7 +16,7 @@ class RateLimitException(Exception):
     pass
 
 
-def fetch_offers(league, currency_pairs, item_list: ItemList, limit=7):
+def fetch_offers(league, currency_pairs, item_list: ItemList, limit=10):
     loop = asyncio.get_event_loop()
     results = loop.run_until_complete(
         fetch_offers_async(league, currency_pairs, item_list, limit))
@@ -57,7 +57,7 @@ async def fetch_ids(sess, offer_id_url, payload) -> Tuple[str, List[str]]:
     return query_id, offer_ids
 
 
-async def fetch_offers_for_pair(sess, throttler, league, want, have, item_list: ItemList, limit=5):
+async def fetch_offers_for_pair(sess, throttler, league, want, have, item_list: ItemList, limit):
     async with throttler:
         offer_ids: List[str] = []
         query_id = None
@@ -77,6 +77,7 @@ async def fetch_offers_for_pair(sess, throttler, league, want, have, item_list: 
 
         try:
             query_id, offer_ids = await fetch_ids(sess, offer_id_url, payload)
+            offers = []
             if len(offer_ids) != 0:
                 id_string = ",".join(offer_ids[:limit])
                 url = "http://www.pathofexile.com/api/trade/fetch/{}?query={}&exchange".format(
