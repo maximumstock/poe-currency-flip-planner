@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "2dca9f0a1d8b28f25980d7b2648095305f9c4206719d7c16a2553bf4c8e0ed7c"
+            "sha256": "56473885e729b943674368a277d8883448da4879cf552a911e8ba194ebaa00a7"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -723,11 +723,11 @@
         },
         "qtconsole": {
             "hashes": [
-                "sha256:a7a9571ffe8adf07ede8660ee65bfacb10af64d6aa633a879e1ba0d70117f8a4",
-                "sha256:c65c78c2f597b93e30e58f2d7f420e491eb102b661d2a0ef8671ab30adbf93a0"
+                "sha256:5c8889015ed7eca912fe0e70945ab1e0c312cdc550df52996ebe04958fafdb97",
+                "sha256:d51c1c51c81fbd1fac62b2d4bdc8b54fb6b7cbe6cbf70c3baeea11516525c956"
             ],
             "index": "pypi",
-            "version": "==4.7.0"
+            "version": "==4.7.1"
         },
         "qtpy": {
             "hashes": [
