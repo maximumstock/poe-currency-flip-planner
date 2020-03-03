@@ -16,10 +16,10 @@ def log_conversions(conversions, league, currency, limit):
 
 
 def log_conversion(c, league):
-    print("{} {} -> {} {}: {} {}".format(c["starting"], c["from"], c["ending"],
-                                         c["to"], c["winnings"], c["to"]))
+    print("\t{} {} -> {} {}: {} {}".format(c["starting"], c["from"], c["ending"],
+                                           c["to"], c["winnings"], c["to"]))
     for t in c["transactions"]:
-        print("\t@{} Hi, I'd like to buy your {} {} for {} {} in {}. ({}x)".format(
+        print("\t\t@{} Hi, I'd like to buy your {} {} for {} {} in {}. ({}x)".format(
             t["contact_ign"],
             t["received"],
             t["to"],
@@ -92,6 +92,7 @@ p = PathFinder(league, chosen_currencies, backend, user_config, excluded_traders
 p.run(3)
 
 try:
+    print("\n")
     if currency == "all":
         for c in p.graph.keys():
             log_conversions(p.results, league, c, limit)
