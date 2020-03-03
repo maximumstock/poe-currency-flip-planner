@@ -1,4 +1,5 @@
 import argparse
+from typing import List, Dict, Any, Set
 
 from src.config.user_config import UserConfig
 from src.core.backends import poetrade, poeofficial
@@ -11,8 +12,29 @@ item_list = ItemList.load_from_file()
 
 
 def log_conversions(conversions, league, currency, limit):
-    for c in conversions[currency][:limit]:
+
+    unique_conversions = get_independent_conversions(conversions[currency], limit)
+
+    for c in unique_conversions[:limit]:
         log_conversion(c, league)
+
+
+def get_independent_conversions(conversions: List[Dict[str, Any]], limit: int) -> List[Dict]:
+    seen_traders: Set[str] = set()
+    unique_conversions = []
+
+    for conversion in conversions:
+        trader_names = [t["contact_ign"] for t in conversion["transactions"]]
+        has_seen_trader = any([True for x in trader_names if x in seen_traders])
+        if has_seen_trader:
+            continue
+
+        for t in trader_names:
+            seen_traders.add(t)
+
+        unique_conversions.append(conversion)
+
+    return unique_conversions
 
 
 def log_conversion(c, league):
