@@ -24,7 +24,7 @@ def fetch_offers(league, currency_pairs, item_list: ItemList, limit=10):
 
 
 async def fetch_offers_async(league, currency_pairs, item_list: ItemList, limit):
-    throttler = Throttler(10)
+    throttler = Throttler(8)
 
     async with aiohttp.ClientSession() as sess:
         tasks = [
@@ -35,7 +35,6 @@ async def fetch_offers_async(league, currency_pairs, item_list: ItemList, limit)
 
         (done, _not_done) = await asyncio.wait(tasks)
         results = [task.result() for task in done]
-        successful = [x for x in results if x is not None]
         unsuccessful = [x for x in results if x is None]
 
         if len(unsuccessful) > 0:
@@ -79,7 +78,7 @@ async def fetch_offers_for_pair(sess, throttler, league, want, have, item_list: 
             query_id, offer_ids = await fetch_ids(sess, offer_id_url, payload)
             offers = []
             if len(offer_ids) != 0:
-                id_string = ",".join(offer_ids[:limit])
+                id_string = ",".join(offer_ids[:20])
                 url = "http://www.pathofexile.com/api/trade/fetch/{}?query={}&exchange".format(
                     id_string, query_id)
 
@@ -87,6 +86,7 @@ async def fetch_offers_for_pair(sess, throttler, league, want, have, item_list: 
                 json = await response.json()
                 raw_offers = json["result"]
                 offers = post_process_offers(raw_offers, have, want)
+                offers = offers[:limit]
 
             return {"offers": offers, "want": want, "have": have, "league": league}
         except Exception as e:
@@ -111,8 +111,9 @@ def filter_large_outliers(offers: List[Dict]) -> List[Dict]:
     total = sum(conversion_rates)
     avg = total / len(conversion_rates)
 
-    upper_boundary = np.percentile(conversion_rates, 95)
-    offers = [x for x in offers if x["conversion_rate"] < upper_boundary]
+    if len(offers) > 10:
+        upper_boundary = np.percentile(conversion_rates, 95)
+        offers = [x for x in offers if x["conversion_rate"] < upper_boundary]
 
     return offers
 
