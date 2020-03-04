@@ -99,7 +99,7 @@ class PathFinder:
         t_end = time.time()
 
         if self.logging:
-            print("Spent {}s fetching offers".format(round(t_end - t_start, 1)))
+            print("Spent {}s fetching offers".format(round(t_end - t_start, 2)))
 
     def _build_graph(self):
         t_start = time.time()
@@ -107,9 +107,10 @@ class PathFinder:
         t_end = time.time()
 
         if self.logging:
-            print("Spent {}s building the graph".format(round(t_end - t_start, 1)))
+            print("Spent {}s building the graph".format(round(t_end - t_start, 2)))
 
     def _find_profitable_paths(self, max_transaction_length):
+        print("Checking for profitable conversions...")
         t_start = time.time()
         for c in self.graph.keys():
             # For currency @c, find all paths within the constructed path that are
@@ -123,8 +124,9 @@ class PathFinder:
                     profitable_conversions.append(conversion)
 
             if self.logging:
-                print("Checking {} -> {} Conversions".format(
-                    c, len(profitable_conversions)))
+                n_profitable = len(profitable_conversions)
+                if n_profitable > 0:
+                    print("Checking {} -> {} Conversions".format(c, n_profitable))
 
             profitable_conversions = sorted(
                 profitable_conversions,
@@ -135,7 +137,7 @@ class PathFinder:
 
         t_end = time.time()
         if self.logging:
-            print("Spent {}s finding paths".format(round(t_end - t_start, 1)))
+            print("Spent {}s finding paths".format(round(t_end - t_start, 2)))
 
     def run(self, max_transaction_length=3):
         self._fetch()
