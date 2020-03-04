@@ -7,7 +7,22 @@
     "Orb of Fusing": 340
   },
   "trading": {
+    "Aetheric Fossil": {
+      "sell_for": {
+        "Chaos Orb": null
+      }
+    },
     "Ancient Orb": {
+      "sell_for": {
+        "Chaos Orb": null
+      }
+    },
+    "Awakened Sextant": {
+      "sell_for": {
+        "Chaos Orb": null
+      }
+    },
+    "Simple Sextant": {
       "sell_for": {
         "Chaos Orb": null
       }
@@ -21,11 +36,15 @@
       "minimum_stock": 40,
       "maximum_stock": 500,
       "sell_for": {
+        "Aetheric Fossil": null,
+        "Awakened Sextant": null,
         "Blessed Orb": null,
         "Cartographer's Chisel": null,
         "Chromatic Orb": null,
         "Divine Orb": null,
         "Gemcutter's Prism": null,
+        "Gilded Divination Scarab": null,
+        "Jagged Fossil": null,
         "Jeweller's Orb": null,
         "Orb of Alchemy": null,
         "Orb of Alteration": null,
@@ -33,8 +52,28 @@
         "Orb of Fusing": null,
         "Orb of Regret": null,
         "Orb of Scouring": null,
+        "Potent Alchemical Resonator": null,
+        "Potent Chaotic Resonator": null,
         "Regal Orb": null,
+        "Serrated Fossil": null,
+        "Shuddering Fossil": null,
+        "Simple Sextant": null,
         "Vaal Orb": null
+      }
+    },
+    "Encrusted Fossil": {
+      "sell_for": {
+        "Chaos Orb": null
+      }
+    },
+    "Gilded Divination Scarab": {
+      "sell_for": {
+        "Chaos Orb": null
+      }
+    },
+    "Jagged Fossil": {
+      "sell_for": {
+        "Chaos Orb": null
       }
     },
     "Orb of Annulment": {
@@ -172,11 +211,36 @@
         "Chaos Orb": null
       }
     },
+    "Potent Alchemical Resonator": {
+      "sell_for": {
+        "Chaos Orb": null
+      }
+    },
+    "Potent Chaotic Resonator": {
+      "sell_for": {
+        "Chaos Orb": null
+      }
+    },
+    "Prime Sextant": {
+      "sell_for": {
+        "Chaos Orb": null
+      }
+    },
     "Regal Orb": {
       "sell_for": {
         "Cartographer's Chisel": null,
         "Chaos Orb": null,
         "Orb of Alteration": null
+      }
+    },
+    "Serrated Fossil": {
+      "sell_for": {
+        "Chaos Orb": null
+      }
+    },
+    "Shuddering Fossil": {
+      "sell_for": {
+        "Chaos Orb": null
       }
     },
     "Vaal Orb": {
