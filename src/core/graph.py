@@ -65,6 +65,9 @@ def find_paths(graph: Dict[str, Dict[str, List[Dict]]], have: str, want: str, us
         # If there are no paths between the specified currencies, simply skip
         if next_currency in graph:
             for currency in graph[next_currency]:
+                if max_length == len(next) + 1 and currency != have:
+                    continue
+
                 if currency not in seen_currencies[1:]:
                     for offer in graph[next_currency][currency]:
                         o = decorate_offer(offer, next_currency, currency)
