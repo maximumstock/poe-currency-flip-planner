@@ -51,6 +51,13 @@ basic_currencies = [
     "Orb of Alteration",
     "Orb of Scouring",
     "Orb of Regret",
+    "Vaal Orb",
+    "Gemcutter's Prism",
+    "Glassblower's Bauble",
+    "Divine Orb",
+    "Blessed Orb",
+    "Regal Orb",
+    "Cartographer's Chisel",
 ]
 
 
@@ -64,7 +71,7 @@ class Item:
     category: str
 
     def __init__(self, name: str, backend: str, item_id: str, is_currency: bool, is_basic: bool, is_bulk_target: bool,
-                 category: str = None):
+                 category: str):
         self.name = name
         self.ids = {backend: item_id}
         self.is_currency = is_currency
@@ -92,7 +99,7 @@ class ItemList:
         with open(path, "rb") as f:
             return pickle.load(f)
 
-    def find_discrepancies(self) -> (Dict[str, int], List[Item]):
+    def find_discrepancies(self) -> Tuple[Dict[str, int], List[Item]]:
         backend_counts: Dict[str, int] = dict()
         backend_counts["all"] = 0
         supported_backends = ["poetrade", "poeofficial"]
@@ -116,7 +123,7 @@ class ItemList:
         except Exception:
             raise UnsupportedItemException("{} backend does not support item {}".format(backend, name))
 
-    def are_items_supported(self, requested_item_pairs: List[Tuple[str, str]], backend: Any) -> bool:
+    def ensure_items_are_supported(self, requested_item_pairs: List[Tuple[str, str]], backend: Any) -> bool:
         for pair in requested_item_pairs:
             self.map_item(pair[0], backend.name())
             self.map_item(pair[1], backend.name())
@@ -130,6 +137,8 @@ class ItemList:
 
         if len(supported_items) == 0:
             raise UnknownBackendException("Unknown backend {}".format(backend_name))
+
+        item_list: List = []
 
         for item in self.items.values():
             if item.is_supported_by(backend_name):
@@ -145,8 +154,10 @@ class ItemList:
                         itertools.product(bulk_targets, bulk_items)
                     ) + list(itertools.product(bulk_items, bulk_targets))
 
-                return result
+                item_list = result
+                return item_list
 
+        return item_list
 
     @staticmethod
     def generate() -> ItemList:
@@ -169,14 +180,13 @@ class ItemList:
         """
         Try to merge @incoming list of items into @ground_truth list of items
         """
-        ground_truth: List[Item] = sorted(ground_truth, key=lambda x: x.name)
-        incoming: List[Item] = sorted(incoming, key=lambda x: x.name)
+        ground_truth = sorted(ground_truth, key=lambda x: x.name)
+        incoming = sorted(incoming, key=lambda x: x.name)
 
         for true_item in ground_truth:
             for inc_item in incoming:
                 if true_item.name == inc_item.name:
                     true_item.ids.update(inc_item.ids)
-                    true_item.category = inc_item.category
 
                 if inc_item.name in true_item.name:
                     true_item.ids.update(inc_item.ids)
@@ -213,13 +223,23 @@ def poetrade() -> List[Item]:
     currency_have_div = soup.find("div", {"id": "currency-have"})
     item_categories = currency_have_div.find_all_next("div", {"class": "category"})
 
+    def map_item_name(name: str):
+        _map = {
+            "Apprentice Cartographer's Sextant": "Simple Sextant",
+            "Journeyman Cartographer's Sextant": "Prime Sextant",
+            "Master Cartographer's Sextant": "Awakened Sextant"
+        }
+        return _map[name] if name in _map else name
+
     for category_div in item_categories:
         category_name = category_div.find_all_next("div", {"class": "currency-toggle"})[0].contents[1]
         elements = category_div.find_all_next("div", {"class": "currency-selectable"})
 
         for x in elements:
+            item_name = str(x.get("title", x.text.strip()))
+            item_name = map_item_name(item_name)
             item = Item(
-                name=str(x.get("title", x.text.strip())),
+                name=item_name,
                 backend="poetrade",
                 item_id=x["data-id"],
                 is_currency=False,
@@ -251,22 +271,3 @@ def poeofficial() -> List[Item]:
             item_list.append(item)
 
     return item_list
-
-
-def test():
-    item_list = ItemList.generate()
-
-    (n_unsynced_items, unsynced_items) = item_list.find_discrepancies()
-    print("Item counts:", n_unsynced_items)
-    print("Encountered {} unsynced items".format(len(unsynced_items)))
-    for item in unsynced_items:
-        print(item)
-
-    with open("assets/items.pickle", "wb") as f:
-        import sys
-        sys.setrecursionlimit(1000000)
-        pickle.dump(item_list, f)
-
-
-if __name__ == "__main__":
-    test()

@@ -385,6 +385,14 @@
             "index": "pypi",
             "version": "==1.1.1"
         },
+        "marshmallow": {
+            "hashes": [
+                "sha256:3a94945a7461f2ab4df9576e51c97d66bee2c86155d3d3933fab752b31effab8",
+                "sha256:4b95c7735f93eb781dfdc4dded028108998cad759dda8dd9d4b5b4ac574cbf13"
+            ],
+            "index": "pypi",
+            "version": "==3.5.0"
+        },
         "matplotlib": {
             "hashes": [
                 "sha256:0711b07920919951b2c508a773c433cbe07bdad952ea84ed9d18ca7853ccbe8b",

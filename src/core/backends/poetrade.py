@@ -2,7 +2,7 @@ import concurrent.futures
 import requests
 from bs4 import BeautifulSoup
 
-from src.assets import ItemList
+from src.trading.items import ItemList
 
 
 def name():

@@ -1,13 +1,25 @@
-# Changelog
+# 0.2.0 / 2020-03-03
 
-## v0.1.1 - 2020-01-28
+- Add customisable user configuration (see [here](README.md#configuration) for more details)
+
+  - Limiting trade volume of first transaction based on user settings and stack sizes
+  - Customisable stock requirements to filter certain traders
+  - Customisable instead of pre-defined trading paths
+
+- Quality of Life
+
+  - CLI: Filter interfering trades
+  - Increase offer limit for [https://pathofexile.com/trading](https://pathofexile.com/trading)
+  - Filter offers with large outliers (>95th percentile)
+
+# 0.1.1 / 2020-01-28
+
 - Rewrote loading and creating item databases
+
   - Now reads items for both backends and merges them into a unified structure
   - Can now detect if a given item is supported by a respective backend
   - `PathFinder` now gives feedback when encountering an unsupported item, eg. from `pair_filter.json`
 
-## v0.1.0 - 2020-01-12
-- Massively improve speed by using [pathofexile.com/trade](https://pathofexile.com/trade) instead of [poe.trade](http://poe.trade)
+# 0.1.0 / 2020-01-12
 
-## 2019-05-05
-* Fix rounding bug that creates insane arbitrage situations
+- Massively improve speed by using [pathofexile.com/trade](https://pathofexile.com/trade) instead of [poe.trade](http://poe.trade)

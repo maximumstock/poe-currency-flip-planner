@@ -2,9 +2,9 @@ import time
 from datetime import datetime
 from typing import Dict, List, Optional, Tuple
 
-from src import graph
-from src.items import load_pair_filter
-from src.assets import ItemList, UnsupportedItemException
+from src.core import graph
+from src.trading import ItemList
+from src.config.user_config import UserConfig
 
 
 def format_conversions(conversions) -> str:
@@ -33,26 +33,28 @@ class PathFinder:
                  league,
                  item_pairs,
                  backend,
+                 user_config: UserConfig,
                  excluded_traders=[],
                  use_filter=True):
         self.league = league
         self.item_pairs = item_pairs
         self.backend = backend
+        self.user_config = user_config
         self.excluded_traders = excluded_traders
         self.use_filter = use_filter
 
         # Private internal fields to store partial results
-        self.offers = []
-        self.graph = {}
-        self.results = {}
+        self.offers: List = []
+        self.graph: Dict = {}
+        self.results: Dict = {}
         self.timestamp = str(datetime.now()).split(".")[0]
         self.item_list = ItemList.load_from_file()
         self.logging = True
+        self.pair_filter = self.user_config.get_item_pairs()
 
-        self.pair_filter = load_pair_filter()
-
-        self.item_list.are_items_supported(self.item_pairs, self.backend)
-        self.item_list.are_items_supported(self.pair_filter, self.backend)
+        # Ensure all specified items actually exist
+        self.item_list.ensure_items_are_supported(self.item_pairs, self.backend)
+        self.item_list.ensure_items_are_supported(self.pair_filter, self.backend)
 
     def prepickle(self) -> Dict:
         return {
@@ -97,7 +99,7 @@ class PathFinder:
         t_end = time.time()
 
         if self.logging:
-            print("Spent {}s fetching offers".format(round(t_end - t_start, 1)))
+            print("Spent {}s fetching offers".format(round(t_end - t_start, 2)))
 
     def _build_graph(self):
         t_start = time.time()
@@ -105,24 +107,26 @@ class PathFinder:
         t_end = time.time()
 
         if self.logging:
-            print("Spent {}s building the graph".format(round(t_end - t_start, 1)))
+            print("Spent {}s building the graph".format(round(t_end - t_start, 2)))
 
     def _find_profitable_paths(self, max_transaction_length):
+        print("Checking for profitable conversions...")
         t_start = time.time()
         for c in self.graph.keys():
             # For currency @c, find all paths within the constructed path that are
             # at most @max_transaction_length long
-            paths = graph.find_paths(self.graph, c, c, max_transaction_length)
+            paths = graph.find_paths(self.graph, c, c, self.user_config, max_transaction_length)
             profitable_conversions = []
 
             for p in paths:
-                conversion = graph.build_conversion(p)
+                conversion = graph.build_conversion(p, self.user_config)
                 if conversion is not None:
                     profitable_conversions.append(conversion)
 
             if self.logging:
-                print("Checking {} -> {} Conversions".format(
-                    c, len(profitable_conversions)))
+                n_profitable = len(profitable_conversions)
+                if n_profitable > 0:
+                    print("Checking {} -> {} Conversions".format(c, n_profitable))
 
             profitable_conversions = sorted(
                 profitable_conversions,
@@ -133,9 +137,9 @@ class PathFinder:
 
         t_end = time.time()
         if self.logging:
-            print("Spent {}s finding paths".format(round(t_end - t_start, 1)))
+            print("Spent {}s finding paths".format(round(t_end - t_start, 2)))
 
-    def run(self, max_transaction_length=3, max_amount: Optional[int] = None):
+    def run(self, max_transaction_length=3):
         self._fetch()
         self._build_graph()
         self._find_profitable_paths(max_transaction_length)

@@ -1,20 +1,18 @@
 from collections import deque
 import math
-from typing import Dict, List
+from typing import Dict, List, Optional
 
-# Introduce a volume cap for a single trade to avoid trading too much currency
-# for a single inventory to handle
-TRADE_VOLUME_CAP = 600
+from src.config.user_config import UserConfig
 
 
-def build_graph(offers) -> Dict:
+def build_graph(offers: List[Dict]) -> Dict[str, Dict]:
     """
     Builds a simple dictionary graph from found offers in our common format.
     An edge can be interpreted as trading from_currency->to_currency.
     Each edge contains a list with all offers that were found for that trading
     direction between the two currencies.
     """
-    graph = dict()
+    graph: Dict[str, Dict] = dict()
 
     for cur_pair in offers:
         # if the `have` currency does not exist as a property yet
@@ -26,13 +24,13 @@ def build_graph(offers) -> Dict:
     return graph
 
 
-def find_paths(graph, have, want, max_length=3) -> List:
+def find_paths(graph: Dict[str, Dict[str, List[Dict]]], have: str, want: str, user_config: UserConfig, max_length: int = 3) -> List:
     """
     Returns a list of all possible paths from `want` to `have` for a given graph.
     A path is simply a list of transactions between two currency nodes.
     """
-    paths = deque()
-    correct_paths = []
+    paths: deque = deque()
+    correct_paths: List[List[Dict]] = []
 
     # If there are no paths between the specified currencies, simply abort
     if have not in graph:
@@ -44,15 +42,21 @@ def find_paths(graph, have, want, max_length=3) -> List:
             paths.append([o])
 
     while len(paths) > 0:
-        next = paths.pop()
+        next: List[Dict] = paths.pop()
 
         if len(next) > max_length:
             continue
 
+        # If a path contains an edge with a stock outside of the user-specified boundaries, prune it
+        for edge in next:
+            (minimum, maximum) = user_config.get_stock_boundaries(edge["have"], edge["want"])
+            if edge["stock"] < minimum or edge["stock"] > maximum:
+                continue
+
         # We have arrived at the target currency
         if next[-1]["want"] == want:
             if is_profitable(next):
-                correct_paths = correct_paths + [next]
+                correct_paths.append(next)
             continue
 
         next_currency = next[-1]["want"]
@@ -61,6 +65,9 @@ def find_paths(graph, have, want, max_length=3) -> List:
         # If there are no paths between the specified currencies, simply skip
         if next_currency in graph:
             for currency in graph[next_currency]:
+                if max_length == len(next) + 1 and currency != have:
+                    continue
+
                 if currency not in seen_currencies[1:]:
                     for offer in graph[next_currency][currency]:
                         o = decorate_offer(offer, next_currency, currency)
@@ -69,32 +76,38 @@ def find_paths(graph, have, want, max_length=3) -> List:
     return correct_paths
 
 
-def decorate_offer(offer, have, want):
+def decorate_offer(offer: Dict, have: str, want: str):
     offer["have"] = have
     offer["want"] = want
     return offer
 
 
-def maximum_conversion_rate(path):
+def maximum_conversion_rate(path: List[Dict]):
     v = 1.0
     for e in path:
         v = v * e["conversion_rate"]
     return v
 
 
-def is_profitable(path):
+def is_profitable(path: List[Dict]):
     return maximum_conversion_rate(path) > 1.0
 
 
-def equalize_stock_differences(path):
+def equalize_stock_differences(path: List[Dict], user_config: UserConfig):
     """
     Finds the maximum flow for a found path and alters the conversion edges accordingly.
     Also rounds up the trading values to trade for full pieces of currency.
     """
+
+    # Limit the first transaction's volume based on maximum trading volume
+    first_edge = path[0]
+    sell_trading_cap = user_config.get_maximum_trade_volume_for_item(first_edge["have"])
+    buy_trading_cap = math.floor(first_edge["conversion_rate"] * sell_trading_cap)
+    first_edge["stock"] = min(first_edge["stock"], buy_trading_cap)
+
     # add some precalculated values
-    for edge in path:
-        stock = min(edge["stock"], TRADE_VOLUME_CAP)
-        edge["paid"] = math.floor(stock / edge["conversion_rate"])
+    for idx, edge in enumerate(path):
+        edge["paid"] = math.floor(edge["stock"] / edge["conversion_rate"])
         edge["received"] = math.floor(edge["paid"] * edge["conversion_rate"])
 
     # need this double loop to make sure that all stock quantity differences
@@ -124,13 +137,13 @@ def equalize_stock_differences(path):
     return path
 
 
-def build_conversion(path) -> Dict:
+def build_conversion(path: List[Dict], user_config: UserConfig) -> Optional[Dict]:
     """
     Simplifies a found path into a dictionary structure to handle the found data
     for easily.
     """
     transactions = []
-    path = equalize_stock_differences(path)
+    path = equalize_stock_differences(path, user_config)
 
     if path is None:
         return None

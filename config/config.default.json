@@ -1,0 +1,257 @@
+{
+  "version": 1,
+  "assets": {
+    "Chaos Orb": 200,
+    "Exalted Orb": 5,
+    "Chromatic Orb": 1000,
+    "Orb of Fusing": 340
+  },
+  "trading": {
+    "Aetheric Fossil": {
+      "sell_for": {
+        "Chaos Orb": null
+      }
+    },
+    "Ancient Orb": {
+      "sell_for": {
+        "Chaos Orb": null
+      }
+    },
+    "Awakened Sextant": {
+      "sell_for": {
+        "Chaos Orb": null
+      }
+    },
+    "Simple Sextant": {
+      "sell_for": {
+        "Chaos Orb": null
+      }
+    },
+    "Blessed Orb": {
+      "sell_for": {
+        "Jeweller's Orb": null
+      }
+    },
+    "Chaos Orb": {
+      "minimum_stock": 40,
+      "maximum_stock": 500,
+      "sell_for": {
+        "Aetheric Fossil": null,
+        "Awakened Sextant": null,
+        "Blessed Orb": null,
+        "Cartographer's Chisel": null,
+        "Chromatic Orb": null,
+        "Divine Orb": null,
+        "Gemcutter's Prism": null,
+        "Gilded Divination Scarab": null,
+        "Jagged Fossil": null,
+        "Jeweller's Orb": null,
+        "Orb of Alchemy": null,
+        "Orb of Alteration": null,
+        "Orb of Chance": null,
+        "Orb of Fusing": null,
+        "Orb of Regret": null,
+        "Orb of Scouring": null,
+        "Potent Alchemical Resonator": null,
+        "Potent Chaotic Resonator": null,
+        "Regal Orb": null,
+        "Serrated Fossil": null,
+        "Shuddering Fossil": null,
+        "Simple Sextant": null,
+        "Vaal Orb": null
+      }
+    },
+    "Encrusted Fossil": {
+      "sell_for": {
+        "Chaos Orb": null
+      }
+    },
+    "Gilded Divination Scarab": {
+      "sell_for": {
+        "Chaos Orb": null
+      }
+    },
+    "Jagged Fossil": {
+      "sell_for": {
+        "Chaos Orb": null
+      }
+    },
+    "Orb of Annulment": {
+      "sell_for": {
+        "Chaos Orb": null
+      }
+    },
+    "Cartographer's Chisel": {
+      "sell_for": {
+        "Chaos Orb": null,
+        "Chromatic Orb": null,
+        "Gemcutter's Prism": null,
+        "Jeweller's Orb": null,
+        "Orb of Alchemy": null,
+        "Orb of Alteration": null,
+        "Orb of Fusing": null,
+        "Orb of Regret": null
+      }
+    },
+    "Chromatic Orb": {
+      "sell_for": {
+        "Cartographer's Chisel": null,
+        "Chaos Orb": null,
+        "Exalted Orb": null,
+        "Jeweller's Orb": null,
+        "Orb of Alchemy": null,
+        "Orb of Alteration": null,
+        "Orb of Chance": null,
+        "Orb of Fusing": null,
+        "Regal Orb": null,
+        "Vaal Orb": null
+      }
+    },
+    "Divine Orb": {
+      "sell_for": {
+        "Chaos Orb": null
+      }
+    },
+    "Exalted Orb": {
+      "sell_for": {
+        "Blessed Orb": null,
+        "Cartographer's Chisel": null,
+        "Chaos Orb": null,
+        "Chromatic Orb": null,
+        "Gemcutter's Prism": null,
+        "Orb of Alchemy": null,
+        "Orb of Annulment": null,
+        "Orb of Chance": null,
+        "Orb of Fusing": null,
+        "Orb of Regret": null,
+        "Orb of Scouring": null,
+        "Regal Orb": null
+      }
+    },
+    "Gemcutter's Prism": {
+      "sell_for": {
+        "Chaos Orb": null
+      }
+    },
+    "Harbinger's Orb": {
+      "sell_for": {
+        "Chaos Orb": null
+      }
+    },
+    "Jeweller's Orb": {
+      "sell_for": {
+        "Chaos Orb": null,
+        "Chromatic Orb": null,
+        "Exalted Orb": null,
+        "Orb of Alchemy": null,
+        "Orb of Alteration": null,
+        "Orb of Fusing": null
+      }
+    },
+    "Orb of Alchemy": {
+      "sell_for": {
+        "Cartographer's Chisel": null,
+        "Chaos Orb": null,
+        "Chromatic Orb": null,
+        "Jeweller's Orb": null,
+        "Orb of Alteration": null,
+        "Orb of Chance": null,
+        "Orb of Fusing": null,
+        "Orb of Transmutation": null
+      }
+    },
+    "Orb of Alteration": {
+      "sell_for": {
+        "Chaos Orb": null,
+        "Chromatic Orb": null,
+        "Exalted Orb": null,
+        "Gemcutter's Prism": null,
+        "Jeweller's Orb": null,
+        "Orb of Alchemy": null,
+        "Orb of Fusing": null,
+        "Orb of Scouring": null,
+        "Orb of Transmutation": null,
+        "Vaal Orb": null
+      }
+    },
+    "Orb of Chance": {
+      "sell_for": {
+        "Chaos Orb": null,
+        "Orb of Alchemy": null,
+        "Orb of Scouring": null,
+        "Vaal Orb": null
+      }
+    },
+    "Orb of Fusing": {
+      "sell_for": {
+        "Chaos Orb": null,
+        "Chromatic Orb": null,
+        "Exalted Orb": null,
+        "Orb of Alteration": null,
+        "Vaal Orb": null
+      }
+    },
+    "Orb of Regret": {
+      "sell_for": {
+        "Cartographer's Chisel": null,
+        "Chaos Orb": null,
+        "Orb of Alteration": null
+      }
+    },
+    "Orb of Scouring": {
+      "sell_for": {
+        "Chaos Orb": null,
+        "Orb of Alteration": null,
+        "Orb of Fusing": null,
+        "Orb of Regret": null
+      }
+    },
+    "Orb of Transmutation": {
+      "sell_for": {
+        "Chaos Orb": null
+      }
+    },
+    "Potent Alchemical Resonator": {
+      "sell_for": {
+        "Chaos Orb": null
+      }
+    },
+    "Potent Chaotic Resonator": {
+      "sell_for": {
+        "Chaos Orb": null
+      }
+    },
+    "Prime Sextant": {
+      "sell_for": {
+        "Chaos Orb": null
+      }
+    },
+    "Regal Orb": {
+      "sell_for": {
+        "Cartographer's Chisel": null,
+        "Chaos Orb": null,
+        "Orb of Alteration": null
+      }
+    },
+    "Serrated Fossil": {
+      "sell_for": {
+        "Chaos Orb": null
+      }
+    },
+    "Shuddering Fossil": {
+      "sell_for": {
+        "Chaos Orb": null
+      }
+    },
+    "Vaal Orb": {
+      "sell_for": {
+        "Cartographer's Chisel": null,
+        "Chaos Orb": null,
+        "Exalted Orb": null,
+        "Orb of Alchemy": null,
+        "Orb of Alteration": null,
+        "Orb of Fusing": null
+      }
+    }
+  }
+}

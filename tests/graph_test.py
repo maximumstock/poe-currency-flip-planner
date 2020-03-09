@@ -1,5 +1,7 @@
 import unittest
-from src.graph import build_graph, find_paths, build_conversion, is_profitable
+
+from src.config.user_config import UserConfig
+from src.core.graph import build_graph, find_paths, build_conversion, is_profitable
 
 
 test_offers = [
@@ -310,18 +312,22 @@ expected_conversion = {
 }
 
 
+user_config = UserConfig.from_file()
+
+
 class GraphTest(unittest.TestCase):
+
     def test_build_graph(self):
         graph = build_graph(test_offers)
         self.assertDictEqual(graph, expected_graph)
 
     def test_find_paths(self):
-        paths_small_same_currency = find_paths(expected_graph_small, "Chaos", "Chaos")
+        paths_small_same_currency = find_paths(expected_graph_small, "Chaos", "Chaos", user_config)
         self.assertListEqual(
             expected_profitable_paths_small_same_currency(), paths_small_same_currency
         )
         paths_small_different_currency = find_paths(
-            expected_graph_small.copy(), "Chaos", "Chromatic"
+            expected_graph_small.copy(), "Chaos", "Chromatic", user_config
         )
         self.assertListEqual(
             expected_profitable_paths_small_different_currency,
@@ -334,7 +340,7 @@ class GraphTest(unittest.TestCase):
 
     def test_build_conversions(self):
         path = expected_paths_small_same_currency()[0]
-        conversion = build_conversion(path)
+        conversion = build_conversion(path, user_config)
         self.assertEqual(None, conversion)
 
     def test_stock_equalization(self):
