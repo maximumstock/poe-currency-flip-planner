@@ -1,34 +1,52 @@
-# Data Exploration
+# Data Analysis
 
-***Note: WIP!!!***
+**_Note: WIP!!!_**
 
-Everything I present in this section is very experimental and might be completely wrong. This is just something I enjoy personally without any formal affiliation to the topic of data science, so be nice and don't take anything too seriously.
+Everything I present in this section is very experimental and might be completely wrong.
+This is just something I enjoy personally without any formal affiliation to the
+topic of data science, so be nice and don't take anything too seriously.
 
-With a working trade crawler we can now collect currency trading data and try to gain some insights from it. In this section I'll try to document what I've tried to achieve this.
+With a working trade crawler we can now collect currency trading data and try to
+gain some insights from it. In this section I'll try to document what I've tried
+to achieve this.
+
+## General Workflow
+
+1. Collect Data
+   `python data_analysis/collector.py --league "Blight" --path "data_analysis/Blight/Softcore"`
+2. Merge single `.pickle` files into one `merge.pickle`
+   `python data_analysis/converter.py --path "data_analysis/raw/Delve/Softcore"`
+3. Run analysis.py
+   `python data_analysis/analysis.py --path "data_analysis/raw/Delve/Softcore/merge.pickle"`
 
 ## Setup
-I have collected currency trading information via this tool for a fixed set of currencies, about every thirty minutes during the time the Delve leagues were active.
-This leaves me with regular snapshots for the time between `2018-09-02` until `2018-10-19` for the leagues `Delve`, `Hardcore Delve`, `Standard` and `Hardcore`.
 
-The set of currencies was more or less consciously chosen. There are a lot of common and niche currencies I have not included, but the list for this test run was:
+I have collected currency trading information via this tool for a fixed set of
+currencies, about every thirty minutes during the time the Delve leagues were active.
+This leaves me with regular snapshots for the time between `2018-09-02` until
+`2018-10-19` for the leagues `Delve`, `Hardcore Delve`, `Standard` and `Hardcore`.
 
-* Cartographer's Chisel
-* Chaos Orb
-* Chromatic Orb
-* Divine Orb
-* Exalted Orb
-* Gemcutter's Prism
-* Jeweller's Orb
-* Orb of Alchemy
-* Orb of Alteration
-* Orb of Augmentation
-* Orb of Chance
-* Orb of Fusing
-* Orb of Regret
-* Orb of Scouring
-* Orb of Transmutation
-* Regal Orb
-* Vaal Orb
+The set of currencies was more or less consciously chosen.
+There are a lot of common and niche currencies I have not included, but the list
+for this test run was:
+
+- Cartographer's Chisel
+- Chaos Orb
+- Chromatic Orb
+- Divine Orb
+- Exalted Orb
+- Gemcutter's Prism
+- Jeweller's Orb
+- Orb of Alchemy
+- Orb of Alteration
+- Orb of Augmentation
+- Orb of Chance
+- Orb of Fusing
+- Orb of Regret
+- Orb of Scouring
+- Orb of Transmutation
+- Regal Orb
+- Vaal Orb
 
 For each 2-permutation of currencies from the list above, I request trade offers
 from [poe.trade](http://poe.trade).
@@ -54,11 +72,11 @@ many transaction in the conversion.
 This is important to keep in mind for the heatmap visualization below.
 
 ## Importance of currencies for profitable conversions
+
 So this should be the most interesting bit of data for now.
 Below you can see how often each 2-permutation transaction was found in a
 profitable conversion.
-Each number is calculated as the `total number of profitable conversions for that transaction over all snapshots`
-divided by `number of snapshots`.
+Each number is calculated as the `total number of profitable conversions for that transaction over all snapshots` divided by `number of snapshots`.
 This is a simple relative metric to determine which transactions are most important.
 The higher the number, the more profitable conversions were dependent on
 transactions between those two currencies.
@@ -70,9 +88,11 @@ Below are heatmap visualizations for data I collected during some leagues.
 <summary>Blight Challenge League</summary>
 
 ### Betrayal
+
 ![](results/heatmaps/blight.png)
 
 ### Hardcore Betrayal
+
 ![](results/heatmaps/blight_hardcore.png)
 
 </details>
@@ -81,9 +101,11 @@ Below are heatmap visualizations for data I collected during some leagues.
 <summary>Synthesis Challenge League</summary>
 
 ### Betrayal
+
 ![](results/heatmaps/synthesis.png)
 
 ### Hardcore Betrayal
+
 ![](results/heatmaps/synthesis_hardcore.png)
 
 </details>
@@ -92,9 +114,11 @@ Below are heatmap visualizations for data I collected during some leagues.
 <summary>Legion Challenge League</summary>
 
 ### Betrayal
+
 ![](results/heatmaps/legion.png)
 
 ### Hardcore Betrayal
+
 ![](results/heatmaps/legion_hardcore.png)
 
 </details>
@@ -103,9 +127,11 @@ Below are heatmap visualizations for data I collected during some leagues.
 <summary>Betrayal Challenge League</summary>
 
 ### Betrayal
+
 ![](results/heatmaps/betrayal.png)
 
 ### Hardcore Betrayal
+
 ![](results/heatmaps/betrayal_hardcore.png)
 
 </details>

@@ -2,104 +2,192 @@
 
 ![](https://api.travis-ci.com/maximumstock/poe-currency-flip-planner.svg?branch=master)
 
-This tool is an attempt at finding short-term arbitrage deals of currency and items in Path of Exile.
+A proof-of-concept finder for short-term arbitrage opportunities in
+[Path of Exile](https://www.pathofexile.com).
 
-## Background
+## Overview
 
-Trading sites, such as [pathofexile.com/trade](https://pathofexile.com/trade/exchange), provide
-pseudo-realtime data about other player's trading offers for items and in-game currency.
-Typically, currency items are traded frequently and in larger quantities to remain efficient.
-By collecting conversion rates between currencies, you can find series of trades between two
-preselected currencies that yield the most arbitrage value at that point in time.
+- [What exactly is this?](#what-exactly-is-this?)
+- [How does it work?](#how-does-it-work?)
+- [CLI Usage](#cli-usage)
+  - [Installation](#installation)
+  - [Configuration](#configuration)
+- [Library Usage](#library-usage)
+- [Contributing](#contributing)
 
-We model this data as a graph, where the currently available conversion rates are
-single edges between nodes (currencies).
-Given a currency, circular paths of arbitrary length can be found within that graph that
-describe different ways to trade the currency for different currencies `x` times until
-trading back for the starting currency.
+## What exactly is this?
 
-Each of these paths yields one of the following outcomes:
+A command-line application that finds arbitrage opportunities by grabbing and
+analysing data from [pathofexile.com/trade](https://pathofexile.com/trade/exchange).
 
-- You have the same amount as before
-- You have less than before
-- You have more than before
+For example, running `python cli.py --league Metamorph`
+might result in something like:
 
-Then we compare these paths to find out which currencies to trade in what order to generate
-the most profit.
+<img src="examples/result_screenshot.png" width=900 />
 
-## How to use
+**Note:** This tool does not support regular item gear but only currencies and
+other bulk items. For simplicty I'll only use the term **items** from now on, but
+refer to both currencies and other bulk items, such as Maps, Shards, Essences, etc.
 
-If you simply want to use this tool to find profitable trades,
-please use `python cli.py` as a command-line interface.
-After a while you will get a bunch of text printed out with your suggested conversions,
-as shown below.
+## How does it work?
 
-![](examples/result_screenshot.png)
+We start with a set of item pairs that we want to check trade offers
+for, eg. sell `Chaos Orb`s for `Jagged Fossil`s.
 
-By default, it uses [pathofexile.com/trade](https://pathofexile.com/trade/exchange) and
-works with currency pairs specified in `config/config.json` (and `config/config.default.json`).
-You can also alter this list to your liking to either remove or add trading paths.
+By default, these item pairs are pre-defined and sort of data mined from
+previous leagues (see [Data Analysis](data_analysis/README.md)).
+You can also customize these pairs and various other details via a custom
+configuration file, see Section [Configuration](#configuration).
+The collected data is turned into a graph which gets traversed to find transaction
+chains that yield profit.
 
-If you want to dig in a little, check out `src/cli.py` or `python cli.py --help` for help
-and options.
+## Installation
 
-### Exclude Traders
+This tool requires Python >=3.7.
+I highly recommend using [Pipenv](https://github.com/pypa/pipenv) for managing
+Python projects and their dependencies.
+
+Given a shell with above tools installed, you setup:
+
+1. Clone the respository: `git clone https://github.com/maximumstock/poe-currency-flip-planner.git`
+1. Navigate to the repository
+1. Enter a new shell session environment settings: `pipenv shell`
+1. Install all dependencies: `pipenv install`
+
+## CLI Usage
+
+Run via `python cli.py <OPTIONS>`
+
+The CLI offers a few configuration flags.
+You can always check them out via `python cli.py --help`.
+
+```
+> python cli.py --help
+usage: cli.py [-h] [--league LEAGUE] [--currency CURRENCY] [--limit LIMIT]
+              [--fullbulk] [--nofilter] [--poetrade]
+
+CLI interface for PathFinder
+
+optional arguments:
+  -h, --help           show this help message and exit
+  --league LEAGUE      League specifier, ie. 'Synthesis', 'Hardcore Synthesis'
+                       or 'Flashback Event (BRE001)'. Defaults to 'Metamorph'.
+  --currency CURRENCY  Full name of currency to flip, ie. 'Cartographer's
+                       Chisel, or 'Chaos Orb'. Defaults to all currencies.
+  --limit LIMIT        Limit the number of displayed conversions. Defaults to
+                       5.
+  --fullbulk           Use all supported bulk items
+  --nofilter           Disable item pair filters
+  --poetrade           Use poe.trade instead of pathofexile.com/trade
+```
+
+By default, we use [pathofexile.com/trade](https://pathofexile.com/trade/exchange), but
+using [poe.trade](http://poe.trade) is possible.
+
+Options `--fullbulk` and `--nofilter` bypass the configuration files and extend
+the set of item pairs that is used to collect data for.
+These options are not meant for end users but only relevant for collecting
+extensive amount of data for the work in [Data Analysis](data_analysis/README.md).
+
+## Configuration
+
+The configuration file lets you define the following:
+
+- [Item Trading Paths](#trading-section)
+- [Stock Requirements When Buying & Selling](#trading-section)
+- [Trading Capital](#assets-section)
+- [Blacklisting Traders](#blacklisting-traders)
+
+If you did not configure a custom configuration file, the default settings in
+`config.config.default.json` are used.
+Blacklisting traders is done separately.
+
+The default configuration takes care for you of the first two points, but you
+are free to customize.
+
+### Example Trading Path Configuration
+
+By default, we check prices for all item pairs specified in the respective config file.
+You can also alter this to your liking to either remove or add trading paths.
+In case you alter the configuration, please do so on a copy of the default configuration
+file.
+
+Here is an example excerpt with some explanatory notes.
+In case of any problems or ambiguity, please open an issue.
+
+```jsonc
+{
+  "version": 1, // Internal versioning - irrelevant for now
+  "assets": {
+    // These values act as a an optional upper limit on trading volume.
+    // For example, limit all Chaos Orb trades to a start capital of 100.
+    // Just a comfort feature so you don't have to manually calculate prices.
+    "Chaos Orb": 100,
+    "Exalted Orb": 5,
+    "Chromatic Orb": 1000,
+    "Orb of Fusing": 340
+  },
+  "trading": {
+    "Chaos Orb": {
+      // Default stock requirements when buying Chaos Orbs
+      "minimum_stock": 40,
+      "maximum_stock": 500,
+      "sell_for": {
+        // One entry per item you want to trade for your Chaos Orbs
+        "Cartographer's Chisel": null,
+        "Chromatic Orb": null,
+        "Divine Orb": null
+      }
+    },
+    "Exalted Orb": {
+      // If we want to buy Exalted Orbs, we only consider
+      // sellers with a stock between 1-100
+      "minimum_stock": 1, // Defaults to 1
+      "maximum_stock": 100, // Defaults to 0 (no limit)
+      "sell_for": {
+        "Cartographer's Chisel": null,
+        // As there is no special config for Chaos Orbs,
+        // we only consider sellers with a Chaos Orb stock
+        // of 40-500
+        "Chaos Orb": null,
+        "Orb of Alteration": null,
+        "Orb of Annulment": {
+          // If we want to buy Annulment Orbs with Exalted Orbs, we only
+          // consider sellers with a stock between 10-30.
+          // This block overrides the default minimum_stock setting for
+          // Orbs of Annulment when buying them with Exalted Orbs.
+          "minimum_stock": 10,
+          "maximum_stock": 30
+        }
+      }
+    },
+    "Orb of Annulment": {
+      "minimum_stock": 5,
+      "sell_for": {
+        "Exalted Orb": 5
+      }
+    }
+  }
+}
+```
+
+### Blacklisting Traders
 
 If you want to exclude certain traders you can do so by adding their account name
-to your local `excluded_traders.txt` (one name per line).
+to your local `config/excluded_traders.txt` (one name per line).
 
-### Library Usage
+## Library Usage
 
 If you want to use this project as a library/dependency, feel free to use the
 `PathFinder` class (see `src/pathfinder.py`) as an API.
 
-The PathFinder class is a simple interface for finding profitable trade paths for arbitrage.
-You give it the league, a list of currencies and a backend instance (eg. `backends/poeofficial.py`).
-For each currency it starts looking for all profitable paths that start and end with that
-currency, given a maximum transaction length (default: 3).
+The PathFinder class is a simple interface for finding profitable trade paths
+for arbitrage.
+
 All stages of data (eg. list of collected offers via the respective trading backend, the
 constructed graph of offers and the found profitable paths) are part of each PathFinder
 instance and can simply be accessed and used for further work.
 
-## Installation
-
-I highly recommend using [Pipenv](https://github.com/pypa/pipenv) for managing
-Python projects and their dependencies.
-
-1. `pipenv shell` to enter a shell session with my environment settings
-2. `pipenv install` to install all dependencies
-3. `python cli.py <your options>` to run the tool
-
-I use Python >=3.7 for everything. I haven't tried running it with different versions.
-
-## Tests
-
 I wrote a few simple unit tests to make the data fetching and parsing, graph
 construction and traversal and path evaluation a bit more robust. You can run
 those tests using predefined data structures via `python -m pytest tests`.
-
-## Data Exploration
-
-The data that is used for the analysis is not part of this repository.
-If you are interested in it, please message me or collect your own data.
-You can use `run_collector.sh` for this.
-It starts a `PathFinder` instance (see `src/pathfinder.py`) for each league.
-I like running this as a cronjob every 30 minutes.
-The collected PathFinder instances are then pickled and persisted in their respective folders,
-specified in `run_collector.sh`.
-
-See [here](data_analysis/README.md) for discussion.
-
-### General Workflow (as of now)
-
-1. Collect Data
-   `python data_analysis/collector.py --league "Blight" --path "data_analysis/Blight/Softcore"`
-2. Merge single `.pickle` files into one `merge.pickle`
-   `python data_analysis/converter.py --path "data_analysis/raw/Delve/Softcore"`
-3. Run analysis.py
-   `python data_analysis/analysis.py --path "data_analysis/raw/Delve/Softcore/merge.pickle"`
-
-## Ideas & Roadmap
-
-See [todo.org](todo.org) (beware of org-mode format from Emacs :)) for ideas, future features, etc. Feel free to send
-me any feedback, either via email or PR.
