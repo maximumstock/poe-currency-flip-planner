@@ -1,6 +1,8 @@
 # poe-currency-flip-planner
 
-![](https://api.travis-ci.com/maximumstock/poe-currency-flip-planner.svg?branch=master)
+![Continuous Integration](https://github.com/maximumstock/poe-currency-flip-planner/workflows/Continuous%20Integration/badge.svg)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/Version-0.2.0-orange.svg)](https://opensource.org/licenses/MIT)
 
 A proof-of-concept finder for short-term arbitrage opportunities in
 [Path of Exile](https://www.pathofexile.com).
