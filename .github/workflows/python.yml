@@ -1,0 +1,34 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.7]
+    if: "!contains(github.event.head_commit.message, 'ci skip')"
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+
+      - name: Setup Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Setup Pipenv
+        uses: dschep/install-pipenv-action@v1
+
+      - name: Dependencies
+        run: |
+          pipenv install --dev
+
+      - name: Tests
+        run: |
+          pipenv run python -m pytest
