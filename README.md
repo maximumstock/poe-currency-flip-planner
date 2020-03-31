@@ -46,19 +46,29 @@ chains that yield profit.
 ## Installation
 
 This tool requires Python >=3.7.
-I highly recommend using [Pipenv](https://github.com/pypa/pipenv) for managing
-Python projects and their dependencies.
-
-Given a shell with above tools installed, you setup:
+For installing dependencies, either use [Pipenv](https://github.com/pypa/pipenv)
+or regular Python 3 virtual environments, as described below.
 
 1. Clone the respository: `git clone https://github.com/maximumstock/poe-currency-flip-planner.git`
-1. Navigate to the repository
-1. Enter a new shell session environment settings: `pipenv shell`
+1. Navigate into the project folder: `cd poe-currency-flip-planner`
+
+### Via Pipenv
+
+Assuming `pipenv` is installed:
+
+1. Enter a new pipenv shell session: `pipenv shell`
 1. Install all dependencies: `pipenv install`
+
+### Via Python Virtual Environment
+
+1. Enter a new shell session environment settings: `python3 -m venv env`
+1. Activate your virtual environment: `source ./env/bin/activate`
+1. Install all dependencies: `pip install -r requirements.txt`
 
 ## CLI Usage
 
-Run via `python cli.py <OPTIONS>`
+Run via `python cli.py <OPTIONS>`, while in your virtual environment
+or with pipenv active.
 
 The CLI offers a few configuration flags.
 You can always check them out via `python cli.py --help`.
