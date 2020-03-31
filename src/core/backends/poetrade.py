@@ -3,6 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 
 from src.trading.items import ItemList
+from src.commons import filter_large_outliers
 
 
 def name():
@@ -36,6 +37,7 @@ def fetch_offers_for_pair(league, want, have, item_list: ItemList, limit=10):
 
     r = requests.get(url, params=params)
     offers = parse_conversion_offers(r.text, limit)
+    offers = filter_large_outliers(offers)
 
     return {"offers": offers, "want": want, "have": have, "league": league}
 
@@ -67,4 +69,3 @@ def parse_conversion_offer(offer_html):
         "conversion_rate": conversion_rate,
         "stock": stock,
     }
-
