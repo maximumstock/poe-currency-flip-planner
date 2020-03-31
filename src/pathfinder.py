@@ -69,11 +69,12 @@ class PathFinder:
     def _filter_traders(self, offers: List[Dict], excluded_traders=[]) -> List:
         excluded_traders = [name.lower() for name in excluded_traders]
         for idx in range(len(offers)):
-            offers[idx]["offers"] = list(
-                filter(
-                    lambda x: x["contact_ign"].lower() not in excluded_traders,
-                    offers[idx]["offers"],
-                ))
+            if offers[idx] is not None:
+                offers[idx]["offers"] = list(
+                    filter(
+                        lambda x: x["contact_ign"].lower() not in excluded_traders,
+                        offers[idx]["offers"],
+                    ))
         return offers
 
     def _filter_pairs(self, pairs: List[Tuple[str, str]], allowed_pairs: List[Tuple[str, str]]):
@@ -103,6 +104,7 @@ class PathFinder:
 
     def _build_graph(self):
         t_start = time.time()
+        self.offers = [x for x in self.offers if x is not None]
         self.graph = graph.build_graph(self.offers)
         t_end = time.time()
 
