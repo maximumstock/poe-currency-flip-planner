@@ -62,10 +62,11 @@
         },
         "asyncio-throttle": {
             "hashes": [
-                "sha256:a01a56f3671e961253cf262918f3e0741e222fc50d57d981ba5c801f284eccfe"
+                "sha256:47678bb340742d197eeb71a1a3d9d179199d7144ed1e9c900a5605ec53b09bfa",
+                "sha256:80c8bba5ce77d37c9bb679f16fa875b5a99f09f418a6f26c59890fa0cf798f32"
             ],
             "index": "pypi",
-            "version": "==0.1.1"
+            "version": "==1.0.1"
         },
         "atomicwrites": {
             "hashes": [
