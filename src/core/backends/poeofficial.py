@@ -25,8 +25,8 @@ def fetch_offers(league, currency_pairs, item_list: ItemList, limit=10):
 
 
 async def fetch_offers_async(league, currency_pairs, item_list: ItemList, limit):
-    trade_search_throttler = Throttler(9, 6)
-    trade_fetch_throttler = Throttler(4, 4)
+    trade_search_throttler = Throttler(5, 3, 1)
+    trade_fetch_throttler = Throttler(4, 3, 1)
 
     async with aiohttp.ClientSession() as sess:
         tasks = [
