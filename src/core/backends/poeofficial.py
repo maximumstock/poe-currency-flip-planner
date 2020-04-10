@@ -78,7 +78,7 @@ async def fetch_offers_for_pair(sess, trade_search_throttler, trade_fetch_thrott
         }
 
         try:
-            print("Fetching ids")
+            # print("Fetching ids")
             query_id, offer_ids = await fetch_ids(sess, offer_id_url, payload)
             offers = []
         except Exception as e:
@@ -93,7 +93,7 @@ async def fetch_offers_for_pair(sess, trade_search_throttler, trade_fetch_thrott
                 url = "http://www.pathofexile.com/api/trade/fetch/{}?query={}&exchange".format(
                     id_string, query_id)
 
-                print("Fetching data")
+                # print("Fetching data")
                 response = await sess.get(url)
                 json = await response.json()
                 raw_offers = json["result"]
