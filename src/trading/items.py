@@ -61,7 +61,6 @@ basic_currencies = [
 ]
 
 
-@dataclass
 class Item:
     name: str
     ids: Dict[str, str]
@@ -78,6 +77,9 @@ class Item:
         self.is_basic_currency = is_basic
         self.is_bulk_target = is_bulk_target
         self.category = category
+
+    def __str__(self: Item):
+        return self.name
 
     def is_supported_by(self, backend_name: str) -> bool:
         return backend_name in self.ids.keys()
