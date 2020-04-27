@@ -1,71 +1,69 @@
-import concurrent.futures
-import requests
+import logging
+
+import aiohttp
 from bs4 import BeautifulSoup
 
-from src.trading.items import ItemList
 from src.commons import filter_large_outliers
+from src.core.backends.task import Task, TaskException
+from src.trading.items import ItemList
 
 
-def name():
-    return "poetrade"
+class PoeTrade:
 
+    item_list: ItemList
 
-def fetch_offers(league, currency_pairs, item_list: ItemList, limit=10):
+    def __init__(self, item_list: ItemList):
+        self.item_list = item_list
+
+    async def fetch_offer_async(self, client_session: aiohttp.ClientSession, task: Task):
+        url = "https://currency.poe.trade/search"
+        params = {
+            "league": task.league,
+            "want": self.item_list.map_item(task.want, self.name()),
+            "have": self.item_list.map_item(task.have, self.name()),
+            "online": "x",
+        }
+
+        response = await client_session.request("GET", url=url, params=params)
+        html = await response.text()
+
+        if response.status is not 200:
+            logging.debug("Error during poe.trade fetch: Status {}".format(response.status))
+            logging.debug(html)
+            raise TaskException()
+
+        offers = PoeTrade.parse_conversion_offers(html)
+        offers = filter_large_outliers(offers)[:task.limit]
+
+        return {"offers": offers, "want": task.want, "have": task.have, "league": task.league}
+
+    def name(self):
+        return "poetrade"
+
     """
-    Fetches trading offers for a specific league and a pair of currencies from
-    poe.trade and turns the data into a suitable format.
+    Helper functions to parse results from poe.trade."
     """
 
-    params = [[league, pair[0], pair[1], item_list, limit] for pair in currency_pairs]
+    @staticmethod
+    def parse_conversion_offers(html):
+        soup = BeautifulSoup(html, "html.parser")
+        rows = soup.find_all(class_="displayoffer")
+        parsed_rows = [PoeTrade.parse_conversion_offer(x) for x in rows]
+        return [x for x in parsed_rows if x is not None]
 
-    with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
-        futures = executor.map(lambda p: fetch_offers_for_pair(*p), params)
-        offers = list(map(lambda x: x, futures))
-        # Filter offers from currency pairs that do not hold any offers
-        offers = [x for x in offers if len(x["offers"]) > 0]
-        return offers
+    @staticmethod
+    def parse_conversion_offer(offer_html):
 
+        if "data-stock" not in offer_html.attrs:
+            return None
 
-def fetch_offers_for_pair(league, want, have, item_list: ItemList, limit=10):
-    url = "http://currency.poe.trade/search"
-    params = {
-        "league": league,
-        "want": item_list.map_item(want, name()),
-        "have": item_list.map_item(have, name()),
-        "online": True,
-    }
+        receive = float(offer_html["data-sellvalue"])
+        pay = float(offer_html["data-buyvalue"])
+        conversion_rate = round(receive / pay, 4)
+        stock = int(offer_html["data-stock"])
 
-    r = requests.get(url, params=params)
-    offers = parse_conversion_offers(r.text, limit)
-    offers = filter_large_outliers(offers)
-
-    return {"offers": offers, "want": want, "have": have, "league": league}
-
-
-"""
-Helper functions to parse results from poe.trade."
-"""
-
-
-def parse_conversion_offers(html, limit: int):
-    soup = BeautifulSoup(html, "html.parser")
-    rows = soup.find_all(class_="displayoffer")
-    parsed_rows = [parse_conversion_offer(x) for x in rows]
-    return [x for x in parsed_rows if x is not None][:limit]
-
-
-def parse_conversion_offer(offer_html):
-
-    if "data-stock" not in offer_html.attrs:
-        return None
-
-    receive = float(offer_html["data-sellvalue"])
-    pay = float(offer_html["data-buyvalue"])
-    conversion_rate = round(receive / pay, 4)
-    stock = int(offer_html["data-stock"])
-
-    return {
-        "contact_ign": offer_html["data-ign"],
-        "conversion_rate": conversion_rate,
-        "stock": stock,
-    }
+        return {
+            "contact_ign": offer_html["data-ign"],
+            "conversion_rate": conversion_rate,
+            "stock": stock,
+        }

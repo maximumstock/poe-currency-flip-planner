@@ -1,5 +1,9 @@
 import unittest
-from src.core.backends import poetrade, poeofficial
+import asyncio
+import aiohttp
+
+from src.core.backends import poeofficial, poetrade
+from src.core.backends.backend_pool import BackendPool
 from src.trading.items import ItemList
 
 item_list = ItemList.load_from_file()
@@ -7,19 +11,21 @@ item_list = ItemList.load_from_file()
 
 class BackendTest(unittest.TestCase):
 
-    def test_fetch_offers(self):
+    def test_backend_pool(self):
+
+        item_pairs = [("Chaos Orb", "Exalted Orb"), ("Exalted Orb", "Chaos Orb"),
+                      ("Chaos Orb", "Orb of Fusing"), ("Orb of Fusing", "Exalted Orb")]
         league = "Standard"
-        want = "Chaos Orb"
-        have = "Chromatic Orb"
+        pool = BackendPool(item_list)
+        results = pool.schedule(league, item_pairs, item_list)
 
-        poe_trade_single = poetrade.fetch_offers_for_pair(league, want, have, item_list)
-        poe_trade_many = poetrade.fetch_offers(league, [(want, have)], item_list)
-
-        poeofficial_trade_many = poeofficial.fetch_offers(league, [(want, have)], item_list)
-
-        for struct in [poe_trade_single] + poe_trade_many + poeofficial_trade_many:
-            assert ("offers" in struct.keys()) is True
+        for struct in results:
+            assert self.has_key(struct, "offers") is True
             assert len(struct["offers"]) > 0
-            assert struct["want"] == want
-            assert struct["have"] == have
+            assert self.has_key(struct, "want")
+            assert self.has_key(struct, "have")
+            assert self.has_key(struct, "league")
             assert struct["league"] == league
+
+    def has_key(self, struct, key):
+        return key in struct.keys()

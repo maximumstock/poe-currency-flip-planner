@@ -1,3 +1,4 @@
+import logging
 from typing import List, Dict
 import numpy as np
 
@@ -20,3 +21,8 @@ def filter_large_outliers(offers: List[Dict]) -> List[Dict]:
             offers = [x for x in offers if x["conversion_rate"] < upper_boundary]
 
     return offers
+
+
+def init_logger(debug: bool):
+    level = logging.DEBUG if debug else logging.INFO
+    logging.basicConfig(level=level, format='%(message)s')

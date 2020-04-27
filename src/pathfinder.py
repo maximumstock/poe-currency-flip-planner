@@ -1,10 +1,12 @@
+import logging
 import time
 from datetime import datetime
 from typing import Dict, List, Optional, Tuple
 
-from src.core import graph
-from src.trading import ItemList
 from src.config.user_config import UserConfig
+from src.core import graph
+from src.core.backends.backend_pool import BackendPool
+from src.trading import ItemList
 
 
 def format_conversions(conversions) -> str:
@@ -51,6 +53,7 @@ class PathFinder:
         self.item_list = ItemList.load_from_file()
         self.logging = True
         self.pair_filter = self.user_config.get_item_pairs()
+        self.backend_pool = BackendPool(self.item_list)
 
         # Ensure all specified items actually exist
         self.item_list.ensure_items_are_supported(self.item_pairs, self.backend)
@@ -87,20 +90,16 @@ class PathFinder:
         if self.use_filter is True:
             self.item_pairs = self._filter_pairs(self.item_pairs, self.pair_filter)
 
-        if self.logging:
-            print("Fetching {} offers for {} pairs".format(self.league, len(self.item_pairs)))
-            print("Filter: {}".format("Enabled" if self.use_filter else "Disabled"))
-            print("Backend: {}".format(self.backend.name()))
+        logging.info("Fetching {} offers for {} pairs | Filters {}".format(
+            self.league, len(self.item_pairs), "Enabled" if self.use_filter else "Disabled"))
 
-        self.offers = self.backend.fetch_offers(self.league, self.item_pairs, self.item_list)
+        self.offers = self.backend_pool.schedule(self.league, self.item_pairs, self.item_list)
 
         # Filter out unwanted traders
         self.offers = self._filter_traders(self.offers, self.excluded_traders)
 
         t_end = time.time()
-
-        if self.logging:
-            print("Spent {}s fetching offers".format(round(t_end - t_start, 2)))
+        logging.info("Spent {}s fetching offers".format(round(t_end - t_start, 2)))
 
     def _build_graph(self):
         t_start = time.time()
@@ -108,11 +107,10 @@ class PathFinder:
         self.graph = graph.build_graph(self.offers)
         t_end = time.time()
 
-        if self.logging:
-            print("Spent {}s building the graph".format(round(t_end - t_start, 2)))
+        logging.info("Spent {}s building the graph".format(round(t_end - t_start, 2)))
 
     def _find_profitable_paths(self, max_transaction_length):
-        print("Checking for profitable conversions...")
+        logging.info("Checking for profitable conversions...")
         t_start = time.time()
         for c in self.graph.keys():
             # For currency @c, find all paths within the constructed path that are
@@ -128,7 +126,7 @@ class PathFinder:
             if self.logging:
                 n_profitable = len(profitable_conversions)
                 if n_profitable > 0:
-                    print("Checking {} -> {} Conversions".format(c, n_profitable))
+                    logging.info("Checking {} -> {} Conversions".format(c, n_profitable))
 
             profitable_conversions = sorted(
                 profitable_conversions,
@@ -139,9 +137,9 @@ class PathFinder:
 
         t_end = time.time()
         if self.logging:
-            print("Spent {}s finding paths".format(round(t_end - t_start, 2)))
+            logging.info("Spent {}s finding paths".format(round(t_end - t_start, 2)))
 
-    def run(self, max_transaction_length=3):
+    def run(self, max_transaction_length=2):
         self._fetch()
         self._build_graph()
         self._find_profitable_paths(max_transaction_length)
