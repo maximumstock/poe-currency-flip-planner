@@ -1,11 +1,14 @@
-# 0.3.0 / 2020-05-01
+
+0.3.0 / 2020-05-01
+==================
 
 - Added backend pooling: Query all backends for data in parallel
   - faster
   - no configuration hassle
   - easily extendable via other backends
 
-# 0.2.0 / 2020-03-03
+0.2.0 / 2020-03-03
+==================
 
 - Add customisable user configuration (see [here](README.md#configuration) for more details)
 
@@ -19,7 +22,8 @@
   - Increase offer limit for [https://pathofexile.com/trading](https://pathofexile.com/trading)
   - Filter offers with large outliers (>95th percentile)
 
-# 0.1.1 / 2020-01-28
+0.1.1 / 2020-01-28
+==================
 
 - Rewrote loading and creating item databases
 
@@ -27,6 +31,7 @@
   - Can now detect if a given item is supported by a respective backend
   - `PathFinder` now gives feedback when encountering an unsupported item, eg. from `pair_filter.json`
 
-# 0.1.0 / 2020-01-12
+0.1.0 / 2020-01-12
+==================
 
 - Massively improve speed by using [pathofexile.com/trade](https://pathofexile.com/trade) instead of [poe.trade](http://poe.trade)
