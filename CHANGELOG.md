@@ -1,3 +1,10 @@
+# 0.3.0 / 2020-05-01
+
+- Added backend pooling: Query all backends for data in parallel
+  - faster
+  - no configuration hassle
+  - easily extendable via other backends
+
 # 0.2.0 / 2020-03-03
 
 - Add customisable user configuration (see [here](README.md#configuration) for more details)
