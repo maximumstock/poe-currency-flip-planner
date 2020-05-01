@@ -103,7 +103,7 @@ currency = arguments.currency
 limit = arguments.limit
 fullbulk = arguments.fullbulk
 use_filter = False if arguments.nofilter else True
-backend = PoeTrade(item_list) if arguments.poetrade else PoeOfficial(item_list)
+backend = PoeOfficial(item_list)
 config = {"fullbulk": fullbulk}
 chosen_currencies = item_list.get_item_list_for_backend(backend, config)
 
