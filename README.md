@@ -105,13 +105,13 @@ extensive amount of data for the work in [Data Analysis](data_analysis/README.md
 
 The configuration file lets you define the following:
 
-- [Item Trading Paths](#trading-section)
-- [Stock Requirements When Buying & Selling](#trading-section)
-- [Trading Capital](#assets-section)
+- Item Trading Paths
+- Stock Requirements When Buying & Selling
+- Trading Capital
 - [Blacklisting Traders](#blacklisting-traders)
 
 If you did not configure a custom configuration file, the default settings in
-`config.config.default.json` are used.
+`config.default.json` are used.
 Blacklisting traders is done separately.
 
 The default configuration takes care for you of the first two points, but you
