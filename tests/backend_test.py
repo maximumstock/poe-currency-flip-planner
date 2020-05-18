@@ -5,8 +5,11 @@ import aiohttp
 from src.core.backends import poeofficial, poetrade
 from src.core.backends.backend_pool import BackendPool
 from src.trading.items import ItemList
+from src.commons import init_logger
 
 item_list = ItemList.load_from_file()
+
+init_logger(True)
 
 
 class BackendTest(unittest.TestCase):

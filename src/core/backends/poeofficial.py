@@ -14,6 +14,9 @@ from src.trading.items import ItemList
 
 class PoeOfficial:
 
+    # pathofexile.com/trade seems to impose a limit on how many actual trade
+    # offers you're allowed to request together
+    max_offers_per_request = 20
     item_list: ItemList
 
     def __init__(self, item_list: ItemList):
@@ -47,7 +50,7 @@ class PoeOfficial:
 
         try:
             if len(offer_ids) != 0:
-                id_string = ",".join(offer_ids)
+                id_string = ",".join(offer_ids[:self.max_offers_per_request])
                 url = "http://www.pathofexile.com/api/trade/fetch/{}?query={}&exchange".format(
                     id_string, query_id)
 
