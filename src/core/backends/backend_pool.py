@@ -7,7 +7,7 @@ from typing import Any, Dict, List, Tuple
 import aiohttp
 from asyncio_throttle import Throttler
 
-from src.core.backends.offer import Offer
+from src.core.offer import Offer
 from src.core.backends.poeofficial import PoeOfficial
 from src.core.backends.poetrade import PoeTrade
 from src.core.backends.task import Task, TaskException

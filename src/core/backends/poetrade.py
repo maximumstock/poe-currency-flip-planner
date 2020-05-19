@@ -5,7 +5,7 @@ import aiohttp
 from bs4 import BeautifulSoup
 
 from src.commons import filter_large_outliers
-from src.core.backends.offer import Offer
+from src.core.offer import Offer
 from src.core.backends.task import Task, TaskException
 from src.trading.items import ItemList
 

@@ -4,7 +4,8 @@ from dataclasses import dataclass
 from typing import Dict, List, Optional
 
 from src.config.user_config import UserConfig
-from src.core.backends.offer import Offer
+from src.core.offer import Offer
+from src.core.edge import Edge
 
 
 def build_graph(offers: List[Offer]) -> Dict[str, Dict[str, List[Offer]]]:
@@ -89,17 +90,6 @@ def is_profitable(path: List[Dict]):
     return maximum_conversion_rate(path) > 1.0
 
 
-class Edge(Offer):
-    paid: int
-    received: int
-
-    def __init__(self, offer: Offer, received: int, paid: int):
-        super().__init__(league=offer.league, want=offer.want, have=offer.have,
-                         contact_ign=offer.contact_ign, conversion_rate=offer.conversion_rate, stock=offer.stock)
-        self.received = received
-        self.paid = paid
-
-
 def equalize_stock_differences(path: List[Offer], user_config: UserConfig) -> List[Edge]:
     """
     Finds the maximum flow for a found path and alters the conversion edges accordingly.
@@ -151,20 +141,20 @@ def build_conversion(path: List[Offer], user_config: UserConfig) -> Optional[Dic
     Simplifies a found path into a dictionary structure to handle the found data
     for easily.
     """
-    path = equalize_stock_differences(path, user_config)
+    equalized_path: List[Edge] = equalize_stock_differences(path, user_config)
 
-    if len(path) is 0:
+    if len(equalized_path) is 0:
         return None
 
     # Filter conversions that do not yield any profit
-    if path[-1].received - path[0].paid <= 0:
+    if equalized_path[-1].received - equalized_path[0].paid <= 0:
         return None
 
     return {
-        "from": path[0].have,
-        "to": path[-1].want,
-        "starting": path[0].paid,
-        "ending": path[-1].received,
-        "winnings": path[-1].received - path[0].paid,
-        "transactions": path,
+        "from": equalized_path[0].have,
+        "to": equalized_path[-1].want,
+        "starting": equalized_path[0].paid,
+        "ending": equalized_path[-1].received,
+        "winnings": equalized_path[-1].received - equalized_path[0].paid,
+        "transactions": equalized_path,
     }

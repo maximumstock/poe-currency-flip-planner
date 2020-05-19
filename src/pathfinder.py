@@ -6,7 +6,7 @@ from typing import Dict, List, Optional, Tuple
 from src.config.user_config import UserConfig
 from src.core import graph
 from src.core.backends.backend_pool import BackendPool
-from src.core.backends.offer import Offer
+from src.core.offer import Offer
 from src.trading import ItemList
 
 
@@ -101,7 +101,7 @@ class PathFinder:
 
             for p in paths:
                 conversion = graph.build_conversion(p, self.user_config)
-                if conversion is not None:
+                if conversion is not None and conversion["winnings"] > 0:
                     profitable_conversions.append(conversion)
 
             if self.logging:
