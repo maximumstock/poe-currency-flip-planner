@@ -1,11 +1,14 @@
-import unittest
 import asyncio
+import unittest
+from typing import List
+
 import aiohttp
 
+from src.commons import init_logger
 from src.core.backends import poeofficial, poetrade
 from src.core.backends.backend_pool import BackendPool
+from src.core.offer import Offer
 from src.trading.items import ItemList
-from src.commons import init_logger
 
 item_list = ItemList.load_from_file()
 
@@ -20,15 +23,18 @@ class BackendTest(unittest.TestCase):
                       ("Chaos Orb", "Orb of Fusing"), ("Orb of Fusing", "Exalted Orb")]
         league = "Standard"
         pool = BackendPool(item_list)
-        results = pool.schedule(league, item_pairs, item_list)
+        offers: List[Offer] = pool.schedule(league, item_pairs, item_list)
 
-        for struct in results:
-            assert self.has_key(struct, "offers") is True
-            assert len(struct["offers"]) > 0
-            assert self.has_key(struct, "want")
-            assert self.has_key(struct, "have")
-            assert self.has_key(struct, "league")
-            assert struct["league"] == league
+        assert len(offers) > 0
+
+        for offer in offers:
+            assert hasattr(offer, "want")
+            assert hasattr(offer, "have")
+            assert hasattr(offer, "league")
+            assert hasattr(offer, "contact_ign")
+            assert hasattr(offer, "conversion_rate")
+            assert hasattr(offer, "stock")
+            assert offer.league == league
 
     def has_key(self, struct, key):
         return key in struct.keys()

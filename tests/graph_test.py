@@ -2,108 +2,135 @@ import unittest
 
 from src.config.user_config import UserConfig
 from src.core.graph import build_graph, find_paths, build_conversion, is_profitable
+from src.core.offer import Offer
+from src.core.edge import Edge
+from typing import List, Dict
+
+LEAGUE = "Abyss"
 
 
-test_offers = [
-    {
-        "offers": [
-            {
-                "contact_ign": "KnifeySpooneyClaw",
-                "conversion_rate": 0.0893,
-                "stock": 153,
-            }
-        ],
-        "want": "Chaos",
-        "have": "Alteration",
-        "league": "Abyss",
-    },
-    {
-        "offers": [
-            {"contact_ign": "_ZEUS___", "conversion_rate": 0.0909, "stock": 10},
-            {"contact_ign": "MVP_Kefir", "conversion_rate": 0.087, "stock": 20},
-        ],
-        "want": "Chaos",
-        "have": "Chromatic",
-        "league": "Abyss",
-    },
-    {
-        "offers": [
-            {"contact_ign": "wreddnuy", "conversion_rate": 12.0, "stock": 24},
-            {"contact_ign": "Corailthedog", "conversion_rate": 11.0, "stock": 2},
-        ],
-        "want": "Alteration",
-        "have": "Chaos",
-        "league": "Abyss",
-    },
-    {
-        "offers": [
-            {"contact_ign": "Azure_Dragon", "conversion_rate": 1.0101, "stock": 4261},
-            {
-                "contact_ign": "Marcvz_GreenAgain",
-                "conversion_rate": 0.7143,
-                "stock": 222,
-            },
-        ],
-        "want": "Alteration",
-        "have": "Chromatic",
-        "league": "Abyss",
-    },
-    {
-        "offers": [
-            {"contact_ign": "The_Dank_Fire_God", "conversion_rate": 11.5, "stock": 106},
-            {"contact_ign": "MinerinoAbysss", "conversion_rate": 11.1, "stock": 322},
-        ],
-        "want": "Chromatic",
-        "have": "Chaos",
-        "league": "Abyss",
-    },
-    {
-        "offers": [
-            {"contact_ign": "Ashkeri", "conversion_rate": 0.7143, "stock": 449},
-            {"contact_ign": "Shioua_ouah", "conversion_rate": 0.6897, "stock": 1576},
-        ],
-        "want": "Chromatic",
-        "have": "Alteration",
-        "league": "Abyss",
-    },
+test_offers: List[Offer] = [
+    Offer(
+        contact_ign="KnifeySpooneyClaw",
+        conversion_rate=0.0893,
+        stock=153,
+        want="Chaos",
+        have="Alteration",
+        league="Abyss",
+    ),
+    Offer(
+        contact_ign="_ZEUS___",
+        conversion_rate=0.0909,
+        stock=10,
+        want="Chaos",
+        have="Chromatic",
+        league="Abyss",
+    ),
+    Offer(
+        contact_ign="MVP_Kefir",
+        conversion_rate=0.087,
+        stock=20,
+        want="Chaos",
+        have="Chromatic",
+        league="Abyss",
+    ),
+    Offer(contact_ign="wreddnuy",
+          conversion_rate=12.0,
+          stock=24,
+          want="Alteration",
+          have="Chaos",
+          league="Abyss",
+          ),
+    Offer(contact_ign="Corailthedog",
+          conversion_rate=11.0,
+          stock=2,
+          want="Alteration",
+          have="Chaos",
+          league="Abyss",
+          ),
+    Offer(contact_ign="Marcvz_GreenAgain",
+          conversion_rate=0.7143,
+          stock=222,
+          want="Alteration",
+          have="Chromatic",
+          league="Abyss",
+          ),
+    Offer(contact_ign="Azure_Dragon",
+          conversion_rate=1.0101,
+          stock=4261,
+          want="Alteration",
+          have="Chromatic",
+          league="Abyss",
+          ),
+    Offer(contact_ign="MinerinoAbysss",
+          conversion_rate=11.1,
+          stock=322,
+          want="Chromatic",
+          have="Chaos",
+          league="Abyss",
+          ),
+    Offer(contact_ign="The_Dank_Fire_God",
+          conversion_rate=11.5,
+          stock=106,
+          want="Chromatic",
+          have="Chaos",
+          league="Abyss",
+          ),
+    Offer(contact_ign="Shioua_ouah",
+          conversion_rate=0.6897,
+          stock=1576,
+          want="Chromatic",
+          have="Alteration",
+          league="Abyss",
+          ),
+    Offer(contact_ign="Ashkeri",
+          conversion_rate=0.7143,
+          stock=449,
+          want="Chromatic",
+          have="Alteration",
+          league="Abyss",
+          ),
 ]
 
-expected_graph = {
-    "Chaos": {
-        "Alteration": [
-            {"contact_ign": "wreddnuy", "conversion_rate": 12.0, "stock": 24},
-            {"contact_ign": "Corailthedog", "conversion_rate": 11.0, "stock": 2},
-        ],
-        "Chromatic": [
-            {"contact_ign": "The_Dank_Fire_God", "conversion_rate": 11.5, "stock": 106},
-            {"contact_ign": "MinerinoAbysss", "conversion_rate": 11.1, "stock": 322},
-        ],
-    },
+expected_graph: Dict[str, Dict[str, List[Offer]]] = {
     "Alteration": {
         "Chaos": [
-            {
-                "contact_ign": "KnifeySpooneyClaw",
-                "conversion_rate": 0.0893,
-                "stock": 153,
-            }
+            Offer(league=LEAGUE, want="Chaos", have="Alteration",
+                  contact_ign="KnifeySpooneyClaw", conversion_rate=0.0893, stock=153),
         ],
         "Chromatic": [
-            {"contact_ign": "Ashkeri", "conversion_rate": 0.7143, "stock": 449},
-            {"contact_ign": "Shioua_ouah", "conversion_rate": 0.6897, "stock": 1576},
+            Offer(league=LEAGUE, want="Chromatic", have="Alteration",
+                  contact_ign="Shioua_ouah", conversion_rate=0.6897, stock=1576),
+            Offer(league=LEAGUE, want="Chromatic", have="Alteration",
+                  contact_ign="Ashkeri", conversion_rate=0.7143, stock=449),
+        ],
+    },
+    "Chaos": {
+        "Alteration": [
+            Offer(league=LEAGUE, want="Alteration", have="Chaos",
+                  contact_ign="wreddnuy", conversion_rate=12.0, stock=24),
+            Offer(league=LEAGUE, want="Alteration", have="Chaos",
+                  contact_ign="Corailthedog", conversion_rate=11.0, stock=2),
+        ],
+        "Chromatic": [
+            Offer(league=LEAGUE, want="Chromatic", have="Chaos",
+                  contact_ign="MinerinoAbysss", conversion_rate=11.1, stock=322),
+            Offer(league=LEAGUE, want="Chromatic", have="Chaos",
+                  contact_ign="The_Dank_Fire_God", conversion_rate=11.5, stock=106),
         ],
     },
     "Chromatic": {
         "Chaos": [
-            {"contact_ign": "_ZEUS___", "conversion_rate": 0.0909, "stock": 10},
-            {"contact_ign": "MVP_Kefir", "conversion_rate": 0.087, "stock": 20},
+            Offer(league=LEAGUE, want="Chaos", have="Chromatic",
+                  contact_ign="_ZEUS___", conversion_rate=0.0909, stock=10),
+            Offer(league=LEAGUE, want="Chaos", have="Chromatic",
+                  contact_ign="MVP_Kefir", conversion_rate=0.087, stock=20),
         ],
         "Alteration": [
-            {"contact_ign": "Azure_Dragon", "conversion_rate": 1.0101, "stock": 4261},
-            {
-                "contact_ign": "Marcvz_GreenAgain",
-                "conversion_rate": 0.7143,
-                "stock": 222,
-            },
+            Offer(league=LEAGUE, want="Alteration", have="Chromatic",
+                  contact_ign="Marcvz_GreenAgain", conversion_rate=0.7143, stock=222),
+            Offer(league=LEAGUE, want="Alteration", have="Chromatic",
+                  contact_ign="Azure_Dragon", conversion_rate=1.0101, stock=4261),
         ],
     },
 }
@@ -113,22 +140,27 @@ expected_graph = {
 
 
 # Expected graph when trading from Chaos to Chaos over one other currency
-expected_graph_small = {
+expected_graph_small: Dict[str, Dict[str, List[Offer]]] = {
     "Chaos": {
         "Alteration": [
-            {"contact_ign": "wreddnuy", "conversion_rate": 12.0, "stock": 100}
+            Offer(contact_ign="wreddnuy", conversion_rate=12.0, stock=100,
+                  league=LEAGUE, have="Chaos", want="Alteration")
         ]
     },
     "Alteration": {
         "Chromatic": [
-            {"contact_ign": "Ashkeri", "conversion_rate": 0.7143, "stock": 449},
-            {"contact_ign": "Shioua_ouah", "conversion_rate": 0.6897, "stock": 1576},
+            Offer(contact_ign="Ashkeri", conversion_rate=0.7143, stock=449,
+                  league=LEAGUE, have="Chaos", want="Alteration"),
+            Offer(contact_ign="Shioua_ouah", conversion_rate=0.6897,
+                  stock=1576, league=LEAGUE, have="Chaos", want="Alteration")
         ]
     },
     "Chromatic": {
         "Chaos": [
-            {"contact_ign": "_ZEUS___", "conversion_rate": 0.0909, "stock": 100},
-            {"contact_ign": "MVP_Kefir", "conversion_rate": 0.087, "stock": 200},
+            Offer(contact_ign="MVP_Kefir", conversion_rate=0.087,
+                  stock=20, league=LEAGUE, have="Chromatic", want="Chaos"),
+            Offer(contact_ign="_ZEUS___", conversion_rate=0.0909,
+                  stock=100, league=LEAGUE, have="Chromatic", want="Chaos"),
         ]
     },
 }
@@ -136,145 +168,117 @@ expected_graph_small = {
 # Expected paths from Chaos to Chaos
 
 
-def expected_paths_small_same_currency():
+def expected_paths_small_same_currency() -> List[List[Offer]]:
     return [
         [
-            {
-                "contact_ign": "wreddnuy",
-                "conversion_rate": 12.0,
-                "stock": 100,
-                "have": "Chaos",
-                "want": "Alteration",
-            },
-            {
-                "contact_ign": "Shioua_ouah",
-                "conversion_rate": 0.6897,
-                "stock": 1576,
-                "have": "Alteration",
-                "want": "Chromatic",
-            },
-            {
-                "contact_ign": "MVP_Kefir",
-                "conversion_rate": 0.087,
-                "stock": 200,
-                "have": "Chromatic",
-                "want": "Chaos",
-            },
+            Offer(
+                contact_ign="wreddnuy",
+                conversion_rate=12.0,
+                stock=100,
+                have="Chaos",
+                want="Alteration",
+                league=LEAGUE
+            ),
+            Offer(
+                contact_ign="Shioua_ouah",
+                conversion_rate=0.6897,
+                stock=1576,
+                have="Alteration",
+                want="Chromatic",
+                league=LEAGUE
+            ),
+            Offer(
+                contact_ign="MVP_Kefir",
+                conversion_rate=0.087,
+                stock=20,
+                have="Chromatic",
+                want="Chaos",
+                league=LEAGUE
+            ),
         ],
         [
-            {
-                "contact_ign": "wreddnuy",
-                "conversion_rate": 12.0,
-                "stock": 100,
-                "have": "Chaos",
-                "want": "Alteration",
-            },
-            {
-                "contact_ign": "Shioua_ouah",
-                "conversion_rate": 0.6897,
-                "stock": 1576,
-                "have": "Alteration",
-                "want": "Chromatic",
-            },
-            {
-                "contact_ign": "_ZEUS___",
-                "conversion_rate": 0.0909,
-                "stock": 100,
-                "have": "Chromatic",
-                "want": "Chaos",
-            },
+            Offer(
+                contact_ign="wreddnuy",
+                conversion_rate=12.0,
+                stock=100,
+                have="Chaos",
+                want="Alteration",
+                league=LEAGUE
+            ),
+            Offer(
+                contact_ign="Shioua_ouah",
+                conversion_rate=0.6897,
+                stock=1576,
+                have="Alteration",
+                want="Chromatic",
+                league=LEAGUE
+            ),
+            Offer(
+                contact_ign="_ZEUS___",
+                conversion_rate=0.0909,
+                stock=100,
+                have="Chromatic",
+                want="Chaos",
+                league=LEAGUE
+            )
         ],
         [
-            {
-                "contact_ign": "wreddnuy",
-                "conversion_rate": 12.0,
-                "stock": 100,
-                "have": "Chaos",
-                "want": "Alteration",
-            },
-            {
-                "contact_ign": "Ashkeri",
-                "conversion_rate": 0.7143,
-                "stock": 449,
-                "have": "Alteration",
-                "want": "Chromatic",
-            },
-            {
-                "contact_ign": "MVP_Kefir",
-                "conversion_rate": 0.087,
-                "stock": 200,
-                "have": "Chromatic",
-                "want": "Chaos",
-            },
+            Offer(
+                contact_ign="wreddnuy",
+                conversion_rate=12.0,
+                stock=100,
+                have="Chaos",
+                want="Alteration",
+                league=LEAGUE
+            ),
+            Offer(
+                contact_ign="Ashkeri",
+                conversion_rate=0.7143,
+                stock=449,
+                have="Alteration",
+                want="Chromatic",
+                league=LEAGUE
+            ),
+            Offer(
+                contact_ign="MVP_Kefir",
+                conversion_rate=0.087,
+                stock=200,
+                have="Chromatic",
+                want="Chaos",
+                league=LEAGUE
+            ),
         ],
         [
-            {
-                "contact_ign": "wreddnuy",
-                "conversion_rate": 12.0,
-                "stock": 100,
-                "have": "Chaos",
-                "want": "Alteration",
-            },
-            {
-                "contact_ign": "Ashkeri",
-                "conversion_rate": 0.7143,
-                "stock": 449,
-                "have": "Alteration",
-                "want": "Chromatic",
-            },
-            {
-                "contact_ign": "_ZEUS___",
-                "conversion_rate": 0.0909,
-                "stock": 100,
-                "have": "Chromatic",
-                "want": "Chaos",
-            },
+            Offer(
+                contact_ign="wreddnuy",
+                conversion_rate=12.0,
+                stock=100,
+                have="Chaos",
+                want="Alteration",
+                league=LEAGUE
+            ),
+            Offer(
+                contact_ign="Ashkeri",
+                conversion_rate=0.7143,
+                stock=449,
+                have="Alteration",
+                want="Chromatic",
+                league=LEAGUE
+            ),
+            Offer(
+                contact_ign="_ZEUS___",
+                conversion_rate=0.0909,
+                stock=100,
+                have="Chromatic",
+                want="Chaos",
+                league=LEAGUE
+            )
         ],
     ]
 
 
 def expected_profitable_paths_small_same_currency():
     return []
-
-
-# Expected paths from Chaos to Chromatics
-# This is not really relevant to us, since we only care about trade paths between the same currency in order to
-# guarantee easily comparable results. However, it's good to make sure that the path exploration also works for this
-# edge case
-expected_profitable_paths_small_different_currency = [
-    [
-        {
-            "contact_ign": "wreddnuy",
-            "conversion_rate": 12.0,
-            "stock": 100,
-            "have": "Chaos",
-            "want": "Alteration",
-        },
-        {
-            "contact_ign": "Shioua_ouah",
-            "conversion_rate": 0.6897,
-            "stock": 1576,
-            "have": "Alteration",
-            "want": "Chromatic",
-        },
-    ],
-    [
-        {
-            "contact_ign": "wreddnuy",
-            "conversion_rate": 12.0,
-            "stock": 100,
-            "have": "Chaos",
-            "want": "Alteration",
-        },
-        {
-            "contact_ign": "Ashkeri",
-            "conversion_rate": 0.7143,
-            "stock": 449,
-            "have": "Alteration",
-            "want": "Chromatic",
-        },
-    ],
-]
 
 
 expected_conversion = {
@@ -284,30 +288,30 @@ expected_conversion = {
     "ending": 5,
     "winnings": -3,
     "transactions": [
-        {
-            "contact_ign": "wreddnuy",
-            "from": "Chaos",
-            "to": "Alteration",
-            "paid": 8,
-            "received": 96,
-            "conversion_rate": 12.0,
-        },
-        {
-            "contact_ign": "Shioua_ouah",
-            "from": "Alteration",
-            "to": "Chromatic",
-            "paid": 96,
-            "received": 66,
-            "conversion_rate": 0.6897,
-        },
-        {
-            "contact_ign": "MVP_Kefir",
-            "from": "Chromatic",
-            "to": "Chaos",
-            "paid": 66,
-            "received": 5,
-            "conversion_rate": 0.087,
-        },
+        Edge(offer=Offer(
+            contact_ign="wreddnuy",
+            want="Alteration",
+            have="Chaos",
+            conversion_rate=12.0,
+            league=LEAGUE,
+            stock=100
+        ), paid=8, received=96),
+        Edge(offer=Offer(
+            contact_ign="Shioua_ouah",
+            want="Chromatic",
+            have="Alteration",
+            conversion_rate=0.6897,
+            league=LEAGUE,
+            stock=1576
+        ), paid=96, received=66),
+        Edge(offer=Offer(
+            contact_ign="MVP_Kefir",
+            want="Chaos",
+            have="Chromatic",
+            conversion_rate=0.087,
+            league=LEAGUE,
+            stock=20
+        ), paid=66, received=5),
     ],
 }
 
@@ -326,22 +330,12 @@ class GraphTest(unittest.TestCase):
         self.assertListEqual(
             expected_profitable_paths_small_same_currency(), paths_small_same_currency
         )
-        paths_small_different_currency = find_paths(
-            expected_graph_small.copy(), "Chaos", "Chromatic", user_config
-        )
-        self.assertListEqual(
-            expected_profitable_paths_small_different_currency,
-            paths_small_different_currency,
-        )
 
     def test_is_profitable(self):
         path = expected_paths_small_same_currency()[0]
         self.assertEqual(False, is_profitable(path))
 
-    def test_build_conversions(self):
+    def test_build_non_profitable_conversions(self):
         path = expected_paths_small_same_currency()[0]
         conversion = build_conversion(path, user_config)
-        self.assertEqual(None, conversion)
-
-    def test_stock_equalization(self):
-        pass
+        self.assertEqual(expected_conversion, conversion)
