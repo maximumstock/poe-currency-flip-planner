@@ -8,6 +8,7 @@ import numpy as np
 from asyncio_throttle import Throttler
 
 from src.commons import filter_large_outliers
+from src.core.backends.offer import Offer
 from src.core.backends.task import Task, TaskException
 from src.trading.items import ItemList
 
@@ -22,7 +23,7 @@ class PoeOfficial:
     def __init__(self, item_list: ItemList):
         self.item_list = item_list
 
-    async def fetch_offer_async(self, client_session: aiohttp.ClientSession, task: Task):
+    async def fetch_offer_async(self, client_session: aiohttp.ClientSession, task: Task) -> List[Offer]:
 
         offer_ids: List[str] = []
         query_id = None
@@ -50,6 +51,7 @@ class PoeOfficial:
 
         try:
             if len(offer_ids) != 0:
+                # Fetching offer data is rate-limited by 12:4:10,16:12:300
                 id_string = ",".join(offer_ids[:self.max_offers_per_request])
                 url = "http://www.pathofexile.com/api/trade/fetch/{}?query={}&exchange".format(
                     id_string, query_id)
@@ -59,10 +61,13 @@ class PoeOfficial:
                     raise TaskException()
                 json = await response.json()
                 raw_offers = json["result"]
-                offers = PoeOfficial.post_process_offers(raw_offers, task.have, task.want)
-                offers = offers[:task.limit]
 
-            return {"offers": offers, "want": task.want, "have": task.have, "league": task.league}
+                offers = [PoeOfficial.map_offers_details(x) for x in raw_offers]
+                offers = filter_large_outliers(offers)[:task.limit]
+                offers = [Offer(task.league, task.have, task.want, x["contact_ign"],
+                                x["conversion_rate"], x["stock"]) for x in offers]
+
+            return offers
         except Exception as e:
             logging.debug("Rate limited during data: {} -> {}".format(task.have, task.want))
             raise TaskException()
@@ -73,14 +78,6 @@ class PoeOfficial:
     """
     Private helpers below
     """
-
-    @staticmethod
-    def post_process_offers(raw_offers: List[Dict], have: str, want: str) -> List[Dict]:
-        # Extract relevant offer data from nested JSON into dictionary
-        offers = [PoeOfficial.map_offers_details(x) for x in raw_offers]
-        offers = filter_large_outliers(offers)
-
-        return offers
 
     @staticmethod
     def map_offers_details(offer_details):

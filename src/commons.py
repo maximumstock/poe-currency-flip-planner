@@ -1,5 +1,5 @@
 import logging
-from typing import List, Dict
+from typing import List, Dict, Tuple
 import numpy as np
 
 league_names = ["Delirium", "Hardcore Delirium", "Standard", "Hardcore"]
@@ -26,3 +26,10 @@ def filter_large_outliers(offers: List[Dict]) -> List[Dict]:
 def init_logger(debug: bool):
     level = logging.DEBUG if debug else logging.INFO
     logging.basicConfig(level=level, format='%(message)s')
+
+
+def load_excluded_traders():
+    default_path = "config/excluded_traders.txt"
+    with open(default_path, "r") as f:
+        excluded_traders = [x.strip() for x in f.readlines()]
+        return excluded_traders

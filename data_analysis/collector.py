@@ -1,23 +1,31 @@
-import pickle
 import argparse
 from datetime import datetime
 from src.pathfinder import PathFinder
 from src.core.backends.poetrade import PoeTrade
 from src.core.backends.poeofficial import PoeOfficial
 from src.trading import ItemList
-from src.commons import league_names
+from src.commons import league_names, load_excluded_traders, init_logger
 from src.config.user_config import UserConfig
+from dataclasses import dataclass
+import json
+
+
+@dataclass
+class CollectorConfig:
+    league: str
+    path: str
+    fullbulk: bool
+    use_filter: bool
 
 
 def gen_filename() -> str:
     timestamp = str(datetime.now()).split(".")[0]
     for i in ["-", ":", " "]:
         timestamp = timestamp.replace(i, "_")
-    return "{}.pickle".format(timestamp)
+    return "{}.json".format(timestamp)
 
 
-def run():
-
+def parse_args() -> CollectorConfig:
     parser = argparse.ArgumentParser(
         description="data collection tool for PathFinder class")
     parser.add_argument(
@@ -44,30 +52,36 @@ def run():
         help="Whether to disable item pair filters")
 
     arguments = parser.parse_args()
-    league = arguments.league
-    path = arguments.path
-    use_filter = False if arguments.nofilter else True
-    config = {"fullbulk": arguments.fullbulk}
-    item_list = ItemList.load_from_file()
-    default_backend = PoeTrade(item_list)
-    backend = default_backend
-    chosen_currencies = item_list.get_item_list_for_backend(backend, config)
-    # Load user config
-    user_config = UserConfig.from_file()
 
-    # Load excluded trader list
-    with open("config/excluded_traders.txt", "r") as f:
-        excluded_traders = [x.strip() for x in f.readlines()]
+    return CollectorConfig(
+        league=arguments.league,
+        path=arguments.path,
+        fullbulk=arguments.fullbulk,
+        use_filter=False if arguments.nofilter else True
+    )
 
-    p = PathFinder(league, chosen_currencies, backend, user_config, excluded_traders,
-                   use_filter)
-    p.run(3)
 
-    filename = "{}/{}".format(path, gen_filename())
-    with open(filename, "wb") as f:
-        data = p.prepickle()
-        pickle.dump(data, f)
+class Collector:
+
+    def run(self):
+        item_list = ItemList.load_from_file()
+        user_config = UserConfig.from_file()
+        # By default,
+        default_backend = PoeTrade(item_list)
+
+        params = parse_args()
+        item_pairs = user_config.get_item_pairs() if params.use_filter else item_list.get_item_list_for_backend(
+            default_backend, {"fullbulk": params.fullbulk})
+
+        p = PathFinder(params.league, item_pairs, user_config)
+        p.run(2)
+
+        filename = "{}/{}".format(params.path, gen_filename())
+        with open(filename, "w") as f:
+            data = p.prepickle()
+            json.dump(data, f)
 
 
 if __name__ == "__main__":
-    run()
+    init_logger(True)
+    (Collector()).run()

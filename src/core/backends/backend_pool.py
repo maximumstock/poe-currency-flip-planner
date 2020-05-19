@@ -7,6 +7,7 @@ from typing import Any, Dict, List, Tuple
 import aiohttp
 from asyncio_throttle import Throttler
 
+from src.core.backends.offer import Offer
 from src.core.backends.poeofficial import PoeOfficial
 from src.core.backends.poetrade import PoeTrade
 from src.core.backends.task import Task, TaskException
@@ -31,6 +32,9 @@ class BackendPoolWorker:
         self.work_index = dict()
 
     def pick_tasks(self, queue: asyncio.Queue, n_tasks: int) -> List[Task]:
+        # TODO worker must support the items in the task in order to work on it
+        # need some additional item_list checks and some asyncio.Queue wrapper
+        # that makes sure task distribution happens correctly
         tasks: List[Task] = []
 
         for i in range(n_tasks):
@@ -67,11 +71,12 @@ class BackendPoolWorker:
                     failed_task = self.work_index[idx]
                     logging.debug("{}: Reschedule task: {} -> {}".format(self.backend.name(),
                                                                          failed_task.have, failed_task.want))
+                    logging.debug(result)
                     queue.put_nowait(failed_task)
                     self.counter = self.counter - 1
                     self.just_failed = True
                 else:
-                    self.results.append(result)
+                    self.results.extend(result)
 
             self.work_index.clear()
 
@@ -98,7 +103,7 @@ class BackendPool:
         ]
 
     def schedule(self, league: str, item_pairs: List[Tuple[str, str]],
-                 item_list: ItemList, limit: int = 10) -> List[Any]:
+                 item_list: ItemList, limit: int = 10) -> List[Offer]:
 
         for p in item_pairs:
             new_task = Task(league, p[0], p[1], limit, False)
@@ -107,11 +112,16 @@ class BackendPool:
         coroutines = [backend.work(self.queue, self.client_session) for backend in self.backends]
 
         (done, _pending) = self.event_loop.run_until_complete(asyncio.wait(coroutines))
-        results = [x.result() for x in done]
+        results: List[List[Dict]] = [x.result() for x in done]
 
         self.event_loop.run_until_complete((self.event_loop.create_task(self.client_session.close())))
 
         for worker in self.backends:
             logging.debug("Worker {}: {} tasks".format(worker.backend.name(), worker.counter))
 
-        return results[0]
+        # Restructure list of lists to a single list of offer dicts
+        derp: List[Offer] = []
+        for r in results:
+            derp.extend(r)
+
+        return derp

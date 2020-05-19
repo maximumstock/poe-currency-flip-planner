@@ -125,10 +125,17 @@ class ItemList:
         except Exception:
             raise UnsupportedItemException("{} backend does not support item {}".format(backend, name))
 
+    def is_item_supported(self, name: str) -> bool:
+        try:
+            # Some backend that supports it exists
+            return len(self.items[name].ids) > 0
+        except Exception:
+            raise UnsupportedItemException("{} backend does not support item {}".format(name))
+
     def ensure_items_are_supported(self, requested_item_pairs: List[Tuple[str, str]], backend: Any) -> bool:
         for pair in requested_item_pairs:
-            self.map_item(pair[0], backend.name())
-            self.map_item(pair[1], backend.name())
+            self.is_item_supported(pair[0])
+            self.is_item_supported(pair[1])
 
         return True
 

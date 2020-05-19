@@ -6,6 +6,7 @@ from typing import Dict, List, Optional, Tuple
 from src.config.user_config import UserConfig
 from src.core import graph
 from src.core.backends.backend_pool import BackendPool
+from src.core.backends.offer import Offer
 from src.trading import ItemList
 
 
@@ -16,7 +17,7 @@ def format_conversions(conversions) -> str:
 
 
 def format_conversion(conversion) -> str:
-    msg = "{} -> {} -- {} ({} transactions) ".format(
+    msg = "{} -> {} -- {} ({} transactions)".format(
         conversion["from"],
         conversion["to"],
         conversion["winnings"],
@@ -34,30 +35,24 @@ class PathFinder:
     def __init__(self,
                  league,
                  item_pairs,
-                 backend,
                  user_config: UserConfig,
                  excluded_traders=[],
-                 use_filter=True):
+                 ):
         self.league = league
         self.item_pairs = item_pairs
-        self.backend = backend
         self.user_config = user_config
         self.excluded_traders = excluded_traders
-        self.use_filter = use_filter
 
-        # Private internal fields to store partial results
+        # Internal fields to store partial results
         self.offers: List = []
         self.graph: Dict = {}
         self.results: Dict = {}
         self.timestamp = str(datetime.now()).split(".")[0]
+
+        # Internal fields
         self.item_list = ItemList.load_from_file()
         self.logging = True
-        self.pair_filter = self.user_config.get_item_pairs()
         self.backend_pool = BackendPool(self.item_list)
-
-        # Ensure all specified items actually exist
-        self.item_list.ensure_items_are_supported(self.item_pairs, self.backend)
-        self.item_list.ensure_items_are_supported(self.pair_filter, self.backend)
 
     def prepickle(self) -> Dict:
         return {
@@ -69,29 +64,15 @@ class PathFinder:
             "results": self.results,
         }
 
-    def _filter_traders(self, offers: List[Dict], excluded_traders=[]) -> List:
+    def _filter_traders(self, offers: List[Offer], excluded_traders) -> List:
         excluded_traders = [name.lower() for name in excluded_traders]
-        for idx in range(len(offers)):
-            if offers[idx] is not None:
-                offers[idx]["offers"] = list(
-                    filter(
-                        lambda x: x["contact_ign"].lower() not in excluded_traders,
-                        offers[idx]["offers"],
-                    ))
-        return offers
-
-    def _filter_pairs(self, pairs: List[Tuple[str, str]], allowed_pairs: List[Tuple[str, str]]):
-        return [(x[0], x[1]) for x in allowed_pairs]
+        return list(filter(lambda x: x.contact_ign.lower() not in excluded_traders, offers))
 
     def _fetch(self):
         t_start = time.time()
 
-        # Filter out unwanted item pairs if filtering is enabled
-        if self.use_filter is True:
-            self.item_pairs = self._filter_pairs(self.item_pairs, self.pair_filter)
-
-        logging.info("Fetching {} offers for {} pairs | Filters {}".format(
-            self.league, len(self.item_pairs), "Enabled" if self.use_filter else "Disabled"))
+        logging.info("Fetching {} offers for {} pairs".format(
+            self.league, len(self.item_pairs)))
 
         self.offers = self.backend_pool.schedule(self.league, self.item_pairs, self.item_list)
 

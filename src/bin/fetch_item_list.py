@@ -3,6 +3,9 @@ import pickle
 import sys
 
 from src.trading.items import ItemList
+from src.commons import init_logger
+
+init_logger(False)
 
 item_list = ItemList.generate()
 
