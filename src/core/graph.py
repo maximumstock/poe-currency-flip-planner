@@ -146,10 +146,6 @@ def build_conversion(path: List[Offer], user_config: UserConfig) -> Optional[Dic
     if len(equalized_path) is 0:
         return None
 
-    # Filter conversions that do not yield any profit
-    if equalized_path[-1].received - equalized_path[0].paid <= 0:
-        return None
-
     return {
         "from": equalized_path[0].have,
         "to": equalized_path[-1].want,
