@@ -44,9 +44,9 @@ def log_conversion(c):
         logging.info("\t\t@{} Hi, I'd like to buy your {} {} for {} {} in {}. ({}x)".format(
             t.contact_ign,
             t.received,
-            c["to"],
+            t.want,
             t.paid,
-            c["from"],
+            t.have,
             t.league,
             t.conversion_rate,
         ))
