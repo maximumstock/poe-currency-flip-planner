@@ -2,6 +2,7 @@ import math
 from collections import deque
 from dataclasses import dataclass
 from typing import Dict, List, Optional
+import copy
 
 from src.config.user_config import UserConfig
 from src.core.offer import Offer
@@ -24,7 +25,7 @@ def build_graph(offers: List[Offer]) -> Dict[str, Dict[str, List[Offer]]]:
         if not offer.want in graph[offer.have].keys():
             graph[offer.have][offer.want] = list()
 
-        graph[offer.have][offer.want].append(offer)
+        graph[offer.have][offer.want].append(copy.copy(offer))
 
     return graph
 

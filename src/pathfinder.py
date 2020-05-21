@@ -2,6 +2,7 @@ import logging
 import time
 from datetime import datetime
 from typing import Dict, List, Optional, Tuple
+import jsonpickle
 
 from src.config.user_config import UserConfig
 from src.core import graph
@@ -54,15 +55,15 @@ class PathFinder:
         self.logging = True
         self.backend_pool = BackendPool(self.item_list)
 
-    def prepickle(self) -> Dict:
-        return {
+    def prepickle(self) -> str:
+        return jsonpickle.encode({
             "timestamp": self.timestamp,
             "league": self.league,
             "item_pairs": self.item_pairs,
             "offers": self.offers,
             "graph": self.graph,
             "results": self.results,
-        }
+        }, unpicklable=False, indent=2)
 
     def _filter_traders(self, offers: List[Offer], excluded_traders) -> List:
         excluded_traders = [name.lower() for name in excluded_traders]
@@ -84,7 +85,6 @@ class PathFinder:
 
     def _build_graph(self):
         t_start = time.time()
-        self.offers = [x for x in self.offers if x is not None]
         self.graph = graph.build_graph(self.offers)
         t_end = time.time()
 

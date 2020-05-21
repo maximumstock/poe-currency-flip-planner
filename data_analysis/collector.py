@@ -79,7 +79,7 @@ class Collector:
         filename = "{}/{}".format(params.path, gen_filename())
         with open(filename, "w") as f:
             data = p.prepickle()
-            json.dump(data, f)
+            f.write(data)
 
 
 if __name__ == "__main__":
