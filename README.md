@@ -2,7 +2,7 @@
 
 ![Continuous Integration](https://github.com/maximumstock/poe-currency-flip-planner/workflows/Continuous%20Integration/badge.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![License: MIT](https://img.shields.io/badge/Version-0.3.1-orange.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/Version-0.3.2-orange.svg)](https://opensource.org/licenses/MIT)
 
 A proof-of-concept finder for short-term arbitrage opportunities in
 [Path of Exile](https://www.pathofexile.com).
