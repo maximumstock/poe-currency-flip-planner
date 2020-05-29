@@ -22,7 +22,7 @@ idna==2.9
 importlib-metadata==1.6.0 ; python_version < '3.8'
 ipykernel==5.3.0
 ipython-genutils==0.2.0
-ipython==7.14.0
+ipython==7.15.0
 ipywidgets==7.4.2
 jedi==0.17.0
 jinja2==2.11.2
