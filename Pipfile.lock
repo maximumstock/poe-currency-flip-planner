@@ -367,11 +367,11 @@
         },
         "marshmallow": {
             "hashes": [
-                "sha256:c2673233aa21dde264b84349dc2fd1dce5f30ed724a0a00e75426734de5b84ab",
-                "sha256:f88fe96434b1f0f476d54224d59333eba8ca1a203a2695683c1855675c4049a7"
+                "sha256:35ee2fb188f0bd9fc1cf9ac35e45fd394bd1c153cee430745a465ea435514bd5",
+                "sha256:9aa20f9b71c992b4782dad07c51d92884fd0f7c5cb9d3c737bea17ec1bad765f"
             ],
             "index": "pypi",
-            "version": "==3.6.0"
+            "version": "==3.6.1"
         },
         "matplotlib": {
             "hashes": [
