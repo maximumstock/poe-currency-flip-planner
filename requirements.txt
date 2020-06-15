@@ -54,7 +54,7 @@ pluggy==0.13.1
 prometheus-client==0.7.1
 prompt-toolkit==3.0.5
 ptyprocess==0.6.0
-py==1.8.1
+py==1.8.2
 pycodestyle==2.4.0
 pyflakes==2.0.0
 pygments==2.6.1
