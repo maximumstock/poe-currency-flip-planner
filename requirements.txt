@@ -33,7 +33,7 @@ jupyter-core==4.6.3
 kiwisolver==1.2.0
 markupsafe==1.1.1
 marshmallow==3.6.1
-matplotlib==3.2.1
+matplotlib==3.2.2
 mccabe==0.6.1
 mistune==0.8.4
 more-itertools==8.4.0
