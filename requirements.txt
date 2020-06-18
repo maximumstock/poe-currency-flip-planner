@@ -45,7 +45,7 @@ nbformat==5.0.7
 notebook==5.7.8
 numpy==1.18.5
 packaging==20.4
-pandas==1.0.4
+pandas==1.0.5
 pandocfilters==1.4.2
 parso==0.7.0
 pexpect==4.8.0
