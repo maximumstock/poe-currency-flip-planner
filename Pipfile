@@ -86,6 +86,7 @@ Pygments = "==2.6.1"
 Send2Trash = "==1.5.0"
 asyncio-throttle = "*"
 marshmallow = "*"
+jsonpickle = "*"
 
 [requires]
 python_version = "3.7"
