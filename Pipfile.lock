@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "67a8965dca019a3ac09cde438265f241006ea906abef74f056abafbd435c483a"
+            "sha256": "9314f7ef4cb77cea8d9c424733c8e43cae2e44ec363bc0b596921b7c99b8e815"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -290,11 +290,11 @@
         },
         "jupyter-client": {
             "hashes": [
-                "sha256:3a32fa4d0b16d1c626b30c3002a62dfd86d6863ed39eaba3f537fade197bb756",
-                "sha256:cde8e83aab3ec1c614f221ae54713a9a46d3bf28292609d2db1b439bef5a8c8e"
+                "sha256:5099cda1ac86b27b655a715c51e15bdc8bd9595b2b17adb41a2bd446bbbafc4a",
+                "sha256:9f0092a0951d878e7521924899e1fba6f689c7a99d43735a4c0bc05c6f311452"
             ],
             "index": "pypi",
-            "version": "==6.1.3"
+            "version": "==6.1.5"
         },
         "jupyter-console": {
             "hashes": [
