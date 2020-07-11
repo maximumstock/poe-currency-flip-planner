@@ -2,7 +2,7 @@ import logging
 from typing import List, Dict, Tuple
 import numpy as np
 
-league_names = ["Delirium", "Hardcore Delirium", "Standard", "Hardcore"]
+league_names = ["Harvest", "Hardcore Harvest", "Standard", "Hardcore"]
 
 
 def filter_large_outliers(offers: List[Dict]) -> List[Dict]:
