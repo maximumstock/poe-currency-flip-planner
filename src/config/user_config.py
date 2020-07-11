@@ -111,6 +111,8 @@ class UserConfig:
         if not os.path.exists(file_path):
             file_path = DEFAULT_CONFIG_DEFAULT_FILE_PATH
 
+        file_path = os.path.dirname(os.path.abspath(__file__)) + "/../../" + file_path
+
         try:
             with open(file_path, "r") as f:
                 data = json.loads(f.read())

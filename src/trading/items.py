@@ -20,6 +20,7 @@ from dataclasses import dataclass
 from typing import List, Dict, Tuple, Any
 import pickle
 import itertools
+import os
 
 
 class UnsupportedItemException(Exception):
@@ -96,7 +97,7 @@ class ItemList:
     @staticmethod
     def load_from_file(path: str = None) -> ItemList:
         if path is None:
-            path = "assets/items.pickle"
+            path = os.path.dirname(os.path.abspath(__file__)) + "/../../assets/items.pickle"
 
         with open(path, "rb") as f:
             return pickle.load(f)
