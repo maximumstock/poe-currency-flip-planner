@@ -23,9 +23,22 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
       - name: Setup Poetry
-        uses: Gr1N/setup-poetry@v2
+        uses: dschep/install-poetry-action@v1.2
         with:
           python_version: ${{ matrix.python-version }}
+
+      - name: Cache Poetry
+        uses: actions/cache@v1
+        id: cache
+        with:
+          path: ~/.virtualenvs
+          key: poetry-$
+          restore-keys: |
+            poetry-$
+
+      - name: Install dependencies
+        run: poetry install
+        if: steps.cache.outputs.cache-hit != 'true'
 
       - name: Tests
         run: poetry run python -m pytest
