@@ -46,18 +46,18 @@ chains that yield profit.
 ## Installation
 
 This tool requires Python >=3.7.
-For installing dependencies, either use [Pipenv](https://github.com/pypa/pipenv)
+For installing dependencies, either use [poetry](https://python-poetry.org)
 or regular Python 3 virtual environments, as described below.
 
 1. Clone the respository: `git clone https://github.com/maximumstock/poe-currency-flip-planner.git`
 1. Navigate into the project folder: `cd poe-currency-flip-planner`
 
-### Via Pipenv
+### Via Poetry
 
-Assuming `pipenv` is installed:
+Assuming `poetry` is installed:
 
-1. Enter a new pipenv shell session: `pipenv shell`
-1. Install all dependencies: `pipenv install`
+1. Enter a new pipenv shell session: `poetry shell`
+1. Install all dependencies: `poetry install`
 
 ### Via Python Virtual Environment
 
@@ -76,21 +76,21 @@ You can always check them out via `python cli.py --help`.
 ```
 > python cli.py --help
 usage: cli.py [-h] [--league LEAGUE] [--currency CURRENCY] [--limit LIMIT]
-              [--fullbulk] [--nofilter] [--poetrade]
+              [--fullbulk] [--nofilter] [--debug]
 
 CLI interface for PathFinder
 
 optional arguments:
   -h, --help           show this help message and exit
-  --league LEAGUE      League specifier, ie. 'Synthesis', 'Hardcore Synthesis'
-                       or 'Flashback Event (BRE001)'. Defaults to 'Metamorph'.
+  --league LEAGUE      League specifier, ie. 'Harvest', 'Hardcore Harvest'
+                       or 'Flashback Event (BRE001)'. Defaults to 'Harvest'.
   --currency CURRENCY  Full name of currency to flip, ie. 'Cartographer's
                        Chisel, or 'Chaos Orb'. Defaults to all currencies.
   --limit LIMIT        Limit the number of displayed conversions. Defaults to
                        5.
   --fullbulk           Use all supported bulk items
   --nofilter           Disable item pair filters
-  --poetrade           Use poe.trade instead of pathofexile.com/trade
+  --debug              Enables debug logging
 ```
 
 By default, we use [pathofexile.com/trade](https://pathofexile.com/trade/exchange), but

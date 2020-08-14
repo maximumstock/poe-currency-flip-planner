@@ -1,8 +1,0 @@
-* TODO [#B] Refactor - Unify CLI and collector argument parsing behaviour/functionality
-* TODO [#B] Analysis - Make script more intelligent to detect how large the heatmap has to be (remove basic attribute in item list)
-* TODO [#B] Analysis - Collect more, broader offer data
-	- The first 5 offers per edge is not enough to collect data past price-fixing offers -> go broader
-	* Find a new file output format, JSON for now should be fine
-	  - Raw offer data with timestamps -> simplify pipeline, removes need for merging
-		- Persisting graph data is not necessary; only increases file size; can easily be reproduced
-	- The final goal is to build a model that helps us filter out price-fixing offers
