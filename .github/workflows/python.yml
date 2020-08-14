@@ -29,10 +29,6 @@ jobs:
           poetry_version: 1.0
           args: install
 
-      - name: Dependencies
-        run: |
-          poetry install --dev
-
       - name: Tests
         run: |
           poetry run python -m pytest
