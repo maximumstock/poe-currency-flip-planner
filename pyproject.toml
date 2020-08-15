@@ -27,6 +27,7 @@ notebook = "^5.7.8"
 numpy = "^1.19.1"
 pandas = "^1.1.0"
 scipy = "^1.5.2"
+yapf = "^0.30.0"
 
 [build-system]
 requires = ["poetry>=0.12"]

@@ -17,7 +17,8 @@ class PoeTrade:
     def __init__(self, item_list: ItemList):
         self.item_list = item_list
 
-    async def fetch_offer_async(self, client_session: aiohttp.ClientSession, task: Task) -> List[Offer]:
+    async def fetch_offer_async(self, client_session: aiohttp.ClientSession,
+                                task: Task) -> List[Offer]:
         url = "https://currency.poe.trade/search"
         params = {
             "league": task.league,
@@ -29,16 +30,19 @@ class PoeTrade:
         response = await client_session.request("GET", url=url, params=params)
         html = await response.text()
 
-        if response.status is not 200:
-            logging.debug("Error during poe.trade fetch: Status {}".format(response.status))
+        if response.status != 200:
+            logging.debug("Error during poe.trade fetch: Status {}".format(
+                response.status))
             logging.debug(html)
             raise TaskException()
 
         offers = PoeTrade.parse_conversion_offers(html)
         offers = filter_large_outliers(offers)[:task.limit]
 
-        offers = [Offer(task.league, task.have, task.want, x["contact_ign"],
-                        x["conversion_rate"], x["stock"]) for x in offers]
+        offers = [
+            Offer(task.league, task.have, task.want, x["contact_ign"],
+                  x["conversion_rate"], x["stock"]) for x in offers
+        ]
 
         return offers
 

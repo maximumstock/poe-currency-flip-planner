@@ -1,11 +1,8 @@
-import asyncio
 import logging
 import urllib
 from typing import Dict, List, Tuple
 
 import aiohttp
-import numpy as np
-from asyncio_throttle import Throttler
 
 from src.commons import filter_large_outliers
 from src.core.offer import Offer
@@ -23,7 +20,8 @@ class PoeOfficial:
     def __init__(self, item_list: ItemList):
         self.item_list = item_list
 
-    async def fetch_offer_async(self, client_session: aiohttp.ClientSession, task: Task) -> List[Offer]:
+    async def fetch_offer_async(self, client_session: aiohttp.ClientSession,
+                                task: Task) -> List[Offer]:
 
         offer_ids: List[str] = []
         query_id = None
@@ -43,10 +41,13 @@ class PoeOfficial:
         }
 
         try:
-            query_id, offer_ids = await fetch_ids(client_session, offer_id_url, payload)
+            query_id, offer_ids = await fetch_ids(client_session, offer_id_url,
+                                                  payload)
             offers = []
         except Exception as e:
-            logging.debug("Rate limited during ids: {} -> {}".format(task.have, task.want))
+            logging.debug("Rate limited during ids: {} -> {}".format(
+                task.have, task.want))
+            logging.debug("Exception: {}".format(e))
             raise TaskException()
 
         try:
@@ -57,19 +58,25 @@ class PoeOfficial:
                     id_string, query_id)
 
                 response = await client_session.get(url)
-                if response.status is not 200:
+                if response.status != 200:
                     raise TaskException()
                 json = await response.json()
                 raw_offers = json["result"]
 
-                offers = [PoeOfficial.map_offers_details(x) for x in raw_offers]
+                offers = [
+                    PoeOfficial.map_offers_details(x) for x in raw_offers
+                ]
                 offers = filter_large_outliers(offers)[:task.limit]
-                offers = [Offer(task.league, task.have, task.want, x["contact_ign"],
-                                x["conversion_rate"], x["stock"]) for x in offers]
+                offers = [
+                    Offer(task.league, task.have, task.want, x["contact_ign"],
+                          x["conversion_rate"], x["stock"]) for x in offers
+                ]
 
             return offers
         except Exception as e:
-            logging.debug("Rate limited during data: {} -> {}".format(task.have, task.want))
+            logging.debug("Rate limited during data: {} -> {}".format(
+                task.have, task.want))
+            logging.debug("Exception: {}".format(e))
             raise TaskException()
 
     def name(self):

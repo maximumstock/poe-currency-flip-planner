@@ -16,8 +16,10 @@ INT_INFINITY = 1_000_000
 class UserConfigSchema(Schema):
     version = fields.Int()
     assets = fields.Dict(keys=fields.Str(), values=fields.Int())
-    trading = fields.Dict(keys=fields.Str(), values=fields.Nested(
-        TradingConfigItemSchema, allow_none=True), allow_none=True)
+    trading = fields.Dict(keys=fields.Str(),
+                          values=fields.Nested(TradingConfigItemSchema,
+                                               allow_none=True),
+                          allow_none=True)
 
     @post_load
     def make_user_config(self, data, many, partial):
@@ -30,7 +32,8 @@ class UserConfig:
     trading: TradingConfig
     stack_sizes: StackSizeHelper
 
-    def __init__(self, version: int, assets: AssetConfig, trading: TradingConfig):
+    def __init__(self, version: int, assets: AssetConfig,
+                 trading: TradingConfig):
         self.version = version
         self.assets = assets
         self.trading = trading
@@ -44,7 +47,8 @@ class UserConfig:
             - stack sizes, ie. how much you can transfer with one inventory
         """
         # The maximum tradeable volume based on one full inventory
-        max_tradeable_volume = self.stack_sizes.get_maximum_volume_for_item(item)
+        max_tradeable_volume = self.stack_sizes.get_maximum_volume_for_item(
+            item)
         # The maximum volume the user has to trade
         max_sellable_volume = self.assets.get(item, INT_INFINITY)
         # The effective maximum volume that is possible in a trade
@@ -83,7 +87,8 @@ class UserConfig:
 
             # Specific 'trading'.'Chaos Orb'.'sell_for'.'Exalted Orb' config
             # Takes precedence over defaults, so its evaluated later
-            specific_buy_config: Optional[TradingConfigItemSellItem] = sell_config.sell_for.get(buy)
+            specific_buy_config: Optional[
+                TradingConfigItemSellItem] = sell_config.sell_for.get(buy)
             if specific_buy_config is not None:
                 minimum = specific_buy_config.minimum_stock
                 maximum = specific_buy_config.maximum_stock
@@ -111,7 +116,8 @@ class UserConfig:
         if not os.path.exists(file_path):
             file_path = DEFAULT_CONFIG_DEFAULT_FILE_PATH
 
-        file_path = os.path.dirname(os.path.abspath(__file__)) + "/../../" + file_path
+        file_path = os.path.dirname(
+            os.path.abspath(__file__)) + "/../../" + file_path
 
         try:
             with open(file_path, "r") as f:

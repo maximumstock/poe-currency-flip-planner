@@ -10,7 +10,9 @@ class TradingConfigItemSellItem:
     minimum_stock: int
     maximum_stock: int
 
-    def __init__(self, minimum_stock: int = 0, maximum_stock: int = INT_INFINITY):
+    def __init__(self,
+                 minimum_stock: int = 0,
+                 maximum_stock: int = INT_INFINITY):
         self.minimum_stock = minimum_stock
         self.maximum_stock = maximum_stock
 
@@ -29,7 +31,10 @@ class TradingConfigItem:
     maximum_stock: int
     sell_for: Dict[str, Optional[TradingConfigItemSellItem]]
 
-    def __init__(self, sell_for: Dict[str, Optional[TradingConfigItemSellItem]] = {}, minimum_stock: int = 0, maximum_stock: int = INT_INFINITY):
+    def __init__(self,
+                 sell_for: Dict[str, Optional[TradingConfigItemSellItem]] = {},
+                 minimum_stock: int = 0,
+                 maximum_stock: int = INT_INFINITY):
         self.minimum_stock = minimum_stock
         self.maximum_stock = maximum_stock
         self.sell_for = sell_for
@@ -38,8 +43,11 @@ class TradingConfigItem:
 class TradingConfigItemSchema(Schema):
     minimum_stock = fields.Int(allow_none=True, default=0)
     maximum_stock = fields.Int(allow_none=True, default=INT_INFINITY)
-    sell_for = fields.Dict(keys=fields.Str(), values=fields.Nested(
-        TradingConfigItemSellItemSchema, allow_none=True), allow_none=True)
+    sell_for = fields.Dict(keys=fields.Str(),
+                           values=fields.Nested(
+                               TradingConfigItemSellItemSchema,
+                               allow_none=True),
+                           allow_none=True)
 
     @post_load
     def make_trading_config_item(self, data, many, partial):

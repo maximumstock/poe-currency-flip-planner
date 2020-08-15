@@ -1,11 +1,7 @@
-import asyncio
 import unittest
 from typing import List
 
-import aiohttp
-
 from src.commons import init_logger
-from src.core.backends import poeofficial, poetrade
 from src.core.backends.backend_pool import BackendPool
 from src.core.offer import Offer
 from src.trading.items import ItemList
@@ -16,11 +12,12 @@ init_logger(True)
 
 
 class BackendTest(unittest.TestCase):
-
     def test_backend_pool(self):
 
-        item_pairs = [("Chaos Orb", "Exalted Orb"), ("Exalted Orb", "Chaos Orb"),
-                      ("Chaos Orb", "Orb of Fusing"), ("Orb of Fusing", "Exalted Orb")]
+        item_pairs = [("Chaos Orb", "Exalted Orb"),
+                      ("Exalted Orb", "Chaos Orb"),
+                      ("Chaos Orb", "Orb of Fusing"),
+                      ("Orb of Fusing", "Exalted Orb")]
         league = "Standard"
         pool = BackendPool(item_list)
         offers: List[Offer] = pool.schedule(league, item_pairs, item_list)

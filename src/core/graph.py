@@ -1,6 +1,5 @@
 import math
 from collections import deque
-from dataclasses import dataclass
 from typing import Dict, List, Optional
 import copy
 
@@ -19,10 +18,10 @@ def build_graph(offers: List[Offer]) -> Dict[str, Dict[str, List[Offer]]]:
     graph: Dict[str, Dict[str, List[Offer]]] = dict()
 
     for offer in offers:
-        if not offer.have in graph.keys():
+        if offer.have not in graph.keys():
             graph[offer.have] = dict()
 
-        if not offer.want in graph[offer.have].keys():
+        if offer.want not in graph[offer.have].keys():
             graph[offer.have][offer.want] = list()
 
         graph[offer.have][offer.want].append(copy.copy(offer))
@@ -30,7 +29,11 @@ def build_graph(offers: List[Offer]) -> Dict[str, Dict[str, List[Offer]]]:
     return graph
 
 
-def find_paths(graph: Dict[str, Dict[str, List[Offer]]], have: str, want: str, user_config: UserConfig, max_length: int = 3) -> List:
+def find_paths(graph: Dict[str, Dict[str, List[Offer]]],
+               have: str,
+               want: str,
+               user_config: UserConfig,
+               max_length: int = 3) -> List:
     """
     Returns a list of all possible paths from `want` to `have` for a given graph.
     A path is simply a list of transactions between two currency nodes.
@@ -54,7 +57,8 @@ def find_paths(graph: Dict[str, Dict[str, List[Offer]]], have: str, want: str, u
 
         # If a path contains an edge with a stock outside of the user-specified boundaries, prune it
         for edge in next:
-            (minimum, maximum) = user_config.get_stock_boundaries(edge.have, edge.want)
+            (minimum,
+             maximum) = user_config.get_stock_boundaries(edge.have, edge.want)
             if edge.stock < minimum or edge.stock > maximum:
                 continue
 
@@ -91,7 +95,8 @@ def is_profitable(path: List[Dict]):
     return maximum_conversion_rate(path) > 1.0
 
 
-def equalize_stock_differences(path: List[Offer], user_config: UserConfig) -> List[Edge]:
+def equalize_stock_differences(path: List[Offer],
+                               user_config: UserConfig) -> List[Edge]:
     """
     Finds the maximum flow for a found path and alters the conversion edges accordingly.
     Also rounds up the trading values to trade for full pieces of currency.
@@ -101,7 +106,8 @@ def equalize_stock_differences(path: List[Offer], user_config: UserConfig) -> Li
 
     # Limit the first transaction's volume based on maximum trading volume
     first_edge = edges[0]
-    sell_trading_cap = user_config.get_maximum_trade_volume_for_item(first_edge.have)
+    sell_trading_cap = user_config.get_maximum_trade_volume_for_item(
+        first_edge.have)
     buy_trading_cap = math.floor(first_edge.conversion_rate * sell_trading_cap)
     first_edge.stock = min(first_edge.stock, buy_trading_cap)
 
@@ -120,8 +126,8 @@ def equalize_stock_differences(path: List[Offer], user_config: UserConfig) -> Li
             left = edges[i - 1]
             right = edges[i]
 
-            if (left.received == 0 or left.paid == 0
-                    or right.paid == 0 or right.received == 0):
+            if (left.received == 0 or left.paid == 0 or right.paid == 0
+                    or right.received == 0):
                 return []
 
             if left.received > right.paid:
@@ -137,14 +143,15 @@ def equalize_stock_differences(path: List[Offer], user_config: UserConfig) -> Li
     return edges
 
 
-def build_conversion(path: List[Offer], user_config: UserConfig) -> Optional[Dict]:
+def build_conversion(path: List[Offer],
+                     user_config: UserConfig) -> Optional[Dict]:
     """
     Simplifies a found path into a dictionary structure to handle the found data
     for easily.
     """
     equalized_path: List[Edge] = equalize_stock_differences(path, user_config)
 
-    if len(equalized_path) is 0:
+    if len(equalized_path) == 0:
         return None
 
     return {

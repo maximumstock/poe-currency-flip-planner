@@ -29,10 +29,7 @@ class UnsupportedItemException(Exception):
 
 # List of items that people usually sell their non-currency bulk items (eg.
 # maps, div cards, fossils, etc.) for
-bulk_targets = [
-    "Chaos Orb",
-    "Exalted Orb"
-]
+bulk_targets = ["Chaos Orb", "Exalted Orb"]
 
 blacklist = [
     "Scroll of Wisdom",
@@ -70,7 +67,8 @@ class Item:
     is_bulk_target: bool
     category: str
 
-    def __init__(self, name: str, backend: str, item_id: str, is_currency: bool, is_basic: bool, is_bulk_target: bool,
+    def __init__(self, name: str, backend: str, item_id: str,
+                 is_currency: bool, is_basic: bool, is_bulk_target: bool,
                  category: str):
         self.name = name
         self.ids = {backend: item_id}
@@ -97,7 +95,8 @@ class ItemList:
     @staticmethod
     def load_from_file(path: str = None) -> ItemList:
         if path is None:
-            path = os.path.dirname(os.path.abspath(__file__)) + "/../../assets/items.pickle"
+            path = os.path.dirname(
+                os.path.abspath(__file__)) + "/../../assets/items.pickle"
 
         with open(path, "rb") as f:
             return pickle.load(f)
@@ -116,7 +115,9 @@ class ItemList:
                 unsynced_items.append(item)
             for backend in supported_backends:
                 if backend in item.ids.keys():
-                    backend_counts[backend] = (backend_counts[backend] if backend in backend_counts else 0) + 1
+                    backend_counts[backend] = (backend_counts[backend]
+                                               if backend in backend_counts
+                                               else 0) + 1
 
         return backend_counts, unsynced_items
 
@@ -124,45 +125,60 @@ class ItemList:
         try:
             return self.items[name].ids[backend]
         except Exception:
-            raise UnsupportedItemException("{} backend does not support item {}".format(backend, name))
+            raise UnsupportedItemException(
+                "{} backend does not support item {}".format(backend, name))
 
     def is_item_supported(self, name: str) -> bool:
         try:
             # Some backend that supports it exists
             return len(self.items[name].ids) > 0
         except Exception:
-            raise UnsupportedItemException("{} backend does not support item {}".format(name))
+            raise UnsupportedItemException(
+                "backend does not support item {}".format(name))
 
-    def ensure_items_are_supported(self, requested_item_pairs: List[Tuple[str, str]], backend: Any) -> bool:
+    def ensure_items_are_supported(self,
+                                   requested_item_pairs: List[Tuple[str, str]],
+                                   backend: Any) -> bool:
         for pair in requested_item_pairs:
             self.is_item_supported(pair[0])
             self.is_item_supported(pair[1])
 
         return True
 
-    def get_item_list_for_backend(self, backend: Any, config: Dict = {}) -> List[Tuple[str, ...]]:
+    def get_item_list_for_backend(self,
+                                  backend: Any,
+                                  config: Dict = {}) -> List[Tuple[str, ...]]:
         backend_name: str = backend.name()
 
-        supported_items = [i for i in self.items.values() if i.is_supported_by(backend_name)]
+        supported_items = [
+            i for i in self.items.values() if i.is_supported_by(backend_name)
+        ]
 
         if len(supported_items) == 0:
-            raise UnknownBackendException("Unknown backend {}".format(backend_name))
+            raise UnknownBackendException(
+                "Unknown backend {}".format(backend_name))
 
         item_list: List = []
 
         for item in self.items.values():
             if item.is_supported_by(backend_name):
 
-                currency_items = [i.name for i in supported_items if i.is_currency is True]
-                bulk_items = [i.name for i in supported_items if i.is_currency is False]
-                bulk_targets = [i.name for i in supported_items if i.is_bulk_target is True]
+                currency_items = [
+                    i.name for i in supported_items if i.is_currency is True
+                ]
+                bulk_items = [
+                    i.name for i in supported_items if i.is_currency is False
+                ]
+                bulk_targets = [
+                    i.name for i in supported_items if i.is_bulk_target is True
+                ]
 
                 result = list(itertools.permutations(currency_items, 2))
 
                 if config.get("fullbulk") is True:
                     result = result + list(
-                        itertools.product(bulk_targets, bulk_items)
-                    ) + list(itertools.product(bulk_items, bulk_targets))
+                        itertools.product(bulk_targets, bulk_items)) + list(
+                            itertools.product(bulk_items, bulk_targets))
 
                 item_list = result
                 return item_list
@@ -186,7 +202,8 @@ class ItemList:
         return ItemList(item_dict)
 
     @staticmethod
-    def __merge_lists(ground_truth: List[Item], incoming: List[Item]) -> List[Item]:
+    def __merge_lists(ground_truth: List[Item],
+                      incoming: List[Item]) -> List[Item]:
         """
         Try to merge @incoming list of items into @ground_truth list of items
         """
@@ -231,7 +248,8 @@ def poetrade() -> List[Item]:
     soup = BeautifulSoup(html, "html.parser")
 
     currency_have_div = soup.find("div", {"id": "currency-have"})
-    item_categories = currency_have_div.find_all_next("div", {"class": "category"})
+    item_categories = currency_have_div.find_all_next("div",
+                                                      {"class": "category"})
 
     def map_item_name(name: str):
         _map = {
@@ -242,21 +260,21 @@ def poetrade() -> List[Item]:
         return _map[name] if name in _map else name
 
     for category_div in item_categories:
-        category_name = category_div.find_all_next("div", {"class": "currency-toggle"})[0].contents[1]
-        elements = category_div.find_all_next("div", {"class": "currency-selectable"})
+        category_name = category_div.find_all_next(
+            "div", {"class": "currency-toggle"})[0].contents[1]
+        elements = category_div.find_all_next("div",
+                                              {"class": "currency-selectable"})
 
         for x in elements:
             item_name = str(x.get("title", x.text.strip()))
             item_name = map_item_name(item_name)
-            item = Item(
-                name=item_name,
-                backend="poetrade",
-                item_id=x["data-id"],
-                is_currency=False,
-                is_basic=False,
-                is_bulk_target=False,
-                category=category_name or "Currency"
-            )
+            item = Item(name=item_name,
+                        backend="poetrade",
+                        item_id=x["data-id"],
+                        is_currency=False,
+                        is_basic=False,
+                        is_bulk_target=False,
+                        category=category_name or "Currency")
             item_list.append(item)
 
     return item_list
@@ -269,15 +287,13 @@ def poeofficial() -> List[Item]:
     item_list = []
     for category in json_data:
         for x in category["entries"]:
-            item = Item(
-                name=x["text"].strip(),
-                backend="poeofficial",
-                item_id=x["id"],
-                is_currency=False,
-                is_basic=False,
-                is_bulk_target=False,
-                category=category["label"] or category["id"]
-            )
+            item = Item(name=x["text"].strip(),
+                        backend="poeofficial",
+                        item_id=x["id"],
+                        is_currency=False,
+                        is_basic=False,
+                        is_bulk_target=False,
+                        category=category["label"] or category["id"])
             item_list.append(item)
 
     return item_list

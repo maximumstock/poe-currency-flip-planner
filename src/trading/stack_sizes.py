@@ -13,7 +13,6 @@ class StackSizeHelper:
         "Simple Sextant": 10,
         "Prime Sextant": 10,
         "Awakened Sextant": 10,
-
         "Blacksmith's Whetstone": 20,
         "Chromatic Orb": 20,
         "Orb of Chance": 20,
@@ -25,10 +24,8 @@ class StackSizeHelper:
         "Blessed Orb": 20,
         "Orb of Annulment": 20,
         "Cartographer's Chisel": 20,
-
         "Orb of Augmentation": 30,
         "Orb of Scouring": 30,
-
         "Armourer's Scrap": 40,
         "Orb of Transmutation": 40,
         "Orb of Regret": 40
@@ -42,4 +39,3 @@ class StackSizeHelper:
 
     def get_maximum_volume_for_item(self, name: str) -> int:
         return self.get_stack_size(name) * 12 * 5
-

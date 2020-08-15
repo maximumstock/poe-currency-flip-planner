@@ -3,8 +3,6 @@ import logging
 from typing import List, Dict, Any, Set
 
 from src.config.user_config import UserConfig
-from src.core.backends import poetrade, poeofficial
-from src.core.backends.poetrade import PoeTrade
 from src.core.backends.poeofficial import PoeOfficial
 from src.pathfinder import PathFinder
 from src.commons import league_names, init_logger, load_excluded_traders
@@ -13,19 +11,22 @@ from src.trading import ItemList
 
 def log_conversions(conversions, currency, limit):
 
-    unique_conversions = get_independent_conversions(conversions[currency], limit)
+    unique_conversions = get_independent_conversions(conversions[currency],
+                                                     limit)
 
     for c in unique_conversions[:limit]:
         log_conversion(c)
 
 
-def get_independent_conversions(conversions: List[Dict[str, Any]], limit: int) -> List[Dict]:
+def get_independent_conversions(conversions: List[Dict[str, Any]],
+                                limit: int) -> List[Dict]:
     seen_traders: Set[str] = set()
     unique_conversions = []
 
     for conversion in conversions:
         trader_names = [t.contact_ign for t in conversion["transactions"]]
-        has_seen_trader = any([True for x in trader_names if x in seen_traders])
+        has_seen_trader = any(
+            [True for x in trader_names if x in seen_traders])
         if has_seen_trader:
             continue
 
@@ -38,18 +39,21 @@ def get_independent_conversions(conversions: List[Dict[str, Any]], limit: int) -
 
 
 def log_conversion(c):
-    logging.info("\t{} {} -> {} {}: {} {}".format(c["starting"], c["from"], c["ending"],
-                                                  c["to"], c["winnings"], c["to"]))
+    logging.info("\t{} {} -> {} {}: {} {}".format(c["starting"], c["from"],
+                                                  c["ending"], c["to"],
+                                                  c["winnings"], c["to"]))
     for t in c["transactions"]:
-        logging.info("\t\t@{} Hi, I'd like to buy your {} {} for {} {} in {}. ({}x)".format(
-            t.contact_ign,
-            t.received,
-            t.want,
-            t.paid,
-            t.have,
-            t.league,
-            t.conversion_rate,
-        ))
+        logging.info(
+            "\t\t@{} Hi, I'd like to buy your {} {} for {} {} in {}. ({}x)".
+            format(
+                t.contact_ign,
+                t.received,
+                t.want,
+                t.paid,
+                t.have,
+                t.league,
+                t.conversion_rate,
+            ))
     logging.info("\n")
 
 
@@ -59,15 +63,17 @@ parser.add_argument(
     "--league",
     default=league_names[0],
     type=str,
-    help="League specifier, ie. 'Synthesis', 'Hardcore Synthesis' or 'Flashback Event (BRE001)'. Defaults to '{}'.".format(
-        league_names[0]),
+    help=
+    "League specifier, ie. 'Synthesis', 'Hardcore Synthesis' or 'Flashback Event (BRE001)'. Defaults to '{}'."
+    .format(league_names[0]),
 )
 parser.add_argument(
     "--currency",
     default="all",
     # choices=cli_default_items,
     type=str,
-    help="Full name of currency to flip, ie. 'Cartographer's Chisel, or 'Chaos Orb'. Defaults to all currencies.",
+    help=
+    "Full name of currency to flip, ie. 'Cartographer's Chisel, or 'Chaos Orb'. Defaults to all currencies.",
 )
 parser.add_argument(
     "--limit",
@@ -81,18 +87,14 @@ parser.add_argument(
     action="store_true",
     help="Use all supported bulk items",
 )
-parser.add_argument(
-    "--nofilter",
-    default=False,
-    action="store_true",
-    help="Disable item pair filters")
-parser.add_argument(
-    "--debug",
-    default=False,
-    action="store_true",
-    help="Enables debug logging"
-)
-
+parser.add_argument("--nofilter",
+                    default=False,
+                    action="store_true",
+                    help="Disable item pair filters")
+parser.add_argument("--debug",
+                    default=False,
+                    action="store_true",
+                    help="Enables debug logging")
 
 arguments = parser.parse_args()
 init_logger(arguments.debug)
@@ -113,7 +115,8 @@ excluded_traders = load_excluded_traders()
 user_config = UserConfig.from_file()
 
 # Load item pairs
-item_pairs = item_list.get_item_list_for_backend(backend, config) if no_filter else user_config.get_item_pairs()
+item_pairs = item_list.get_item_list_for_backend(
+    backend, config) if no_filter else user_config.get_item_pairs()
 
 p = PathFinder(league, item_pairs, user_config, excluded_traders)
 p.run(2)
@@ -127,5 +130,6 @@ try:
         log_conversions(p.results, currency, limit)
 
 except KeyError:
-    logging.warning("Could not find any profitable conversions for {} in {}".format(
-        currency, league))
+    logging.warning(
+        "Could not find any profitable conversions for {} in {}".format(
+            currency, league))

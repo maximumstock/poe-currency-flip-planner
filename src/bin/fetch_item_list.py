@@ -11,7 +11,8 @@ item_list = ItemList.generate()
 
 (n_unsynced_items, unsynced_items) = item_list.find_discrepancies()
 logging.info("Item supports counts per backend: ", n_unsynced_items)
-logging.info("{} items without full backend support".format(len(unsynced_items)))
+logging.info("{} items without full backend support".format(
+    len(unsynced_items)))
 for item in unsynced_items:
     logging.info(item)
 
