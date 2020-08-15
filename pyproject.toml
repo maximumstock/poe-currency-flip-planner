@@ -16,7 +16,6 @@ asyncio_throttle = "^1.0.1"
 jsonpickle = "^1.4.1"
 
 [tool.poetry.dev-dependencies]
-rope = "*"
 mypy = "^0.670"
 pytest-cov = "^2.10.0"
 pytest = "^6.0.1"
@@ -28,6 +27,7 @@ numpy = "^1.19.1"
 pandas = "^1.1.0"
 scipy = "^1.5.2"
 yapf = "^0.30.0"
+rope = "^0.17.0"
 
 [build-system]
 requires = ["poetry>=0.12"]
