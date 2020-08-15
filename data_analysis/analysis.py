@@ -8,9 +8,10 @@ from src.trading import ItemList
 
 item_list = ItemList.load_from_file()
 all_items = [x for x in item_list.items.keys()]
-all_currencies = [x.name for x in item_list.items.values() if x.is_basic_currency and x.is_currency]
-
-
+all_currencies = [
+    x.name for x in item_list.items.values()
+    if x.is_basic_currency and x.is_currency
+]
 """
 Helpers
 """
@@ -42,7 +43,6 @@ def stuff_per_day(data, timestamps):
     * Total number of offers
     * Total number of profitable conversions across all currencies
     """
-
     def sum_results(results):
         s = 0
         for k in results.keys():
@@ -73,11 +73,12 @@ def number_of_edges_between_currencies_per_instance(data, timestamps):
     for i in range(len(data)):
         edges = extract_transaction_edges(data[i])
         daily = {
-            "timestamp": timestamps[i],
-            "transactions": edges,
-            "sorted_transactions": sorted(
-                edges, key=lambda x: "{}-{}".format(x["from"], x["to"])
-            ),
+            "timestamp":
+            timestamps[i],
+            "transactions":
+            edges,
+            "sorted_transactions":
+            sorted(edges, key=lambda x: "{}-{}".format(x["from"], x["to"])),
         }
         daily_edges.append(daily)
 
@@ -88,8 +89,8 @@ def number_of_edges_between_currencies_per_instance(data, timestamps):
     key_groups = {}
     for idx, day in enumerate(daily_edges):
         for key, group in itertools.groupby(
-            day["sorted_transactions"], lambda x: "{}-{}".format(x["from"], x["to"])
-        ):
+                day["sorted_transactions"],
+                lambda x: "{}-{}".format(x["from"], x["to"])):
             if key not in key_groups:
                 key_groups[key] = []
             key_groups[key].append(sum(1 for _ in group))
@@ -114,9 +115,14 @@ def number_of_edges_between_currencies_per_instance(data, timestamps):
     return key_groups, Z
 
 
-def plot_heatmap(
-    x, y, z, league, start_date, end_date, x_label="Selling", y_label="Buying"
-):
+def plot_heatmap(x,
+                 y,
+                 z,
+                 league,
+                 start_date,
+                 end_date,
+                 x_label="Selling",
+                 y_label="Buying"):
     fig, ax = plt.subplots(figsize=(10, 6))
     im = ax.imshow(z, aspect="auto")
     ax.set_xticks(np.arange(len(x)))
@@ -125,24 +131,31 @@ def plot_heatmap(
     ax.set_yticklabels(y)
     ax.set_xlabel(x_label)
     ax.set_ylabel(y_label)
-    plt.setp(ax.get_xticklabels(), rotation=45, ha="right", rotation_mode="anchor")
+    plt.setp(ax.get_xticklabels(),
+             rotation=45,
+             ha="right",
+             rotation_mode="anchor")
     ax.set_title(
-        "Average number of profitable conversions per edge and snapshot\n{} ({} - {})".format(
-            league, start_date, end_date
-        )
-    )
+        "Average number of profitable conversions per edge and snapshot\n{} ({} - {})"
+        .format(league, start_date, end_date))
     fig.tight_layout()
     cbar = ax.figure.colorbar(im, ax=ax)
     cbar.ax.set_ylabel("Number of conversions", rotation=-90, va="bottom")
     for i in range(len(x)):
         for j in range(len(y)):
-            ax.text(j, i, round(z[i, j], 1), ha="center", va="center", color="w")
+            ax.text(j,
+                    i,
+                    round(z[i, j], 1),
+                    ha="center",
+                    va="center",
+                    color="w")
     return fig, ax
 
 
 def find_relevant_currency_hops(data, minimum=0.25):
     timestamps = [x["timestamp"] for x in data]
-    key_groups, _ = number_of_edges_between_currencies_per_instance(data, timestamps)
+    key_groups, _ = number_of_edges_between_currencies_per_instance(
+        data, timestamps)
     k = filter(
         lambda x: True if x[1] / len(timestamps) > minimum else False,
         key_groups.items(),
@@ -172,14 +185,11 @@ if __name__ == "__main__":
 
     # stuff_per_day(data, timestamps)
     # # Heatmap
-    _, heatmap_data = number_of_edges_between_currencies_per_instance(data, timestamps)
-    fig, ax = plot_heatmap(
-        all_currencies, all_currencies, heatmap_data, league, min_timestamp, max_timestamp
-    )
-    plt.savefig(
-        "data_analysis/results/heatmap_{}_{}-{}".format(
-            league, min_timestamp, max_timestamp
-        )
-    )
+    _, heatmap_data = number_of_edges_between_currencies_per_instance(
+        data, timestamps)
+    fig, ax = plot_heatmap(all_currencies, all_currencies, heatmap_data,
+                           league, min_timestamp, max_timestamp)
+    plt.savefig("data_analysis/results/heatmap_{}_{}-{}".format(
+        league, min_timestamp, max_timestamp))
     # Relevant currency hops
     # hops = find_relevant_currency_hops(data)

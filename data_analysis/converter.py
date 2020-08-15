@@ -4,8 +4,10 @@ import pickle
 import argparse
 
 parser = argparse.ArgumentParser(description="Data Converter")
-parser.add_argument(
-    "--path", nargs="+", help="Folder name of the dumps", required=True)
+parser.add_argument("--path",
+                    nargs="+",
+                    help="Folder name of the dumps",
+                    required=True)
 arguments = parser.parse_args()
 
 

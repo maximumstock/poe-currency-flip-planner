@@ -11,15 +11,13 @@ from src.trading import ItemList
 
 def log_conversions(conversions, currency, limit):
 
-    unique_conversions = get_independent_conversions(conversions[currency],
-                                                     limit)
+    unique_conversions = derp(conversions[currency], limit)
 
     for c in unique_conversions[:limit]:
         log_conversion(c)
 
 
-def get_independent_conversions(conversions: List[Dict[str, Any]],
-                                limit: int) -> List[Dict]:
+def derp(conversions: List[Dict[str, Any]], limit: int) -> List[Dict]:
     seen_traders: Set[str] = set()
     unique_conversions = []
 

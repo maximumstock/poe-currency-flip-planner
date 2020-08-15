@@ -2,12 +2,10 @@ import argparse
 from datetime import datetime
 from src.pathfinder import PathFinder
 from src.core.backends.poetrade import PoeTrade
-from src.core.backends.poeofficial import PoeOfficial
-from src.trading import ItemList
-from src.commons import league_names, load_excluded_traders, init_logger
+from src.commons import league_names, init_logger
 from src.config.user_config import UserConfig
+from src.trading.items import ItemList
 from dataclasses import dataclass
-import json
 
 
 @dataclass
@@ -31,8 +29,9 @@ def parse_args() -> CollectorConfig:
     parser.add_argument(
         "--league",
         default=league_names[0],
-        help="League specifier, ie. 'Synthesis', 'Hardcore Synthesis' or 'Flashback Event (BRE001)'. Defaults to {}".format(
-            league_names[0]),
+        help=
+        "League specifier, ie. 'Synthesis', 'Hardcore Synthesis' or 'Flashback Event (BRE001)'. Defaults to {}"
+        .format(league_names[0]),
     )
     parser.add_argument(
         "--path",
@@ -45,24 +44,20 @@ def parse_args() -> CollectorConfig:
         action="store_true",
         help="Whether to use all supported bulk items",
     )
-    parser.add_argument(
-        "--nofilter",
-        default=False,
-        action="store_true",
-        help="Whether to disable item pair filters")
+    parser.add_argument("--nofilter",
+                        default=False,
+                        action="store_true",
+                        help="Whether to disable item pair filters")
 
     arguments = parser.parse_args()
 
-    return CollectorConfig(
-        league=arguments.league,
-        path=arguments.path,
-        fullbulk=arguments.fullbulk,
-        use_filter=False if arguments.nofilter else True
-    )
+    return CollectorConfig(league=arguments.league,
+                           path=arguments.path,
+                           fullbulk=arguments.fullbulk,
+                           use_filter=False if arguments.nofilter else True)
 
 
 class Collector:
-
     def run(self):
         item_list = ItemList.load_from_file()
         user_config = UserConfig.from_file()
@@ -70,7 +65,8 @@ class Collector:
         default_backend = PoeTrade(item_list)
 
         params = parse_args()
-        item_pairs = user_config.get_item_pairs() if params.use_filter else item_list.get_item_list_for_backend(
+        item_pairs = user_config.get_item_pairs(
+        ) if params.use_filter else item_list.get_item_list_for_backend(
             default_backend, {"fullbulk": params.fullbulk})
 
         p = PathFinder(params.league, item_pairs, user_config)
