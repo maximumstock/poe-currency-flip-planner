@@ -7,7 +7,6 @@ from src.core.offer import Offer
 from src.trading.items import ItemList
 
 item_list = ItemList.load_from_file()
-
 init_logger(True)
 
 

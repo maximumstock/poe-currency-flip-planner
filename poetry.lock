@@ -184,6 +184,14 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 version = "0.6.0"
 
 [[package]]
+category = "main"
+description = "A library to make deserialization easy."
+name = "deserialize"
+optional = false
+python-versions = ">=3.6,<4.0"
+version = "1.8.0"
+
+[[package]]
 category = "dev"
 description = "Discover and load entry points from installed packages."
 name = "entrypoints"
@@ -1038,7 +1046,7 @@ docs = ["sphinx", "jaraco.packaging (>=3.2)", "rst.linker (>=1.9)"]
 testing = ["jaraco.itertools", "func-timeout"]
 
 [metadata]
-content-hash = "0396507538d471c965b75084da51b2ababd17ae4cb1355be23a275984c76dc71"
+content-hash = "84006ab67d3b664cca586a33af24d1431eea76cf9a9e68046ea76c32eec0461f"
 python-versions = "^3.7"
 
 [metadata.files]
@@ -1157,6 +1165,10 @@ decorator = [
 defusedxml = [
     {file = "defusedxml-0.6.0-py2.py3-none-any.whl", hash = "sha256:6687150770438374ab581bb7a1b327a847dd9c5749e396102de3fad4e8a3ef93"},
     {file = "defusedxml-0.6.0.tar.gz", hash = "sha256:f684034d135af4c6cbb949b8a4d2ed61634515257a67299e5f940fbaa34377f5"},
+]
+deserialize = [
+    {file = "deserialize-1.8.0-py3-none-any.whl", hash = "sha256:a238146aef832b546fe3ec3025c27724be124d734fccfa884235df5165c177ee"},
+    {file = "deserialize-1.8.0.tar.gz", hash = "sha256:a093bd86bf73c5fca8bb73f0e03fc9c06dfe1a14e9b8b34dbfc6c82b25ae52a1"},
 ]
 entrypoints = [
     {file = "entrypoints-0.3-py2.py3-none-any.whl", hash = "sha256:589f874b313739ad35be6e0cd7efde2a4e9b6fea91edcc34e58ecbb8dbe56d19"},

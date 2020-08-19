@@ -1,9 +1,11 @@
+import json
 import logging
-import pickle
-import sys
+# import pickle
+# import sys
 
 from src.trading.items import ItemList
 from src.commons import init_logger
+import cattr
 
 init_logger(False)
 
@@ -16,6 +18,7 @@ logging.info("{} items without full backend support".format(
 for item in unsynced_items:
     logging.info(item)
 
-with open("assets/items.pickle", "wb") as f:
-    sys.setrecursionlimit(1000000)
-    pickle.dump(item_list, f)
+with open("assets/items.json", "w") as f:
+    json.dump(cattr.unstructure(item_list), f, indent=2)
+    # sys.setrecursionlimit(1000000)
+    # pickle.dump(item_list, f)
