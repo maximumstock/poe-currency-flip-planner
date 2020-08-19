@@ -59,12 +59,15 @@ def parse_args() -> CollectorConfig:
 
 class Collector:
     def run(self):
+        params = parse_args()
+        # Generate file name at the start, so it indicates when the collection started
+        filename = "{}/{}".format(params.path, gen_filename())
+
         item_list = ItemList.load_from_file()
         user_config = UserConfig.from_file()
         # By default,
         default_backend = PoeTrade(item_list)
 
-        params = parse_args()
         item_pairs = user_config.get_item_pairs(
         ) if params.use_filter else item_list.get_item_list_for_backend(
             default_backend, {"fullbulk": params.fullbulk})
@@ -72,7 +75,6 @@ class Collector:
         p = PathFinder(params.league, item_pairs, user_config)
         p.run(2)
 
-        filename = "{}/{}".format(params.path, gen_filename())
         with open(filename, "w") as f:
             data = p.prepickle()
             f.write(data)
