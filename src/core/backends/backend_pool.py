@@ -52,8 +52,9 @@ class BackendPoolWorker:
             await asyncio.sleep(15)
             self.just_failed = False
 
-    async def work(self, queue: asyncio.Queue,
-                   client_session: aiohttp.ClientSession) -> List[Any]:
+    async def work(self, queue: asyncio.Queue) -> List[Any]:
+        client_session = aiohttp.ClientSession()
+
         while not queue.empty():
             await self.rate_limiter.acquire()
 
@@ -84,6 +85,8 @@ class BackendPoolWorker:
 
             await self.handle_error()
 
+        await client_session.close()
+
         return self.results
 
 
@@ -92,12 +95,10 @@ class BackendPool:
     item_list: ItemList
     queue: asyncio.Queue
     event_loop: asyncio.AbstractEventLoop
-    client_session: aiohttp.ClientSession
 
     def __init__(self, item_list: ItemList):
         self.queue = asyncio.Queue()
         self.event_loop = asyncio.get_event_loop()
-        self.client_session = aiohttp.ClientSession()
         self.item_list = item_list
         self.backends = [
             BackendPoolWorker(PoeTrade(item_list), self.event_loop,
@@ -116,21 +117,15 @@ class BackendPool:
             new_task = Task(league, p[0], p[1], limit, False)
             self.queue.put_nowait(new_task)
 
-        coroutines = [
-            backend.work(self.queue, self.client_session)
-            for backend in self.backends
-        ]
+        coroutines = [backend.work(self.queue) for backend in self.backends]
 
         (done, _pending) = self.event_loop.run_until_complete(
             asyncio.wait(coroutines))
         results: List[List[Dict]] = [x.result() for x in done]
 
-        self.event_loop.run_until_complete(
-            (self.event_loop.create_task(self.client_session.close())))
-
         for worker in self.backends:
-            logging.debug("Worker {}: {} tasks".format(worker.backend.name(),
-                                                       worker.counter))
+            logging.debug("Worker {} finished {} tasks".format(
+                worker.backend.name(), worker.counter))
 
         # Restructure list of lists to a single list of offer dicts
         derp: List[Offer] = []
