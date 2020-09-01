@@ -1,11 +1,11 @@
 #!/bin/sh
 
-LEAGUES=(Betrayal Blight Delirium Delve Harvest Incursion Legion Synthesis)
+LEAGUES=(Betrayal Blight Delve Harvest Incursion Legion Synthesis)
 
 for LEAGUE in ${LEAGUES[@]}
 do
-  python ./converter.py --path ./raw/$LEAGUE/Softcore
-  mv ./raw/$LEAGUE/Softcore/merge.pickle ./merged/${LEAGUE}_softcore.pickle
-  python ./converter.py --path ./raw/$LEAGUE/Hardcore
-  mv ./raw/$LEAGUE/Hardcore/merge.pickle ./merged/${LEAGUE}_hardcore.pickle
+  python ./data_analysis/converter.py --path ./data_analysis/raw/$LEAGUE/Softcore
+  mv ./data_analysis/raw/$LEAGUE/Softcore/merge.json ./data_analysis/merged/${LEAGUE}_softcore.json
+  python ./data_analysis/converter.py --path ./data_analysis/raw/$LEAGUE/Hardcore
+  mv ./data_analysis/raw/$LEAGUE/Hardcore/merge.json ./data_analysis/merged/${LEAGUE}_hardcore.json
 done
