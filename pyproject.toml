@@ -28,7 +28,7 @@ numpy = "^1.19.4"
 pandas = "^1.1.4"
 scipy = "^1.5.4"
 yapf = "^0.30.0"
-rope = "^0.17.0"
+rope = "^0.18.0"
 
 [build-system]
 requires = ["poetry>=0.12"]
