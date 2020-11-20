@@ -4,6 +4,7 @@ from src.config.user_config import UserConfig
 from src.core.graph import build_graph, find_paths, build_conversion, is_profitable
 from src.core.offer import Offer
 from src.core.edge import Edge
+from src.config.user_config import DEFAULT_CONFIG_DEFAULT_FILE_PATH
 from typing import List, Dict
 
 LEAGUE = "Abyss"
@@ -365,7 +366,7 @@ expected_conversion = {
     ],
 }
 
-user_config = UserConfig.from_file()
+user_config = UserConfig.from_file(DEFAULT_CONFIG_DEFAULT_FILE_PATH)
 
 
 class GraphTest(unittest.TestCase):
