@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import argparse
 import logging
 from typing import List, Dict, Any, Set
