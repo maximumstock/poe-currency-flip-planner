@@ -1,12 +1,15 @@
 from __future__ import annotations
 
-from typing import Optional, Tuple, List
-from marshmallow import Schema, fields, post_load
-import os
 import json
+import logging
+import os
+from typing import List, Optional, Tuple
 
+from marshmallow import Schema, fields, post_load
+from src.config.parser import (AssetConfig, TradingConfig, TradingConfigItem,
+                               TradingConfigItemSchema,
+                               TradingConfigItemSellItem)
 from src.trading import StackSizeHelper
-from src.config.parser import AssetConfig, TradingConfig, TradingConfigItemSchema, TradingConfigItem, TradingConfigItemSellItem
 
 DEFAULT_CONFIG_FILE_PATH = "config/config.json"
 DEFAULT_CONFIG_DEFAULT_FILE_PATH = "config/config.default.json"
@@ -113,13 +116,11 @@ class UserConfig:
         if file_path is None:
             file_path = DEFAULT_CONFIG_FILE_PATH
 
-        if not os.path.exists(file_path):
-            file_path = DEFAULT_CONFIG_DEFAULT_FILE_PATH
-
         file_path = os.path.dirname(
             os.path.abspath(__file__)) + "/../../" + file_path
 
         try:
+            logging.debug("Using config file under {}".format(file_path))
             with open(file_path, "r") as f:
                 data = json.loads(f.read())
                 return UserConfigSchema().load(data)

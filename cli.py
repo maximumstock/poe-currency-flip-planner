@@ -1,40 +1,18 @@
 #!/usr/bin/env python
 import argparse
 import logging
-from typing import List, Dict, Any, Set
 
+from src.commons import (init_logger, league_names, load_excluded_traders,
+                         unique_conversions_by_trader_name)
 from src.config.user_config import UserConfig
 from src.core.backends.poeofficial import PoeOfficial
 from src.pathfinder import PathFinder
-from src.commons import league_names, init_logger, load_excluded_traders
 from src.trading import ItemList
 
 
-def log_conversions(conversions, currency, limit):
-
-    unique_conversions = derp(conversions[currency], limit)
-
-    for c in unique_conversions[:limit]:
+def log_conversions(conversions, limit):
+    for c in conversions[:limit]:
         log_conversion(c)
-
-
-def derp(conversions: List[Dict[str, Any]], limit: int) -> List[Dict]:
-    seen_traders: Set[str] = set()
-    unique_conversions = []
-
-    for conversion in conversions:
-        trader_names = [t.contact_ign for t in conversion["transactions"]]
-        has_seen_trader = any(
-            [True for x in trader_names if x in seen_traders])
-        if has_seen_trader:
-            continue
-
-        for t in trader_names:
-            seen_traders.add(t)
-
-        unique_conversions.append(conversion)
-
-    return unique_conversions
 
 
 def log_conversion(c):
@@ -91,9 +69,13 @@ parser.add_argument("--nofilter",
                     action="store_true",
                     help="Disable item pair filters")
 parser.add_argument("--debug",
-                    default=False,
+                    default=None,
                     action="store_true",
                     help="Enables debug logging")
+parser.add_argument("--config",
+                    default=None,
+                    type=str,
+                    help="Specify your config file path")
 
 arguments = parser.parse_args()
 init_logger(arguments.debug)
@@ -106,12 +88,13 @@ limit = arguments.limit
 fullbulk = arguments.fullbulk
 no_filter = arguments.nofilter
 config = {"fullbulk": fullbulk}
+config_file_path = arguments.config
 
 # Load excluded trader list
 excluded_traders = load_excluded_traders()
 
 # Load user config
-user_config = UserConfig.from_file()
+user_config = UserConfig.from_file(config_file_path)
 
 # Load item pairs
 item_pairs = item_list.get_item_list_for_backend(
@@ -124,9 +107,11 @@ try:
     logging.info("\n")
     if currency == "all":
         for c in p.graph.keys():
-            log_conversions(p.results, c, limit)
+            conversions = unique_conversions_by_trader_name(p.results[c])
+            log_conversions(conversions, limit)
     else:
-        log_conversions(p.results, currency, limit)
+        conversions = unique_conversions_by_trader_name(p.results[currency])
+        log_conversions(conversions, limit)
 
 except KeyError:
     logging.warning(
