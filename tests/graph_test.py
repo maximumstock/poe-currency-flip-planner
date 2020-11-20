@@ -1,9 +1,10 @@
 import unittest
 
 from src.config.user_config import UserConfig
-from src.core.graph import build_graph, find_paths, build_conversion, is_profitable
+from src.core.graph import build_graph, find_paths, build_conversion, is_profitable, calculate_path_length
 from src.core.offer import Offer
 from src.core.edge import Edge
+from src.trading import build_vendor_offers
 from typing import List, Dict
 
 LEAGUE = "Abyss"
@@ -387,3 +388,11 @@ class GraphTest(unittest.TestCase):
         path = expected_paths_small_same_currency()[0]
         conversion = build_conversion(path, user_config)
         self.assertEqual(expected_conversion, conversion)
+
+    def test_calculate_path_length_ignores_all_vendor_offers(self):
+        path = build_vendor_offers("any_league")
+        self.assertEqual(calculate_path_length(path), 0)
+
+    def test_calculate_path_length(self):
+        path = expected_paths_small_same_currency()[0]
+        self.assertEqual(calculate_path_length(path), 3)

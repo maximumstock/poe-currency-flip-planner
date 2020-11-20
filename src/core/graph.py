@@ -29,6 +29,14 @@ def build_graph(offers: List[Offer]) -> Dict[str, Dict[str, List[Offer]]]:
     return graph
 
 
+def calculate_path_length(path: List[Offer]) -> int:
+    length = 0
+    for offer in path:
+        if offer.contact_ign != "__vendor__":
+            length = length + 1
+    return length
+
+
 def find_paths(graph: Dict[str, Dict[str, List[Offer]]],
                have: str,
                want: str,
@@ -52,7 +60,8 @@ def find_paths(graph: Dict[str, Dict[str, List[Offer]]],
     while len(paths) > 0:
         next: List[Offer] = paths.pop()
 
-        if len(next) > max_length:
+        path_length = calculate_path_length(next)
+        if path_length > max_length:
             continue
 
         # If a path contains an edge with a stock outside of the user-specified boundaries, prune it

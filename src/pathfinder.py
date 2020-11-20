@@ -8,7 +8,7 @@ from src.config.user_config import UserConfig
 from src.core import graph
 from src.core.backends.backend_pool import BackendPool
 from src.core.offer import Offer
-from src.trading import ItemList
+from src.trading import ItemList, build_vendor_offers
 
 
 def format_conversions(conversions) -> str:
@@ -82,6 +82,8 @@ class PathFinder:
 
         self.offers = self.backend_pool.schedule(self.league, self.item_pairs,
                                                  self.item_list)
+
+        self.offers.extend(build_vendor_offers(self.league))
 
         # Filter out unwanted traders
         self.offers = self._filter_traders(self.offers, self.excluded_traders)
