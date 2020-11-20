@@ -30,11 +30,7 @@ def build_graph(offers: List[Offer]) -> Dict[str, Dict[str, List[Offer]]]:
 
 
 def calculate_path_length(path: List[Offer]) -> int:
-    length = 0
-    for offer in path:
-        if offer.contact_ign != "__vendor__":
-            length = length + 1
-    return length
+    return len([x for x in path if x.contact_ign != "__vendor__"])
 
 
 def find_paths(graph: Dict[str, Dict[str, List[Offer]]],
