@@ -50,7 +50,6 @@ def load_pickle_incursion(folder, filename):
                 "results": pathfinder_obj.results,
                 "timestamp": utc_ts_from_filename(filename)
             }
-            return pathfinder_obj
     except EOFError:
         return None
 
