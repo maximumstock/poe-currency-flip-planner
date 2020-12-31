@@ -26,7 +26,7 @@ matplotlib = "^3.3.3"
 notebook = "^6.1.6"
 numpy = "^1.19.4"
 pandas = "^1.1.5"
-scipy = "^1.5.4"
+scipy = "^1.6.0"
 yapf = "^0.30.0"
 rope = "^0.18.0"
 
