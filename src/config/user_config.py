@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import json
 import logging
-import os
+import pathlib
 from typing import List, Optional, Tuple
 
 from marshmallow import Schema, fields, post_load
@@ -116,12 +116,15 @@ class UserConfig:
         if file_path is None:
             file_path = DEFAULT_CONFIG_FILE_PATH
 
-        file_path = os.path.dirname(
-            os.path.abspath(__file__)) + "/../../" + file_path
+        path = pathlib.Path(file_path).resolve()
+
+        # Default back to default config file
+        if not path.is_file():
+            path = pathlib.Path(DEFAULT_CONFIG_DEFAULT_FILE_PATH).resolve()
 
         try:
-            logging.debug("Using config file under {}".format(file_path))
-            with open(file_path, "r") as f:
+            logging.info("Using config file under {}".format(path))
+            with open(path, "r") as f:
                 data = json.loads(f.read())
                 return UserConfigSchema().load(data)
         except OSError:

@@ -1,11 +1,6 @@
 {
   "version": 1,
-  "assets": {
-    "Chaos Orb": 200,
-    "Exalted Orb": 5,
-    "Chromatic Orb": 1000,
-    "Orb of Fusing": 340
-  },
+  "assets": {},
   "trading": {
     "Aetheric Fossil": {
       "sell_for": {
@@ -33,8 +28,6 @@
       }
     },
     "Chaos Orb": {
-      "minimum_stock": 40,
-      "maximum_stock": 500,
       "sell_for": {
         "Aetheric Fossil": null,
         "Awakened Sextant": null,
