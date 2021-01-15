@@ -15,6 +15,7 @@ marshmallow = "^3.10.0"
 asyncio_throttle = "^1.0.1"
 jsonpickle = "^1.4.2"
 deserialize = "^1.8.0"
+cattrs = "^1.1.2"
 
 [tool.poetry.dev-dependencies]
 mypy = "^0.790"
