@@ -3,7 +3,7 @@ from typing import Any, Dict, List, Set
 
 import numpy as np
 
-league_names = ["Ritual", "Hardcore Ritual", "Standard", "Hardcore"]
+league_names = ["Ultimatum", "Hardcore Ultimatum", "Standard", "Hardcore"]
 
 
 def filter_large_outliers(offers: List[Dict]) -> List[Dict]:
