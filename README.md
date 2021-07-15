@@ -2,7 +2,7 @@
 
 ![Continuous Integration](https://github.com/maximumstock/poe-currency-flip-planner/workflows/Continuous%20Integration/badge.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![License: MIT](https://img.shields.io/badge/Version-0.3.8-orange.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/Version-0.3.9-orange.svg)](https://opensource.org/licenses/MIT)
 
 A proof-of-concept finder for short-term arbitrage opportunities in
 [Path of Exile](https://www.pathofexile.com).
@@ -93,7 +93,7 @@ optional arguments:
   --debug              Enables debug logging
 ```
 
-By default, we use both [pathofexile.com/trade](https://pathofexile.com/trade/exchange) 
+By default, we use both [pathofexile.com/trade](https://pathofexile.com/trade/exchange)
 and [poe.trade](http://poe.trade) in parallel to fetch trade offers.
 
 Options `--fullbulk` and `--nofilter` bypass the configuration files and extend
