@@ -93,12 +93,12 @@ optional arguments:
   --debug              Enables debug logging
 ```
 
-By default, we use [pathofexile.com/trade](https://pathofexile.com/trade/exchange), but
-using [poe.trade](http://poe.trade) is possible.
+By default, we use both [pathofexile.com/trade](https://pathofexile.com/trade/exchange) 
+and [poe.trade](http://poe.trade) in parallel to fetch trade offers.
 
 Options `--fullbulk` and `--nofilter` bypass the configuration files and extend
 the set of item pairs that is used to collect data for.
-These options are not meant for end users but only relevant for collecting
+These options are not meant for end users but are relevant for collecting
 extensive amount of data for the work in [Data Analysis](data_analysis/README.md).
 
 ## Configuration
