@@ -39,7 +39,7 @@ def find_paths(graph: Dict[str, Dict[str, List[Offer]]],
     A path is simply a list of transactions between two currency nodes.
     """
     paths: deque = deque()
-    correct_paths: List[List[Dict]] = []
+    correct_paths: List[List[Offer]] = []
 
     # If there are no paths between the specified currencies, simply abort
     if have not in graph:
@@ -91,7 +91,7 @@ def maximum_conversion_rate(path: List[Offer]):
     return v
 
 
-def is_profitable(path: List[Dict]):
+def is_profitable(path: List[Offer]):
     return maximum_conversion_rate(path) > 1.0
 
 

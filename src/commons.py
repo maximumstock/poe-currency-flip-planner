@@ -3,19 +3,22 @@ from typing import Any, Dict, List, Set
 
 import numpy as np
 
+from .core.offer import Offer
+
 league_names = ["Expedition", "Hardcore Expedition", "Standard", "Hardcore"]
 
 
-def filter_large_outliers(offers: List[Dict]) -> List[Dict]:
+def filter_large_outliers(
+        offers: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     """
     Filter out all offers with a conversion rate which is above the
     95th percentile of all found conversion rates for an item pair.
     """
 
     if len(offers) > 10:
-        conversion_rates = [e["conversion_rate"] for e in offers]
+        conversion_rates = [o["conversion_rate"] for o in offers]
         upper_boundary = np.percentile(conversion_rates, 95)
-        offers = [x for x in offers if x["conversion_rate"] < upper_boundary]
+        offers = [o for o in offers if o["conversion_rate"] < upper_boundary]
 
     return offers
 

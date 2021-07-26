@@ -100,8 +100,7 @@ class UserConfig:
 
     def get_item_pairs(self) -> List[Tuple[str, str]]:
         """
-        Constructs a list of item pairs based on config/config.(default.)json.
-        Replaces the old load_pair_filter logic.
+        Constructs a list of item pairs based on the specified configuration file.
         """
         item_pairs = []
 

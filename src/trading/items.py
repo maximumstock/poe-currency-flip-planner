@@ -13,6 +13,7 @@ Notes:
 - we filter out all types of nets
 """
 from __future__ import annotations
+from dataclasses import dataclass
 
 from bs4 import BeautifulSoup
 import requests
@@ -61,6 +62,7 @@ basic_currencies = [
 
 
 @attr.s
+@dataclass
 class Item:
     name: str = attr.ib()
     ids: Dict[str, str] = attr.ib()
@@ -80,6 +82,9 @@ class UnknownBackendException(Exception):
 @attr.s
 class ItemList:
     items: Dict[str, Item] = attr.ib()
+
+    def __init__(self, item_dict: dict) -> None:
+        self.items = item_dict
 
     @staticmethod
     def load_from_file(path: str = None) -> ItemList:
@@ -259,8 +264,7 @@ def poetrade() -> List[Item]:
             item_name = str(x.get("title", x.text.strip()))
             item_name = map_item_name(item_name)
             item_id = x.get("data-id")
-            if item_id is None:
-                print(x)
+
             item = Item(name=item_name,
                         ids={"poetrade": item_id},
                         is_currency=False,

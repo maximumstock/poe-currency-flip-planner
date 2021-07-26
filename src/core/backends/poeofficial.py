@@ -1,6 +1,6 @@
 import logging
-import urllib
-from typing import Dict, List, Tuple
+import urllib.parse
+from typing import Any, Dict, List, Tuple
 
 import aiohttp
 
@@ -25,7 +25,7 @@ class PoeOfficial:
 
         offer_ids: List[str] = []
         query_id = None
-        offers: List[Dict] = []
+        offers: List[Offer] = []
 
         # Fetching offer ids is rate-limited by 12:6:60,20:12:300
         offer_id_url = "http://www.pathofexile.com/api/trade/exchange/{}".format(
@@ -61,15 +61,21 @@ class PoeOfficial:
                 if response.status != 200:
                     raise TaskException()
                 json = await response.json()
-                raw_offers = json["result"]
+                raw_offers: List[Dict[str, Any]] = json["result"]
 
-                offers = [
+                offers_details = [
                     PoeOfficial.map_offers_details(x) for x in raw_offers
                 ]
-                offers = filter_large_outliers(offers)[:task.limit]
+                offers_details = filter_large_outliers(
+                    offers_details)[:task.limit]
+
                 offers = [
-                    Offer(task.league, task.have, task.want, x["contact_ign"],
-                          x["conversion_rate"], x["stock"]) for x in offers
+                    Offer(league=task.league,
+                          have=task.have,
+                          want=task.want,
+                          contact_ign=details["contact_ign"],
+                          conversion_rate=details["conversion_rate"],
+                          stock=details["stock"]) for details in offers_details
                 ]
 
             return offers
@@ -87,7 +93,7 @@ class PoeOfficial:
     """
 
     @staticmethod
-    def map_offers_details(offer_details):
+    def map_offers_details(offer_details: Dict[str, Any]) -> Dict[str, Any]:
         contact_ign = offer_details["listing"]["account"]["lastCharacterName"]
         stock = offer_details["listing"]["price"]["item"]["stock"]
         receive = offer_details["listing"]["price"]["item"]["amount"]
