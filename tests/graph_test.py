@@ -16,7 +16,7 @@ test_offers: List[Offer] = [
         stock=153,
         want="Chaos",
         have="Alteration",
-        league="Abyss",
+        league=LEAGUE,
     ),
     Offer(
         contact_ign="_ZEUS___",
@@ -24,7 +24,7 @@ test_offers: List[Offer] = [
         stock=10,
         want="Chaos",
         have="Chromatic",
-        league="Abyss",
+        league=LEAGUE,
     ),
     Offer(
         contact_ign="MVP_Kefir",
@@ -32,7 +32,7 @@ test_offers: List[Offer] = [
         stock=20,
         want="Chaos",
         have="Chromatic",
-        league="Abyss",
+        league=LEAGUE,
     ),
     Offer(
         contact_ign="wreddnuy",
@@ -40,7 +40,7 @@ test_offers: List[Offer] = [
         stock=24,
         want="Alteration",
         have="Chaos",
-        league="Abyss",
+        league=LEAGUE,
     ),
     Offer(
         contact_ign="Corailthedog",
@@ -48,7 +48,7 @@ test_offers: List[Offer] = [
         stock=2,
         want="Alteration",
         have="Chaos",
-        league="Abyss",
+        league=LEAGUE,
     ),
     Offer(
         contact_ign="Marcvz_GreenAgain",
@@ -56,7 +56,7 @@ test_offers: List[Offer] = [
         stock=222,
         want="Alteration",
         have="Chromatic",
-        league="Abyss",
+        league=LEAGUE,
     ),
     Offer(
         contact_ign="Azure_Dragon",
@@ -64,7 +64,7 @@ test_offers: List[Offer] = [
         stock=4261,
         want="Alteration",
         have="Chromatic",
-        league="Abyss",
+        league=LEAGUE,
     ),
     Offer(
         contact_ign="MinerinoAbysss",
@@ -72,7 +72,7 @@ test_offers: List[Offer] = [
         stock=322,
         want="Chromatic",
         have="Chaos",
-        league="Abyss",
+        league=LEAGUE,
     ),
     Offer(
         contact_ign="The_Dank_Fire_God",
@@ -80,7 +80,7 @@ test_offers: List[Offer] = [
         stock=106,
         want="Chromatic",
         have="Chaos",
-        league="Abyss",
+        league=LEAGUE,
     ),
     Offer(
         contact_ign="Shioua_ouah",
@@ -88,7 +88,7 @@ test_offers: List[Offer] = [
         stock=1576,
         want="Chromatic",
         have="Alteration",
-        league="Abyss",
+        league=LEAGUE,
     ),
     Offer(
         contact_ign="Ashkeri",
@@ -96,7 +96,7 @@ test_offers: List[Offer] = [
         stock=449,
         want="Chromatic",
         have="Alteration",
-        league="Abyss",
+        league=LEAGUE,
     ),
 ]
 
