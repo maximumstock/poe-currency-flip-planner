@@ -7,7 +7,7 @@ from src.commons import (init_logger, LEAGUE_NAMES, load_excluded_traders,
 from src.config.user_config import UserConfig
 from src.core.backends.poeofficial import PoeOfficial
 from src.pathfinder import PathFinder
-from src.trading import ItemList
+from src.trading.items import ItemList
 
 
 def log_conversions(conversions, limit):
