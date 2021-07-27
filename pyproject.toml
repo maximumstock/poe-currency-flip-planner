@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "poe-currency-flip-planner"
-version = "0.3.9"
+version = "0.3.10"
 description = ""
 authors = ["Maximilian stock <mxmlnstock@googlemail.com>"]
 
