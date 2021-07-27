@@ -9,8 +9,8 @@ A proof-of-concept finder for short-term arbitrage opportunities in
 
 ## Overview
 
-- [What exactly is this?](#what-exactly-is-this?)
-- [How does it work?](#how-does-it-work?)
+- [What exactly is this?](#what-exactly-is-this)
+- [How does it work?](#how-does-it-work)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Configuration](#configuration)
