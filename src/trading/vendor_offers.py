@@ -5,14 +5,17 @@ raw_vendor_offers = [
     ("Orb of Regret", "Orb of Alchemy", 1),
     ("Orb of Scouring", "Orb of Regret", .5),
     ("Orb of Chance", "Orb of Scouring", .25),
-    ("Orb of Fusing", "Orb of Change", 1),
+    ("Orb of Fusing", "Orb of Chance", 1),
     ("Jeweller's Orb", "Orb of Fusing", .25),
     ("Jeweller's Orb", "Chromatic Orb", .3333),
     ("Orb of Alteration", "Jeweller's Orb", .5),
     ("Orb of Augmentation", "Orb of Alteration", .25),
-    ("Orb of Transmuation", "Orb of Augmentation", .25),
+    ("Orb of Transmutation", "Orb of Augmentation", .25),
     ("Portal Scroll", "Orb of Transmutation", .1429),
-    ("Scroll of Wisdom", "Portal Scroll", 1),
+    ("Scroll of Wisdom", "Portal Scroll", .3333),
+    ("Blacksmith's Whetstone", "Glassblower's Bauble", .125),
+    ("Armourer's Scrap", "Blacksmith's Whetstone", .3333),
+    ("Blacksmith's Whetstone", "Armourer's Scrap", 1),
 ]
 
 
