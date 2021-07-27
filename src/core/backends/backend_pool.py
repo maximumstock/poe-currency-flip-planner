@@ -9,7 +9,7 @@ from src.core.offer import Offer
 from src.core.backends.poeofficial import PoeOfficial
 from src.core.backends.poetrade import PoeTrade
 from src.core.backends.task import Task
-from src.trading import ItemList
+from src.trading.items import ItemList
 
 
 class BackendPoolWorker:

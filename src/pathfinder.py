@@ -8,7 +8,8 @@ from src.config.user_config import UserConfig
 from src.core import graph
 from src.core.backends.backend_pool import BackendPool
 from src.core.offer import Offer
-from src.trading import ItemList, build_vendor_offers
+from src.trading.items import ItemList
+from src.trading.vendor_offers import build_vendor_offers
 
 
 def format_conversions(conversions) -> str:

@@ -11,11 +11,31 @@
       "is_bulk_target": false,
       "category": "Cards"
     },
+    "A Familiar Call": {
+      "name": "A Familiar Call",
+      "ids": {
+        "poeofficial": "a-familiar-call"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Cards"
+    },
     "A Mother's Parting Gift": {
       "name": "A Mother's Parting Gift",
       "ids": {
         "poeofficial": "a-mothers-parting-gift",
         "poetrade": "132"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Cards"
+    },
+    "A Note in the Wind": {
+      "name": "A Note in the Wind",
+      "ids": {
+        "poeofficial": "a-note-in-the-wind"
       },
       "is_currency": false,
       "is_basic_currency": false,
@@ -79,24 +99,34 @@
     "Academy Map": {
       "name": "Academy Map",
       "ids": {
-        "poeofficial": "academy-map-tier-14",
+        "poeofficial": "academy-map-tier-16",
         "poetrade": "316"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 14)"
+      "category": "Maps (Tier 16)"
+    },
+    "Acclimatisation": {
+      "name": "Acclimatisation",
+      "ids": {
+        "poeofficial": "acclimatisation"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Cards"
     },
     "Acid Caverns Map": {
       "name": "Acid Caverns Map",
       "ids": {
-        "poeofficial": "acid-caverns-map-tier-15",
+        "poeofficial": "acid-caverns-map-tier-14",
         "poetrade": "336"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 15)"
+      "category": "Maps (Tier 14)"
     },
     "Aetheric Fossil": {
       "name": "Aetheric Fossil",
@@ -123,13 +153,13 @@
     "Alleyways Map": {
       "name": "Alleyways Map",
       "ids": {
-        "poeofficial": "alleyways-map-tier-16",
+        "poeofficial": "alleyways-map-tier-15",
         "poetrade": "522"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 16)"
+      "category": "Maps (Tier 15)"
     },
     "Alluring Bounty": {
       "name": "Alluring Bounty",
@@ -223,10 +253,10 @@
       "ids": {
         "poeofficial": "ancient-shard"
       },
-      "is_currency": true,
+      "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Currency"
+      "category": "Shards & Splinters"
     },
     "Annulment Shard": {
       "name": "Annulment Shard",
@@ -234,21 +264,21 @@
         "poeofficial": "annulment-shard",
         "poetrade": "519"
       },
-      "is_currency": true,
+      "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Currency"
+      "category": "Shards & Splinters"
     },
     "Arachnid Nest Map": {
       "name": "Arachnid Nest Map",
       "ids": {
-        "poeofficial": "arachnid-nest-map-tier-14",
+        "poeofficial": "arachnid-nest-map-tier-16",
         "poetrade": "318"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 14)"
+      "category": "Maps (Tier 16)"
     },
     "Arachnid Tomb Map": {
       "name": "Arachnid Tomb Map",
@@ -264,24 +294,24 @@
     "Arcade Map": {
       "name": "Arcade Map",
       "ids": {
-        "poeofficial": "arcade-map-tier-16",
+        "poeofficial": "arcade-map-tier-14",
         "poetrade": "320"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 16)"
+      "category": "Maps (Tier 14)"
     },
     "Arena Map": {
       "name": "Arena Map",
       "ids": {
-        "poeofficial": "arena-map-tier-16",
+        "poeofficial": "arena-map-tier-14",
         "poetrade": "321"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 16)"
+      "category": "Maps (Tier 14)"
     },
     "Arid Lake Map": {
       "name": "Arid Lake Map",
@@ -308,13 +338,13 @@
     "Armoury Map": {
       "name": "Armoury Map",
       "ids": {
-        "poeofficial": "armoury-map-tier-16",
+        "poeofficial": "armoury-map-tier-15",
         "poetrade": "323"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 16)"
+      "category": "Maps (Tier 15)"
     },
     "Arrogance of the Vaal": {
       "name": "Arrogance of the Vaal",
@@ -330,13 +360,13 @@
     "Arsenal Map": {
       "name": "Arsenal Map",
       "ids": {
-        "poeofficial": "arsenal-map-tier-14",
+        "poeofficial": "arsenal-map-tier-15",
         "poetrade": "324"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 14)"
+      "category": "Maps (Tier 15)"
     },
     "Ashen Wood Map": {
       "name": "Ashen Wood Map",
@@ -363,13 +393,13 @@
     "Atoll Map": {
       "name": "Atoll Map",
       "ids": {
-        "poeofficial": "atoll-map-tier-14",
+        "poeofficial": "atoll-map-tier-16",
         "poetrade": "326"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 14)"
+      "category": "Maps (Tier 16)"
     },
     "Atziri's Arsenal": {
       "name": "Atziri's Arsenal",
@@ -448,24 +478,24 @@
     "Barrows Map": {
       "name": "Barrows Map",
       "ids": {
-        "poeofficial": "barrows-map-tier-15",
+        "poeofficial": "barrows-map-tier-16",
         "poetrade": "327"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 15)"
+      "category": "Maps (Tier 16)"
     },
     "Basilica Map": {
       "name": "Basilica Map",
       "ids": {
-        "poeofficial": "basilica-map-tier-16",
+        "poeofficial": "basilica-map-tier-14",
         "poetrade": "524"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 16)"
+      "category": "Maps (Tier 14)"
     },
     "Bazaar Map": {
       "name": "Bazaar Map",
@@ -481,13 +511,13 @@
     "Beach Map": {
       "name": "Beach Map",
       "ids": {
-        "poeofficial": "beach-map-tier-14",
+        "poeofficial": "beach-map-tier-16",
         "poetrade": "329"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 14)"
+      "category": "Maps (Tier 16)"
     },
     "Beauty Through Death": {
       "name": "Beauty Through Death",
@@ -503,23 +533,23 @@
     "Belfry Map": {
       "name": "Belfry Map",
       "ids": {
-        "poeofficial": "belfry-map-tier-16",
+        "poeofficial": "belfry-map-tier-14",
         "poetrade": "525"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 16)"
+      "category": "Maps (Tier 14)"
     },
     "Binding Shard": {
       "name": "Binding Shard",
       "ids": {
         "poeofficial": "binding-shard"
       },
-      "is_currency": true,
+      "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Currency"
+      "category": "Shards & Splinters"
     },
     "Birth of the Three": {
       "name": "Birth of the Three",
@@ -851,6 +881,16 @@
       "is_bulk_target": false,
       "category": "Maps (Blighted)"
     },
+    "Blighted Bramble Valley Map": {
+      "name": "Blighted Bramble Valley Map",
+      "ids": {
+        "poeofficial": "blighted-bramble-valley-map"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Maps (Blighted)"
+    },
     "Blighted Burial Chambers Map": {
       "name": "Blighted Burial Chambers Map",
       "ids": {
@@ -972,6 +1012,16 @@
       "is_bulk_target": false,
       "category": "Maps (Blighted)"
     },
+    "Blighted Cold River Map": {
+      "name": "Blighted Cold River Map",
+      "ids": {
+        "poeofficial": "blighted-cold-river-map"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Maps (Blighted)"
+    },
     "Blighted Colonnade Map": {
       "name": "Blighted Colonnade Map",
       "ids": {
@@ -1082,6 +1132,16 @@
       "is_bulk_target": false,
       "category": "Maps (Blighted)"
     },
+    "Blighted Crimson Township Map": {
+      "name": "Blighted Crimson Township Map",
+      "ids": {
+        "poeofficial": "blighted-crimson-township-map"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Maps (Blighted)"
+    },
     "Blighted Crystal Ore Map": {
       "name": "Blighted Crystal Ore Map",
       "ids": {
@@ -1170,6 +1230,16 @@
       "is_bulk_target": false,
       "category": "Maps (Blighted)"
     },
+    "Blighted Dry Sea Map": {
+      "name": "Blighted Dry Sea Map",
+      "ids": {
+        "poeofficial": "blighted-dry-sea-map"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Maps (Blighted)"
+    },
     "Blighted Dunes Map": {
       "name": "Blighted Dunes Map",
       "ids": {
@@ -1247,6 +1317,46 @@
       "is_bulk_target": false,
       "category": "Maps (Blighted)"
     },
+    "Blighted Forbidden Woods Map": {
+      "name": "Blighted Forbidden Woods Map",
+      "ids": {
+        "poeofficial": "blighted-forbidden-woods-map"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Maps (Blighted)"
+    },
+    "Blighted Forking River Map": {
+      "name": "Blighted Forking River Map",
+      "ids": {
+        "poeofficial": "blighted-forking-river-map"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Maps (Blighted)"
+    },
+    "Blighted Foundry Map": {
+      "name": "Blighted Foundry Map",
+      "ids": {
+        "poeofficial": "blighted-foundry-map"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Maps (Blighted)"
+    },
+    "Blighted Frozen Cabins Map": {
+      "name": "Blighted Frozen Cabins Map",
+      "ids": {
+        "poeofficial": "blighted-frozen-cabins-map"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Maps (Blighted)"
+    },
     "Blighted Fungal Hollow Map": {
       "name": "Blighted Fungal Hollow Map",
       "ids": {
@@ -1296,6 +1406,16 @@
       "ids": {
         "poeofficial": "blighted-glacier-map",
         "poetrade": "725"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Maps (Blighted)"
+    },
+    "Blighted Grave Trough Map": {
+      "name": "Blighted Grave Trough Map",
+      "ids": {
+        "poeofficial": "blighted-grave-trough-map"
       },
       "is_currency": false,
       "is_basic_currency": false,
@@ -1874,6 +1994,16 @@
       "is_bulk_target": false,
       "category": "Maps (Blighted)"
     },
+    "Blighted Silo Map": {
+      "name": "Blighted Silo Map",
+      "ids": {
+        "poeofficial": "blighted-silo-map"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Maps (Blighted)"
+    },
     "Blighted Spider Forest Map": {
       "name": "Blighted Spider Forest Map",
       "ids": {
@@ -1890,6 +2020,16 @@
       "ids": {
         "poeofficial": "blighted-spider-lair-map",
         "poetrade": "472"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Maps (Blighted)"
+    },
+    "Blighted Stagnation Map": {
+      "name": "Blighted Stagnation Map",
+      "ids": {
+        "poeofficial": "blighted-stagnation-map"
       },
       "is_currency": false,
       "is_basic_currency": false,
@@ -2039,6 +2179,17 @@
       "is_bulk_target": false,
       "category": "Maps (Blighted)"
     },
+    "Blighted Vaal Temple Map": {
+      "name": "Blighted Vaal Temple Map",
+      "ids": {
+        "poeofficial": "blighted-vaal-temple-map",
+        "poetrade": "486"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Maps (Blighted)"
+    },
     "Blighted Vault Map": {
       "name": "Blighted Vault Map",
       "ids": {
@@ -2141,13 +2292,13 @@
     "Bog Map": {
       "name": "Bog Map",
       "ids": {
-        "poeofficial": "bog-map-tier-14",
+        "poeofficial": "bog-map-tier-15",
         "poetrade": "331"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 14)"
+      "category": "Maps (Tier 15)"
     },
     "Bone Crypt Map": {
       "name": "Bone Crypt Map",
@@ -2215,16 +2366,46 @@
       "is_bulk_target": false,
       "category": "Cards"
     },
+    "Bramble Valley Map": {
+      "name": "Bramble Valley Map",
+      "ids": {
+        "poeofficial": "bramble-valley-map-tier-14"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Maps (Tier 14)"
+    },
+    "Brother's Stash": {
+      "name": "Brother's Stash",
+      "ids": {
+        "poeofficial": "brothers-stash"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Cards"
+    },
+    "Brotherhood in Exile": {
+      "name": "Brotherhood in Exile",
+      "ids": {
+        "poeofficial": "brotherhood-in-exile"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Cards"
+    },
     "Burial Chambers Map": {
       "name": "Burial Chambers Map",
       "ids": {
-        "poeofficial": "burial-chambers-map-tier-15",
+        "poeofficial": "burial-chambers-map-tier-16",
         "poetrade": "332"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 15)"
+      "category": "Maps (Tier 16)"
     },
     "Buried Treasure": {
       "name": "Buried Treasure",
@@ -2260,13 +2441,13 @@
     "Caldera Map": {
       "name": "Caldera Map",
       "ids": {
-        "poeofficial": "caldera-map-tier-15",
+        "poeofficial": "caldera-map-tier-16",
         "poetrade": "528"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 15)"
+      "category": "Maps (Tier 16)"
     },
     "Call to the First Ones": {
       "name": "Call to the First Ones",
@@ -2448,10 +2629,10 @@
       "ids": {
         "poeofficial": "chaos-shard"
       },
-      "is_currency": true,
+      "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Currency"
+      "category": "Shards & Splinters"
     },
     "Chaotic Disposition": {
       "name": "Chaotic Disposition",
@@ -2467,13 +2648,13 @@
     "Chateau Map": {
       "name": "Chateau Map",
       "ids": {
-        "poeofficial": "chateau-map-tier-16",
+        "poeofficial": "chateau-map-tier-14",
         "poetrade": "340"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 16)"
+      "category": "Maps (Tier 14)"
     },
     "Chayula's Breachstone": {
       "name": "Chayula's Breachstone",
@@ -2552,16 +2733,26 @@
       "is_bulk_target": false,
       "category": "Oils"
     },
-    "Colonnade Map": {
-      "name": "Colonnade Map",
+    "Cold River Map": {
+      "name": "Cold River Map",
       "ids": {
-        "poeofficial": "colonnade-map-tier-14",
-        "poetrade": "341"
+        "poeofficial": "cold-river-map-tier-14"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
       "category": "Maps (Tier 14)"
+    },
+    "Colonnade Map": {
+      "name": "Colonnade Map",
+      "ids": {
+        "poeofficial": "colonnade-map-tier-15",
+        "poetrade": "341"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Maps (Tier 15)"
     },
     "Colosseum Map": {
       "name": "Colosseum Map",
@@ -2577,13 +2768,13 @@
     "Conservatory Map": {
       "name": "Conservatory Map",
       "ids": {
-        "poeofficial": "conservatory-map-tier-14",
+        "poeofficial": "conservatory-map-tier-15",
         "poetrade": "531"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 14)"
+      "category": "Maps (Tier 15)"
     },
     "Coral Ruins Map": {
       "name": "Coral Ruins Map",
@@ -2599,13 +2790,13 @@
     "Core Map": {
       "name": "Core Map",
       "ids": {
-        "poeofficial": "core-map-tier-15",
+        "poeofficial": "core-map-tier-14",
         "poetrade": "343"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 15)"
+      "category": "Maps (Tier 14)"
     },
     "Corroded Fossil": {
       "name": "Corroded Fossil",
@@ -2643,13 +2834,13 @@
     "Courtyard Map": {
       "name": "Courtyard Map",
       "ids": {
-        "poeofficial": "courtyard-map-tier-15",
+        "poeofficial": "courtyard-map-tier-14",
         "poetrade": "344"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 15)"
+      "category": "Maps (Tier 14)"
     },
     "Coves Map": {
       "name": "Coves Map",
@@ -2694,6 +2885,16 @@
       "is_bulk_target": false,
       "category": "Maps (Tier 14)"
     },
+    "Crescent Splinter": {
+      "name": "Crescent Splinter",
+      "ids": {
+        "poeofficial": "crescent-splinter"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Shards & Splinters"
+    },
     "Crimson Oil": {
       "name": "Crimson Oil",
       "ids": {
@@ -2710,6 +2911,16 @@
       "ids": {
         "poeofficial": "crimson-temple-map-tier-15",
         "poetrade": "476"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Maps (Tier 15)"
+    },
+    "Crimson Township Map": {
+      "name": "Crimson Township Map",
+      "ids": {
+        "poeofficial": "crimson-township-map-tier-15"
       },
       "is_currency": false,
       "is_basic_currency": false,
@@ -2741,13 +2952,23 @@
     "Cursed Crypt Map": {
       "name": "Cursed Crypt Map",
       "ids": {
-        "poeofficial": "cursed-crypt-map-tier-14",
+        "poeofficial": "cursed-crypt-map-tier-16",
         "poetrade": "535"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 14)"
+      "category": "Maps (Tier 16)"
+    },
+    "Cursed Words": {
+      "name": "Cursed Words",
+      "ids": {
+        "poeofficial": "cursed-words"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Cards"
     },
     "Dark Dreams": {
       "name": "Dark Dreams",
@@ -2762,13 +2983,13 @@
     "Dark Forest Map": {
       "name": "Dark Forest Map",
       "ids": {
-        "poeofficial": "dark-forest-map-tier-15",
+        "poeofficial": "dark-forest-map-tier-14",
         "poetrade": "349"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 15)"
+      "category": "Maps (Tier 14)"
     },
     "Dark Temptation": {
       "name": "Dark Temptation",
@@ -3098,27 +3319,37 @@
       "is_bulk_target": false,
       "category": "Delve Fossils"
     },
+    "Desecrated Virtue": {
+      "name": "Desecrated Virtue",
+      "ids": {
+        "poeofficial": "desecrated-virtue"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Cards"
+    },
     "Desert Map": {
       "name": "Desert Map",
       "ids": {
-        "poeofficial": "desert-map-tier-14",
+        "poeofficial": "desert-map-tier-15",
         "poetrade": "350"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 14)"
+      "category": "Maps (Tier 15)"
     },
     "Desert Spring Map": {
       "name": "Desert Spring Map",
       "ids": {
-        "poeofficial": "desert-spring-map-tier-15",
+        "poeofficial": "desert-spring-map-tier-14",
         "poetrade": "537"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 15)"
+      "category": "Maps (Tier 14)"
     },
     "Destined to Crumble": {
       "name": "Destined to Crumble",
@@ -3145,13 +3376,13 @@
     "Dig Map": {
       "name": "Dig Map",
       "ids": {
-        "poeofficial": "dig-map-tier-16",
+        "poeofficial": "dig-map-tier-14",
         "poetrade": "538"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 16)"
+      "category": "Maps (Tier 14)"
     },
     "Divine Justice": {
       "name": "Divine Justice",
@@ -3218,16 +3449,36 @@
       "is_bulk_target": false,
       "category": "Cards"
     },
-    "Dunes Map": {
-      "name": "Dunes Map",
+    "Draped in Dreams": {
+      "name": "Draped in Dreams",
       "ids": {
-        "poeofficial": "dunes-map-tier-14",
-        "poetrade": "351"
+        "poeofficial": "draped-in-dreams"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Cards"
+    },
+    "Dry Sea Map": {
+      "name": "Dry Sea Map",
+      "ids": {
+        "poeofficial": "dry-sea-map-tier-14"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
       "category": "Maps (Tier 14)"
+    },
+    "Dunes Map": {
+      "name": "Dunes Map",
+      "ids": {
+        "poeofficial": "dunes-map-tier-15",
+        "poetrade": "351"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Maps (Tier 15)"
     },
     "Dungeon Map": {
       "name": "Dungeon Map",
@@ -3245,6 +3496,16 @@
       "ids": {
         "poeofficial": "dying-anguish",
         "poetrade": "150"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Cards"
+    },
+    "Dying Light": {
+      "name": "Dying Light",
+      "ids": {
+        "poeofficial": "dying-light"
       },
       "is_currency": false,
       "is_basic_currency": false,
@@ -3293,6 +3554,16 @@
       "is_basic_currency": false,
       "is_bulk_target": false,
       "category": "Incubators"
+    },
+    "Elevated Sextant": {
+      "name": "Elevated Sextant",
+      "ids": {
+        "poeofficial": "elevated-sextant"
+      },
+      "is_currency": true,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Currency"
     },
     "Emperor of Purity": {
       "name": "Emperor of Purity",
@@ -3365,10 +3636,10 @@
       "ids": {
         "poeofficial": "engineers-shard"
       },
-      "is_currency": true,
+      "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Currency"
+      "category": "Shards & Splinters"
     },
     "Esh's Breachstone": {
       "name": "Esh's Breachstone",
@@ -3461,13 +3732,13 @@
     "Estuary Map": {
       "name": "Estuary Map",
       "ids": {
-        "poeofficial": "estuary-map-tier-16",
+        "poeofficial": "estuary-map-tier-15",
         "poetrade": "353"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 16)"
+      "category": "Maps (Tier 15)"
     },
     "Etched in Blood": {
       "name": "Etched in Blood",
@@ -3507,21 +3778,21 @@
         "poeofficial": "exalted-shard",
         "poetrade": "521"
       },
-      "is_currency": true,
+      "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Currency"
+      "category": "Shards & Splinters"
     },
     "Excavation Map": {
       "name": "Excavation Map",
       "ids": {
-        "poeofficial": "excavation-map-tier-14",
+        "poeofficial": "excavation-map-tier-16",
         "poetrade": "354"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 14)"
+      "category": "Maps (Tier 16)"
     },
     "Faceted Fossil": {
       "name": "Faceted Fossil",
@@ -3547,13 +3818,13 @@
     "Factory Map": {
       "name": "Factory Map",
       "ids": {
-        "poeofficial": "factory-map-tier-14",
+        "poeofficial": "factory-map-tier-16",
         "poetrade": "355"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 14)"
+      "category": "Maps (Tier 16)"
     },
     "Farric Lure": {
       "name": "Farric Lure",
@@ -3564,6 +3835,16 @@
       "is_basic_currency": false,
       "is_bulk_target": false,
       "category": "Scarabs"
+    },
+    "Fateful Meeting": {
+      "name": "Fateful Meeting",
+      "ids": {
+        "poeofficial": "fateful-meeting"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Cards"
     },
     "Fenumal Lure": {
       "name": "Fenumal Lure",
@@ -3631,13 +3912,13 @@
     "Flooded Mine Map": {
       "name": "Flooded Mine Map",
       "ids": {
-        "poeofficial": "flooded-mine-map-tier-14",
+        "poeofficial": "flooded-mine-map-tier-15",
         "poetrade": "540"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 14)"
+      "category": "Maps (Tier 15)"
     },
     "Forbidden Power": {
       "name": "Forbidden Power",
@@ -3649,6 +3930,16 @@
       "is_basic_currency": false,
       "is_bulk_target": false,
       "category": "Cards"
+    },
+    "Forbidden Woods Map": {
+      "name": "Forbidden Woods Map",
+      "ids": {
+        "poeofficial": "forbidden-woods-map-tier-14"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Maps (Tier 14)"
     },
     "Foreboding Delirium Orb": {
       "name": "Foreboding Delirium Orb",
@@ -3672,6 +3963,16 @@
       "is_bulk_target": false,
       "category": "Incubators"
     },
+    "Forking River Map": {
+      "name": "Forking River Map",
+      "ids": {
+        "poeofficial": "forking-river-map-tier-14"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Maps (Tier 14)"
+    },
     "Fossilised Delirium Orb": {
       "name": "Fossilised Delirium Orb",
       "ids": {
@@ -3693,6 +3994,16 @@
       "is_basic_currency": false,
       "is_bulk_target": false,
       "category": "Incubators"
+    },
+    "Foundry Map": {
+      "name": "Foundry Map",
+      "ids": {
+        "poeofficial": "foundry-map-tier-15"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Maps (Tier 15)"
     },
     "Fractured Fossil": {
       "name": "Fractured Fossil",
@@ -3872,27 +4183,37 @@
       "is_bulk_target": false,
       "category": "Delve Fossils"
     },
-    "Fungal Hollow Map": {
-      "name": "Fungal Hollow Map",
+    "Frozen Cabins Map": {
+      "name": "Frozen Cabins Map",
       "ids": {
-        "poeofficial": "fungal-hollow-map-tier-14",
-        "poetrade": "724"
-      },
-      "is_currency": false,
-      "is_basic_currency": false,
-      "is_bulk_target": false,
-      "category": "Maps (Tier 14)"
-    },
-    "Gardens Map": {
-      "name": "Gardens Map",
-      "ids": {
-        "poeofficial": "gardens-map-tier-15",
-        "poetrade": "541"
+        "poeofficial": "frozen-cabins-map-tier-15"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
       "category": "Maps (Tier 15)"
+    },
+    "Fungal Hollow Map": {
+      "name": "Fungal Hollow Map",
+      "ids": {
+        "poeofficial": "fungal-hollow-map-tier-15",
+        "poetrade": "724"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Maps (Tier 15)"
+    },
+    "Gardens Map": {
+      "name": "Gardens Map",
+      "ids": {
+        "poeofficial": "gardens-map-tier-14",
+        "poetrade": "541"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Maps (Tier 14)"
     },
     "Gemcutter's Incubator": {
       "name": "Gemcutter's Incubator",
@@ -3930,13 +4251,13 @@
     "Geode Map": {
       "name": "Geode Map",
       "ids": {
-        "poeofficial": "geode-map-tier-15",
+        "poeofficial": "geode-map-tier-14",
         "poetrade": "542"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 15)"
+      "category": "Maps (Tier 14)"
     },
     "Geomancer's Incubator": {
       "name": "Geomancer's Incubator",
@@ -3952,13 +4273,23 @@
     "Ghetto Map": {
       "name": "Ghetto Map",
       "ids": {
-        "poeofficial": "ghetto-map-tier-14",
+        "poeofficial": "ghetto-map-tier-15",
         "poetrade": "357"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 14)"
+      "category": "Maps (Tier 15)"
+    },
+    "Gift of Asenath": {
+      "name": "Gift of Asenath",
+      "ids": {
+        "poeofficial": "gift-of-asenath"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Cards"
     },
     "Gift of the Gemling Queen": {
       "name": "Gift of the Gemling Queen",
@@ -4211,27 +4542,37 @@
       "is_bulk_target": false,
       "category": "Cards"
     },
-    "Graveyard Map": {
-      "name": "Graveyard Map",
+    "Grave Trough Map": {
+      "name": "Grave Trough Map",
       "ids": {
-        "poeofficial": "graveyard-map-tier-14",
-        "poetrade": "359"
-      },
-      "is_currency": false,
-      "is_basic_currency": false,
-      "is_bulk_target": false,
-      "category": "Maps (Tier 14)"
-    },
-    "Grotto Map": {
-      "name": "Grotto Map",
-      "ids": {
-        "poeofficial": "grotto-map-tier-15",
-        "poetrade": "360"
+        "poeofficial": "grave-trough-map-tier-15"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
       "category": "Maps (Tier 15)"
+    },
+    "Graveyard Map": {
+      "name": "Graveyard Map",
+      "ids": {
+        "poeofficial": "graveyard-map-tier-15",
+        "poetrade": "359"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Maps (Tier 15)"
+    },
+    "Grotto Map": {
+      "name": "Grotto Map",
+      "ids": {
+        "poeofficial": "grotto-map-tier-14",
+        "poetrade": "360"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Maps (Tier 14)"
     },
     "Harbinger's Orb": {
       "name": "Harbinger's Orb",
@@ -4250,10 +4591,10 @@
         "poeofficial": "harbingers-shard",
         "poetrade": "643"
       },
-      "is_currency": true,
+      "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Currency"
+      "category": "Shards & Splinters"
     },
     "Harmony of Souls": {
       "name": "Harmony of Souls",
@@ -4276,6 +4617,16 @@
       "is_basic_currency": false,
       "is_bulk_target": false,
       "category": "Maps (Tier 14)"
+    },
+    "Haunting Shadows": {
+      "name": "Haunting Shadows",
+      "ids": {
+        "poeofficial": "haunting-shadows"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Cards"
     },
     "Her Mask": {
       "name": "Her Mask",
@@ -4326,10 +4677,10 @@
       "ids": {
         "poeofficial": "horizon-shard"
       },
-      "is_currency": true,
+      "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Currency"
+      "category": "Shards & Splinters"
     },
     "House of Mirrors": {
       "name": "House of Mirrors",
@@ -4400,13 +4751,13 @@
     "Iceberg Map": {
       "name": "Iceberg Map",
       "ids": {
-        "poeofficial": "iceberg-map-tier-15",
+        "poeofficial": "iceberg-map-tier-16",
         "poetrade": "545"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 15)"
+      "category": "Maps (Tier 16)"
     },
     "Imbued Catalyst": {
       "name": "Imbued Catalyst",
@@ -4580,6 +4931,16 @@
       "is_bulk_target": false,
       "category": "Maps (Tier 14)"
     },
+    "Keeper's Corruption": {
+      "name": "Keeper's Corruption",
+      "ids": {
+        "poeofficial": "keepers-corruption"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Cards"
+    },
     "Key to Decay": {
       "name": "Key to Decay",
       "ids": {
@@ -4647,13 +5008,13 @@
     "Lava Chamber Map": {
       "name": "Lava Chamber Map",
       "ids": {
-        "poeofficial": "lava-chamber-map-tier-16",
+        "poeofficial": "lava-chamber-map-tier-14",
         "poetrade": "548"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 16)"
+      "category": "Maps (Tier 14)"
     },
     "Lava Lake Map": {
       "name": "Lava Lake Map",
@@ -4680,13 +5041,13 @@
     "Leyline Map": {
       "name": "Leyline Map",
       "ids": {
-        "poeofficial": "leyline-map-tier-15",
+        "poeofficial": "leyline-map-tier-14",
         "poetrade": "550"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 15)"
+      "category": "Maps (Tier 14)"
     },
     "Light and Truth": {
       "name": "Light and Truth",
@@ -4702,13 +5063,13 @@
     "Lighthouse Map": {
       "name": "Lighthouse Map",
       "ids": {
-        "poeofficial": "lighthouse-map-tier-14",
+        "poeofficial": "lighthouse-map-tier-16",
         "poetrade": "551"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 14)"
+      "category": "Maps (Tier 16)"
     },
     "Lingering Remnants": {
       "name": "Lingering Remnants",
@@ -4743,6 +5104,16 @@
       "is_bulk_target": false,
       "category": "Cards"
     },
+    "Love Through Ice": {
+      "name": "Love Through Ice",
+      "ids": {
+        "poeofficial": "love-through-ice"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Cards"
+    },
     "Loyalty": {
       "name": "Loyalty",
       "ids": {
@@ -4764,6 +5135,16 @@
       "is_basic_currency": false,
       "is_bulk_target": false,
       "category": "Delve Fossils"
+    },
+    "Luck of the Vaal": {
+      "name": "Luck of the Vaal",
+      "ids": {
+        "poeofficial": "luck-of-the-vaal"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Cards"
     },
     "Lucky Connections": {
       "name": "Lucky Connections",
@@ -4811,35 +5192,175 @@
     "Malformation Map": {
       "name": "Malformation Map",
       "ids": {
-        "poeofficial": "malformation-map-tier-15",
+        "poeofficial": "malformation-map-tier-14",
         "poetrade": "366"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Maps (Tier 14)"
+    },
+    "Marshes Map": {
+      "name": "Marshes Map",
+      "ids": {
+        "poeofficial": "marshes-map-tier-15",
+        "poetrade": "367"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
       "category": "Maps (Tier 15)"
     },
-    "Marshes Map": {
-      "name": "Marshes Map",
-      "ids": {
-        "poeofficial": "marshes-map-tier-14",
-        "poetrade": "367"
-      },
-      "is_currency": false,
-      "is_basic_currency": false,
-      "is_bulk_target": false,
-      "category": "Maps (Tier 14)"
-    },
     "Mausoleum Map": {
       "name": "Mausoleum Map",
       "ids": {
-        "poeofficial": "mausoleum-map-tier-14",
+        "poeofficial": "mausoleum-map-tier-16",
         "poetrade": "553"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 14)"
+      "category": "Maps (Tier 16)"
+    },
+    "Maven's Invitation: Glennach Cairns": {
+      "name": "Maven's Invitation: Glennach Cairns",
+      "ids": {
+        "poeofficial": "glennach-cairns"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Fragments & Sets"
+    },
+    "Maven's Invitation: Haewark Hamlet": {
+      "name": "Maven's Invitation: Haewark Hamlet",
+      "ids": {
+        "poeofficial": "haewark-hamlet"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Fragments & Sets"
+    },
+    "Maven's Invitation: Lex Ejoris": {
+      "name": "Maven's Invitation: Lex Ejoris",
+      "ids": {
+        "poeofficial": "lex-ejoris"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Fragments & Sets"
+    },
+    "Maven's Invitation: Lex Proxima": {
+      "name": "Maven's Invitation: Lex Proxima",
+      "ids": {
+        "poeofficial": "lex-proxima"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Fragments & Sets"
+    },
+    "Maven's Invitation: Lira Arthain": {
+      "name": "Maven's Invitation: Lira Arthain",
+      "ids": {
+        "poeofficial": "lira-arthain"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Fragments & Sets"
+    },
+    "Maven's Invitation: New Vastir": {
+      "name": "Maven's Invitation: New Vastir",
+      "ids": {
+        "poeofficial": "new-vastir"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Fragments & Sets"
+    },
+    "Maven's Invitation: The Feared": {
+      "name": "Maven's Invitation: The Feared",
+      "ids": {
+        "poeofficial": "the-feared"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Fragments & Sets"
+    },
+    "Maven's Invitation: The Forgotten": {
+      "name": "Maven's Invitation: The Forgotten",
+      "ids": {
+        "poeofficial": "the-forgotten"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Fragments & Sets"
+    },
+    "Maven's Invitation: The Formed": {
+      "name": "Maven's Invitation: The Formed",
+      "ids": {
+        "poeofficial": "the-formed"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Fragments & Sets"
+    },
+    "Maven's Invitation: The Hidden": {
+      "name": "Maven's Invitation: The Hidden",
+      "ids": {
+        "poeofficial": "the-hidden"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Fragments & Sets"
+    },
+    "Maven's Invitation: The Twisted": {
+      "name": "Maven's Invitation: The Twisted",
+      "ids": {
+        "poeofficial": "the-twisted"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Fragments & Sets"
+    },
+    "Maven's Invitation: Tirn's End": {
+      "name": "Maven's Invitation: Tirn's End",
+      "ids": {
+        "poeofficial": "tirns-end"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Fragments & Sets"
+    },
+    "Maven's Invitation: Valdo's Rest": {
+      "name": "Maven's Invitation: Valdo's Rest",
+      "ids": {
+        "poeofficial": "valdos-rest"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Fragments & Sets"
+    },
+    "Maven's Orb": {
+      "name": "Maven's Orb",
+      "ids": {
+        "poeofficial": "mavens-orb"
+      },
+      "is_currency": true,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Currency"
     },
     "Mawr Blaidd": {
       "name": "Mawr Blaidd",
@@ -4855,13 +5376,13 @@
     "Maze Map": {
       "name": "Maze Map",
       "ids": {
-        "poeofficial": "maze-map-tier-14",
+        "poeofficial": "maze-map-tier-16",
         "poetrade": "368"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 14)"
+      "category": "Maps (Tier 16)"
     },
     "Merciless Armament": {
       "name": "Merciless Armament",
@@ -4924,10 +5445,10 @@
         "poeofficial": "mirror-shard",
         "poetrade": "520"
       },
-      "is_currency": true,
+      "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Currency"
+      "category": "Shards & Splinters"
     },
     "Mirror of Kalandra": {
       "name": "Mirror of Kalandra",
@@ -5040,24 +5561,24 @@
     "Mud Geyser Map": {
       "name": "Mud Geyser Map",
       "ids": {
-        "poeofficial": "mud-geyser-map-tier-14",
+        "poeofficial": "mud-geyser-map-tier-16",
         "poetrade": "372"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 14)"
+      "category": "Maps (Tier 16)"
     },
     "Museum Map": {
       "name": "Museum Map",
       "ids": {
-        "poeofficial": "museum-map-tier-14",
+        "poeofficial": "museum-map-tier-15",
         "poetrade": "373"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 14)"
+      "category": "Maps (Tier 15)"
     },
     "Muttering Essence of Anger": {
       "name": "Muttering Essence of Anger",
@@ -5161,13 +5682,13 @@
     "Necropolis Map": {
       "name": "Necropolis Map",
       "ids": {
-        "poeofficial": "necropolis-map-tier-15",
+        "poeofficial": "necropolis-map-tier-16",
         "poetrade": "374"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 15)"
+      "category": "Maps (Tier 16)"
     },
     "No Traces": {
       "name": "No Traces",
@@ -5355,16 +5876,26 @@
       "is_bulk_target": false,
       "category": "Currency"
     },
+    "Orb of Unmaking": {
+      "name": "Orb of Unmaking",
+      "ids": {
+        "poeofficial": "orb-of-unmaking"
+      },
+      "is_currency": true,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Currency"
+    },
     "Orchard Map": {
       "name": "Orchard Map",
       "ids": {
-        "poeofficial": "orchard-map-tier-15",
+        "poeofficial": "orchard-map-tier-14",
         "poetrade": "376"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 15)"
+      "category": "Maps (Tier 14)"
     },
     "Ornate Incubator": {
       "name": "Ornate Incubator",
@@ -5391,24 +5922,24 @@
     "Overgrown Ruin Map": {
       "name": "Overgrown Ruin Map",
       "ids": {
-        "poeofficial": "overgrown-ruin-map-tier-15",
+        "poeofficial": "overgrown-ruin-map-tier-14",
         "poetrade": "377"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 15)"
+      "category": "Maps (Tier 14)"
     },
     "Overgrown Shrine Map": {
       "name": "Overgrown Shrine Map",
       "ids": {
-        "poeofficial": "overgrown-shrine-map-tier-16",
+        "poeofficial": "overgrown-shrine-map-tier-14",
         "poetrade": "470"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 16)"
+      "category": "Maps (Tier 14)"
     },
     "Palace Map": {
       "name": "Palace Map",
@@ -5441,6 +5972,16 @@
       "is_basic_currency": false,
       "is_bulk_target": false,
       "category": "Maps (Tier 16)"
+    },
+    "Peaceful Moments": {
+      "name": "Peaceful Moments",
+      "ids": {
+        "poeofficial": "peaceful-moments"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Cards"
     },
     "Pen Map": {
       "name": "Pen Map",
@@ -5500,46 +6041,46 @@
     "Phantasmagoria Map": {
       "name": "Phantasmagoria Map",
       "ids": {
-        "poeofficial": "phantasmagoria-map-tier-16",
+        "poeofficial": "phantasmagoria-map-tier-14",
         "poetrade": "381"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Maps (Tier 14)"
+    },
+    "Pier Map": {
+      "name": "Pier Map",
+      "ids": {
+        "poeofficial": "pier-map-tier-15",
+        "poetrade": "382"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Maps (Tier 15)"
+    },
+    "Pit Map": {
+      "name": "Pit Map",
+      "ids": {
+        "poeofficial": "pit-map-tier-16",
+        "poetrade": "383"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
       "category": "Maps (Tier 16)"
     },
-    "Pier Map": {
-      "name": "Pier Map",
-      "ids": {
-        "poeofficial": "pier-map-tier-14",
-        "poetrade": "382"
-      },
-      "is_currency": false,
-      "is_basic_currency": false,
-      "is_bulk_target": false,
-      "category": "Maps (Tier 14)"
-    },
-    "Pit Map": {
-      "name": "Pit Map",
-      "ids": {
-        "poeofficial": "pit-map-tier-14",
-        "poetrade": "383"
-      },
-      "is_currency": false,
-      "is_basic_currency": false,
-      "is_bulk_target": false,
-      "category": "Maps (Tier 14)"
-    },
     "Plateau Map": {
       "name": "Plateau Map",
       "ids": {
-        "poeofficial": "plateau-map-tier-14",
+        "poeofficial": "plateau-map-tier-15",
         "poetrade": "385"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 14)"
+      "category": "Maps (Tier 15)"
     },
     "Plaza Map": {
       "name": "Plaza Map",
@@ -5708,13 +6249,13 @@
     "Port Map": {
       "name": "Port Map",
       "ids": {
-        "poeofficial": "port-map-tier-15",
+        "poeofficial": "port-map-tier-14",
         "poetrade": "391"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 15)"
+      "category": "Maps (Tier 14)"
     },
     "Portentous Delirium Orb": {
       "name": "Portentous Delirium Orb",
@@ -5847,6 +6388,16 @@
       "is_bulk_target": false,
       "category": "Delve Resonators"
     },
+    "Prime Regrading Lens": {
+      "name": "Prime Regrading Lens",
+      "ids": {
+        "poeofficial": "prime-regrading-lens"
+      },
+      "is_currency": true,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Currency"
+    },
     "Prime Sextant": {
       "name": "Prime Sextant",
       "ids": {
@@ -5883,13 +6434,13 @@
     "Primordial Blocks Map": {
       "name": "Primordial Blocks Map",
       "ids": {
-        "poeofficial": "primordial-blocks-map-tier-15",
+        "poeofficial": "primordial-blocks-map-tier-14",
         "poetrade": "727"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 15)"
+      "category": "Maps (Tier 14)"
     },
     "Primordial Pool Map": {
       "name": "Primordial Pool Map",
@@ -5937,13 +6488,24 @@
     "Promenade Map": {
       "name": "Promenade Map",
       "ids": {
-        "poeofficial": "promenade-map-tier-16",
+        "poeofficial": "promenade-map-tier-14",
         "poetrade": "389"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 16)"
+      "category": "Maps (Tier 14)"
+    },
+    "Prometheus' Armoury": {
+      "name": "Prometheus' Armoury",
+      "ids": {
+        "poeofficial": "prometheus-armoury",
+        "poetrade": "323"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Cards"
     },
     "Prosperity": {
       "name": "Prosperity",
@@ -5959,13 +6521,13 @@
     "Racecourse Map": {
       "name": "Racecourse Map",
       "ids": {
-        "poeofficial": "racecourse-map-tier-14",
+        "poeofficial": "racecourse-map-tier-15",
         "poetrade": "392"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 14)"
+      "category": "Maps (Tier 15)"
     },
     "Rain Tempter": {
       "name": "Rain Tempter",
@@ -5992,13 +6554,13 @@
     "Ramparts Map": {
       "name": "Ramparts Map",
       "ids": {
-        "poeofficial": "ramparts-map-tier-15",
+        "poeofficial": "ramparts-map-tier-14",
         "poetrade": "393"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 15)"
+      "category": "Maps (Tier 14)"
     },
     "Rats": {
       "name": "Rats",
@@ -6021,6 +6583,16 @@
       "is_bulk_target": false,
       "category": "Cards"
     },
+    "Reckless Ambition": {
+      "name": "Reckless Ambition",
+      "ids": {
+        "poeofficial": "reckless-ambition"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Cards"
+    },
     "Redeemer's Exalted Orb": {
       "name": "Redeemer's Exalted Orb",
       "ids": {
@@ -6035,13 +6607,13 @@
     "Reef Map": {
       "name": "Reef Map",
       "ids": {
-        "poeofficial": "reef-map-tier-16",
+        "poeofficial": "reef-map-tier-15",
         "poetrade": "394"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 16)"
+      "category": "Maps (Tier 15)"
     },
     "Regal Orb": {
       "name": "Regal Orb",
@@ -6059,21 +6631,21 @@
       "ids": {
         "poeofficial": "regal-shard"
       },
-      "is_currency": true,
+      "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Currency"
+      "category": "Shards & Splinters"
     },
     "Relic Chambers Map": {
       "name": "Relic Chambers Map",
       "ids": {
-        "poeofficial": "relic-chambers-map-tier-14",
+        "poeofficial": "relic-chambers-map-tier-15",
         "poetrade": "557"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 14)"
+      "category": "Maps (Tier 15)"
     },
     "Remembrance": {
       "name": "Remembrance",
@@ -6106,6 +6678,36 @@
       "is_basic_currency": false,
       "is_bulk_target": false,
       "category": "Maps (Tier 14)"
+    },
+    "Ritual Splinter": {
+      "name": "Ritual Splinter",
+      "ids": {
+        "poeofficial": "ritual-splinter"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Shards & Splinters"
+    },
+    "Ritual Vessel": {
+      "name": "Ritual Vessel",
+      "ids": {
+        "poeofficial": "ritual-vessel"
+      },
+      "is_currency": true,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Currency"
+    },
+    "Rogue's Marker": {
+      "name": "Rogue's Marker",
+      "ids": {
+        "poeofficial": "rogues-marker"
+      },
+      "is_currency": true,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Currency"
     },
     "Rusted Ambush Scarab": {
       "name": "Rusted Ambush Scarab",
@@ -6591,13 +7193,23 @@
     "Scriptorium Map": {
       "name": "Scriptorium Map",
       "ids": {
-        "poeofficial": "scriptorium-map-tier-14",
+        "poeofficial": "scriptorium-map-tier-15",
         "poetrade": "396"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 14)"
+      "category": "Maps (Tier 15)"
+    },
+    "Secondary Regrading Lens": {
+      "name": "Secondary Regrading Lens",
+      "ids": {
+        "poeofficial": "secondary-regrading-lens"
+      },
+      "is_currency": true,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Currency"
     },
     "Sepia Oil": {
       "name": "Sepia Oil",
@@ -6613,13 +7225,13 @@
     "Sepulchre Map": {
       "name": "Sepulchre Map",
       "ids": {
-        "poeofficial": "sepulchre-map-tier-15",
+        "poeofficial": "sepulchre-map-tier-14",
         "poetrade": "558"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 15)"
+      "category": "Maps (Tier 14)"
     },
     "Serrated Fossil": {
       "name": "Serrated Fossil",
@@ -6668,13 +7280,13 @@
     "Shore Map": {
       "name": "Shore Map",
       "ids": {
-        "poeofficial": "shore-map-tier-15",
+        "poeofficial": "shore-map-tier-14",
         "poetrade": "469"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 15)"
+      "category": "Maps (Tier 14)"
     },
     "Shrieking Essence of Anger": {
       "name": "Shrieking Essence of Anger",
@@ -6899,13 +7511,13 @@
     "Shrine Map": {
       "name": "Shrine Map",
       "ids": {
-        "poeofficial": "shrine-map-tier-15",
+        "poeofficial": "shrine-map-tier-16",
         "poetrade": "470"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 15)"
+      "category": "Maps (Tier 16)"
     },
     "Shuddering Fossil": {
       "name": "Shuddering Fossil",
@@ -6928,6 +7540,16 @@
       "is_basic_currency": false,
       "is_bulk_target": false,
       "category": "Maps (Tier 16)"
+    },
+    "Silo Map": {
+      "name": "Silo Map",
+      "ids": {
+        "poeofficial": "silo-map-tier-14"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Maps (Tier 14)"
     },
     "Silver Coin": {
       "name": "Silver Coin",
@@ -6979,10 +7601,10 @@
         "poeofficial": "simulacrum-splinter",
         "poetrade": "857"
       },
-      "is_currency": true,
+      "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Currency"
+      "category": "Shards & Splinters"
     },
     "Singular Delirium Orb": {
       "name": "Singular Delirium Orb",
@@ -7028,6 +7650,16 @@
       "is_bulk_target": false,
       "category": "Incubators"
     },
+    "Society's Remorse": {
+      "name": "Society's Remorse",
+      "ids": {
+        "poeofficial": "societys-remorse"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Cards"
+    },
     "Spider Forest Map": {
       "name": "Spider Forest Map",
       "ids": {
@@ -7056,10 +7688,10 @@
         "poeofficial": "splinter-chayula",
         "poetrade": "56"
       },
-      "is_currency": true,
+      "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Currency"
+      "category": "Shards & Splinters"
     },
     "Splinter of Esh": {
       "name": "Splinter of Esh",
@@ -7067,10 +7699,10 @@
         "poeofficial": "splinter-esh",
         "poetrade": "54"
       },
-      "is_currency": true,
+      "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Currency"
+      "category": "Shards & Splinters"
     },
     "Splinter of Tul": {
       "name": "Splinter of Tul",
@@ -7078,10 +7710,10 @@
         "poeofficial": "splinter-tul",
         "poetrade": "53"
       },
-      "is_currency": true,
+      "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Currency"
+      "category": "Shards & Splinters"
     },
     "Splinter of Uul-Netol": {
       "name": "Splinter of Uul-Netol",
@@ -7089,10 +7721,10 @@
         "poeofficial": "splinter-uul",
         "poetrade": "55"
       },
-      "is_currency": true,
+      "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Currency"
+      "category": "Shards & Splinters"
     },
     "Splinter of Xoph": {
       "name": "Splinter of Xoph",
@@ -7100,10 +7732,10 @@
         "poeofficial": "splinter-xoph",
         "poetrade": "52"
       },
-      "is_currency": true,
+      "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Currency"
+      "category": "Shards & Splinters"
     },
     "Squandered Prosperity": {
       "name": "Squandered Prosperity",
@@ -7125,6 +7757,16 @@
       "is_basic_currency": false,
       "is_bulk_target": false,
       "category": "Currency"
+    },
+    "Stagnation Map": {
+      "name": "Stagnation Map",
+      "ids": {
+        "poeofficial": "stagnation-map-tier-14"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Maps (Tier 14)"
     },
     "Strand Map": {
       "name": "Strand Map",
@@ -7172,13 +7814,13 @@
     "Summit Map": {
       "name": "Summit Map",
       "ids": {
-        "poeofficial": "summit-map-tier-14",
+        "poeofficial": "summit-map-tier-15",
         "poetrade": "561"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 14)"
+      "category": "Maps (Tier 15)"
     },
     "Sunken City Map": {
       "name": "Sunken City Map",
@@ -7190,6 +7832,16 @@
       "is_basic_currency": false,
       "is_bulk_target": false,
       "category": "Maps (Tier 14)"
+    },
+    "Tailoring Orb": {
+      "name": "Tailoring Orb",
+      "ids": {
+        "poeofficial": "tailoring-orb"
+      },
+      "is_currency": true,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Currency"
     },
     "Tangled Fossil": {
       "name": "Tangled Fossil",
@@ -7223,6 +7875,16 @@
       "is_bulk_target": false,
       "category": "Catalysts"
     },
+    "Tempering Orb": {
+      "name": "Tempering Orb",
+      "ids": {
+        "poeofficial": "tempering-orb"
+      },
+      "is_currency": true,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Currency"
+    },
     "Temple Map": {
       "name": "Temple Map",
       "ids": {
@@ -7237,13 +7899,13 @@
     "Terrace Map": {
       "name": "Terrace Map",
       "ids": {
-        "poeofficial": "terrace-map-tier-14",
+        "poeofficial": "terrace-map-tier-15",
         "poetrade": "477"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 14)"
+      "category": "Maps (Tier 15)"
     },
     "Thaumaturge's Delirium Orb": {
       "name": "Thaumaturge's Delirium Orb",
@@ -7266,6 +7928,16 @@
       "is_basic_currency": false,
       "is_bulk_target": false,
       "category": "Incubators"
+    },
+    "The Academic": {
+      "name": "The Academic",
+      "ids": {
+        "poeofficial": "the-academic"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Cards"
     },
     "The Admirer": {
       "name": "The Admirer",
@@ -7332,11 +8004,31 @@
       "is_bulk_target": false,
       "category": "Cards"
     },
+    "The Astromancer": {
+      "name": "The Astromancer",
+      "ids": {
+        "poeofficial": "the-astromancer"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Cards"
+    },
     "The Avenger": {
       "name": "The Avenger",
       "ids": {
         "poeofficial": "the-avenger",
         "poetrade": "191"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Cards"
+    },
+    "The Awakened": {
+      "name": "The Awakened",
+      "ids": {
+        "poeofficial": "the-awakened"
       },
       "is_currency": false,
       "is_basic_currency": false,
@@ -7364,6 +8056,16 @@
       "is_bulk_target": false,
       "category": "Cards"
     },
+    "The Bear Woman": {
+      "name": "The Bear Woman",
+      "ids": {
+        "poeofficial": "the-bear-woman"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Cards"
+    },
     "The Beast": {
       "name": "The Beast",
       "ids": {
@@ -7380,6 +8082,16 @@
       "ids": {
         "poeofficial": "the-betrayal",
         "poetrade": "193"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Cards"
+    },
+    "The Bitter Blossom": {
+      "name": "The Bitter Blossom",
+      "ids": {
+        "poeofficial": "the-bitter-blossom"
       },
       "is_currency": false,
       "is_basic_currency": false,
@@ -7434,6 +8146,16 @@
       "ids": {
         "poeofficial": "the-brittle-emperor",
         "poetrade": "195"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Cards"
+    },
+    "The Cache": {
+      "name": "The Cache",
+      "ids": {
+        "poeofficial": "the-cache"
       },
       "is_currency": false,
       "is_basic_currency": false,
@@ -8079,6 +8801,26 @@
       "is_bulk_target": false,
       "category": "Cards"
     },
+    "The Greatest Intentions": {
+      "name": "The Greatest Intentions",
+      "ids": {
+        "poeofficial": "the-greatest-intentions"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Cards"
+    },
+    "The Gulf": {
+      "name": "The Gulf",
+      "ids": {
+        "poeofficial": "the-gulf"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Cards"
+    },
     "The Hale Heart": {
       "name": "The Hale Heart",
       "ids": {
@@ -8116,6 +8858,16 @@
       "name": "The Heroic Shot",
       "ids": {
         "poeofficial": "the-heroic-shot"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Cards"
+    },
+    "The Hive of Knowledge": {
+      "name": "The Hive of Knowledge",
+      "ids": {
+        "poeofficial": "the-hive-of-knowledge"
       },
       "is_currency": false,
       "is_basic_currency": false,
@@ -8243,6 +8995,16 @@
       "is_bulk_target": false,
       "category": "Cards"
     },
+    "The Journalist": {
+      "name": "The Journalist",
+      "ids": {
+        "poeofficial": "the-journalist"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Cards"
+    },
     "The Journey": {
       "name": "The Journey",
       "ids": {
@@ -8331,6 +9093,26 @@
       "is_bulk_target": false,
       "category": "Cards"
     },
+    "The Long Con": {
+      "name": "The Long Con",
+      "ids": {
+        "poeofficial": "the-long-con"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Cards"
+    },
+    "The Long Watch": {
+      "name": "The Long Watch",
+      "ids": {
+        "poeofficial": "the-long-watch"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Cards"
+    },
     "The Lord in Black": {
       "name": "The Lord in Black",
       "ids": {
@@ -8407,6 +9189,16 @@
       "is_basic_currency": false,
       "is_bulk_target": false,
       "category": "Cards"
+    },
+    "The Maven's Writ": {
+      "name": "The Maven's Writ",
+      "ids": {
+        "poeofficial": "the-mavens-writ"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Fragments & Sets"
     },
     "The Mayor": {
       "name": "The Mayor",
@@ -8554,6 +9346,16 @@
       "ids": {
         "poeofficial": "the-pact",
         "poetrade": "256"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Cards"
+    },
+    "The Patient": {
+      "name": "The Patient",
+      "ids": {
+        "poeofficial": "the-patient"
       },
       "is_currency": false,
       "is_basic_currency": false,
@@ -8997,6 +9799,16 @@
       "is_bulk_target": false,
       "category": "Cards"
     },
+    "The Sustenance": {
+      "name": "The Sustenance",
+      "ids": {
+        "poeofficial": "the-sustenance"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Cards"
+    },
     "The Sword King's Salute": {
       "name": "The Sword King's Salute",
       "ids": {
@@ -9074,6 +9886,16 @@
       "is_bulk_target": false,
       "category": "Cards"
     },
+    "The Tumbleweed": {
+      "name": "The Tumbleweed",
+      "ids": {
+        "poeofficial": "the-tumbleweed"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Cards"
+    },
     "The Twilight Moon": {
       "name": "The Twilight Moon",
       "ids": {
@@ -9123,6 +9945,16 @@
       "ids": {
         "poeofficial": "the-undisputed",
         "poetrade": "672"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Cards"
+    },
+    "The Unexpected Prize": {
+      "name": "The Unexpected Prize",
+      "ids": {
+        "poeofficial": "the-unexpected-prize"
       },
       "is_currency": false,
       "is_basic_currency": false,
@@ -9233,6 +10065,26 @@
       "ids": {
         "poeofficial": "the-web",
         "poetrade": "298"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Cards"
+    },
+    "The White Knight": {
+      "name": "The White Knight",
+      "ids": {
+        "poeofficial": "the-white-knight"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Cards"
+    },
+    "The Whiteout": {
+      "name": "The Whiteout",
+      "ids": {
+        "poeofficial": "the-whiteout"
       },
       "is_currency": false,
       "is_basic_currency": false,
@@ -9363,13 +10215,13 @@
     "Thicket Map": {
       "name": "Thicket Map",
       "ids": {
-        "poeofficial": "thicket-map-tier-16",
+        "poeofficial": "thicket-map-tier-14",
         "poetrade": "478"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 16)"
+      "category": "Maps (Tier 14)"
     },
     "Thirst for Knowledge": {
       "name": "Thirst for Knowledge",
@@ -9463,10 +10315,10 @@
         "poeofficial": "timeless-eternal-empire-splinter",
         "poetrade": "812"
       },
-      "is_currency": true,
+      "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Currency"
+      "category": "Shards & Splinters"
     },
     "Timeless Karui Emblem": {
       "name": "Timeless Karui Emblem",
@@ -9485,10 +10337,10 @@
         "poeofficial": "timeless-karui-splinter",
         "poetrade": "810"
       },
-      "is_currency": true,
+      "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Currency"
+      "category": "Shards & Splinters"
     },
     "Timeless Maraketh Emblem": {
       "name": "Timeless Maraketh Emblem",
@@ -9507,10 +10359,10 @@
         "poeofficial": "timeless-maraketh-splinter",
         "poetrade": "811"
       },
-      "is_currency": true,
+      "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Currency"
+      "category": "Shards & Splinters"
     },
     "Timeless Templar Emblem": {
       "name": "Timeless Templar Emblem",
@@ -9529,10 +10381,10 @@
         "poeofficial": "timeless-templar-splinter",
         "poetrade": "813"
       },
-      "is_currency": true,
+      "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Currency"
+      "category": "Shards & Splinters"
     },
     "Timeless Vaal Emblem": {
       "name": "Timeless Vaal Emblem",
@@ -9551,10 +10403,10 @@
         "poeofficial": "timeless-vaal-splinter",
         "poetrade": "814"
       },
-      "is_currency": true,
+      "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Currency"
+      "category": "Shards & Splinters"
     },
     "Timeworn Reliquary Key": {
       "name": "Timeworn Reliquary Key",
@@ -9570,24 +10422,24 @@
     "Tower Map": {
       "name": "Tower Map",
       "ids": {
-        "poeofficial": "tower-map-tier-15",
+        "poeofficial": "tower-map-tier-14",
         "poetrade": "480"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 15)"
+      "category": "Maps (Tier 14)"
     },
     "Toxic Sewer Map": {
       "name": "Toxic Sewer Map",
       "ids": {
-        "poeofficial": "toxic-sewer-map-tier-16",
+        "poeofficial": "toxic-sewer-map-tier-14",
         "poetrade": "563"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 16)"
+      "category": "Maps (Tier 14)"
     },
     "Tranquillity": {
       "name": "Tranquillity",
@@ -9620,6 +10472,16 @@
       "is_basic_currency": false,
       "is_bulk_target": false,
       "category": "Fragments & Sets"
+    },
+    "Triskaidekaphobia": {
+      "name": "Triskaidekaphobia",
+      "ids": {
+        "poeofficial": "triskaidekaphobia"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Cards"
     },
     "Tropical Island Map": {
       "name": "Tropical Island Map",
@@ -9697,6 +10559,16 @@
       "is_bulk_target": false,
       "category": "Cards"
     },
+    "Unchained": {
+      "name": "Unchained",
+      "ids": {
+        "poeofficial": "unchained"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Cards"
+    },
     "Underground Forest": {
       "name": "Underground Forest",
       "ids": {
@@ -9710,13 +10582,13 @@
     "Underground River Map": {
       "name": "Underground River Map",
       "ids": {
-        "poeofficial": "underground-river-map-tier-16",
+        "poeofficial": "underground-river-map-tier-14",
         "poetrade": "482"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 16)"
+      "category": "Maps (Tier 14)"
     },
     "Underground Sea Map": {
       "name": "Underground Sea Map",
@@ -9728,6 +10600,16 @@
       "is_basic_currency": false,
       "is_bulk_target": false,
       "category": "Maps (Tier 14)"
+    },
+    "Unrequited Love": {
+      "name": "Unrequited Love",
+      "ids": {
+        "poeofficial": "unrequited-love"
+      },
+      "is_currency": false,
+      "is_basic_currency": false,
+      "is_bulk_target": false,
+      "category": "Cards"
     },
     "Uul-Netol's Breachstone": {
       "name": "Uul-Netol's Breachstone",
@@ -9819,13 +10701,13 @@
     "Vault Map": {
       "name": "Vault Map",
       "ids": {
-        "poeofficial": "vault-map-tier-14",
+        "poeofficial": "vault-map-tier-15",
         "poetrade": "487"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 14)"
+      "category": "Maps (Tier 15)"
     },
     "Verdant Oil": {
       "name": "Verdant Oil",
@@ -9851,13 +10733,13 @@
     "Villa Map": {
       "name": "Villa Map",
       "ids": {
-        "poeofficial": "villa-map-tier-14",
+        "poeofficial": "villa-map-tier-15",
         "poetrade": "488"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 14)"
+      "category": "Maps (Tier 15)"
     },
     "Vinia's Token": {
       "name": "Vinia's Token",
@@ -9905,13 +10787,13 @@
     "Volcano Map": {
       "name": "Volcano Map",
       "ids": {
-        "poeofficial": "volcano-map-tier-16",
+        "poeofficial": "volcano-map-tier-14",
         "poetrade": "489"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 16)"
+      "category": "Maps (Tier 14)"
     },
     "Volkuur's Key": {
       "name": "Volkuur's Key",
@@ -10114,35 +10996,35 @@
     "Waste Pool Map": {
       "name": "Waste Pool Map",
       "ids": {
-        "poeofficial": "waste-pool-map-tier-15",
+        "poeofficial": "waste-pool-map-tier-16",
         "poetrade": "490"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 15)"
+      "category": "Maps (Tier 16)"
     },
     "Wasteland Map": {
       "name": "Wasteland Map",
       "ids": {
-        "poeofficial": "wasteland-map-tier-14",
+        "poeofficial": "wasteland-map-tier-16",
         "poetrade": "491"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 14)"
+      "category": "Maps (Tier 16)"
     },
     "Waterways Map": {
       "name": "Waterways Map",
       "ids": {
-        "poeofficial": "waterways-map-tier-14",
+        "poeofficial": "waterways-map-tier-15",
         "poetrade": "492"
       },
       "is_currency": false,
       "is_basic_currency": false,
       "is_bulk_target": false,
-      "category": "Maps (Tier 14)"
+      "category": "Maps (Tier 15)"
     },
     "Wealth and Power": {
       "name": "Wealth and Power",

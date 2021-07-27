@@ -1,0 +1,8 @@
+{
+    "include": [
+        "src",
+        "tests"
+    ],
+    "reportMissingTypeStubs": "information",
+    "reportUnusedImport": "warning"
+}

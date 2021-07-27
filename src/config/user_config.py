@@ -1,12 +1,15 @@
 from __future__ import annotations
 
-from typing import Optional, Tuple, List
-from marshmallow import Schema, fields, post_load
-import os
 import json
+import logging
+import pathlib
+from typing import List, Optional, Tuple
 
-from src.trading import StackSizeHelper
-from src.config.parser import AssetConfig, TradingConfig, TradingConfigItemSchema, TradingConfigItem, TradingConfigItemSellItem
+from marshmallow import Schema, fields, post_load
+from src.config.parser import (AssetConfig, TradingConfig, TradingConfigItem,
+                               TradingConfigItemSchema,
+                               TradingConfigItemSellItem)
+from src.trading.stack_sizes import StackSizeHelper
 
 DEFAULT_CONFIG_FILE_PATH = "config/config.json"
 DEFAULT_CONFIG_DEFAULT_FILE_PATH = "config/config.default.json"
@@ -97,8 +100,7 @@ class UserConfig:
 
     def get_item_pairs(self) -> List[Tuple[str, str]]:
         """
-        Constructs a list of item pairs based on config/config.(default.)json.
-        Replaces the old load_pair_filter logic.
+        Constructs a list of item pairs based on the specified configuration file.
         """
         item_pairs = []
 
@@ -113,14 +115,15 @@ class UserConfig:
         if file_path is None:
             file_path = DEFAULT_CONFIG_FILE_PATH
 
-        if not os.path.exists(file_path):
-            file_path = DEFAULT_CONFIG_DEFAULT_FILE_PATH
+        path = pathlib.Path(file_path).resolve()
 
-        file_path = os.path.dirname(
-            os.path.abspath(__file__)) + "/../../" + file_path
+        # Default back to default config file
+        if not path.is_file():
+            path = pathlib.Path(DEFAULT_CONFIG_DEFAULT_FILE_PATH).resolve()
 
         try:
-            with open(file_path, "r") as f:
+            logging.info("Using config file under {}".format(path))
+            with open(path, "r") as f:
                 data = json.loads(f.read())
                 return UserConfigSchema().load(data)
         except OSError:

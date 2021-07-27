@@ -97,7 +97,7 @@ def maximum_conversion_rate(path: List[Offer]):
     return v
 
 
-def is_profitable(path: List[Dict]):
+def is_profitable(path: List[Offer]):
     return maximum_conversion_rate(path) > 1.0
 
 
