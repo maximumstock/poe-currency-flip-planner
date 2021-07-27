@@ -37,13 +37,13 @@ def find_paths(graph: Dict[str, Dict[str, List[Offer]]],
                have: str,
                want: str,
                user_config: UserConfig,
-               max_length: int = 3) -> List:
+               max_length: int = 3) -> List[List[Offer]]:
     """
     Returns a list of all possible paths from `want` to `have` for a given graph.
     A path is simply a list of transactions between two currency nodes.
     """
     paths: deque = deque()
-    correct_paths: List[List[Dict]] = []
+    correct_paths: List[List[Offer]] = []
 
     # If there are no paths between the specified currencies, simply abort
     if have not in graph:
