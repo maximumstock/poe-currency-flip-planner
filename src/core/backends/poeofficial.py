@@ -27,7 +27,7 @@ class PoeOfficial:
         query_id = None
         offers: List[Offer] = []
 
-        # Fetching offer ids is rate-limited by 12:6:60,20:12:300
+        # Fetching offer ids is rate-limited by 5:15:60,10:90:300,30:300:1000
         offer_id_url = "http://www.pathofexile.com/api/trade/exchange/{}".format(
             urllib.parse.quote(task.league))
         payload = {
@@ -41,13 +41,17 @@ class PoeOfficial:
         }
 
         try:
-            query_id, offer_ids = await fetch_ids(client_session, offer_id_url,
-                                                  payload)
+            response = await fetch_ids(client_session, offer_id_url, payload)
+            json = await response.json()
+
+            offer_ids = json["result"]
+            query_id = json["id"]
             offers = []
+
         except Exception as e:
+            logging.debug("Body: {}".format(json))
             logging.debug("Rate limited during ids: {} -> {}".format(
                 task.have, task.want))
-            logging.debug("Exception: {}".format(e))
             raise TaskException()
 
         try:
@@ -80,9 +84,9 @@ class PoeOfficial:
 
             return offers
         except Exception as e:
+            logging.debug("Body: {}".format(json))
             logging.debug("Rate limited during data: {} -> {}".format(
                 task.have, task.want))
-            logging.debug("Exception: {}".format(e))
             raise TaskException()
 
     def name(self):
@@ -107,9 +111,5 @@ class PoeOfficial:
         }
 
 
-async def fetch_ids(sess, offer_id_url, payload) -> Tuple[str, List[str]]:
-    response = await sess.request("POST", url=offer_id_url, json=payload)
-    json = await response.json()
-    offer_ids = json["result"]
-    query_id = json["id"]
-    return query_id, offer_ids
+async def fetch_ids(sess, offer_id_url, payload) -> Any:
+    return await sess.request("POST", url=offer_id_url, json=payload)

@@ -104,7 +104,7 @@ class BackendPool:
             BackendPoolWorker(PoeTrade(item_list), self.event_loop,
                               Throttler(10, 1)),
             BackendPoolWorker(PoeOfficial(item_list), self.event_loop,
-                              Throttler(2, 3)),
+                              Throttler(1, 10, .5)),
         ]
 
     def schedule(self,
