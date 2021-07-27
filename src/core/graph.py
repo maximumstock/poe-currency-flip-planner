@@ -2,6 +2,7 @@ import math
 from collections import deque
 from typing import Dict, List, Optional
 import copy
+from src.commons import VENDOR_OFFER_IGN
 
 from src.config.user_config import UserConfig
 from src.core.offer import Offer
@@ -30,7 +31,7 @@ def build_graph(offers: List[Offer]) -> Dict[str, Dict[str, List[Offer]]]:
 
 
 def calculate_path_length(path: List[Offer]) -> int:
-    return len([x for x in path if x.contact_ign != "__vendor__"])
+    return len([x for x in path if x.contact_ign != VENDOR_OFFER_IGN])
 
 
 def find_paths(graph: Dict[str, Dict[str, List[Offer]]],

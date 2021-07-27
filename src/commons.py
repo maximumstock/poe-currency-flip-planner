@@ -2,7 +2,8 @@ import logging
 from typing import List, Dict
 import numpy as np
 
-league_names = ["Heist", "Hardcore Heist", "Standard", "Hardcore"]
+LEAGUE_NAMES = ["Heist", "Hardcore Heist", "Standard", "Hardcore"]
+VENDOR_OFFER_IGN = "__vendor__"
 
 
 def filter_large_outliers(offers: List[Dict]) -> List[Dict]:

@@ -1,4 +1,5 @@
 from typing import List
+from src.commons import VENDOR_OFFER_IGN
 from src.core.offer import Offer
 
 raw_vendor_offers = [
@@ -25,7 +26,7 @@ def build_vendor_offers(league: str) -> List[Offer]:
     for raw in raw_vendor_offers:
         (sell, buy, conversion_rate) = raw
         offer = Offer(league=league,
-                      contact_ign="__vendor__",
+                      contact_ign=VENDOR_OFFER_IGN,
                       conversion_rate=conversion_rate,
                       have=sell,
                       want=buy,
