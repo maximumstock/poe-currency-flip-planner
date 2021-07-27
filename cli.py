@@ -2,7 +2,7 @@
 import argparse
 import logging
 
-from src.commons import (init_logger, league_names, load_excluded_traders,
+from src.commons import (init_logger, LEAGUE_NAMES, load_excluded_traders,
                          unique_conversions_by_trader_name)
 from src.config.user_config import UserConfig
 from src.core.backends.poeofficial import PoeOfficial
@@ -38,11 +38,11 @@ parser = argparse.ArgumentParser(description="CLI interface for PathFinder")
 
 parser.add_argument(
     "--league",
-    default=league_names[0],
+    default=LEAGUE_NAMES[0],
     type=str,
     help=
     "League specifier, ie. 'Synthesis', 'Hardcore Synthesis' or 'Flashback Event (BRE001)'. Defaults to '{}'."
-    .format(league_names[0]),
+    .format(LEAGUE_NAMES[0]),
 )
 parser.add_argument(
     "--currency",

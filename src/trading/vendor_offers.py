@@ -1,0 +1,36 @@
+from typing import List
+from src.commons import VENDOR_OFFER_IGN
+from src.core.offer import Offer
+
+raw_vendor_offers = [
+    ("Orb of Regret", "Orb of Alchemy", 1),
+    ("Orb of Scouring", "Orb of Regret", .5),
+    ("Orb of Chance", "Orb of Scouring", .25),
+    ("Orb of Fusing", "Orb of Chance", 1),
+    ("Jeweller's Orb", "Orb of Fusing", .25),
+    ("Jeweller's Orb", "Chromatic Orb", .3333),
+    ("Orb of Alteration", "Jeweller's Orb", .5),
+    ("Orb of Augmentation", "Orb of Alteration", .25),
+    ("Orb of Transmutation", "Orb of Augmentation", .25),
+    ("Portal Scroll", "Orb of Transmutation", .1429),
+    ("Scroll of Wisdom", "Portal Scroll", .3333),
+    ("Blacksmith's Whetstone", "Glassblower's Bauble", .125),
+    ("Armourer's Scrap", "Blacksmith's Whetstone", .3333),
+    ("Blacksmith's Whetstone", "Armourer's Scrap", 1),
+]
+
+
+def build_vendor_offers(league: str) -> List[Offer]:
+    ret: List[Offer] = []
+
+    for raw in raw_vendor_offers:
+        (sell, buy, conversion_rate) = raw
+        offer = Offer(league=league,
+                      contact_ign=VENDOR_OFFER_IGN,
+                      conversion_rate=conversion_rate,
+                      have=sell,
+                      want=buy,
+                      stock=1_000_000)
+        ret.append(offer)
+
+    return ret

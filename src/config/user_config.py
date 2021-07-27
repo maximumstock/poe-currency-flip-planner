@@ -9,7 +9,7 @@ from marshmallow import Schema, fields, post_load
 from src.config.parser import (AssetConfig, TradingConfig, TradingConfigItem,
                                TradingConfigItemSchema,
                                TradingConfigItemSellItem)
-from src.trading import StackSizeHelper
+from src.trading.stack_sizes import StackSizeHelper
 
 DEFAULT_CONFIG_FILE_PATH = "config/config.json"
 DEFAULT_CONFIG_DEFAULT_FILE_PATH = "config/config.default.json"

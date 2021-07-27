@@ -1,9 +1,10 @@
 import unittest
 
 from src.config.user_config import UserConfig
-from src.core.graph import build_graph, find_paths, build_conversion, is_profitable
+from src.core.graph import build_graph, find_paths, build_conversion, is_profitable, calculate_path_length
 from src.core.offer import Offer
 from src.core.edge import Edge
+from src.trading.vendor_offers import build_vendor_offers
 from src.config.user_config import DEFAULT_CONFIG_DEFAULT_FILE_PATH
 from typing import List, Dict
 
@@ -16,7 +17,7 @@ test_offers: List[Offer] = [
         stock=153,
         want="Chaos",
         have="Alteration",
-        league="Abyss",
+        league=LEAGUE,
     ),
     Offer(
         contact_ign="_ZEUS___",
@@ -24,7 +25,7 @@ test_offers: List[Offer] = [
         stock=10,
         want="Chaos",
         have="Chromatic",
-        league="Abyss",
+        league=LEAGUE,
     ),
     Offer(
         contact_ign="MVP_Kefir",
@@ -32,7 +33,7 @@ test_offers: List[Offer] = [
         stock=20,
         want="Chaos",
         have="Chromatic",
-        league="Abyss",
+        league=LEAGUE,
     ),
     Offer(
         contact_ign="wreddnuy",
@@ -40,7 +41,7 @@ test_offers: List[Offer] = [
         stock=24,
         want="Alteration",
         have="Chaos",
-        league="Abyss",
+        league=LEAGUE,
     ),
     Offer(
         contact_ign="Corailthedog",
@@ -48,7 +49,7 @@ test_offers: List[Offer] = [
         stock=2,
         want="Alteration",
         have="Chaos",
-        league="Abyss",
+        league=LEAGUE,
     ),
     Offer(
         contact_ign="Marcvz_GreenAgain",
@@ -56,7 +57,7 @@ test_offers: List[Offer] = [
         stock=222,
         want="Alteration",
         have="Chromatic",
-        league="Abyss",
+        league=LEAGUE,
     ),
     Offer(
         contact_ign="Azure_Dragon",
@@ -64,7 +65,7 @@ test_offers: List[Offer] = [
         stock=4261,
         want="Alteration",
         have="Chromatic",
-        league="Abyss",
+        league=LEAGUE,
     ),
     Offer(
         contact_ign="MinerinoAbysss",
@@ -72,7 +73,7 @@ test_offers: List[Offer] = [
         stock=322,
         want="Chromatic",
         have="Chaos",
-        league="Abyss",
+        league=LEAGUE,
     ),
     Offer(
         contact_ign="The_Dank_Fire_God",
@@ -80,7 +81,7 @@ test_offers: List[Offer] = [
         stock=106,
         want="Chromatic",
         have="Chaos",
-        league="Abyss",
+        league=LEAGUE,
     ),
     Offer(
         contact_ign="Shioua_ouah",
@@ -88,7 +89,7 @@ test_offers: List[Offer] = [
         stock=1576,
         want="Chromatic",
         have="Alteration",
-        league="Abyss",
+        league=LEAGUE,
     ),
     Offer(
         contact_ign="Ashkeri",
@@ -96,7 +97,7 @@ test_offers: List[Offer] = [
         stock=449,
         want="Chromatic",
         have="Alteration",
-        league="Abyss",
+        league=LEAGUE,
     ),
 ]
 
@@ -388,3 +389,11 @@ class GraphTest(unittest.TestCase):
         path = expected_paths_small_same_currency()[0]
         conversion = build_conversion(path, user_config)
         self.assertEqual(expected_conversion, conversion)
+
+    def test_calculate_path_length_ignores_all_vendor_offers(self):
+        path = build_vendor_offers("any_league")
+        self.assertEqual(calculate_path_length(path), 0)
+
+    def test_calculate_path_length(self):
+        path = expected_paths_small_same_currency()[0]
+        self.assertEqual(calculate_path_length(path), 3)

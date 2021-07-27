@@ -2,7 +2,7 @@ import argparse
 from datetime import datetime
 from src.pathfinder import PathFinder
 from src.core.backends.poetrade import PoeTrade
-from src.commons import league_names, init_logger
+from src.commons import LEAGUE_NAMES, init_logger
 from src.config.user_config import UserConfig
 from src.trading.items import ItemList
 from dataclasses import dataclass
@@ -28,10 +28,10 @@ def parse_args() -> CollectorConfig:
         description="data collection tool for PathFinder class")
     parser.add_argument(
         "--league",
-        default=league_names[0],
+        default=LEAGUE_NAMES[0],
         help=
         "League specifier, ie. 'Synthesis', 'Hardcore Synthesis' or 'Flashback Event (BRE001)'. Defaults to {}"
-        .format(league_names[0]),
+        .format(LEAGUE_NAMES[0]),
     )
     parser.add_argument(
         "--path",

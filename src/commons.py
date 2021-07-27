@@ -3,9 +3,8 @@ from typing import Any, Dict, List, Set
 
 import numpy as np
 
-from .core.offer import Offer
-
-league_names = ["Expedition", "Hardcore Expedition", "Standard", "Hardcore"]
+LEAGUE_NAMES = ["Expedition", "Hardcore Expedition", "Standard", "Hardcore"]
+VENDOR_OFFER_IGN = "__vendor__"
 
 
 def filter_large_outliers(

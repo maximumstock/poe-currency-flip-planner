@@ -2,6 +2,7 @@ import math
 from collections import deque
 from typing import Dict, List, Optional
 import copy
+from src.commons import VENDOR_OFFER_IGN
 
 from src.config.user_config import UserConfig
 from src.core.offer import Offer
@@ -29,11 +30,15 @@ def build_graph(offers: List[Offer]) -> Dict[str, Dict[str, List[Offer]]]:
     return graph
 
 
+def calculate_path_length(path: List[Offer]) -> int:
+    return len([x for x in path if x.contact_ign != VENDOR_OFFER_IGN])
+
+
 def find_paths(graph: Dict[str, Dict[str, List[Offer]]],
                have: str,
                want: str,
                user_config: UserConfig,
-               max_length: int = 3) -> List:
+               max_length: int = 3) -> List[List[Offer]]:
     """
     Returns a list of all possible paths from `want` to `have` for a given graph.
     A path is simply a list of transactions between two currency nodes.
@@ -52,7 +57,8 @@ def find_paths(graph: Dict[str, Dict[str, List[Offer]]],
     while len(paths) > 0:
         next: List[Offer] = paths.pop()
 
-        if len(next) > max_length:
+        path_length = calculate_path_length(next)
+        if path_length > max_length:
             continue
 
         # If a path contains an edge with a stock outside of the user-specified boundaries, prune it

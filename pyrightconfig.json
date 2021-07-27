@@ -3,5 +3,6 @@
         "src",
         "tests"
     ],
-    "reportMissingTypeStubs": "information"
+    "reportMissingTypeStubs": "information",
+    "reportUnusedImport": "warning"
 }

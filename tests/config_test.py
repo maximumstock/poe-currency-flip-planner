@@ -5,8 +5,7 @@ import json
 
 class UserConfigTest(unittest.TestCase):
     def test_load_default_user_confg_from_fs(self):
-        user_config: UserConfig = UserConfig.from_file(
-            DEFAULT_CONFIG_DEFAULT_FILE_PATH)
+        user_config = UserConfig.from_file(DEFAULT_CONFIG_DEFAULT_FILE_PATH)
         self.assert_is_user_config(user_config)
 
     def test_load_user_confg_with_correct_defaults(self):
