@@ -1,7 +1,7 @@
 import logging
-from commons import unique_conversions_by_trader_name
+from src.commons import unique_conversions_by_trader_name
 
-from pathfinder import PathFinder
+from src.pathfinder import PathFinder
 
 
 def log_conversions(conversions, limit):

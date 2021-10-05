@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 import logging
 import pathlib
-from typing import List, Optional, Tuple
+from typing import List, Optional, Tuple, Union
 
 from marshmallow import Schema, fields, post_load
 from src.config.parser import (AssetConfig, TradingConfig, TradingConfigItem,
@@ -42,8 +42,8 @@ class UserConfig:
     assets: AssetConfig
     trading: TradingConfig
     stack_sizes: StackSizeHelper
-    poe_session_id: str
-    account_name: str
+    poe_session_id: Union[str | None]
+    account_name: Union[str | None]
 
     def __init__(self,
                  version: int,

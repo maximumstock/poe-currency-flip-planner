@@ -2,8 +2,8 @@
 
 import argparse
 from typing import Union
-from commands.pathfinder import execute_pathfinding
-from commands.sync import execute_sync
+from src.commands.pathfinder import execute_pathfinding
+from src.commands.sync import execute_sync
 
 from src.commons import (
     init_logger,
@@ -79,19 +79,19 @@ command: str = arguments.command
 league: str = arguments.league
 config_file_path: Union[str, None] = arguments.config
 
-# arguments related to pathfinding
-currency: Union[str, None] = arguments.currency
-limit: Union[int, None] = arguments.limit
-fullbulk: bool = arguments.fullbulk
-no_filter: bool = arguments.nofilter
-config = {"fullbulk": fullbulk}
+# Load user config
+user_config = UserConfig.from_file(config_file_path)
 
-if command is "pathfinding":
+if command == "pathfinding":
+    # arguments related to pathfinding
+    currency: Union[str, None] = arguments.currency
+    limit: Union[int, None] = arguments.limit
+    fullbulk: bool = arguments.fullbulk
+    no_filter: bool = arguments.nofilter
+    config = {"fullbulk": fullbulk}
+
     # Load excluded trader list
     excluded_traders = load_excluded_traders()
-
-    # Load user config
-    user_config = UserConfig.from_file(config_file_path)
 
     # Load item pairs
     item_list = ItemList.load_from_file()
@@ -101,7 +101,7 @@ if command is "pathfinding":
 
     execute_pathfinding(currency, league, limit, item_pairs, user_config,
                         excluded_traders)
-elif command is "sync":
-    execute_sync()
+elif command == "sync":
+    execute_sync(user_config)
 else:
     raise Exception("Command {} does not exist".format(command))
