@@ -17,12 +17,20 @@ INT_INFINITY = 1_000_000
 
 
 class UserConfigSchema(Schema):
-    version = fields.Int()
-    assets = fields.Dict(keys=fields.Str(), values=fields.Int())
+    version = fields.Int(required=True)
+    assets = fields.Dict(keys=fields.Str(),
+                         values=fields.Int(),
+                         dump_default={})
     trading = fields.Dict(keys=fields.Str(),
                           values=fields.Nested(TradingConfigItemSchema,
                                                allow_none=True),
-                          allow_none=True)
+                          dump_default={})
+    account_name = fields.Str(data_key="accountName",
+                              allow_none=True,
+                              dump_default=None)
+    poe_session_id = fields.Str(data_key="POESESSID",
+                                allow_none=True,
+                                dump_default=None)
 
     @post_load
     def make_user_config(self, data, many, partial):
@@ -34,12 +42,20 @@ class UserConfig:
     assets: AssetConfig
     trading: TradingConfig
     stack_sizes: StackSizeHelper
+    poe_session_id: str
+    account_name: str
 
-    def __init__(self, version: int, assets: AssetConfig,
-                 trading: TradingConfig):
+    def __init__(self,
+                 version: int,
+                 assets: AssetConfig,
+                 trading: TradingConfig,
+                 account_name: str = None,
+                 poe_session_id: str = None):
         self.version = version
         self.assets = assets
         self.trading = trading
+        self.account_name = account_name
+        self.poe_session_id = poe_session_id
         self.stack_sizes = StackSizeHelper()
 
     def get_maximum_trade_volume_for_item(self, item: str) -> int:
