@@ -102,6 +102,6 @@ if command == "pathfinding":
     execute_pathfinding(currency, league, limit, item_pairs, user_config,
                         excluded_traders)
 elif command == "sync":
-    execute_sync(user_config)
+    execute_sync(user_config, league)
 else:
     raise Exception("Command {} does not exist".format(command))
