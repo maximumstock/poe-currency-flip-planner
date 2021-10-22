@@ -78,7 +78,7 @@ CLI interface for PathFinder
 
 optional arguments:
   -h, --help           show this help message and exit
-  --league LEAGUE      League specifier, ie. 'Synthesis', 'Hardcore Synthesis' or 'Flashback Event (BRE001)'. Defaults to 'Expedition'.
+  --league LEAGUE      League specifier, ie. 'Scourge', 'Hardcore Scourge' or 'Flashback Event (BRE001)'. Defaults to 'Scourge'.
   --currency CURRENCY  Full name of currency to flip, ie. 'Cartographer's Chisel, or 'Chaos Orb'. Defaults to all currencies.
   --limit LIMIT        Limit the number of displayed conversions. Defaults to 5.
   --fullbulk           Use all supported bulk items
