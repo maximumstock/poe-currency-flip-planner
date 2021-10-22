@@ -45,6 +45,10 @@ def execute_sync(config_file_path: Optional[str], league: str):
         aggregate(items, stash_items)
         time.sleep(1)
 
+    for item_name, stack_size in items.items():
+        user_config.set_asset_quantity(item_name, stack_size)
+
+    user_config.save(config_file_path)
     logging.info(f"Successfully synced {len(items)} items")
 
 
