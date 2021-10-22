@@ -58,6 +58,11 @@ class UserConfig:
         self.poe_session_id = poe_session_id
         self.stack_sizes = StackSizeHelper()
 
+    def save(self, file_path: str):
+        serialized = UserConfigSchema().dumps(self, indent=2, sort_keys=True)
+        with open(file_path, "w") as f:
+            f.write(serialized)
+
     def get_maximum_trade_volume_for_item(self, item: str) -> int:
         """
         Returns the maximum amount of @item you want to or can trade with.
@@ -126,15 +131,21 @@ class UserConfig:
 
         return item_pairs
 
+    def set_asset_quantity(self, asset: str, quantity: int):
+        self.assets.update({asset: quantity})
+
     @staticmethod
-    def from_file(file_path: Optional[str] = None) -> UserConfig:
-        if file_path is None:
-            file_path = DEFAULT_CONFIG_FILE_PATH
+    def get_file_path(file_path: Optional[str]) -> str:
+        file_path = file_path if file_path != None else DEFAULT_CONFIG_FILE_PATH
+        return pathlib.Path(file_path).resolve()
 
-        path = pathlib.Path(file_path).resolve()
+    @staticmethod
+    def from_file(file_path: Optional[str],
+                  allow_default_config: bool = False) -> UserConfig:
+        path = UserConfig.get_file_path(file_path)
 
-        # Default back to default config file
-        if not path.is_file():
+        # Default back to default config file if allowed
+        if not path.is_file() and allow_default_config:
             path = pathlib.Path(DEFAULT_CONFIG_DEFAULT_FILE_PATH).resolve()
 
         try:

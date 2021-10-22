@@ -1,13 +1,17 @@
 import logging
 import time
-from typing import Any, Dict, List, Tuple
+from typing import Any, Dict, List, Optional, Tuple
 
 import requests
 from src.config.user_config import UserConfig
 from tqdm import tqdm
 
 
-def execute_sync(user_config: UserConfig, league: str):
+def execute_sync(config_file_path: Optional[str], league: str):
+    # Load user config
+    config_file_path = UserConfig.get_file_path(config_file_path)
+    user_config = UserConfig.from_file(config_file_path, False)
+
     if user_config.account_name == None:
         raise Exception("Missing accountName in config file")
     if user_config.poe_session_id == None:

@@ -79,9 +79,6 @@ command: str = arguments.command
 league: str = arguments.league
 config_file_path: Union[str, None] = arguments.config
 
-# Load user config
-user_config = UserConfig.from_file(config_file_path)
-
 if command == "pathfinding":
     # arguments related to pathfinding
     currency: Union[str, None] = arguments.currency
@@ -89,6 +86,9 @@ if command == "pathfinding":
     fullbulk: bool = arguments.fullbulk
     no_filter: bool = arguments.nofilter
     config = {"fullbulk": fullbulk}
+
+    # Load user config
+    user_config = UserConfig.from_file(config_file_path, True)
 
     # Load excluded trader list
     excluded_traders = load_excluded_traders()
@@ -102,6 +102,6 @@ if command == "pathfinding":
     execute_pathfinding(currency, league, limit, item_pairs, user_config,
                         excluded_traders)
 elif command == "sync":
-    execute_sync(user_config, league)
+    execute_sync(config_file_path, league)
 else:
     raise Exception("Command {} does not exist".format(command))
