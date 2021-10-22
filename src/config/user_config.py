@@ -154,7 +154,9 @@ class UserConfig:
                 data = json.loads(f.read())
                 return UserConfigSchema().load(data)
         except OSError:
-            raise Exception("The specified config file path does not exist")
+            raise Exception(
+                "The specified config file path does not exist or cannot be read"
+            )
 
     @staticmethod
     def from_raw(raw: str) -> UserConfig:

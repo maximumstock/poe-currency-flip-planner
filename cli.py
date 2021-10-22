@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import argparse
+import logging
 from typing import Union
 from src.commands.pathfinder import execute_pathfinding
 from src.commands.sync import execute_sync
@@ -87,8 +88,12 @@ if command == "pathfinding":
     no_filter: bool = arguments.nofilter
     config = {"fullbulk": fullbulk}
 
-    # Load user config
-    user_config = UserConfig.from_file(config_file_path, True)
+    try:
+        # Load user config
+        user_config = UserConfig.from_file(config_file_path, True)
+    except Exception as ex:
+        logging.error(f"Error: {ex.args[0]}")
+        exit(1)
 
     # Load excluded trader list
     excluded_traders = load_excluded_traders()

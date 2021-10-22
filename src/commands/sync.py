@@ -8,9 +8,13 @@ from tqdm import tqdm
 
 
 def execute_sync(config_file_path: Optional[str], league: str):
-    # Load user config
-    config_file_path = UserConfig.get_file_path(config_file_path)
-    user_config = UserConfig.from_file(config_file_path, False)
+    try:
+        # Load user config
+        config_file_path = UserConfig.get_file_path(config_file_path)
+        user_config = UserConfig.from_file(config_file_path, False)
+    except Exception as ex:
+        logging.error(f"Error: {ex.args[0]}")
+        exit(1)
 
     if user_config.account_name == None:
         raise Exception("Missing accountName in config file")
