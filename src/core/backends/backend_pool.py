@@ -12,19 +12,36 @@ from src.core.backends.task import Task
 from src.trading.items import ItemList
 
 
+class ThrottlerEnsemble:
+    throttlers: List[Throttler]
+
+    def __init__(self, throttlers: List[Throttler]):
+        self.throttlers = throttlers
+
+    async def wait(self):
+        for throttler in self.throttlers:
+            await throttler.acquire()
+
+    def rate_limit(self):
+        for throttler in self.throttlers:
+            throttler.rate_limit
+
+
 class BackendPoolWorker:
     backend: Any
     loop: asyncio.AbstractEventLoop
-    rate_limiter: Throttler
+    throttler_ensemble: ThrottlerEnsemble
     results: List[Any]
     just_failed: bool
     work_index: Dict[int, Task]
 
-    def __init__(self, backend: Any, loop: asyncio.AbstractEventLoop,
-                 rate_limiter: Throttler):
+    def __init__(
+        self,
+        backend: Any,
+        loop: asyncio.AbstractEventLoop,
+    ):
         self.backend = backend
         self.loop = loop
-        self.rate_limiter = rate_limiter
         self.results = []
         self.counter = 0
         self.just_failed = False
@@ -56,9 +73,9 @@ class BackendPoolWorker:
         client_session = aiohttp.ClientSession()
 
         while not queue.empty():
-            await self.rate_limiter.acquire()
+            await self.backend.wait()
 
-            tasks = self.pick_tasks(queue, self.rate_limiter.rate_limit)
+            tasks = self.pick_tasks(queue, 1)
 
             futures = []
             for i, task in enumerate(tasks):
@@ -101,10 +118,12 @@ class BackendPool:
         self.event_loop = asyncio.get_event_loop()
         self.item_list = item_list
         self.backends = [
-            BackendPoolWorker(PoeTrade(item_list), self.event_loop,
-                              Throttler(10, 1)),
-            BackendPoolWorker(PoeOfficial(item_list), self.event_loop,
-                              Throttler(1, 10, .5)),
+            # BackendPoolWorker(PoeTrade(item_list), self.event_loop,
+            #                   Throttler(10, 1)),
+            BackendPoolWorker(
+                PoeOfficial(item_list),
+                self.event_loop,
+            ),
         ]
 
     def schedule(self,
