@@ -3,28 +3,23 @@ import logging
 from typing import Any, Dict, List, Tuple
 
 import aiohttp
-from asyncio_throttle import Throttler
-
-from src.core.offer import Offer
-from src.core.backends.poeofficial import PoeOfficial
+# from src.core.backends.poeofficial import PoeOfficial
 from src.core.backends.poetrade import PoeTrade
 from src.core.backends.task import Task
+from src.core.offer import Offer
 from src.trading.items import ItemList
 
 
 class BackendPoolWorker:
     backend: Any
     loop: asyncio.AbstractEventLoop
-    rate_limiter: Throttler
     results: List[Any]
     just_failed: bool
     work_index: Dict[int, Task]
 
-    def __init__(self, backend: Any, loop: asyncio.AbstractEventLoop,
-                 rate_limiter: Throttler):
+    def __init__(self, backend: Any, loop: asyncio.AbstractEventLoop):
         self.backend = backend
         self.loop = loop
-        self.rate_limiter = rate_limiter
         self.results = []
         self.counter = 0
         self.just_failed = False
@@ -47,18 +42,14 @@ class BackendPoolWorker:
 
     async def handle_error(self):
         if self.just_failed is True:
-            logging.debug("Backend {} failed: Time penalty...".format(
-                self.backend.name()))
-            await asyncio.sleep(15)
+            logging.debug("Backend {} failed".format(self.backend.name()))
             self.just_failed = False
 
     async def work(self, queue: asyncio.Queue) -> List[Any]:
         client_session = aiohttp.ClientSession()
 
         while not queue.empty():
-            await self.rate_limiter.acquire()
-
-            tasks = self.pick_tasks(queue, self.rate_limiter.rate_limit)
+            tasks = self.pick_tasks(queue, 10)
 
             futures = []
             for i, task in enumerate(tasks):
@@ -101,10 +92,14 @@ class BackendPool:
         self.event_loop = asyncio.get_event_loop()
         self.item_list = item_list
         self.backends = [
-            BackendPoolWorker(PoeTrade(item_list), self.event_loop,
-                              Throttler(10, 1)),
-            BackendPoolWorker(PoeOfficial(item_list), self.event_loop,
-                              Throttler(1, 10, .5)),
+            BackendPoolWorker(
+                PoeTrade(item_list),
+                self.event_loop,
+            ),
+            # BackendPoolWorker(
+            #     PoeOfficial(item_list),
+            #     self.event_loop,
+            # ),
         ]
 
     def schedule(self,
@@ -127,9 +122,8 @@ class BackendPool:
             logging.debug("Worker {} finished {} tasks".format(
                 worker.backend.name(), worker.counter))
 
-        # Restructure list of lists to a single list of offer dicts
-        derp: List[Offer] = []
+        offers: List[Offer] = []
         for r in results:
-            derp.extend(r)
+            offers.extend(r)
 
-        return derp
+        return offers

@@ -45,18 +45,12 @@
         "Orb of Fusing": null,
         "Orb of Regret": null,
         "Orb of Scouring": null,
-        "Potent Alchemical Resonator": null,
         "Potent Chaotic Resonator": null,
         "Regal Orb": null,
         "Serrated Fossil": null,
         "Shuddering Fossil": null,
         "Simple Sextant": null,
         "Vaal Orb": null
-      }
-    },
-    "Encrusted Fossil": {
-      "sell_for": {
-        "Chaos Orb": null
       }
     },
     "Gilded Divination Scarab": {
@@ -200,11 +194,6 @@
       }
     },
     "Orb of Transmutation": {
-      "sell_for": {
-        "Chaos Orb": null
-      }
-    },
-    "Potent Alchemical Resonator": {
       "sell_for": {
         "Chaos Orb": null
       }

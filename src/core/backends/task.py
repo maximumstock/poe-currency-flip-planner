@@ -2,7 +2,10 @@ from dataclasses import dataclass
 
 
 class TaskException(Exception):
-    pass
+    status_code: int
+
+    def __init__(self, status_code: int):
+        self.status_code = status_code
 
 
 @dataclass
