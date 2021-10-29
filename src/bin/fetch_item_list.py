@@ -1,7 +1,5 @@
 import json
 import logging
-# import pickle
-# import sys
 
 from src.trading.items import ItemList
 from src.commons import init_logger
@@ -20,5 +18,3 @@ for item in unsynced_items:
 
 with open("assets/items.json", "w") as f:
     json.dump(cattr.unstructure(item_list), f, indent=2)
-    # sys.setrecursionlimit(1000000)
-    # pickle.dump(item_list, f)
