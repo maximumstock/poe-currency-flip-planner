@@ -18,8 +18,8 @@ class TradingConfigItemSellItem:
 
 
 class TradingConfigItemSellItemSchema(Schema):
-    minimum_stock = fields.Int(allow_none=True, default=0)
-    maximum_stock = fields.Int(allow_none=True, default=INT_INFINITY)
+    minimum_stock = fields.Int(allow_none=True, dump_default=0)
+    maximum_stock = fields.Int(allow_none=True, dump_default=INT_INFINITY)
 
     @post_load
     def make_trading_config_item_sell_item(self, data, many, partial):
@@ -41,8 +41,8 @@ class TradingConfigItem:
 
 
 class TradingConfigItemSchema(Schema):
-    minimum_stock = fields.Int(allow_none=True, default=0)
-    maximum_stock = fields.Int(allow_none=True, default=INT_INFINITY)
+    minimum_stock = fields.Int(allow_none=True, dump_default=0)
+    maximum_stock = fields.Int(allow_none=True, dump_default=INT_INFINITY)
     sell_for = fields.Dict(keys=fields.Str(),
                            values=fields.Nested(
                                TradingConfigItemSellItemSchema,
