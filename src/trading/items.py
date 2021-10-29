@@ -277,7 +277,8 @@ def poetrade() -> List[Item]:
 
 
 def poeofficial() -> List[Item]:
-    resp = requests.get("https://www.pathofexile.com/api/trade/data/static")
+    resp = requests.get("https://www.pathofexile.com/api/trade/data/static",
+                        headers={"User-Agent": "curl/7.76.1"})
     json_data = resp.json()["result"]
 
     item_list = []
