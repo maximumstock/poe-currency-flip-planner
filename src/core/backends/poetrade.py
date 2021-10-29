@@ -3,6 +3,8 @@ from typing import List
 
 import aiohttp
 from bs4 import BeautifulSoup
+from aiolimiter import AsyncLimiter
+from src.core.backends.throttler_ensemble import ThrottlerEnsemble
 
 from src.commons import filter_large_outliers
 from src.core.offer import Offer
@@ -13,12 +15,17 @@ from src.trading.items import ItemList
 class PoeTrade:
 
     item_list: ItemList
+    throttler: ThrottlerEnsemble
 
     def __init__(self, item_list: ItemList):
         self.item_list = item_list
+        self.throttler = ThrottlerEnsemble([AsyncLimiter(10, 1)])
 
     async def fetch_offer_async(self, client_session: aiohttp.ClientSession,
                                 task: Task) -> List[Offer]:
+
+        await self.throttler.wait()
+
         url = "https://currency.poe.trade/search"
         params = {
             "league": task.league,

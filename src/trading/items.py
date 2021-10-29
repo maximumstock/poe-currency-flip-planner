@@ -255,9 +255,12 @@ def poetrade() -> List[Item]:
         return _map[name] if name in _map else name
 
     for category_div in item_categories:
-        category_name = category_div.find_all_next(
-            "div", {"class": "currency-toggle"})[0].contents[1]
-        elements = category_div.find_all_next("div",
+        category_name = category_div.find_next("div", {
+            "class": "currency-toggle"
+        }).contents[1].text.strip()
+        selector_contents = category_div.find_next(
+            "div", {"class": "selector-contents"})
+        elements = selector_contents.find_all("div",
                                               {"class": "currency-selectable"})
 
         for x in elements:
