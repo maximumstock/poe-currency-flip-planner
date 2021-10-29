@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 import logging
 import pathlib
-from typing import List, Optional, Tuple
+from typing import List, Optional, Tuple, Union
 
 from marshmallow import Schema, fields, post_load
 from src.config.parser import (AssetConfig, TradingConfig, TradingConfigItem,
@@ -17,12 +17,20 @@ INT_INFINITY = 1_000_000
 
 
 class UserConfigSchema(Schema):
-    version = fields.Int()
-    assets = fields.Dict(keys=fields.Str(), values=fields.Int())
+    version = fields.Int(required=True)
+    assets = fields.Dict(keys=fields.Str(),
+                         values=fields.Int(),
+                         dump_default={})
     trading = fields.Dict(keys=fields.Str(),
                           values=fields.Nested(TradingConfigItemSchema,
                                                allow_none=True),
-                          allow_none=True)
+                          dump_default={})
+    account_name = fields.Str(data_key="accountName",
+                              allow_none=True,
+                              dump_default=None)
+    poe_session_id = fields.Str(data_key="POESESSID",
+                                allow_none=True,
+                                dump_default=None)
 
     @post_load
     def make_user_config(self, data, many, partial):
@@ -34,13 +42,26 @@ class UserConfig:
     assets: AssetConfig
     trading: TradingConfig
     stack_sizes: StackSizeHelper
+    poe_session_id: Union[str, None]
+    account_name: Union[str, None]
 
-    def __init__(self, version: int, assets: AssetConfig,
-                 trading: TradingConfig):
+    def __init__(self,
+                 version: int,
+                 assets: AssetConfig,
+                 trading: TradingConfig,
+                 account_name: str = None,
+                 poe_session_id: str = None):
         self.version = version
         self.assets = assets
         self.trading = trading
+        self.account_name = account_name
+        self.poe_session_id = poe_session_id
         self.stack_sizes = StackSizeHelper()
+
+    def save(self, file_path: str):
+        serialized = UserConfigSchema().dumps(self, indent=2, sort_keys=True)
+        with open(file_path, "w") as f:
+            f.write(serialized)
 
     def get_maximum_trade_volume_for_item(self, item: str) -> int:
         """
@@ -110,15 +131,21 @@ class UserConfig:
 
         return item_pairs
 
+    def set_asset_quantity(self, asset: str, quantity: int):
+        self.assets.update({asset: quantity})
+
     @staticmethod
-    def from_file(file_path: Optional[str] = None) -> UserConfig:
-        if file_path is None:
-            file_path = DEFAULT_CONFIG_FILE_PATH
+    def get_file_path(file_path: Optional[str]) -> str:
+        file_path = file_path if file_path is not None else DEFAULT_CONFIG_FILE_PATH
+        return pathlib.Path(file_path).resolve()
 
-        path = pathlib.Path(file_path).resolve()
+    @staticmethod
+    def from_file(file_path: Optional[str],
+                  allow_default_config: bool = False) -> UserConfig:
+        path = UserConfig.get_file_path(file_path)
 
-        # Default back to default config file
-        if not path.is_file():
+        # Default back to default config file if allowed
+        if not path.is_file() and allow_default_config:
             path = pathlib.Path(DEFAULT_CONFIG_DEFAULT_FILE_PATH).resolve()
 
         try:
@@ -127,7 +154,9 @@ class UserConfig:
                 data = json.loads(f.read())
                 return UserConfigSchema().load(data)
         except OSError:
-            raise Exception("The specified config file path does not exist")
+            raise Exception(
+                "The specified config file path does not exist or cannot be read"
+            )
 
     @staticmethod
     def from_raw(raw: str) -> UserConfig:

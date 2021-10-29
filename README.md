@@ -72,13 +72,17 @@ You can always check them out via `python cli.py --help`.
 
 ```
 ❯ python cli.py --help
-usage: cli.py [-h] [--league LEAGUE] [--currency CURRENCY] [--limit LIMIT] [--fullbulk] [--nofilter] [--debug] [--config CONFIG]
+usage: cli.py [-h] [--league LEAGUE] [--currency CURRENCY] [--limit LIMIT] [--fullbulk] [--nofilter] [--debug] [--config CONFIG] [{pathfinding,sync}]
 
 CLI interface for PathFinder
 
+positional arguments:
+  {pathfinding,sync}   Specifies what subcommand to run: 1. pathfinding: Find profitable conversion paths (default). 2. sync: Sync your public stashes into your
+                       config file.
+
 optional arguments:
   -h, --help           show this help message and exit
-  --league LEAGUE      League specifier, ie. 'Scourge', 'Hardcore Scourge' or 'Flashback Event (BRE001)'. Defaults to 'Scourge'.
+  --league LEAGUE      League specifier, ie. 'Synthesis', 'Hardcore Synthesis' or 'Flashback Event (BRE001)'. Defaults to 'Scourge'.
   --currency CURRENCY  Full name of currency to flip, ie. 'Cartographer's Chisel, or 'Chaos Orb'. Defaults to all currencies.
   --limit LIMIT        Limit the number of displayed conversions. Defaults to 5.
   --fullbulk           Use all supported bulk items
@@ -87,8 +91,10 @@ optional arguments:
   --config CONFIG      Specify your config file path
 ```
 
-By default, we use both [pathofexile.com/trade](https://pathofexile.com/trade/exchange)
-and [poe.trade](http://poe.trade) in parallel to fetch trade offers.
+<!--By default, we use both [pathofexile.com/trade](https://pathofexile.com/trade/exchange)
+and [poe.trade](http://poe.trade) in parallel to fetch trade offers.-->
+
+At the moment we solely support [poe.trade](http://poe.trade) to fetch trade offers.
 
 Options `--fullbulk` and `--nofilter` bypass the configuration files and extend
 the set of item pairs that is used to collect data for.
@@ -101,7 +107,7 @@ The configuration file lets you define the following:
 
 - Item trading paths
 - Stock requirements when buying & selling
-- Your trading capital
+- Sync your trading capital via the `sync` command into your local configuration file
 - [Blacklisting traders](#blacklisting-traders)
 
 If you did not configure a custom configuration file, the default settings in
@@ -110,6 +116,21 @@ Blacklisting traders is done separately, see [blacklisting traders](#blacklistin
 
 The default configuration takes care for you of the first two points, but you
 are free to customize.
+
+### Sync Trading Capital
+
+You can use `python cli.py --league <LEAGUE> sync` to seemlessly sync your trading capital from your
+public stash tabs into your specified configuration file.
+
+For this you need to specify your account name and your `POESESSID` (a cookie value that PoE uses
+to identify your account, see [here](https://cptpingu.github.io/poe-stash/poesessid.html)
+for a guide on how to retrieve it) in your respective configuration file.
+
+If you have no configuration file yet, feel free to copy `config/config.default.json` to `config/config.json`
+so you can get started.
+The file `config.default.json` is not usable with this feature, so you have to bring your own for this.
+
+Running the above command should then work fine.
 
 ### Example Configuration
 
