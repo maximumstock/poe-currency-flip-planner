@@ -42,8 +42,8 @@ class UserConfig:
     assets: AssetConfig
     trading: TradingConfig
     stack_sizes: StackSizeHelper
-    poe_session_id: Union[str | None]
-    account_name: Union[str | None]
+    poe_session_id: Union[str, None]
+    account_name: Union[str, None]
 
     def __init__(self,
                  version: int,
@@ -136,7 +136,7 @@ class UserConfig:
 
     @staticmethod
     def get_file_path(file_path: Optional[str]) -> str:
-        file_path = file_path if file_path != None else DEFAULT_CONFIG_FILE_PATH
+        file_path = file_path if file_path is not None else DEFAULT_CONFIG_FILE_PATH
         return pathlib.Path(file_path).resolve()
 
     @staticmethod
