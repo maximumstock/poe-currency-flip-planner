@@ -7,7 +7,7 @@ import aiohttp
 from src.core.backends.poetrade import PoeTrade
 from src.core.backends.task import Task
 from src.core.offer import Offer
-from src.trading.items import ItemList
+from src.trading.items import ItemList, UnsupportedItemException
 
 
 class BackendPoolWorker:
@@ -26,17 +26,21 @@ class BackendPoolWorker:
         self.work_index = dict()
 
     def pick_tasks(self, queue: asyncio.Queue, n_tasks: int) -> List[Task]:
-        # TODO worker must support the items in the task in order to work on it
-        # need some additional item_list checks and some asyncio.Queue wrapper
-        # that makes sure task distribution happens correctly
         tasks: List[Task] = []
 
         for i in range(n_tasks):
             try:
                 task: Task = queue.get_nowait()
+                self.backend.item_list.map_item(task.have, self.backend.name())
+                self.backend.item_list.map_item(task.want, self.backend.name())
                 tasks.append(task)
+            except UnsupportedItemException:
+                continue
             except asyncio.QueueEmpty:
                 break
+
+        if len(tasks) != n_tasks and not queue.empty():
+            tasks += self.pick_tasks(queue, n_tasks - len(tasks))
 
         return tasks
 
@@ -62,11 +66,14 @@ class BackendPoolWorker:
             for idx, result in enumerate(done):
                 if isinstance(result, Exception):
                     failed_task = self.work_index[idx]
-                    logging.debug("{}: Reschedule task: {} -> {}".format(
-                        self.backend.name(), failed_task.have,
-                        failed_task.want))
-                    logging.debug(result)
-                    queue.put_nowait(failed_task)
+                    if isinstance(result, UnsupportedItemException):
+                        logging.debug(result)
+                    else:
+                        logging.debug("{}: Reschedule task: {} -> {}".format(
+                            self.backend.name(), failed_task.have,
+                            failed_task.want))
+                        logging.debug(result)
+                        queue.put_nowait(failed_task)
                     self.counter = self.counter - 1
                     self.just_failed = True
                 else:
