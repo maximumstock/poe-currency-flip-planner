@@ -7,7 +7,7 @@ import aiohttp
 from src.core.backends.poetrade import PoeTrade
 from src.core.backends.task import Task
 from src.core.offer import Offer
-from src.trading.items import ItemList
+from src.trading.items import ItemList, UnsupportedItemException
 
 
 class BackendPoolWorker:
@@ -62,11 +62,14 @@ class BackendPoolWorker:
             for idx, result in enumerate(done):
                 if isinstance(result, Exception):
                     failed_task = self.work_index[idx]
-                    logging.debug("{}: Reschedule task: {} -> {}".format(
-                        self.backend.name(), failed_task.have,
-                        failed_task.want))
-                    logging.debug(result)
-                    queue.put_nowait(failed_task)
+                    if isinstance(result, UnsupportedItemException):
+                        logging.debug(result)
+                    else:
+                        logging.debug("{}: Reschedule task: {} -> {}".format(
+                            self.backend.name(), failed_task.have,
+                            failed_task.want))
+                        logging.debug(result)
+                        queue.put_nowait(failed_task)
                     self.counter = self.counter - 1
                     self.just_failed = True
                 else:
