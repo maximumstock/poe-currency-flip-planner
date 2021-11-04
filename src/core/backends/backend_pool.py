@@ -26,7 +26,6 @@ class BackendPoolWorker:
         self.work_index = dict()
 
     def pick_tasks(self, queue: asyncio.Queue, n_tasks: int) -> List[Task]:
-        # TODO some asyncio.Queue wrapper that makes sure task distribution happens correctly
         tasks: List[Task] = []
 
         for i in range(n_tasks):
