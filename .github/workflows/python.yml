@@ -2,9 +2,9 @@ name: Continuous Integration
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   ci:
@@ -37,6 +37,15 @@ jobs:
       - name: Install dependencies
         run: poetry install
         if: steps.cache.outputs.cache-hit != 'true'
+
+      - name: Sync dependencies
+        run: |
+          poetry export > requirements.txt
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git add requirements.txt
+          git commit -m "ci: sync dependencies to requirements.txt"
+          git push
 
       - name: Tests
         run: poetry run python -m pytest
