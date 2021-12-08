@@ -40,7 +40,7 @@ jobs:
 
       - name: Sync dependencies
         run: |
-          poetry export > requirements.txt
+          poetry export --dev > requirements.txt
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
           git add requirements.txt
