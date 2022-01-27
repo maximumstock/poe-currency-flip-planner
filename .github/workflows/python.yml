@@ -38,7 +38,11 @@ jobs:
         run: poetry install
         if: steps.cache.outputs.cache-hit != 'true'
 
+      - name: Tests
+        run: poetry run python -m pytest
+
       - name: Sync dependencies
+        if: "github.ref == 'refs/heads/master'"
         run: |
           poetry export --dev -f requirements.txt -o requirements.txt --without-hashes
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
@@ -48,6 +52,3 @@ jobs:
             git commit -m "ci: sync dependencies to requirements.txt"
             git push
           fi
-
-      - name: Tests
-        run: poetry run python -m pytest
