@@ -82,7 +82,7 @@ class PathFinder:
             self.league, len(self.item_pairs)))
 
         self.offers = self.backend_pool.schedule(self.league, self.item_pairs,
-                                                 self.item_list)
+                                                 self.item_list, 20)
 
         self.offers.extend(build_vendor_offers(self.league))
 
