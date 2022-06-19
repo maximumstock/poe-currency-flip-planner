@@ -17,6 +17,7 @@ deserialize = "^1.8.0"
 cattrs = "^1.1.2"
 aiolimiter = "^1.0.0"
 tqdm = "^4.62.3"
+nest-asyncio = "^1.5.5"
 
 [tool.poetry.dev-dependencies]
 mypy = "^0.790"

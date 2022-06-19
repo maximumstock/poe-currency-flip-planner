@@ -1,7 +1,7 @@
 import asyncio
 import logging
 from typing import Any, Dict, List, Tuple
-
+import nest_asyncio
 import aiohttp
 # from src.core.backends.poeofficial import PoeOfficial
 from src.core.backends.poetrade import PoeTrade
@@ -9,6 +9,7 @@ from src.core.backends.task import Task
 from src.core.offer import Offer
 from src.trading.items import ItemList, UnsupportedItemException
 
+nest_asyncio.apply()
 
 class BackendPoolWorker:
     backend: Any
