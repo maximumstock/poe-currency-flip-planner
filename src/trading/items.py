@@ -19,7 +19,6 @@ from bs4 import BeautifulSoup
 import requests
 from typing import List, Dict, Tuple, Any
 import itertools
-import os
 from pathlib import Path
 import attr
 import json
@@ -90,7 +89,8 @@ class ItemList:
     @staticmethod
     def load_from_file(path: str = None) -> ItemList:
         if path is None:
-            path = Path(__file__).parent.parent.parent.absolute() / "assets/items.json"
+            path = Path(
+                __file__).parent.parent.parent.absolute() / "assets/items.json"
 
         with open(path, "r") as f:
             item_list_json = json.load(f)

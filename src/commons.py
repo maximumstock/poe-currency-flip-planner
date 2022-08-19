@@ -3,7 +3,7 @@ from typing import Any, Dict, List, Set
 
 import numpy as np
 
-LEAGUE_NAMES = ["Sentinel", "Hardcore Sentinel", "Standard", "Hardcore"]
+LEAGUE_NAMES = ["Kalandra", "Hardcore Kalandra", "Standard", "Hardcore"]
 VENDOR_OFFER_IGN = "__vendor__"
 
 
