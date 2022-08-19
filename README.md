@@ -2,7 +2,7 @@
 
 ![Continuous Integration](https://github.com/maximumstock/poe-currency-flip-planner/workflows/Continuous%20Integration/badge.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![License: MIT](https://img.shields.io/badge/Version-0.4.1-orange.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/Version-0.4.2-orange.svg)](https://opensource.org/licenses/MIT)
 
 A proof-of-concept finder for short-term arbitrage opportunities in
 [Path of Exile](https://www.pathofexile.com).
@@ -20,7 +20,7 @@ A proof-of-concept finder for short-term arbitrage opportunities in
 A command-line application that finds arbitrage opportunities by grabbing and
 analysing data from [pathofexile.com/trade](https://pathofexile.com/trade/exchange).
 
-For example, running `python cli.py --league Metamorph` used to result in something like:
+For example, running `python cli.py --league Kalandra` used to result in something like:
 
 <img src="examples/result_screenshot.png" width=900 />
 
@@ -82,7 +82,7 @@ positional arguments:
 
 optional arguments:
   -h, --help           show this help message and exit
-  --league LEAGUE      League specifier, ie. 'Synthesis', 'Hardcore Synthesis' or 'Flashback Event (BRE001)'. Defaults to 'Scourge'.
+  --league LEAGUE      League specifier, ie. 'Kalandra', 'Hardcore Kalandra' or 'Flashback Event (BRE001)'. Defaults to the current challenge league.
   --currency CURRENCY  Full name of currency to flip, ie. 'Cartographer's Chisel, or 'Chaos Orb'. Defaults to all currencies.
   --limit LIMIT        Limit the number of displayed conversions. Defaults to 5.
   --fullbulk           Use all supported bulk items
