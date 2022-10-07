@@ -4578,16 +4578,6 @@
       "is_bulk_target": false,
       "category": "Memory Lines"
     },
-    "Einhar's Memory of Harvest Beasts": {
-      "name": "Einhar's Memory of Harvest Beasts",
-      "ids": {
-        "poeofficial": "einhars-memory-of-harvest-beasts"
-      },
-      "is_currency": false,
-      "is_basic_currency": false,
-      "is_bulk_target": false,
-      "category": "Memory Lines"
-    },
     "Einhar's Memory of the Sacred Grove": {
       "name": "Einhar's Memory of the Sacred Grove",
       "ids": {
@@ -6593,30 +6583,10 @@
       "is_bulk_target": false,
       "category": "Memory Lines"
     },
-    "Kirac's Memory of Self-Possession": {
-      "name": "Kirac's Memory of Self-Possession",
-      "ids": {
-        "poeofficial": "kiracs-memory-of-self-possession"
-      },
-      "is_currency": false,
-      "is_basic_currency": false,
-      "is_bulk_target": false,
-      "category": "Memory Lines"
-    },
     "Kirac's Memory of Survivor's Guilt": {
       "name": "Kirac's Memory of Survivor's Guilt",
       "ids": {
         "poeofficial": "kiracs-memory-of-survivors-guilt"
-      },
-      "is_currency": false,
-      "is_basic_currency": false,
-      "is_bulk_target": false,
-      "category": "Memory Lines"
-    },
-    "Kirac's Memory of the Pantheon": {
-      "name": "Kirac's Memory of the Pantheon",
-      "ids": {
-        "poeofficial": "kiracs-memory-of-the-pantheon"
       },
       "is_currency": false,
       "is_basic_currency": false,
