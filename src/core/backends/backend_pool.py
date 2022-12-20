@@ -3,8 +3,7 @@ import logging
 from typing import Any, Dict, List, Tuple
 import nest_asyncio
 import aiohttp
-# from src.core.backends.poeofficial import PoeOfficial
-from src.core.backends.poetrade import PoeTrade
+from src.core.backends.poeofficial import PoeOfficial
 from src.core.backends.task import Task
 from src.core.offer import Offer
 from src.trading.items import ItemList, UnsupportedItemException
@@ -101,13 +100,9 @@ class BackendPool:
         self.item_list = item_list
         self.backends = [
             BackendPoolWorker(
-                PoeTrade(item_list),
+                PoeOfficial(item_list),
                 self.event_loop,
             ),
-            # BackendPoolWorker(
-            #     PoeOfficial(item_list),
-            #     self.event_loop,
-            # ),
         ]
 
     def schedule(self,

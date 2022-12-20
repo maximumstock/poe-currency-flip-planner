@@ -15,7 +15,6 @@ Notes:
 from __future__ import annotations
 from dataclasses import dataclass
 
-from bs4 import BeautifulSoup
 import requests
 from typing import List, Dict, Tuple, Any
 import itertools

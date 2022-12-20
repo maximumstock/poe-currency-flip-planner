@@ -1,25 +1,8 @@
 import logging
 from typing import Any, Dict, List, Set
 
-import numpy as np
-
 LEAGUE_NAMES = ["Kalandra", "Hardcore Kalandra", "Standard", "Hardcore"]
 VENDOR_OFFER_IGN = "__vendor__"
-
-
-def filter_large_outliers(
-        offers: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-    """
-    Filter out all offers with a conversion rate which is above the
-    95th percentile of all found conversion rates for an item pair.
-    """
-
-    if len(offers) > 10:
-        conversion_rates = [o["conversion_rate"] for o in offers]
-        upper_boundary = np.percentile(conversion_rates, 95)
-        offers = [o for o in offers if o["conversion_rate"] < upper_boundary]
-
-    return offers
 
 
 def init_logger(debug: bool):

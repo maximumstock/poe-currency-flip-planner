@@ -6,7 +6,6 @@ import aiohttp
 from aiolimiter.leakybucket import AsyncLimiter
 from src.core.backends.throttler_ensemble import ThrottlerEnsemble
 
-from src.commons import filter_large_outliers
 from src.core.offer import Offer
 from src.core.backends.task import Task, TaskException
 from src.trading.items import ItemList
@@ -102,7 +101,7 @@ class PoeOfficial:
             offers_details = [
                 PoeOfficial.map_offers_details(x) for x in raw_offers
             ]
-            offers_details = filter_large_outliers(offers_details)[:task.limit]
+            offers_details = offers_details[:task.limit]
 
             offers = [
                 Offer(league=task.league,
