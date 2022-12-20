@@ -39,7 +39,9 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
 
       - name: Tests
-        run: poetry run python -m pytest
+        run: |
+          poetry install pytest
+          poetry run python -m pytest
 
       - name: Sync dependencies
         if: "github.ref == 'refs/heads/master'"
