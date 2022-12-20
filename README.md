@@ -42,7 +42,7 @@ chains that yield profit.
 
 ## Installation
 
-This tool requires Python >=3.7.
+This tool requires Python >=3.8.
 For installing dependencies, either use [poetry](https://python-poetry.org)
 or regular Python 3 virtual environments, as described below.
 

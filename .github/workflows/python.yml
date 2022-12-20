@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.7]
+        python-version: [3.8]
     if: "!contains(github.event.head_commit.message, 'ci skip')"
     steps:
       - name: Checkout sources
@@ -35,13 +35,11 @@ jobs:
             poetry-$
 
       - name: Install dependencies
-        run: poetry install --only main
+        run: poetry install
         if: steps.cache.outputs.cache-hit != 'true'
 
       - name: Tests
-        run: |
-          poetry install pytest
-          poetry run python -m pytest
+        run: poetry run python -m pytest
 
       - name: Sync dependencies
         if: "github.ref == 'refs/heads/master'"
