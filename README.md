@@ -54,7 +54,7 @@ or regular Python 3 virtual environments, as described below.
 Assuming `poetry` is installed:
 
 1. Enter a new pipenv shell session: `poetry shell`
-1. Install all dependencies: `poetry install`
+1. Install all dependencies: `poetry install --only main`
 
 ### Via Python Virtual Environment
 
