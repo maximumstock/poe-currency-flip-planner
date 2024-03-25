@@ -6,7 +6,7 @@ authors = ["Maximilian stock <mxmlnstock@googlemail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
-aiohttp = "^3.7.4"
+aiohttp = "^3.9.2"
 asyncio = "^3.4.3"
 requests = "^2.31.0"
 marshmallow = "^3.10.0"
