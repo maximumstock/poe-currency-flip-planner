@@ -1,6 +1,6 @@
 # poe-currency-flip-planner
 
-_With `poe.trade` being closed down now and the [official trading website requiring authentication by default](https://www.pathofexile.com/trade), this project is currently in a non-working state. I'll focus on bringing up my own indexer in the meantime ([tracking issue](https://github.com/maximumstock/poe-stash-indexer/issues/244)) and will add it as a backend to this project ASAP. In the meantime this project is in an unusable state._
+_With `poe.trade` being closed down now and the [official trading website requiring authentication by default](https://www.pathofexile.com/trade), this project is currently in a non-working state._
 
 <br/>
 
