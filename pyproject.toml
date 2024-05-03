@@ -13,7 +13,7 @@ marshmallow = "^3.10.0"
 jsonpickle = "^1.5.0"
 deserialize = "^1.8.0"
 aiolimiter = "^1.0.0"
-tqdm = "^4.62.3"
+tqdm = "^4.66.3"
 nest-asyncio = "^1.5.5"
 
 [tool.poetry.dev-dependencies]
